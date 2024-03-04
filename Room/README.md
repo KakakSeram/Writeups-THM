@@ -2,8 +2,8 @@
 
 This the list of all the writeups I made.
 
-|No.|Name|Type|Link|
-|---|----|----|----|
-|1.|[Kenobi](./Kenobi/README.md)|Free|[Tryhackme](https://tryhackme.com/r/room/kenobi)|
+|No.|Name|Type|Source|Difficulty|
+|---|----|----|------|----------|
+|1.|[Kenobi](./Kenobi/README.md)|Free|[Tryhackme](https://tryhackme.com/r/room/kenobi)|Easy|
 
 Writeups made with :heart: by @KakakSeram
