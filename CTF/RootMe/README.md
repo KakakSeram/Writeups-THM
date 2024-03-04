@@ -14,7 +14,7 @@ Set up environment IP as IP_Machine
 
 * Scan the machine, how many ports are open?
 	
-	nmap -sV $IP | tee -a nmap-default.txt
+	`nmap -sV $IP | tee -a nmap-default.txt`
 
 	File scan resulted [here](./files/nmap-default.txt)
 
@@ -30,7 +30,7 @@ Set up environment IP as IP_Machine
 
 * Find directories on the web server using the GoBuster tool. What is the hidden directory?
 	
-	gobuster dir -w /usr/share/wordlists/dirb/common.txt -u $IP | tee -a gobuster-default.txt
+	`gobuster dir -w /usr/share/wordlists/dirb/common.txt -u $IP | tee -a gobuster-default.txt`
 
 	File scan resulted [here](./files/gobuster-default.txt)
 
