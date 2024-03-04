@@ -18,7 +18,7 @@ export IP=10.10.184.151
 	nmap -sV $IP | tee nmap-scan.txt
 	```
 
-	File scan resulted [here](./file/nmap-scan.txt)
+	File scan resulted [here](./files/nmap-scan.txt)
 
 	![task1-nmap](./images/task1-nmap.png)
 
