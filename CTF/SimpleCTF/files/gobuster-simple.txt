@@ -1,0 +1,29 @@
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.179.1/simple
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/dirb/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+[2K/.hta                 (Status: 403) [Size: 297]
+[2K/.htaccess            (Status: 403) [Size: 302]
+[2K/.htpasswd            (Status: 403) [Size: 302]
+[2K/admin                (Status: 301) [Size: 317] [--> http://10.10.179.1/simple/admin/]
+[2K/assets               (Status: 301) [Size: 318] [--> http://10.10.179.1/simple/assets/]
+[2K/doc                  (Status: 301) [Size: 315] [--> http://10.10.179.1/simple/doc/]
+[2K/index.php            (Status: 200) [Size: 19833]
+[2K/lib                  (Status: 301) [Size: 315] [--> http://10.10.179.1/simple/lib/]
+[2K/modules              (Status: 301) [Size: 319] [--> http://10.10.179.1/simple/modules/]
+[2K/tmp                  (Status: 301) [Size: 315] [--> http://10.10.179.1/simple/tmp/]
+[2K/uploads              (Status: 301) [Size: 319] [--> http://10.10.179.1/simple/uploads/]
+
+===============================================================
+Finished
+===============================================================
