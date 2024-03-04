@@ -4,7 +4,9 @@ A CTF for beginners, can you root me?
 
 ## Task 1 - Deploy the machine
 
-`None`
+Set up environment IP as IP_Machine
+
+![task1-IP](./images/task1-IP.png)
 
 ## Task 2 - Reconnaissance
 
