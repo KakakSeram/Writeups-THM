@@ -117,9 +117,14 @@ Extraxted file [here](./files/_cutie.png.extracted)
 
 ![task3-file-extract](./images/task3-file-extract.png)
 
-### Crack password zip with Jhon
+### Crack password zip with John
 
+```
+zip2john 8702.zip > john-8702.zip
+john john-8702.zip
+```
 
+![task3-john](./images/task3-john.png)
 
 ### Answer the questions
 
@@ -129,6 +134,8 @@ Extraxted file [here](./files/_cutie.png.extracted)
 
 * Zip file password
 
+	`alien`
+	
 * steg password
 
 * Who is the other agent (in full name)?
