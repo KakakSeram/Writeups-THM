@@ -1,5 +1,7 @@
 # Agent Sudo
 
+![IP](./images/IP.png =200x200)
+
 You found a secret server located under the deep sea. Your task is to hack inside the server and reveal the truth.
 
 ## Task1 - Author note
@@ -11,8 +13,6 @@ Welcome to another THM exclusive CTF room. Your task is simple, capture the flag
 ```
 export IP=10.10.218.33
 ```
-
-![IP](./images/IP.png)
 
 ## Task2 - Enumerate
 
