@@ -58,15 +58,15 @@ We get information from website, that we must change codename as user-agent to a
 
 * How many open ports?
 
-`3`
+	`3`
 
 * How you redirect yourself to a secret page?
 
-`user-agent`
+	`user-agent`
 
 * What is the agent name?
 
-`chris`
+	`chris`
 
 ## Task 3 - Hash cracking and brute-force
 
@@ -80,11 +80,52 @@ hydra -l chris -P /usr/share/wordlists/seclists/Passwords/Common-Credentials/10k
 
 ![task3-ftp-password](./images/task3-ftp-password.png)
 
+### Login to ftp server
+
+```
+ftp chris@$IP
+```
+
+![task3-login-ftp](./images/task3-login-ftp.png)
+
+### Download file from ftp server
+
+![task3-getfile-ftp](./images/task3-getfile-ftp.png)
+
+[To_agentJ.txt](./files/To_agentJ.txt)
+[cute-alien.jpg](./files/cute-alien.jpg)
+[cutie.png](./files/cutie.png)
+
+### Trying hidden zip file from image
+
+```
+binwalk -e cute-alien.jpg
+binwalk -e cutie.png
+```
+
+![task3-binwalk](./images/task3-binwalk)
+
+### Extract zip file from image
+
+```
+binwalk -e cutie.png
+```
+
+![task3-extract](./images/task3-extract.png)
+
+Extraxted file [here](./files/_cutie.png.extracted)
+
+![task3-file-extract](./images/task3-file-extract.png)
+
+### Crack password zip with Jhon
+
+
+
 ### Answer the questions
 
 * FTP password
 
-`crystal`
+	`crystal`
 
 * Zip file password
 
