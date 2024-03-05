@@ -92,9 +92,12 @@ ftp chris@$IP
 
 ![task3-getfile-ftp](./images/task3-getfile-ftp.png)
 
-[To_agentJ.txt](./files/To_agentJ.txt)
-[cute-alien.jpg](./files/cute-alien.jpg)
-[cutie.png](./files/cutie.png)
+
+List of files:  
+[To_agentJ.txt](./files/To_agentJ.txt)  
+[cute-alien.jpg](./files/cute-alien.jpg)  
+[cutie.png](./files/cutie.png)  
+
 
 ### Trying hidden zip file from image
 
@@ -103,7 +106,7 @@ binwalk -e cute-alien.jpg
 binwalk -e cutie.png
 ```
 
-![task3-binwalk](./images/task3-binwalk)
+![task3-binwalk](./images/task3-binwalk.png)
 
 ### Extract zip file from image
 
@@ -111,7 +114,7 @@ binwalk -e cutie.png
 binwalk -e cutie.png
 ```
 
-![task3-extract](./images/task3-extract.png)
+![task3-binwalk-extract](./images/task3-binwalk-extract.png)
 
 Extraxted file [here](./files/_cutie.png.extracted)
 
@@ -126,6 +129,14 @@ john john-8702.zip
 
 ![task3-john](./images/task3-john.png)
 
+### Zip extract
+
+![task3-zip-extract](./images/task3-zip-extract.png)
+
+Read file
+
+![task3-agent-txt](./images/task3-agent-txt.png)
+
 ### Answer the questions
 
 * FTP password
@@ -135,7 +146,7 @@ john john-8702.zip
 * Zip file password
 
 	`alien`
-	
+
 * steg password
 
 * Who is the other agent (in full name)?
