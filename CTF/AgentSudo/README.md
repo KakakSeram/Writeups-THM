@@ -1,6 +1,6 @@
 # Agent Sudo
 
-<img src="./images/AgentSudo.png" width="200" height="200">
+<img src="./images/AgentSudo.png" width="250" height="250">
 
 You found a secret server located under the deep sea. Your task is to hack inside the server and reveal the truth.
 
