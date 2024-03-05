@@ -4,7 +4,7 @@
 
 You found a secret server located under the deep sea. Your task is to hack inside the server and reveal the truth.
 
-## Task1 - Author note
+## Task 1 - Author note
 
 Welcome to another THM exclusive CTF room. Your task is simple, capture the flags just like the other CTF room. Have Fun!
 
@@ -14,7 +14,7 @@ export IP=10.10.218.33
 
 ![IP](./images/IP.png)
 
-## Task2 - Enumerate
+## Task 2 - Enumerate
 
 Enumerate the machine and get all the important information
 
@@ -46,7 +46,7 @@ We get information from website, that we must change codename as user-agent to a
 
 	![task2-firefox](./images/task2-firefox.png)
 
-* Set User-Agent codename as C
+* Set User-Agent Codename
 
 	![task2-codename](./images/task2-codename.png)
 
@@ -67,3 +67,33 @@ We get information from website, that we must change codename as user-agent to a
 * What is the agent name?
 
 `chris`
+
+## Task 3 - Hash cracking and brute-force
+
+Done enumerate the machine? Time to brute your way out.
+
+### Brute Force FTP with hydra
+
+```
+hydra -l chris -P /usr/share/wordlists/seclists/Passwords/Common-Credentials/10k-most-common.txt ftp://$IP
+```
+
+![task3-ftp-password](./images/task3-ftp-password.png)
+
+### Answer the questions
+
+* FTP password
+
+`crystal`
+
+* Zip file password
+
+* steg password
+
+* Who is the other agent (in full name)?
+
+* SSH password
+
+
+
+
