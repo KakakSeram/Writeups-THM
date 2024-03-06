@@ -28,6 +28,8 @@ Enumerate the machine and get all the important information
 nmap -sV -sC -oN nmap-scan $IP
 ```
 
+File scan resulted [here](./files/nmap-scan)
+
 ![task2-nmap-scan](./images/task2-nmap-scan.png)
 
 ### Scan directory with gobuster
@@ -137,6 +139,24 @@ Read file
 
 ![task3-agent-txt](./images/task3-agent-txt.png)
 
+### Steg password Crack
+
+```
+stegcracker cute-alien.jpg /usr/share/wordlists/rockyou.txt
+```
+
+![task3-stegcracker](./images/task3-stegcracker.png)
+
+### Steg hidden message
+
+```
+steghide extract -sf cute-alien.jpg
+```
+
+File hidden message [here](./files/message.txt)
+
+![task3-steghide](./images/task3-steghide.png)
+
 ### Answer the questions
 
 * FTP password
@@ -149,10 +169,36 @@ Read file
 
 * steg password
 
+	`Area51`
+
 * Who is the other agent (in full name)?
+
+	`James`
 
 * SSH password
 
+	`hackerrules!`
 
+## Task 4 - Capture the user flag
 
+### Login to target machine
 
+![task4-login](./images/task4-login.png)
+
+### Get the user_flag
+
+![task4-user-flag](./images/task4-user-flag.png)
+
+### Download image from machine
+
+![task4-scp](./images/task4-scp.png)
+
+### Answer the questions
+
+* What is the user flag?
+
+	`b03d975e8c92a7c04146cfa7a5a313c7`
+
+* What is the incident of the photo called?
+
+	``
