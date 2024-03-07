@@ -2,7 +2,7 @@
 
 ![SimpleCTF](./images/SimpleCTF.png)
 
-The room is listed as an easy room, and covers a lot of different tools and aspects of security, which makes it a great room to complete for beginners.
+[Simple CTF](https://tryhackme.com/room/easyctf) room is listed as an easy room, and covers a lot of different tools and aspects of security, which makes it a great room to complete for beginners.
 An overview of what we’ll be using is listed here:  
 
 * Basic linux commands
