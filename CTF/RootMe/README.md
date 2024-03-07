@@ -1,6 +1,14 @@
 # RootMe
 
-A CTF for beginners, can you root me?
+![RootMe](./images/RootMe.png)
+
+The room is listed as an easy room, and covers a lot of different tools and aspects of security, which makes it a great room to complete for beginners.
+An overview of what we’ll be using is listed here:  
+
+* Basic linux commands
+* Nmap scan
+* Gobuster
+* Netcat
 
 ## Task 1 - Deploy the machine
 
