@@ -249,7 +249,7 @@ File image [here](./files/Alien_autospy.jpg)
 
 * Transfer exploit file to target machine
 
-	Make simple HTTP server
+	Make a simple HTTP server from our machine
 
 	![task5-http-server](./images/task5-http-server.png)
 
@@ -276,12 +276,12 @@ File image [here](./files/Alien_autospy.jpg)
 
 * CVE number for the escalation
 
-	``
+	`CVE-2019-14287`
 
 * What is the root flag?
 
-	``
+	`b53a02f55b57d4439e3341834d70c062`
 
 * (Bonus) Who is Agent R?
 
-	``
+	`DesKel`
