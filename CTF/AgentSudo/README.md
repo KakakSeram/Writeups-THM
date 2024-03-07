@@ -1,8 +1,18 @@
 # Agent Sudo
 
-<center><img src="./images/AgentSudo.png" width="250" height="250"></center>
+![AgentSudo](./images/AgentSudo.png)
 
-You found a secret server located under the deep sea. Your task is to hack inside the server and reveal the truth.
+The room is listed as an easy room, and covers a lot of different tools and aspects of security, which makes it a great room to complete for beginners.
+An overview of what we’ll be using is listed here:  
+
+* Basic linux commands
+* Nmap scan
+* Gobuster
+* Hydra
+* Binwalk
+* John
+* Stegcracker
+* Steghide
 
 ## Task 1 - Author note
 
@@ -189,9 +199,19 @@ File hidden message [here](./files/message.txt)
 
 ![task4-user-flag](./images/task4-user-flag.png)
 
-### Download image from machine
+### Download image from target machine
+
+```
+scp james@10.10.8.171:/home/james/Alien_autospy.jpg .
+```
 
 ![task4-scp](./images/task4-scp.png)
+
+File image [here](./files/Alien_autospy.jpg)
+
+### Search image file from google
+
+![task4-image-search](./images/task4-image-search.png)
 
 ### Answer the questions
 
@@ -200,5 +220,68 @@ File hidden message [here](./files/message.txt)
 	`b03d975e8c92a7c04146cfa7a5a313c7`
 
 * What is the incident of the photo called?
+
+	`Roswell Alien Autopsy`
+
+## Task 5 -Privilege escalation
+
+### Sudo -l
+
+* Check sudo version 
+
+	![task5-sudo](./images/task5-sudo.png)
+
+* Check sudo version on Exploit DB
+
+	![task5-sudo-version](./images/task5-sudo-version.png)
+
+* Download Exploit Script
+
+	Searchsploit
+
+	![task5-searchsploit](./images/task5-searchsploit.png)
+
+	Download exploit
+
+	![task5-download](./images/task5-download.png)
+
+### Transfer and Run Exploit
+
+* Transfer exploit file to target machine
+
+	Make simple HTTP server
+
+	![task5-http-server](./images/task5-http-server.png)
+
+	Download file from target machine
+
+	![task5-wget](./images/task5-wget.png)
+
+* Run Exploit
+
+	Set script file executable
+
+	![task5-chmod](./images/task5-chmod.png)
+
+	Run script
+
+	![task5-run-script](./images/task5-run-script.png)
+
+* Get Root Flag
+
+	![task5-root-txt](./images/task5-root-txt.png)
+
+
+### Answer the questions
+
+* CVE number for the escalation
+
+	``
+
+* What is the root flag?
+
+	``
+
+* (Bonus) Who is Agent R?
 
 	``
