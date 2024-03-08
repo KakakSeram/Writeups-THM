@@ -159,35 +159,52 @@ Now you know the syntax, modifiers and methods to crack basic hashes, try it you
 
 * What type of hash is hash1.txt?
 
-	``
+	![task4-hash1](./images/task4-hash1.png)
+
+	`MD5`
+
 
 * What is the cracked value of hash1.txt?
 
-	``
+	![task4-hash1crack](./images/task4-hash1crack.png)
+
+	`biscuit`
 
 * What type of hash is hash2.txt?
 
-	``
+	![task4-hash2](./images/task4-hash2.png)
+
+	`SHA1`
 
 * What is the cracked value of hash2.txt
 
-	``
+	![task4-hash2crack](./images/task4-hash2crack.png)
+
+	`kangeroo`
 
 * What type of hash is hash3.txt?
 
-	``
+	![task4-hash3](./images/task4-hash3.png)
+
+	`SHA256`
 
 * What is the cracked value of hash3.txt
 
-	``
+	![task4-hash3crack](./images/task4-hash3crack.png)
+
+	`microphone`
 
 * What type of hash is hash4.txt?
 
-	``
+	![task4-hash4](./images/task4-hash4.png)
+
+	`Whirlpool`
 
 * What is the cracked value of hash4.txt
 
-	``
+	![task4-hash4crack](./images/task4-hash4crack.png)
+
+	`colossal`
 
 ## Task 5 - Cracking Windows Authentication Hashes
 
