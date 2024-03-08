@@ -208,9 +208,153 @@ Now you know the syntax, modifiers and methods to crack basic hashes, try it you
 
 ## Task 5 - Cracking Windows Authentication Hashes
 
+### Cracking Windows Hashes
+
+Now that we understand the basic syntax and usage of John the Ripper- lets move on to cracking something a little bit more difficult, something that you may even want to attempt if you're on a real Penetration Test or Red Team engagement. Authentication hashes are the hashed versions of passwords that are stored by operating systems, it is sometimes possible to crack them using the brute-force methods that we're using. To get your hands on these hashes, you must often already be a privileged user- so we will explain some of the hashes that we plan on cracking as we attempt them. 
+
+### NTHash / NTLM
+
+NThash is the hash format that modern Windows Operating System machines will store user and service passwords in. It's also commonly referred to as "NTLM" which references the previous version of Windows format for hashing passwords known as "LM", thus "NT/LM".
+
+A little bit of history, the NT designation for Windows products originally meant "New Technology", and was used- starting with Windows NT, to denote products that were not built up from the MS-DOS Operating System. Eventually, the "NT" line became the standard Operating System type to be released by Microsoft and the name was dropped, but it still lives on in the names of some Microsoft technologies. 
+
+You can acquire NTHash/NTLM hashes by dumping the SAM database on a Windows machine, by using a tool like Mimikatz or from the Active Directory database: NTDS.dit. You may not have to crack the hash to continue privilege escalation- as you can often conduct a "pass the hash" attack instead, but sometimes hash cracking is a viable option if there is a weak password policy.
+
+### Practical
+
+Now that you know the theory behind it, see if you can use the techniques we practiced in the last task, and the knowledge of what type of hash this is to crack the ntlm.txt file! 
+
+### Answer the questions
+
+* What do we need to set the "format" flag to, in order to crack this?
+
+	`nt`
+
+* What is the cracked value of this password?
+
+	![task4-ntlm](./images/task4-ntlm.png)
+
+	`mushroom`
+
 ## Task 6 - Cracking /etc/shadow Hashes
 
+### Cracking Hashes from /etc/shadow
+
+The /etc/shadow file is the file on Linux machines where password hashes are stored. It also stores other information, such as the date of last password change and password expiration information. It contains one entry per line for each user or user account of the system. This file is usually only accessible by the root user- so in order to get your hands on the hashes you must have sufficient privileges, but if you do- there is a chance that you will be able to crack some of the hashes.
+
+### Unshadowing
+
+John can be very particular about the formats it needs data in to be able to work with it, for this reason- in order to crack /etc/shadow passwords, you must combine it with the /etc/passwd file in order for John to understand the data it's being given. To do this, we use a tool built into the John suite of tools called unshadow. The basic syntax of unshadow is as follows:
+
+`unshadow [path to passwd] [path to shadow]`
+
+`unshadow` - Invokes the unshadow tool
+
+`[path to passwd]` - The file that contains the copy of the /etc/passwd file you've taken from the target machine
+
+`[path to shadow]` - The file that contains the copy of the /etc/shadow file you've taken from the target machine
+
+**Example Usage:**
+
+`unshadow local_passwd local_shadow > unshadowed.txt`
+
+**Note on the files**
+
+When using unshadow, you can either use the entire /etc/passwd and /etc/shadow file- if you have them available, or you can use the relevant line from each, for example:
+
+**FILE 1 - local_passwd**
+
+Contains the /etc/passwd line for the root user:
+
+root:x:0:0::/root:/bin/bash
+
+**FILE 2 - local_shadow**
+
+Contains the /etc/shadow line for the root user:
+
+root:$6$2nwjN454g.dv4HN/$m9Z/r2xVfweYVkrr.v5Ft8Ws3/YYksfNwq96UL1FX0OJjY1L6l.DS3KEVsZ9rOVLB/ldTeEL/OIhJZ4GMFMGA0:18576::::::
+
+### Cracking
+
+We're then able to feed the output from unshadow, in our example use case called "unshadowed.txt" directly into John. We should not need to specify a mode here as we have made the input specifically for John, however in some cases you will need to specify the format as we have done previously using: `--format=sha512crypt`
+
+`john --wordlist=/usr/share/wordlists/rockyou.txt --format=sha512crypt unshadowed.txt`
+
+### Practical
+
+Now, see if you can follow the process to crack the password hash of the root user that is provided in the "etchashes.txt" file. Good luck!
+
+### Answer the questions
+
+What is the root password?
+
+* Creat unshadow file
+
+	![task5-unshadow](./images/task5-unshadow.png)
+
+* Crack password
+
+	`1234`
+
+	![task5-password](./images/task5-password.png)
+
 ## Task 7 - Single Crack Mode
+
+### Single Crack Mode
+
+So far we've been using John's wordlist mode to deal with brute forcing simple., and not so simple hashes. But John also has another mode, called Single Crack mode. In this mode, John uses only the information provided in the username, to try and work out possible passwords heuristically, by slightly changing the letters and numbers contained within the username.
+
+### Word Mangling
+
+The best way to show what Single Crack mode is,  and what word mangling is, is to actually go through an example:
+
+If we take the username: Markus
+
+Some possible passwords could be:
+
+* Markus1, Markus2, Markus3 (etc.)
+* MArkus, MARkus, MARKus (etc.)
+* Markus!, Markus$, Markus* (etc.)
+
+This technique is called word mangling. John is building it's own dictionary based on the information that it has been fed and uses a set of rules called "mangling rules" which define how it can mutate the word it started with to generate a wordlist based off of relevant factors for the target you're trying to crack. This is exploiting how poor passwords can be based off of information about the username, or the service they're logging into.
+
+### GECOS
+
+John's implementation of word mangling also features compatibility with the Gecos fields of the UNIX operating system, and other UNIX-like operating systems such as Linux. So what are Gecos? Remember in the last task where we were looking at the entries of both /etc/shadow and /etc/passwd? Well if you look closely You can see that each field is seperated by a colon ":". Each one of the fields that these records are split into are called Gecos fields. John can take information stored in those records, such as full name and home directory name to add in to the wordlist it generates when cracking /etc/shadow hashes with single crack mode.
+
+### Using Single Crack Mode
+
+To use single crack mode, we use roughly the same syntax that we've used to so far, for example if we wanted to crack the password of the user named "Mike", using single mode, we'd use:
+
+`john --single --format=[format] [path to file]`
+
+`--single` - This flag lets john know you want to use the single hash cracking mode.
+
+**Example Usage:**
+
+`john --single --format=raw-sha256 hashes.txt`
+
+**A Note on File Formats in Single Crack Mode:**
+
+If you're cracking hashes in single crack mode, you need to change the file format that you're feeding john for it to understand what data to create a wordlist from. You do this by prepending the hash with the username that the hash belongs to, so according to the above example- we would change the file hashes.txt
+
+**From:**
+
+1efee03cdcb96d90ad48ccc7b8666033
+
+**To**
+
+mike:1efee03cdcb96d90ad48ccc7b8666033
+
+### Practical
+
+Now you're familiar with the Syntax for John's single crack mode, download the attached hash and crack it, assuming that the user it belongs to is called "Joker".
+
+### Answer the question
+
+What is Joker's password?
+
+``
 
 ## Task 8 - Custom Rules
 
