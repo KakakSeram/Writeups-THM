@@ -292,6 +292,12 @@ What is the root password?
 
 	![task5-unshadow](./images/task5-unshadow.png)
 
+	List of file here:
+
+	[task5-passwd](./files/task5-passwd)  
+	[task5-shadow](./files/task5-shadow)  
+	[task5-unshadow](./files/task5-unshadow)
+
 * Crack password
 
 	`1234`
