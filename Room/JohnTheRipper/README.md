@@ -232,7 +232,7 @@ Now that you know the theory behind it, see if you can use the techniques we pra
 
 * What is the cracked value of this password?
 
-	![task4-ntlm](./images/task4-ntlm.png)
+	![task5-ntlm](./images/task5-ntlm.png)
 
 	`mushroom`
 
@@ -290,19 +290,19 @@ What is the root password?
 
 * Creat unshadow file
 
-	![task5-unshadow](./images/task5-unshadow.png)
+	![task6-unshadow](./images/task6-unshadow.png)
 
 	List of file here:
 
-	[task5-passwd](./files/task5-passwd)  
-	[task5-shadow](./files/task5-shadow)  
-	[task5-unshadow](./files/task5-unshadow)
+	[task6-passwd](./files/task6-passwd)  
+	[task6-shadow](./files/task6-shadow)  
+	[task6-unshadow](./files/task6-unshadow)
 
 * Crack password
 
 	`1234`
 
-	![task5-password](./images/task5-password.png)
+	![task6-password](./images/task6-password.png)
 
 ## Task 7 - Single Crack Mode
 
