@@ -360,7 +360,15 @@ Now you're familiar with the Syntax for John's single crack mode, download the a
 
 What is Joker's password?
 
-``
+`Jok3r`
+
+Hash file 
+
+![task7-hash](./images/task7-hash.png)
+
+Crack password
+
+![task7-hashcrack.png](./images/task7-hashcrack.png)
 
 ## Task 8 - Custom Rules
 
