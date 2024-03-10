@@ -6,5 +6,6 @@ This the list of all the writeups I made.
 |---|----|----|------|----------|
 |1.|[Kenobi](./Kenobi/README.md)|Free|[TryHackMe](https://tryhackme.com/r/room/kenobi)|Easy|
 |2.|[John The Ripper](./JohnTheRipper/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/johntheripper0)|Easy|
+|3.|[Hashing - Crypto 101](./Hashing-Crypto101/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/hashingcrypto101)|Easy|
 
 Writeups made with :heart: by @KakakSeram
