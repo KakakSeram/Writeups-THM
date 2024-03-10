@@ -522,7 +522,7 @@ Now have a go at cracking the attached "secure" zip file!
 
 	`pass123`
 
-	![task-zip-password](./images/task-zip-password.png)
+	![task-zip-password](./images/task8-zip-password.png)
 
 * What is the contents of the flag inside the zip file?
 
@@ -532,7 +532,97 @@ Now have a go at cracking the attached "secure" zip file!
 
 ## Task 10 - Cracking Password Protected RAR Archives
 
+### Cracking a Password Protected RAR Archive
+
+We can use a similar process to the one we used in the last task to obtain the password for rar archives. If you aren't familiar, rar archives are compressed files created by the Winrar archive manager. Just like zip files they compress a wide variety of folders and files.
+
+### Rar2John
+
+Almost identical to the zip2john tool that we just used, we're going to use the rar2john tool to convert the rar file into a hash format that John is able to understand. The basic syntax is as follows:
+
+`rar2john [rar file] > [output file]`
+
+`rar2john` - Invokes the rar2john tool
+
+`[rar file]` - The path to the rar file you wish to get the hash of
+
+`>` - This is the output director, we're using this to send the output from this file to the...
+
+`[output file]` - This is the file that will store the output from
+
+**Example Usage**
+
+`rar2john rarfile.rar > rar_hash.txt`
+
+
+### Cracking
+
+Once again, we're then able to take the file we output from rar2john in our example use case called "rar_hash.txt" and, as we did with zip2john we can feed it directly into John..
+
+john --wordlist=/usr/share/wordlists/rockyou.txt rar_hash.txt
+
+### Practical
+
+Now have a go at cracking the attached "secure" rar file!
+
+### Answer the questions
+
+* What is the password for the secure.rar file?
+
+	`password`
+
+	![task10-rar-password](./images/task10-rar-password.png)
+
+* What is the contents of the flag inside the zip file?
+
+	`THM{r4r_4rch1ve5_th15_t1m3}`
+
+	![task10-flag](./images/task10-flag.png)
+
+
 ## Task 11 - Cracking SSH Keys with John
+
+### Cracking SSH Key Passwords
+
+Okay, okay I hear you, no more file archives! Fine! Let's explore one more use of John that comes up semi-frequently in CTF challenges. Using John to crack the SSH private key password of id_rsa files. Unless configured otherwise, you authenticate your SSH login using a password. However, you can configure key-based authentication, which lets you use your private key, id_rsa, as an authentication key to login to a remote machine over SSH. However, doing so will often require a password- here we will be using John to crack this password to allow authentication over SSH using the key.
+
+### SSH2John
+
+Who could have guessed it, another conversion tool? Well, that's what working with John is all about. As the name suggests ssh2john converts the id_rsa private key that you use to login to the SSH session into hash format that john can work with. Jokes aside, it's another beautiful example of John's versatility. The syntax is about what you'd expect. Note that if you don't have `ssh2john` installed, you can use ssh2john.py, which is located in the `/opt/john/ssh2john.py`. If you're doing this, replace the ssh2john command with python3 /opt/ssh2john.py or on Kali, `python /usr/share/john/ssh2john.py`.
+
+`ssh2john [id_rsa private key file] > [output file]`
+
+`ssh2john` - Invokes the ssh2john tool
+
+`[id_rsa private key file]` - The path to the id_rsa file you wish to get the hash of
+
+`>` - This is the output director, we're using this to send the output from this file to the...
+
+`[output file]` - This is the file that will store the output from
+
+
+**Example Usage**
+
+`ssh2john id_rsa > id_rsa_hash.txt`
+
+### Cracking
+
+For the final time, we're feeding the file we output from ssh2john, which in our example use case is called "id_rsa_hash.txt" and, as we did with rar2john we can use this seamlessly with John:
+
+`john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa_hash.txt`
+
+### Practical
+
+Now I'd like you to crack the hash of the id_rsa file that's attached to this task!
+
+### Answer the questions
+
+What is the SSH private key password?
+
+`mango`
+
+![task11-id_rsa-hash](./images/task11-id_rsa-hash.png)
 
 ## Task 12 - Further Reading
 
+Thank you for completing this room on John the Ripper! I hope you've learnt a lot along the way. I'm sure by now you understand the basic principles and the pattern that there is to using John with even the most obscure supported hashes. I'd recommend checking out the Openwall Wiki here for more information about using John, and advice, updates or news about the tool.
