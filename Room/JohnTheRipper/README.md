@@ -522,13 +522,13 @@ Now have a go at cracking the attached "secure" zip file!
 
 	`pass123`
 
-	![task-zip-password](./images/task8-zip-password.png)
+	![task9-zip-password](./images/task9-zip-password.png)
 
 * What is the contents of the flag inside the zip file?
 
 	`THM{w3ll_d0n3_h4sh_r0y4l}`
 
-	![task8-flag](./images/task8-flag.png)
+	![task9-flag](./images/task9-flag.png)
 
 ## Task 10 - Cracking Password Protected RAR Archives
 
