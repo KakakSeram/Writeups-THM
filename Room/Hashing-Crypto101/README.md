@@ -56,7 +56,7 @@ Answer the questions
 
 * If you have an 8 bit hash output, how many possible hashes are there?
 
-	``
+	`256`
 
 ## Task 3 - Uses for hashing
 
@@ -134,13 +134,13 @@ Here's a quick table of the most Unix style password prefixes that you'll see.
 
 |Prefix|Algorithm|
 |------|---------|
-|$1$|md5crypt, used in Cisco stuff and older Linux/Unix systems|
-|$2$, $2a$, $2b$, $2x$, $2y$|Bcrypt (Popular for web applications)|
-|$6$|sha512crypt (Default for most Linux/Unix systems)|
+|`$1$`|md5crypt, used in Cisco stuff and older Linux/Unix systems|
+|`$2$`, `$2a$`, `$2b$`, `$2x$`, `$2y$`|Bcrypt (Popular for web applications)|
+|`$6$`|sha512crypt (Default for most Linux/Unix systems)|
 
 ### Answer the questions
 
-* How many rounds does sha512crypt ($6$) use by default?
+* How many rounds does sha512crypt (`$6$`) use by default?
 
 	`5000`
 
@@ -150,7 +150,7 @@ Here's a quick table of the most Unix style password prefixes that you'll see.
 
 * How long is a Windows NTLM hash, in characters?
 
-	``
+	`32`
 
 ## Task 5 - Password Cracking
 
@@ -178,7 +178,7 @@ I'll provide the hashes. Crack them. You can choose how. You'll need to use onli
 
 * Crack this hash: $2a$06$7yoU3Ng8dHTXphAg913cyO6Bjs3K5lBnwq5FJyA6d01pMSrddr1ZG
 
-	``
+	`85208520`
 
 	![task5-hash1](./images/task5-hash1.png)
 
