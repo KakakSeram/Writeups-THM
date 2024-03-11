@@ -186,7 +186,7 @@ I'll provide the hashes. Crack them. You can choose how. You'll need to use onli
 
 	`halloween`
 
-	* Indentifier
+	* Indentifier with https://hashes.com/
 	
 		![task5-hash2-id](./images/task5-hash2-id.png)
 
@@ -198,7 +198,7 @@ I'll provide the hashes. Crack them. You can choose how. You'll need to use onli
 
 	`spaceman`
 
-	* Indentifier
+	* Indentifier with https://hashes.com/
 	
 		![task5-hash3-id](./images/task5-hash3-id.png)
 
@@ -210,6 +210,8 @@ I'll provide the hashes. Crack them. You can choose how. You'll need to use onli
 
 	`funforyou`
 
+	Crack with https://crackstation.net/
+	
 	![task5-hash4](./images/task5-hash4.png)
 
 ## Task 6 - Hashing for integrity checking
