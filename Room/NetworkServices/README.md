@@ -167,7 +167,7 @@ Followed by the tags:
 
 * What would be the correct syntax to access an SMB share called "secret" as user "suit" on a machine with the IP 10.10.10.2 on the default port?
 
-	``
+	`smbclient //10.10.10.2/secret -U suit -p 139`
 
 Great! Now you've got a hang of the syntax, let's have a go at trying to exploit this vulnerability. You have a list of users, the name of the share (smb) and a suspected vulnerability. 
 
@@ -181,7 +181,9 @@ Lets see if our interesting share has been configured to allow anonymous access,
 
 * Does the share allow anonymous access? Y/N?
 
-	``
+	`Y`
+
+	![task4-anonymous](./images/task4-anonymous.png)
 
 * Great! Have a look around for any interesting documents that could contain valuable information. Who can we assume this profile folder belongs to? 
 
