@@ -1,6 +1,6 @@
 # [Network Services](https://tryhackme.com/room/networkservices)
 
-![NetworkServices](NetworkServices.png)
+![NetworkServices](./images/NetworkServices.png)
 
 ## Task 1 - Get Connected
 
