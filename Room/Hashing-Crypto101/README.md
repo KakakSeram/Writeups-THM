@@ -186,7 +186,13 @@ I'll provide the hashes. Crack them. You can choose how. You'll need to use onli
 
 	`halloween`
 
-	![task5-hash2](./images/task5-hash2.png)
+	* Indentifier
+	
+		![task5-hash2-id](./images/task5-hash2-id.png)
+
+	* Crack
+	
+		![task5-hash2](./images/task5-hash2.png)
 
 * Crack this hash: $6$GQXVvW4EuM$ehD6jWiMsfNorxy5SINsgdlxmAEl3.yif0/c3NqzGLa0P.S7KRDYjycw5bnYkF5ZtB8wQy8KnskuWQS3Yr1wQ0
 
