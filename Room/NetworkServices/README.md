@@ -187,19 +187,29 @@ Lets see if our interesting share has been configured to allow anonymous access,
 
 * Great! Have a look around for any interesting documents that could contain valuable information. Who can we assume this profile folder belongs to? 
 
-	``
+	`John Cactus`
+
+	List file
+
+	![task4-smbclient](./images/task4-smbclient.png)
+
+	Open file
+
+	![task4-information](./images/task4-information.png)
 
 * What service has been configured to allow him to work from home?
 
-	``
+	`ssh`
 
 * Okay! Now we know this, what directory on the share should we look in?
 
-	``
+	`.ssh`
 
 * This directory contains authentication keys that allow a user to authenticate themselves on, and then access, a server. Which of these keys is most useful to us?
 
-	``
+	`id_rsa`
+
+	![task4-id_rsa](./images/task4-id_rsa.png)
 
 Download this file to your local machine, and change the permissions to "600" using "chmod 600 `[file]`".
 
@@ -207,10 +217,53 @@ Now, use the information you have already gathered to work out the username of t
 
 * What is the smb.txt flag?
 
-	``
+	`THM{smb_is_fun_eh?}`
+
+	Find username access
+
+	![task4-id_rsa-pub](./images/task4-id_rsa-pub)
+
+	Username 
+
+	![task4-user](./images/task4-user.png)
+
+	Get the file
+
+	![task4-smb-text](./images/task4-smb-text.png)
 
 ## Task 5 - Understanding Telnet
 
+**What is Telnet?**
+
+Telnet is an application protocol which allows you, with the use of a telnet client, to connect to and execute commands on a remote machine that's hosting a telnet server.
+
+The telnet client will establish a connection with the server. The client will then become a virtual terminal- allowing you to interact with the remote host.
+
+**Replacement**
+
+Telnet sends all messages in clear text and has no specific security mechanisms. Thus, in many applications and services, Telnet has been replaced by SSH in most implementations.
+ 
+**How does Telnet work?**
+
+The user connects to the server by using the Telnet protocol, which means entering "telnet" into a command prompt. The user then executes commands on the server by using specific Telnet commands in the Telnet prompt. You can connect to a telnet server with the following syntax: `telnet [ip] [port]`
+
+### Answer the questions
+
+* What is Telnet?
+
+	`application protocol`
+
+* What has slowly replaced Telnet?
+
+	`ssh`
+
+* How would you connect to a Telnet server with the IP 10.10.10.3 on port 23?
+
+	`telnet 10.10.10.3 23`
+
+* The lack of what, means that all Telnet communication is in plaintext?
+	
+	`encryption`
 
 ## Task 6 - Enumerating Telnet
 
