@@ -344,7 +344,7 @@ Using this information, let's try accessing this telnet port, and using that as 
 
 You can connect to a telnet server with the following syntax:
 
-	`telnet [ip] [port]`
+`telnet [ip] [port]`
 
 We're going to need to keep this in mind as we try and exploit this machine.
 
