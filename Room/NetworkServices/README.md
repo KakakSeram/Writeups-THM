@@ -348,7 +348,7 @@ You can connect to a telnet server with the following syntax:
 
 We're going to need to keep this in mind as we try and exploit this machine.
 
-`What is a Reverse Shell?`
+**What is a Reverse Shell?**
 
 ![task7-shell](./images/task7-shell.png)
 
