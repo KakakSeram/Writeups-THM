@@ -350,7 +350,7 @@ We're going to need to keep this in mind as we try and exploit this machine.
 
 **What is a Reverse Shell?**
 
-![task7-shell](./images/task7-shell.png)
+![task7](./images/task7.png)
 
 A **"shell"** can simply be described as a piece of code or program which can be used to gain code or command execution on a device.
 
