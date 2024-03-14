@@ -583,15 +583,17 @@ Let's crack some passwords!
 
 * What is the password for the user "mike"?
 
-	``
+	`password`
 
-* Bingo! Now, let's connect to the FTP server as this user using `"ftp [IP]"` and entering the credentials when prompted 
+	![task10-hydra](./images/task9-hydra.png)
 
-	``
+Bingo! Now, let's connect to the FTP server as this user using `"ftp [IP]"` and entering the credentials when prompted 
 
 * What is ftp.txt?
 
-	``
+	`THM{y0u_g0t_th3_ftp_fl4g}`
+
+	![task10-ftp](./images/task10-ftp.png)
 
 ## Task 11 - Expanding Your Knowledge
 
