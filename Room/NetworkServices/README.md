@@ -510,25 +510,31 @@ Run an nmap scan of your choice.
 
 * How many ports are open on the target machine?
 
-	``
+	`2`
+
+	![task9-nmap](./images/task9-nmap.png)
 
 * What port is ftp running on?
 
-	``
+	`21`
 
 * What variant of FTP is running on it?
 
-	``
+	`vsftpd`
 
 Great, now we know what type of FTP server we're dealing with we can check to see if we are able to login anonymously to the FTP server. We can do this using by typing `"ftp [IP]"` into the console, and entering "anonymous", and no password when prompted.
 
 * What is the name of the file in the anonymous FTP directory?
 
-	``
+	`PUBLIC_NOTICE.txt`
+
+	![task9-ftp](./images/task9-ftp.png)
 
 * What do we think a possible username could be?
 
-	``
+	`Mike`
+
+	![task9-notice](./images/task9-notice.png)
 
 Great! Now we've got details about the FTP server and, crucially, a possible username. Let's see what we can do with that...
 
