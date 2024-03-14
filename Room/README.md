@@ -8,5 +8,6 @@ This the list of all the writeups I made.
 |2.|[John The Ripper](./JohnTheRipper/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/johntheripper0)|Easy|
 |3.|[Hashing - Crypto 101](./HashingCrypto101/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/hashingcrypto101)|Easy|
 |4.|[Network Services](./NetworkServices/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/networkservices)|Easy|
+|5.|[Network Services 2](./NetworkServices2/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/networkservices2)|Easy|
 
 Writeups made with :heart: by @KakakSeram
