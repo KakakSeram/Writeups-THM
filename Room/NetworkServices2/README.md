@@ -132,7 +132,7 @@ this folder anywhere on your system. Once you've created this mount point, you c
 **sudo mount -t nfs IP:share /tmp/mount/ -nolock**
 
 Let's break this down
-	
+
 |Tag|Function|
 |---|--------|
 |sudo|Run as root|
@@ -147,15 +147,17 @@ Now we understand our tools, let's get started!
 
 * Conduct a thorough port scan scan of your choosing, how many ports are open?
 
-	``
+	`7`
 
 * Which port contains the service we're looking to enumerate?
 
-	``
+	`2049`
 
 * Now, use /usr/sbin/showmount -e [IP] to list the NFS shares, what is the name of the visible share?
 
-	``
+	`/home`
+
+	![task3-showmount](./images/task3-showmount.png)
 
 Time to mount the share to our local machine!
 
@@ -163,17 +165,23 @@ First, use "mkdir /tmp/mount" to create a directory on your machine to mount the
 
 * Then, use the mount command we broke down earlier to mount the NFS share to your local machine. Change directory to where you mounted the share- what is the name of the folder inside?
 
-	``
+	`cappucino`
+
+	![task3-mount](./images/task3-mount.png)
 
 Have a look inside this directory, look at the files. Looks like  we're inside a user's home directory...
 
 * Interesting! Let's do a bit of research now, have a look through the folders. Which of these folders could contain keys that would give us remote access to the server?
 
-	``
+	`.ssh`
+
+	![task3-cappucino](./images/task3-cappucino.png)
 
 * Which of these keys is most useful to us?
 
-	``
+	`id_rsa`
+
+	![task3-ssh](./images/task3-ssh.png)
 
 Copy this file to a different location your local machine, and change the permissions to "600" using "chmod 600 [file]".
 
@@ -181,10 +189,71 @@ Assuming we were right about what type of directory this is, we can pretty easil
 
 * Can we log into the machine using `ssh -i <key-file> <username>@<ip>` ? (Y/N)
 
-	``
+	`Y`
+
+	![task3-login](./images/task3-login.png)
 
 ## Task 4 - Exploiting NFS
 
+**We're done, right?**
+
+Not quite, if you have a low privilege shell on any machine and you found that a machine has an NFS share you might be able to use that to escalate privileges, depending on how it is configured.
+
+**What is root_squash?**
+
+By default, on NFS shares- Root Squashing is enabled, and prevents anyone connecting to the NFS share from having root access to the NFS volume. Remote root users are assigned a user “nfsnobody” when connected, which has the least local privileges. Not what we want. However, if this is turned off, it can allow the creation of SUID bit files, allowing a remote user root access to the connected system.
+
+**SUID**
+
+So, what are files with the SUID bit set? Essentially, this means that the file or files can be run with the permissions of the file(s) owner/group. In this case, as the super-user. We can leverage this to get a shell with these privileges!
+
+**Method**
+
+This sounds complicated, but really- provided you're familiar with how SUID files work, it's fairly easy to understand. We're able to upload files to the NFS share, and control the permissions of these files. We can set the permissions of whatever we upload, in this case a bash shell executable. We can then log in through SSH, as we did in the previous task- and execute this executable to gain a root shell!
+
+**The Executable**
+
+Due to compatibility reasons, we'll use a standard Ubuntu Server 18.04 bash executable, the same as the server's- as we know from our nmap scan. You can download it [here](https://github.com/TheRealPoloMints/Blog/blob/master/Security%20Challenge%20Walkthroughs/Networks%202/bash). If you want to download it via the command line, be careful not to download the github page instead of the raw script. You can use `wget https://github.com/polo-sec/writing/raw/master/Security%20Challenge%20Walkthroughs/Networks%202/bash`.
+
+**Mapped Out Pathway:**
+
+If this is still hard to follow, here's a step by step of the actions we're taking, and how they all tie together to allow us to gain a root shell:
+
+    NFS Access ->
+
+        Gain Low Privilege Shell ->
+
+            Upload Bash Executable to the NFS share ->
+
+                Set SUID Permissions Through NFS Due To Misconfigured Root Squash ->
+
+                    Login through SSH ->
+
+                        Execute SUID Bit Bash Executable ->
+
+                            ROOT ACCESS
+
+Lets do this!
+
+### Answer the questions
+
+First, change directory to the mount point on your machine, where the NFS share should still be mounted, and then into the user's home directory.
+
+Download the bash executable to your Downloads directory. Then use `cp ~/Downloads/bash .` to copy the bash executable to the NFS share. The copied bash shell must be owned by a root user, you can set this using "sudo chown root bash"
+
+* Now, we're going to add the SUID bit permission to the bash executable we just copied to the share using `sudo chmod +[permission] bash`. What letter do we use to set the SUID bit set using chmod?
+
+	``
+
+* Let's do a sanity check, let's check the permissions of the `bash` executable using `ls -la bash`. What does the permission set look like? Make sure that it ends with -sr-x.
+
+	``
+
+Now, SSH into the machine as the user. List the directory to make sure the bash executable is there. Now, the moment of truth. Lets run it with `./bash -p`. The -p persists the permissions, so that it can run as root with SUID- as otherwise bash will sometimes drop the permissions.
+
+* Great! If all's gone well you should have a shell as root! What's the root flag?
+
+	``
 
 ## Task 5 - Understanding SMTP
 
