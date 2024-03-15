@@ -25,7 +25,7 @@ Ready? Let's get going!
 
 ## Task 2 - Understanding NFS
 
-<img src="./task2.png" width="300" height="300">
+<img src="./images/task2.png" width="300" height="300">
 
 **What is NFS?**
 
