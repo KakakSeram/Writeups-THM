@@ -313,7 +313,7 @@ https://www.afternerd.com/blog/smtp/
 
 * What does SMTP stand for?
 
-	``
+	`Simple Mail Transfer Protocol`
 
 * What does SMTP handle the sending of? (answer in plural)
 
