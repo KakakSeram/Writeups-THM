@@ -149,6 +149,8 @@ Now we understand our tools, let's get started!
 
 	`7`
 
+	Resulted scan [here](./files/task3-nmap)
+
 * Which port contains the service we're looking to enumerate?
 
 	`2049`
