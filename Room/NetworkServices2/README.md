@@ -317,31 +317,31 @@ https://www.afternerd.com/blog/smtp/
 
 * What does SMTP handle the sending of? (answer in plural)
 
-	``
+	`emails`
 
 * What is the first step in the SMTP process?
 
-	``
+	`SMTP handshake`
 
 * What is the default SMTP port?
 
-	``
+	`25`
 
 * Where does the SMTP server send the email if the recipient's server is not available?
 
-	``
+	`smtp queue`
 
 * On what server does the Email ultimately end up on?
 
-	``
+	`POP/IMAP`
 
 * Can a Linux machine run an SMTP server? (Y/N)
 
-	``
+	`Y`
 
 * Can a Windows machine run an SMTP server? (Y/N)
 
-	``
+	`Y`
 
 ## Task 6 - Enumerating SMTP
 
@@ -355,7 +355,7 @@ Poorly configured or vulnerable mail servers can often provide an initial footho
 
 **Enumerating Users from SMTP**
 
-The SMTP service has two internal commands that allow the enumeration of users: VRFY (confirming the names of valid users) and EXPN (which reveals the actual address of user’s aliases and lists of e-mail (mailing lists). Using these SMTP commands, we can reveal a list of valid users
+The SMTP service has two internal commands that allow the enumeration of users: VRFY (confirming the names of valid users) and EXPN which reveals the actual address of user’s aliases and lists of e-mail (mailing lists). Using these SMTP commands, we can reveal a list of valid users
 
 We can do this manually, over a telnet connection- however Metasploit comes to the rescue again, providing a handy module appropriately called "smtp_enum" that will do the legwork for us! Using the module is a simple matter of feeding it a host or range of hosts to scan and a wordlist containing usernames to enumerate.
 
