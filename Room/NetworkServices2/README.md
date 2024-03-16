@@ -522,15 +522,15 @@ https://www.w3schools.com/php/php_mysql_intro.asp
 
 * What type of software is MySQL?
 
-	``
+	`relational database management system`
 
 * What language is MySQL based on?
 
-	``
+	`SQL`
 
 * What communication model does MySQL use?
 
-	``
+	`client-server`
 
 * What is a common application of MySQL?
 
