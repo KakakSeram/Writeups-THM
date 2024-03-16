@@ -241,21 +241,35 @@ Lets do this!
 
 First, change directory to the mount point on your machine, where the NFS share should still be mounted, and then into the user's home directory.
 
+![task4-mount-dir](./images/task4-mount-dir.png)
+
 Download the bash executable to your Downloads directory. Then use `cp ~/Downloads/bash .` to copy the bash executable to the NFS share. The copied bash shell must be owned by a root user, you can set this using "sudo chown root bash"
+
+![task5-download](./images/task5-download.png)
+
+![task5-copy.png](./images/task5-copy.png)
 
 * Now, we're going to add the SUID bit permission to the bash executable we just copied to the share using `sudo chmod +[permission] bash`. What letter do we use to set the SUID bit set using chmod?
 
-	``
+	`s`
+
+	![task5-chmod](./images/task5-chmod.png)
 
 * Let's do a sanity check, let's check the permissions of the `bash` executable using `ls -la bash`. What does the permission set look like? Make sure that it ends with -sr-x.
 
-	``
+	`-rwsr-sr-x`
+
+	![task5-execute](./images/task5-execute.png)
 
 Now, SSH into the machine as the user. List the directory to make sure the bash executable is there. Now, the moment of truth. Lets run it with `./bash -p`. The -p persists the permissions, so that it can run as root with SUID- as otherwise bash will sometimes drop the permissions.
 
+![task5-root](./images/task5-root.png)
+
 * Great! If all's gone well you should have a shell as root! What's the root flag?
 
-	``
+	`THM{nfs_got_pwned}`
+
+	![task5-root-txt](./images/task5-root-txt.png)
 
 ## Task 5 - Understanding SMTP
 
