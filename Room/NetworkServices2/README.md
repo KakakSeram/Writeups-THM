@@ -389,37 +389,47 @@ Now we've covered the theory. Let's get going!
 
 * First, lets run a port scan against the target machine, same as last time. What port is SMTP running on?
 
-	``
+	`25`
+
+	![task6-nmap](./images/task6-nmap.png)
 
 Okay, now we know what port we should be targeting, let's start up Metasploit. What command do we use to do this?
 
 * If you would like some more help or practice using Metasploit, TryHackMe has a module on Metasploit that you can check out here: https://tryhackme.com/module/metasploit
 
-	``
+	`msfconsole`
 
 * Let's search for the module "smtp_version", what's it's full module name?
 
-	``
+	`auxiliary/scanner/smtp/smtp_version`
+
+	![task6-search](./images/task6-search.png)
 
 * Great, now- select the module and list the options. How do we do this?
 
-	``
+	`options`
+
+	![task6-options](./images/task6-options.png)
 
 * Have a look through the options, does everything seem correct? What is the option we need to set?
 	
-	``
+	`RHOSTS`
 
 * Set that to the correct value for your target machine. Then run the exploit. What's the system mail name?
 
-	``
+	`polosmtp.home`
+
+	![task6-run](./images/task6-run.png)
 
 * What Mail Transfer Agent (MTA) is running the SMTP server? This will require some external research.
 
-	``
+	`Postfix`
 
-Good! We've now got a good amount of information on the target system to move onto the next stage. Let's search for the module "smtp_enum", what's it's full module name?
+* Good! We've now got a good amount of information on the target system to move onto the next stage. Let's search for the module "smtp_enum", what's it's full module name?
 
-	``
+	`auxiliary/scanner/smtp/smtp_enum`
+
+	![task6-smtp-enum](./images/task6-smtp-enum.png)
 
 We're going to be using the "top-usernames-shortlist.txt" wordlist from the Usernames subsection of seclists (/usr/share/wordlists/SecLists/Usernames if you have it installed).
 
