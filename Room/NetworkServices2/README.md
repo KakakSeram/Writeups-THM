@@ -437,17 +437,21 @@ Seclists is an amazing collection of wordlists. If you're running Kali or Parrot
 
 * What option do we need to set to the wordlist's path?
 
-	``
+	`USER_FILE`
+
+	![task6-user-file](./images/task6-user-file.png)
 
 * Once we've set this option, what is the other essential paramater we need to set?
 
-	``
+	`RHOSTS`
 
 Now, run the exploit, this may take a few minutes, so grab a cup of tea, coffee, water. Keep yourself hydrated!
 
 * Okay! Now that's finished, what username is returned?
 
-	``
+	`administrator`
+
+	![task6-username.png](./images/task6-username.png)
 
 ## Task 7 - Exploiting SMTP
 
