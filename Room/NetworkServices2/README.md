@@ -674,35 +674,56 @@ Lets get cracking.
 
 * First, let's search for and select the "mysql_schemadump" module. What's the module's full name?
 
-	``
+	`auxiliary/scanner/mysql/mysql_schemadump`
+
+	![task10-search](./images/task10-search.png)
 
 * Great! Now, you've done this a few times by now so I'll let you take it from here. Set the relevant options, run the exploit. What's the name of the last table that gets dumped?
 
-	``
+	`x$waits_global_by_latency`
+
+	![task10-tablename](./images/task10-tablename.png)
 
 * Awesome, you have now dumped the tables, and column names of the whole database. But we can do one better... search for and select the "mysql_hashdump" module. What's the module's full name?
 
-	``
+	`auxiliary/scanner/mysql/mysql_hashdump`
+
+	![task10-hash](./images/task10-hash.png)
 
 * Again, I'll let you take it from here. Set the relevant options, run the exploit. What non-default user stands out to you?
 
-	``
+	`carl`
 
-Another user! And we have their password hash. This could be very interesting. Copy the hash string in full, like: bob:*HASH to a text file on your local machine called "hash.txt".
+	![task10-hash-run](./images/task10-hash-run.png)
+
+Another user! And we have their password hash. This could be very interesting. Copy the hash string in full, like: bob:\*HASH to a text file on your local machine called "hash.txt".
 
 * What is the user/hash combination string?
 
-	``
+	`carl:*EA031893AA21444B170FC2162A56978B8CEECE18`
+
+	![task10-hash-run](./images/task10-hash-run.png)
 
 * Now, we need to crack the password! Let's try John the Ripper against it using: "john hash.txt" what is the password of the user we found?
 
-	``
+	`doggie`
+
+	![task10-john](./images/task10-john.png)
 
 Awesome. Password reuse is not only extremely dangerous, but extremely common. What are the chances that this user has reused their password for a different service?
 
 * What's the contents of MySQL.txt
 
-	``
+	`THM{congratulations_you_got_the_mySQL_flag}`
+
+	Login via SSH
+
+	![task10-login](./images/task10-login.png)
+
+	MySQL.txt
+
+	![task10-mysql](./images/task10-mysql.png)
+
 
 ## Task 11 - Further Learning
 
