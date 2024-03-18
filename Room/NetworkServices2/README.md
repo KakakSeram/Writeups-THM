@@ -620,9 +620,9 @@ Okay, enough talk. Let's get going!
 
 	![task9-msfconsole](./images/task9-msfconsole.png)
 
-We're going to be using the "mysql_sql" module.
+* We're going to be using the "mysql_sql" module.
 
-![task9-search](./images/task9-search.png)
+	![task9-search](./images/task9-search.png)
 
 * Search for, select and list the options it needs. What three options do we need to set? (in descending order).
 
