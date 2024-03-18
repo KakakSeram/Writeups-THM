@@ -9,5 +9,6 @@ This the list of all the writeups I made.
 |3.|[Hashing - Crypto 101](./HashingCrypto101/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/hashingcrypto101)|Easy|
 |4.|[Network Services](./NetworkServices/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/networkservices)|Easy|
 |5.|[Network Services 2](./NetworkServices2/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/networkservices2)|Easy|
+|6.|[Metasploit: Exploitation](./MetasploitExploitation/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/metasploitexploitation)|Easy|
 
 Writeups made with :heart: by @KakakSeram
