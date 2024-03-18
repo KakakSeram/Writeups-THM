@@ -498,11 +498,21 @@ Looks like we're ready to rock n roll!
 
 * What is the password of the user we found during our enumeration stage?
 
-	``
+	`alejandro`
+
+	![task7-hydra](./images/task7-hydra)
 
 * Great! Now, let's SSH into the server as the user, what is contents of smtp.txt
 
-	``
+	`THM{who_knew_email_servers_were_c00l?}`
+
+	Login SSH
+
+	![task7-login](./images/task7-login.png)
+
+	smtp.txt
+
+	![task7-smtp](./images/task7-smtp.png)
 
 ## Task 8 - Understanding MySQL
 
@@ -562,11 +572,11 @@ https://www.w3schools.com/php/php_mysql_intro.asp
 
 * What is a common application of MySQL?
 
-	``
+	`back end databases`
 
 * What major social network uses MySQL as their back-end database? This will require further research.
 
-	``
+	`Facebook`
 
 ## Task 9 - Enumerating MySQL
 
@@ -598,29 +608,39 @@ Okay, enough talk. Let's get going!
 
 * As always, let's start out with a port scan, so we know what port the service we're trying to attack is running on. What port is MySQL using?
 
-	``
+	`3306`
+
+	![task9-nmap](./images/task9-nmap.png)
 
 * Good, now- we think we have a set of credentials. Let's double check that by manually connecting to the MySQL server. We can do this using the command `"mysql -h [IP] -u [username] -p"`
 
-	``
+	![task9-mysql](./images/task9-mysql.png)
 
 * Okay, we know that our login credentials work. Lets quit out of this session with "exit" and launch up Metasploit.
 
-	``
+	![task9-msfconsole](./images/task9-msfconsole.png)
 
 We're going to be using the "mysql_sql" module.
 
+![task9-search](./images/task9-search.png)
+
 * Search for, select and list the options it needs. What three options do we need to set? (in descending order).
 
-	``
+	`PASSWORD/RHOSTS/USERNAME`
+
+	![task9-set](./images/task9-set.png)
 
 * Run the exploit. By default it will test with the "select version()" command, what result does this give you?
 
-	``
+	`5.7.29-0ubuntu0.18.04.1`
+
+	![task9-version](./images/task9-version.png)
 
 * Great! We know that our exploit is landing as planned. Let's try to gain some more ambitious information. Change the "sql" option to "show databases". how many databases are returned?
 
-	``
+	`4`
+
+	![task9-databases](./images/task9-databases.png)
 
 ## Task 10 - Exploiting MySQL
 

@@ -1,0 +1,28 @@
+# Nmap 7.94SVN scan initiated Mon Mar 18 10:17:55 2024 as: nmap -A -oN task9-nmap 10.10.92.129
+Nmap scan report for 10.10.92.129
+Host is up (0.39s latency).
+Not shown: 998 closed tcp ports (conn-refused)
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 06:36:56:2f:f0:d4:a4:d2:ab:6a:43:3e:c0:f9:9b:2d (RSA)
+|   256 30:bd:be:28:bd:32:dc:f6:ff:28:b2:57:57:31:d9:cf (ECDSA)
+|_  256 f2:3b:82:4a:5c:d2:18:19:89:1f:cd:92:0a:c7:cf:65 (ED25519)
+3306/tcp open  mysql   MySQL 5.7.29-0ubuntu0.18.04.1
+| ssl-cert: Subject: commonName=MySQL_Server_5.7.29_Auto_Generated_Server_Certificate
+| Not valid before: 2020-04-23T10:13:27
+|_Not valid after:  2030-04-21T10:13:27
+|_ssl-date: TLS randomness does not represent time
+| mysql-info: 
+|   Protocol: 10
+|   Version: 5.7.29-0ubuntu0.18.04.1
+|   Thread ID: 4
+|   Capabilities flags: 65535
+|   Some Capabilities: ODBCClient, FoundRows, Speaks41ProtocolNew, ConnectWithDatabase, SwitchToSSLAfterHandshake, LongPassword, SupportsCompression, DontAllowDatabaseTableColumn, Support41Auth, IgnoreSigpipes, SupportsTransactions, IgnoreSpaceBeforeParenthesis, Speaks41ProtocolOld, SupportsLoadDataLocal, LongColumnFlag, InteractiveClient, SupportsAuthPlugins, SupportsMultipleStatments, SupportsMultipleResults
+|   Status: Autocommit
+|   Salt: N'|P\x16e\x1Cuf@8 \x05-\x14	\x05r}M
+|_  Auth Plugin Name: mysql_native_password
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Mar 18 10:19:33 2024 -- 1 IP address (1 host up) scanned in 98.95 seconds
