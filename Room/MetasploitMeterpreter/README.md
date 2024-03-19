@@ -28,7 +28,9 @@ Even if we were to go a step further and look at DLLs (Dynamic-Link Libraries) u
 
 ![task1-process](./images/task1-process.png)
 
+Techniques and tools that can be used to detect Meterpreter are beyond the scope of this room. This section aimed to show you how stealthy Meterpreter is running; remember, most antivirus software will detect it.
 
+It is also worth noting that Meterpreter will establish an encrypted (TLS) communication channel with the attacker's system.
 
 ## Task 2 - Meterpreter Flavors
 
