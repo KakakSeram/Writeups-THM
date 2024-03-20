@@ -134,10 +134,6 @@ Dump the non-default user's password and crack it!
 
 Find the three flags planted on this machine. These are not traditional flags, rather, they're meant to represent key locations within the Windows system. Use the hints provided below to complete this room!
 
-
------------------------------------------------------------------
-
-
 Completed Blue? Check out Ice: [Link](https://tryhackme.com/room/ice)
 
 You can check out the third box in this series, Blaster, here: [Link](https://tryhackme.com/room/blaster)
