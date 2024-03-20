@@ -10,7 +10,7 @@ This the list of all the writeups I made.
 |4.|[Network Services](./NetworkServices/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/networkservices)|Easy|
 |5.|[Network Services 2](./NetworkServices2/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/networkservices2)|Easy|
 |6.|[Metasploit: Exploitation](./MetasploitExploitation/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/metasploitexploitation)|Easy|
-|7.|[Metasploit: Meterpreter](./MetasploitMeterpreter/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/meterpreter)|
-|8.|[Blue](./Blue/README.md)|Free|[TryHackMe](https://tryhackme.com/room/blue)|
+|7.|[Metasploit: Meterpreter](./MetasploitMeterpreter/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/meterpreter)|Easy|
+|8.|[Blue](./Blue/README.md)|Free|[TryHackMe](https://tryhackme.com/room/blue)|Easy|
 
 Writeups made with :heart: by @KakakSeram
