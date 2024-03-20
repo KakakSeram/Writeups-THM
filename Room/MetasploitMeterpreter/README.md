@@ -274,7 +274,9 @@ Password: Password1
 
 * What is the name of the share likely created by the user?
 
-	``
+	`speedster`
+
+	![task5-shares](./images/task5-shares.png)
 
 * What is the NTLM hash of the jchambers user?
 
