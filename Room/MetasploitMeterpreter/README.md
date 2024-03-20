@@ -280,24 +280,42 @@ Password: Password1
 
 * What is the NTLM hash of the jchambers user?
 
-	``
+	`69596c7aa1e8daee17f8e78870e25a5c`
+
+	PS list
+
+	![task5-ps](./images/task5-ps.png)
+
+	Migrate to "lsass.exe"
+
+	![task5-migrate](./images/task5-migrate.png)
 
 * What is the cleartext password of the jchambers user?
 
-	``
+	`Trustno1`
+
+	![task5-john](./images/task5-john.png)
 
 * Where is the "secrets.txt"  file located? (Full path of the file)
 
-	``
+	`c:\Program Files (x86)\Windows Multimedia Platform\secrets.txt`
+
+	![task5-secrets](./images/task5-secrets.png)
 
 * What is the Twitter password revealed in the "secrets.txt" file?
 
-	``
+	`KDSvbsw3849!`
+
+	![task-password](./images/task-password.png)
 
 * Where is the "realsecret.txt" file located? (Full path of the file)
 
-	``
+	`c:\inetpub\wwwroot\realsecret.txt`
+
+	![task5-realsecret](./images/task5-realsecret.png)
 
 * What is the real secret? 
 
-	``
+	`The Flash is the fastest man alive`
+
+	![task5-realtxt](./images/task5-realtxt.png)
