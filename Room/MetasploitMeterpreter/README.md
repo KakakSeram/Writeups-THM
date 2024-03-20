@@ -185,7 +185,7 @@ The `ps` command will list running processes. The PID column will also give you 
 
 ![task4-ps](./images/task4-ps.png)
 
-`Migrate`
+**Migrate**
 
 Migrating to another process will help Meterpreter interact with it. For example, if you see a word processor running on the target (e.g. word.exe, notepad.exe, etc.), you can migrate to it and start capturing keystrokes sent by the user to this process. Some Meterpreter versions will offer you the `keyscan_start`, `keyscan_stop`, and `keyscan_dump` command options to make Meterpreter act like a keylogger. Migrating to another process may also help you to have a more stable Meterpreter session.
 
