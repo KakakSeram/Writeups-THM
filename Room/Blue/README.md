@@ -146,9 +146,9 @@ You can check out the third box in this series, Blaster, here: [Link](https://tr
 
 	![task6-flag1](./images/task6-flag1.png)
 
-Flag2? This flag can be found at the location where passwords are stored within Windows.
-
-* Errata: Windows really doesn't like the location of this flag and can occasionally delete it. It may be necessary in some cases to terminate/restart the machine and rerun the exploit to find this flag. This relatively rare, however, it can happen. 
+* Flag2? This flag can be found at the location where passwords are stored within Windows.
+	
+	Errata: Windows really doesn't like the location of this flag and can occasionally delete it. It may be necessary in some cases to terminate/restart the machine and rerun the exploit to find this flag. This relatively rare, however, it can happen. 
 
 	`flag{sam_database_elevated_access}`
 
