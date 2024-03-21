@@ -12,5 +12,6 @@ This the list of all the writeups I made.
 |6.|[Metasploit: Exploitation](./MetasploitExploitation/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/metasploitexploitation)|Easy|
 |7.|[Metasploit: Meterpreter](./MetasploitMeterpreter/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/meterpreter)|Easy|
 |8.|[Blue](./Blue/README.md)|Free|[TryHackMe](https://tryhackme.com/room/blue)|Easy|
+|9.|[What the Shell?](./WhatTheShell/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/introtoshells)|Easy|
 
 Writeups made with :heart: by @KakakSeram
