@@ -125,15 +125,15 @@ Additionally, in various places throughout this task you will see a command in t
 
 * Which type of shell connects back to a listening port on your computer, Reverse (R) or Bind (B)?
 
-	``
+	`R`
 
 * You have injected malicious shell code into a website. Is the shell you receive likely to be interactive? (Y or N)
 
-	``
+	`N`
 
 * When using a bind shell, would you execute a listener on the Attacker (A) or the Target (T)?
 
-	``
+	`T`
 
 ## Task 4 - Netcat
 
@@ -176,11 +176,11 @@ We will look at using netcat to create a listener for this type of shell in Task
 
 * Which option tells netcat to listen?
 
-	``
+	`-l`
 
 * How would you connect to a bind shell on the IP address: 10.10.10.11 with port 8080?
 
-	``
+	`nc 10.10.10.11 8080`
 
 ## Task 5 - Netcat Shell Stabilisation
 
@@ -240,11 +240,11 @@ This will change the registered width and height of the terminal, thus allowing 
 
 * How would you change your terminal size to have 238 columns?
 
-	``
+	`stty cols 238`
 
 * What is the syntax for setting up a Python3 webserver on port 80?
 
-	``
+	`sudo python3 -m http.server 80`
 
 ## Task 6 - Socat
 
