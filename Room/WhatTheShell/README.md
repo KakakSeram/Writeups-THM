@@ -740,6 +740,22 @@ The remainder of this task will consist of shell examples for you to try out on 
 
 * Switch to the Windows VM. Try uploading and activating the `php-reverse-shell`. Does this work?
 
+	* Upload file `php-reverse-shell`
+
+		![task13-win-upload](./images/task13-win-upload.png)
+
+	* Set Netcat listener on our machine
+
+		![task13-listener](./images/task13-listener.png)
+
+	* Open file upload `php-reverse-shell.php`
+
+		![task13-open-phpshell](./images/task13-open-phpshell.png)
+
+	* Failed respon
+
+		![task13-win-fail](./images/task13-win-fail.png)
+
 * Upload a webshell on the Windows target and try to obtain a reverse shell using Powershell.
 
 * The webserver is running with SYSTEM privileges. Create a new user and add it to the "administrators" group, then login over RDP or WinRM.
