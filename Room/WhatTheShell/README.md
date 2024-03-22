@@ -686,14 +686,24 @@ The remainder of this task will consist of shell examples for you to try out on 
 
 	* Netcat Shell Stabilisation
 
-		- python3 -c 'import pty;pty.spawn("/bin/bash")'
-		- export TERM=xterm
-		- background the shell using Ctrl + Z
+		- Step 1 use command `python3 -c 'import pty;pty.spawn("/bin/bash")'`
+		- Step 2 use command `export TERM=xterm`
+		- step 3 background the shell using Ctrl + Z
 		- Back in our own terminal we use `stty raw -echo; fg`
 
 		![task13-stabilisation](./images/task13-stabilisation.png)
 
 * Log into the Linux machine over SSH using the credentials in task 14. Use the techniques in Task 8 to experiment with bind and reverse netcat shells.
+
+	#### Common Shell Payloads
+
+	* Bind shell
+
+		![task13-common-bindshell](./images/task13-common-bindshell.png)
+
+	* Revese shell
+
+		![task13-common-reverse](./images/task13-common-reverse.png)
 
 * Practice reverse and bind shells using Socat on the Linux machine. Try both the normal and special techniques.
 
