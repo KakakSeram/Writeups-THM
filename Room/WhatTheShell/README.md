@@ -423,11 +423,9 @@ For other common reverse shell payloads, [PayloadsAllTheThings](https://github.c
 
 * What command can be used to create a named pipe in Linux?
 
-	``
+	`mkfifo`
 
 * Look through the linked Payloads all the Things Reverse Shell Cheatsheet and familiarise yourself with the languages available.
-
-	``
 
 ## Task 9 - msfvenom
 
