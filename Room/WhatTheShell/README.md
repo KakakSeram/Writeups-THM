@@ -670,7 +670,7 @@ The remainder of this task will consist of shell examples for you to try out on 
 
 	* Upload file to to targer machine via browser upload 
 
-		![task13-get-webshell](./images/task13-get-webshell.png)
+		![task13-upload-rshell](./images/task13-upload-rshell.png)
 
 	* Set Netcat listener on our machine
 
