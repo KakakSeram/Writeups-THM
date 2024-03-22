@@ -695,8 +695,6 @@ The remainder of this task will consist of shell examples for you to try out on 
 
 * Log into the Linux machine over SSH using the credentials in task 14. Use the techniques in Task 8 to experiment with bind and reverse netcat shells.
 
-	#### Common Shell Payloads
-
 	* Bind shell
 
 		![task13-common-bindshell](./images/task13-common-bindshell.png)
