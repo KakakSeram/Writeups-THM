@@ -779,7 +779,28 @@ The remainder of this task will consist of shell examples for you to try out on 
 
 * The webserver is running with SYSTEM privileges. Create a new user and add it to the "administrators" group, then login over RDP or WinRM.
 
+	* Step 1 add username = `net user kakakseram qwerty /add`
+	* Step 2 add admin group = `net localgroup administrators kakakseram /add`
+
+	![task13-add-user](./images/task13-add-user.png)
+
+	* Step 3 try to login = `xfreerdp /dynamic-resolution +clipboard /cert:ignore /v:$IP /u:kakakseram /p:'qwerty'`
+
+	![task13-rdp](./images/task13-rdp.png)
+
 * Experiment using socat and netcat to obtain reverse and bind shells on the Windows Target.
+
+	#### Socat techniques
+
+		* Bind shell
+
+		* Reverse shell
+
+	#### Netcat techniques
+
+		* Bind shell
+
+		* Reverse shell
 
 * Create a 64bit Windows Meterpreter shell using msfvenom and upload it to the Windows Target. Activate the shell and catch it with multi/handler. Experiment with the features of this shell.
 
