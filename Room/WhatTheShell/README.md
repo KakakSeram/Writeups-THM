@@ -833,17 +833,51 @@ The remainder of this task will consist of shell examples for you to try out on 
 
 	* Create a 64 bit Windows Meterpreter shell
 
-		![task13-win-creat-meterpreter](./images/task13-win-creat-meterpreter.png)
+		![task13-win-create-meterpreter](./images/task13-win-create-meterpreter.png)
 
 	* Upload file shell.exe via browser
 
 		![task13-win-upload-exe](./images/task13-win-upload-exe.png)
 
-	* Run metasploit on our machine
+	* Run metasploit on our machine and `use multi/handler`
 
+		![task13-multi-handler](./images/task13-multi-handler.png)
 
+	* Login to target machine and download shell.exe via browser
+
+		![task13-download](./images/task13-download.png)
+
+	* Run shell.exe on target machine
+
+		![task13-run-shell](./images/task13-run-shell.png)
+
+	* Get the shell
+
+		![task13-get-shell](./images/task13-get-shell.png)
 
 * Create both staged and stageless meterpreter shells for either target. Upload and manually activate them, catching the shell with netcat -- does this work?
+
+	* Create staged and stageless shell
+
+		![task13-create-shell](./images/task13-create-shell.png)
+
+	* Set netcat listener on our machine
+
+		![task13-listener](./images/task13-listener.png)
+
+	* Upload file to target machine via browser
+
+	* Login to target machine and download staged and stageless shell via browser
+
+		![task13-download-shells](./images/task13-download-shells.png)
+	
+	* Run staged and stageless shell
+
+		![task13-run-shells](./images/task13-run-shells.png)
+
+	* Get the shells connection but not getting any response back on netcat listener
+
+		![task13-get-shells](./images/task13-get-shells.png)
 
 ## Task 14 - Linux Practice Box
 
