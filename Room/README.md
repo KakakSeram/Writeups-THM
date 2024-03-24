@@ -13,6 +13,6 @@ This the list of all the writeups I made.
 |7.|[Metasploit: Meterpreter](./MetasploitMeterpreter/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/meterpreter)|Easy|
 |8.|[Blue](./Blue/README.md)|Free|[TryHackMe](https://tryhackme.com/room/blue)|Easy|
 |9.|[What the Shell?](./WhatTheShell/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/introtoshells)|Easy|
-|10.[Common Linux Privesc](./CommonLinuxPrivesc/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/commonlinuxprivesc)|Easy|
+|10.|[Common Linux Privesc](./CommonLinuxPrivesc/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/commonlinuxprivesc)|Easy|
 
 Writeups made with :heart: by @KakakSeram
