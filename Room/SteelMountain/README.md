@@ -4,7 +4,7 @@
 
 ## Task 1 -  Introduction
 
-![task1-HVTz2Ca](./images/task1-HVTz2Ca.png)
+<img src="./images/task1-HVTz2Ca.png" height=150  width=auto>
 
 In this room you will enumerate a Windows machine, gain initial access with Metasploit, use Powershell to further enumerate the machine and escalate your privileges to Administrator.
 
@@ -66,3 +66,45 @@ Note: The service showed up as being unquoted (and could be exploited using this
 * What is the root flag?
 
 ## Task 4 - Access and Escalation Without Metasploit
+
+Now let's complete the room without the use of Metasploit.
+
+For this we will utilise powershell and winPEAS to enumerate the system and collect the relevant information to escalate to
+
+### Answer the questions below
+
+To begin we shall be using the same CVE. However, this time let's use this [exploit](https://www.exploit-db.com/exploits/39161).
+
+*Note that you will need to have a web server and a netcat listener active at the same time in order for this to work!*
+
+
+To begin, you will need a netcat static binary on your web server. If you do not have one, you can download it from [GitHub](https://github.com/andrew-d/static-binaries/blob/master/binaries/windows/x86/ncat.exe)!
+
+You will need to run the exploit twice. The first time will pull our netcat binary to the system and the second will execute our payload to gain a callback!
+
+Congratulations, we're now onto the system. Now we can pull winPEAS to the system using powershell -c.
+
+Once we run winPeas, we see that it points us towards unquoted paths. We can see that it provides us with the name of the service it is also running.
+
+![task4-ascservice](./images/task4-ascservice.png)
+
+What powershell -c command could we run to manually find out the service name?
+
+* *Format is "powershell -c "command here"*
+
+Now let's escalate to Administrator with our new found knowledge.
+
+Generate your payload using msfvenom and pull it to the system using powershell.
+
+
+Now we can move our payload to the unquoted directory winPEAS alerted us to and restart the service with two commands.
+
+First we need to stop the service which we can do like so;
+
+sc stop AdvancedSystemCareService9
+
+Shortly followed by;
+
+sc start AdvancedSystemCareService9
+
+Once this command runs, you will see you gain a shell as Administrator on our listener!
