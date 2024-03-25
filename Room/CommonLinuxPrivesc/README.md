@@ -170,11 +170,11 @@ w = write
 
 x = execute
 
-    user     group     others
+user     group     others
 
-    rwx       rwx       rwx
+rwx       rwx       rwx
 
-    421       421       421
+421       421       421
 
 The maximum number of bit that can be used to set permission for each user is 7, which is a combination of read (4) write (2) and execute (1) operation. For example, if you set permissions using **"chmod"** as **755**, then it will be: rwxr-xr-x.
 
