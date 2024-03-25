@@ -211,9 +211,15 @@ find - Initiates the "find" command
 
 * What is the path of the file in user3's directory that stands out to you?
 
-We know that "shell" is an SUID bit file, therefore running it will run the script as a root user! Lets run it!
+    `/home/user3/shell`
 
-* We can do this by running: **"./shell"**
+    ![task5-shell](./images/task5-shell.png)
+
+* We know that "shell" is an SUID bit file, therefore running it will run the script as a root user! Lets run it!
+
+    We can do this by running: **"./shell"**
+
+    ![task5-run-shell](./images/task5-run-shell.png)
 
 * Congratulations! You should now have a shell as root user, well done!
 
