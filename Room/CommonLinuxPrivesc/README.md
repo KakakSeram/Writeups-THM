@@ -239,7 +239,7 @@ The /etc/passwd file should have general read permission as many command utiliti
 
 The /etc/passwd file contains one entry per line for each user (user account) of the system. All fields are separated by a colon : symbol. Total of seven fields as follows. Generally, /etc/passwd file entry looks as follows:
 
-    test:x:0:0:root:/root:/bin/bash
+_test:x:0:0:root:/root:/bin/bash_
 
 [as divided by colon (:)]
 
@@ -259,17 +259,31 @@ It's simple really, if we have a writable /etc/passwd file, we can write a new l
 
 * First, let's exit out of root from our previous task by typing **"exit"**. Then use "su" to swap to user7, with the password **"password"**
 
+    ![task6-user7](./images/task6-user7.png)
+
 * Having read the information above, what direction privilege escalation is this attack?
+
+    `Vertical`
 
 * Before we add our new user, we first need to create a compliant password hash to add! We do this by using the command: **"openssl passwd -1 -salt [salt] [password]"**
 
-* What is the hash created by using this command with the salt, **"new"** and the password **"123"**?
+    What is the hash created by using this command with the salt, **"new"** and the password **"123"**?
+
+    `$1$new$p7ptkEKU1HnaHpRtzNizS1`
+
+    ![task6-openssl](./images/task6-openssl.png)
 
 * Great! Now we need to take this value, and create a new root user account. What would the /etc/passwd entry look like for a root user with the username "new" and the password hash we created before?
 
+    `new:$1$new$p7ptkEKU1HnaHpRtzNizS1:0:0:root:/root:/bin/bash`
+
 * Great! Now you've got everything you need. Just add that entry to the end of the /etc/passwd file!
 
+    ![task6-passwd](./images/task6-passwd.png)
+
 * Now, use "su" to login as the "new" account, and then enter the password. If you've done everything correctly- you should be greeted by a root prompt! Congratulations! 
+
+    ![task6-new](./images/task6-new.png)
 
 ## Task 7 - Escaping Vi Editor
 
