@@ -70,7 +70,21 @@ Now you have deployed the machine, lets get an initial shell!
 
 * Use Metasploit to get an initial shell. What is the user flag?
 
-    
+    * Run Metasploit and search modul
+
+        ![task2-metasploit](./images/task2-metasploit.png)
+
+    * Show options
+
+        ![task2-options](./images/task2-options.png)
+
+    * Set option and run exploit
+
+        ![task2-exploit](./images/task2-exploit.png)
+
+    * Search file
+
+        ![task2-flag](./images/task2-flag.png)
 
 ## Task 3 - Privilege Escalation 
 
