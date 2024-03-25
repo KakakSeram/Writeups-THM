@@ -120,6 +120,8 @@ There's also a lot of other useful information contained in this scan. Lets have
 
         ![task4-run-linenum](./images/task4-run-linenum.png)
 
+    * Log file scan [here](./files/linenum.log)
+
 * What is the target's hostname?
 
     `polobox`
@@ -143,8 +145,12 @@ There's also a lot of other useful information contained in this scan. Lets have
     `autoscript.sh`
 
     ![task4-autoscript](./images/task4-autoscript.png)
-    
+
 * What critical file has had its permissions changed to allow some users to write to it?
+
+    `/etc/passwd`
+
+    ![task4-write](./images/task4-write.png)
 
 * Well done! Bear the results of the enumeration stage in mind as we continue to exploit the system!
 
