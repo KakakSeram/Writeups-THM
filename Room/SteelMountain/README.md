@@ -18,7 +18,9 @@ Deploy the machine.
 
 * Who is the employee of the month?
 
-    ``
+    `Bill Harper`
+
+    ![task1-image](./images/task1-image.png)
 
 ## Task 2 - Initial Access 
 
@@ -28,12 +30,47 @@ Now you have deployed the machine, lets get an initial shell!
 
 * Scan the machine with nmap. What is the other port running a web server on?
 
+    `8080`
+
+    Scan resulted [here](./files/task2-nmap)
+
+    ![task2-nmap](./images/task2-nmap.png)
+
 * Take a look at the other web server. What file server is running?
+
+    `Rejetto HTTP File Server`
+
+    * Open Http server via browser 
+
+        ![task2-httpserver](./images/task2-httpserver.png)
+
+    * Open Server information
+
+        ![task2-server-info](./images/task2-server-info.png)
+
+    * Open Link
+
+        ![task2-rejetto.png]
 
 * What is the CVE number to exploit this file server?
 
+    `2014-6287`
+
+    * Search sploit 
+
+        ```
+        searchsploit HFS 2.3 -w
+        ```
+
+        ![task2-search](./images/task2-search.png)
+
+    * Open link
+
+        ![task2-db](./images/task2-db.png)
+
 * Use Metasploit to get an initial shell. What is the user flag?
 
+    
 
 ## Task 3 - Privilege Escalation 
 
