@@ -305,11 +305,19 @@ https://gtfobins.github.io/
 
 * First, let's exit out of root from our previous task by typing **"exit"**. Then use "su" to swap to user8, with the password *"password"*
 
+    ![task7-user8](./images/task7-user8.png)
+
 * Let's use the **"sudo -l"** command, what does this user require (or not require) to run vi as root?
+
+    `NOPASSWD`
+
+    ![task7-sudo](./images/task7-sudo.png)
 
 * So, all we need to do is open vi as root, by typing **"sudo vi"** into the terminal.
 
 * Now, type **":!sh"** to open a shell!
+
+    ![task7-vi](./images/task7-vi)
 
 ## Task 8 - Exploiting Crontab
 
