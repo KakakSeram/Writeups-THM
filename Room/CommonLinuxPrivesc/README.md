@@ -70,17 +70,17 @@ It's worth keeping this somewhere you'll remember, because LinEnum is an invalua
 
 There are two ways to get LinEnum on the target machine. The first way, is to go to the directory that you have your local copy of LinEnum stored in, and start a Python web server using **"python3 -m http.server 8000"** [1]. Then using **"wget"** on the target machine, and your local IP, you can grab the file from your local machine [2]. Then make the file executable using the command **"chmod +x FILENAME.sh"**.
 
-![task4-python](./images/task4-python.png)[1]
+[1]![task4-python](./images/task4-python.png)
 
-![task4-wget](./images/task4-wget.png)[2]
+[2]![task4-wget](./images/task4-wget.png)
 
 **Other Methods**
 
 In case you're unable to transport the file, you can also, if you have sufficient permissions, copy the raw LinEnum code from your local machine [1] and paste it into a new file on the target, using Vi or Nano [2]. Once you've done this, you can save the file with the ".sh" extension. Then make the file executable using the command **"chmod +x FILENAME.sh"**. You now have now made your own executable copy of the LinEnum script on the target machine!
 
-![task4-vim](./images/task4-vim.png)[1]
+[1]![task4-vim](./images/task4-vim.png)
 
-![task4-linenum](./images/task4-linenum.png)[2]
+[2]![task4-linenum](./images/task4-linenum.png)
 
 **Running LinEnum**
 
@@ -104,14 +104,46 @@ There's also a lot of other useful information contained in this scan. Lets have
 
 * First, lets SSH into the target machine, using the credentials `user3:password`. This is to simulate getting a foothold on the system as a normal privilege user.
 
+    * Login to target machine
+        
+        ![task4-ssh](./images/task4-ssh.png)
+
+    * Set Http server on our machine
+
+        ![task4-http](./images/task4-http.png)
+
+    * Download LinEnum.sh 
+
+        ![task4-download](./images/task4-download.png)
+
+    * Make file execute and run
+
+        ![task4-run-linenum](./images/task4-run-linenum.png)
+
 * What is the target's hostname?
+
+    `polobox`
+
+    ![task4-hostname](./images/task4-hostname.png)
 
 * Look at the output of /etc/passwd how many "user[x]" are there on the system?
 
+    `8`
+    
+    ![task4-user](./images/task4-user.png)
+
 * How many available shells are there on the system?
+
+    `4`
+
+    ![task4-shell](./images/task4-shell.png)
 
 * What is the name of the bash script that is set to run every 5 minutes by cron?
 
+    `autoscript.sh`
+
+    ![task4-autoscript](./images/task4-autoscript.png)
+    
 * What critical file has had its permissions changed to allow some users to write to it?
 
 * Well done! Bear the results of the enumeration stage in mind as we continue to exploit the system!
