@@ -185,7 +185,7 @@ To begin, you will need a netcat static binary on your web server. If you do not
 
 You will need to run the exploit twice. The first time will pull our netcat binary to the system and the second will execute our payload to gain a callback!
 
-* Download the exploit
+* Download the exploit and rename file to `exploit`
 
     ![task4-download](./images/task4-download.png)
 
@@ -197,19 +197,20 @@ You will need to run the exploit twice. The first time will pull our netcat bina
 
     ![task4-port](./images/task4-port.png)
 
-* Download netcat static binary
+* Download netcat static binary and rename to `nc.exe`
 
     ![task4-binary](./images/task4-binary.png)
 
 * Create simple HTTP Server
 
-    ![task4-http](./image/task4-http.png)
+    ![task4-http](./images/task4-http.png)
 
 * Start listener
 
     ![task4-listener](./images/task4-listener.png)
 
-* 
+* Run the script
+
 
 Congratulations, we're now onto the system. Now we can pull winPEAS to the system using powershell -c.
 
