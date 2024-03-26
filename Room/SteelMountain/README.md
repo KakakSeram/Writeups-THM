@@ -100,7 +100,7 @@ You can download the script [here](https://raw.githubusercontent.com/PowerShellM
 
 To execute this using Meterpreter, I will type load powershell into meterpreter. Then I will enter powershell by entering **powershell_shell**:
 
-<img src="./images/task3-powershell.png" height=300  width=auto>
+<img src="./images/task3-powershell.png" height=150  width=auto>
 
 * Take close attention to the CanRestart option that is set to true. What is the name of the service which shows up as an unquoted service path vulnerability?
 
