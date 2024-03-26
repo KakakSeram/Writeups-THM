@@ -185,6 +185,32 @@ To begin, you will need a netcat static binary on your web server. If you do not
 
 You will need to run the exploit twice. The first time will pull our netcat binary to the system and the second will execute our payload to gain a callback!
 
+* Download the exploit
+
+    ![task4-download](./images/task4-download.png)
+
+* Edit the port/ip local in the script
+    
+    ![task4-nano](./images/task4-nano.png)
+
+* Edit port for file server in the script
+
+    ![task4-port](./images/task4-port.png)
+
+* Download netcat static binary
+
+    ![task4-binary](./images/task4-binary.png)
+
+* Create simple HTTP Server
+
+    ![task4-http](./image/task4-http.png)
+
+* Start listener
+
+    ![task4-listener](./images/task4-listener.png)
+
+* 
+
 Congratulations, we're now onto the system. Now we can pull winPEAS to the system using powershell -c.
 
 Once we run winPeas, we see that it points us towards unquoted paths. We can see that it provides us with the name of the service it is also running.
