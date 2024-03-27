@@ -15,5 +15,6 @@ This the list of all the writeups I made.
 |9.|[What the Shell?](./WhatTheShell/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/introtoshells)|Easy|
 |10.|[Common Linux Privesc](./CommonLinuxPrivesc/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/commonlinuxprivesc)|Easy|
 |11.|[Steel Mountain](./SteelMountain/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/steelmountain)|Easy|
+|12.|[Governance & Regulation](./GovernanceRegulation/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/cybergovernanceregulation)|Easy|
 
 Writeups made with :heart: by @KakakSeram
