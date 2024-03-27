@@ -139,11 +139,11 @@ Organisations only sometimes need to make a standard, frameworks, or baselines; 
 
 * The step that involves periodic evaluation of policies and making changes as per stakeholder's input is called?
 
-	``
+	`Review and update`
 
 * A set of specific steps for undertaking a particular task or process is called?
 
-	``
+	`Procedures`
 
 ## Task 4 - Governance Risk and Compliance (GRC)
 
@@ -179,11 +179,11 @@ To fully understand each component of GRC, it is necessary to understand it with
 
 * What is the component in the GRC framework involved in identifying, assessing, and prioritising risks to the organisation?
 
-	``
+	`Risk Management`
 
 * Is it important to monitor and measure the performance of a developed policy?  (yea/nay)
 
-	``
+	`Yea`
 
 ## Task 5 - Privacy and Data Protection
 
@@ -212,11 +212,11 @@ The law applies to all business entities that conduct business in the European U
 
 * What is the maximum fine for Tier 1 users as per GDPR (in terms of percentage)?
 
-	``
+	`4`
 
 * In terms of PCI DSS, what does CHD stand for?
 
-	``
+	`Cardholder Data`
 
 ## Task 6 - NIST Special Publications
 
@@ -250,15 +250,15 @@ NIST Special Publication 800-63B is a set of guidelines created by the NIST to h
 
 * Per NIST 800-53, in which control category does the media protection lie?
 
-	``
+	`Physical`
 
 * Per NIST 800-53, in which control category does the incident response lie?
 
-	``
+	`Administrative`
 
 * Which phase (name) of NIST 800-53 compliance best practices results in correlating identified assets and permissions?
 
-	``
+	`Map`
 
 ## Task 7 - Information Security Management and Compliance
 
@@ -316,11 +316,11 @@ The above diagram shows the generic controls that will be checked during a SOC 2
 
 * Which ISO/IEC 27001 component involves selecting and implementing controls to reduce the identified risks to an acceptable level?
 
-	``
+	`Risk treatmentAvailability`
 
 * In SOC 2 generic controls, which control shows that the system remains available?
 
-	``
+	`Availability`
 
 ## Task 8 - Conclusion
 
@@ -334,4 +334,4 @@ Stay tuned for more exciting rooms on governing and regulating an organisation's
 
 * Click the **View Site** button at the top of the task to launch the static site in split view. What is the flag after completing the exercise?
 
-	``
+	`THM{SECURE_1001}`
