@@ -220,23 +220,22 @@ Once we run winPeas, we see that it points us towards unquoted paths. We can see
 
 ![task4-ascservice](./images/task4-ascservice.png)
 
-What powershell -c command could we run to manually find out the service name?
+* What powershell -c command could we run to manually find out the service name?
 
-* *Format is "powershell -c "command here"*
+*Format is "powershell -c "command here"*
 
 Now let's escalate to Administrator with our new found knowledge.
 
 Generate your payload using msfvenom and pull it to the system using powershell.
 
-
 Now we can move our payload to the unquoted directory winPEAS alerted us to and restart the service with two commands.
 
 First we need to stop the service which we can do like so;
 
-sc stop AdvancedSystemCareService9
+`sc stop AdvancedSystemCareService9`
 
 Shortly followed by;
 
-sc start AdvancedSystemCareService9
+`sc start AdvancedSystemCareService9`
 
 Once this command runs, you will see you gain a shell as Administrator on our listener!
