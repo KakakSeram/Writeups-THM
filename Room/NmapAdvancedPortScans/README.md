@@ -283,8 +283,96 @@ On the other hand, if you prefer to increase the size of your packets to make th
 
 ## Task 7 - Idle/Zombie Scan
 
+Spoofing the source IP address can be a great approach to scanning stealthily. However, spoofing will only work in specific network setups. It requires you to be in a position where you can monitor the traffic. Considering these limitations, spoofing your IP address can have little use; however, we can give it an upgrade with the idle scan.
+
+The idle scan, or zombie scan, requires an idle system connected to the network that you can communicate with. Practically, Nmap will make each probe appear as if coming from the idle (zombie) host, then it will check for indicators whether the idle (zombie) host received any response to the spoofed probe. This is accomplished by checking the IP identification (IP ID) value in the IP header. You can run an idle scan using `nmap -sI ZOMBIE_IP MACHINE_IP`, where `ZOMBIE_IP` is the IP address of the idle host (zombie).
+
+The idle (zombie) scan requires the following three steps to discover whether a port is open:
+
+1. Trigger the idle host to respond so that you can record the current IP ID on the idle host.
+2. Send a SYN packet to a TCP port on the target. The packet should be spoofed to appear as if it was coming from the idle host (zombie) IP address.
+3. Trigger the idle machine again to respond so that you can compare the new IP ID with the one received earlier.
+
+Let’s explain with figures. In the figure below, we have the attacker system probing an idle machine, a multi-function printer. By sending a SYN/ACK, it responds with an RST packet containing its newly incremented IP ID.
+
+![task7-zombie](./images/task7-zombie.png)
+
+The attacker will send a SYN packet to the TCP port they want to check on the target machine in the next step. However, this packet will use the idle host (zombie) IP address as the source. Three scenarios would arise. In the first scenario, shown in the figure below, the TCP port is closed; therefore, the target machine responds to the idle host with an RST packet. The idle host does not respond; hence its IP ID is not incremented.
+
+![task7-zombie-closed](./images/task7-zombie-closed.png)
+
+In the second scenario, as shown below, the TCP port is open, so the target machine responds with a SYN/ACK to the idle host (zombie). The idle host responds to this unexpected packet with an RST packet, thus incrementing its IP ID.
+
+![task7-zombie-open](./images/task7-zombie-open.png)
+
+In the third scenario, the target machine does not respond at all due to firewall rules. This lack of response will lead to the same result as with the closed port; the idle host won’t increase the IP ID.
+
+For the final step, the attacker sends another SYN/ACK to the idle host. The idle host responds with an RST packet, incrementing the IP ID by one again. The attacker needs to compare the IP ID of the RST packet received in the first step with the IP ID of the RST packet received in this third step. If the difference is 1, it means the port on the target machine was closed or filtered. However, if the difference is 2, it means that the port on the target was open.
+
+It is worth repeating that this scan is called an idle scan because choosing an idle host is indispensable for the accuracy of the scan. If the “idle host” is busy, all the returned IP IDs would be useless.
+
+### Answer the questions below
+
+* You discovered a rarely-used network printer with the IP address `10.10.5.5`, and you decide to use it as a zombie in your idle scan. What argument should you add to your Nmap command?
+
+	``
 
 ## Task 8 - Getting More Details
 
+You might consider adding `--reason` if you want Nmap to provide more details regarding its reasoning and conclusions. Consider the two scans below to the system; however, the latter adds `--reason`.
+
+![task8-terminal](./images/task8-terminal.png)
+
+![task8-reason](./images/task8-reason.png)
+
+Providing the `--reason` flag gives us the explicit reason why Nmap concluded that the system is up or a particular port is open. In this console output above, we can see that this system is considered online because Nmap “received arp-response.” On the other hand, we know that the SSH port is deemed to be open because Nmap received a “syn-ack” packet back.
+
+For more detailed output, you can consider using `-v` for verbose output or `-vv` for even more verbosity.
+Pentester Terminal
+
+![task8-vv](./images/task8-vv.png)
+
+If `-vv` does not satisfy your curiosity, you can use `-d` for debugging details or `-dd` for even more details. You can guarantee that using `-d` will create an output that extends beyond a single screen.
+
+### Answer the questions below
+
+* Launch the AttackBox if you haven't done so already. After you make sure that you have terminated the VM from Task 4, start the VM for this task. Wait for it to load completely, then open the terminal on the AttackBox and use Nmap with `nmap -sS -F --reason MACHINE_IP` to scan the VM. What is the reason provided for the stated port(s) being open?
 
 ## Task 9 - Summary
+
+This room covered the following types of scans.
+
+|Port Scan Type|Example Command|
+|--------------|---------------|
+|TCP Null Scan|`sudo nmap -sN MACHINE_IP`|
+|TCP FIN Scan|`sudo nmap -sF MACHINE_IP`|
+|TCP Xmas Scan|`sudo nmap -sX MACHINE_IP`|
+|TCP Maimon Scan|`sudo nmap -sM MACHINE_IP`|
+|TCP ACK Scan|`sudo nmap -sA MACHINE_IP`|
+|TCP Window Scan|`sudo nmap -sW MACHINE_IP`|
+|Custom TCP Scan|`sudo nmap --scanflags URGACKPSHRSTSYNFIN MACHINE_IP`|
+|Spoofed Source IP|`sudo nmap -S SPOOFED_IP MACHINE_IP`|
+|Spoofed MAC Address|`--spoof-mac SPOOFED_MAC`|
+|Decoy Scan|`nmap -D DECOY_IP,ME MACHINE_IP`|
+|Idle (Zombie) Scan|`sudo nmap -sI ZOMBIE_IP MACHINE_IP`|
+|Fragment IP data into 8 bytes|`-f`|
+|Fragment IP data into 16 bytes|`-ff`|
+
+|Option|Purpose|
+|------|-------|
+|`--source-port PORT_NUM`|specify source port number|
+|`--data-length NUM`|append random data to reach given length|
+
+These scan types rely on setting TCP flags in unexpected ways to prompt ports for a reply. Null, FIN, and Xmas scan provoke a response from closed ports, while Maimon, ACK, and Window scans provoke a response from open and closed ports.
+
+|Option|Purpose|
+|------|-------|
+|`--reason`|explains how Nmap made its conclusion|
+|`-v`|verbose|
+|`-vv`|very verbose|
+|`-d`|debugging|
+|`-dd`|more details for debugging|
+
+### Answer the questions below
+
+* Ensure you have taken note of all the Nmap options explained in this room. Please join the [Nmap Post Port Scans](https://tryhackme.com/room/nmap04) room, the last room in this Nmap series.
