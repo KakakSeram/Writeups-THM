@@ -104,23 +104,29 @@ One scenario where these three scan types can be efficient is when scanning a ta
 
 * In a null scan, how many flags are set to 1?
 
-	``
+	`0`
+
 
 * In a FIN scan, how many flags are set to 1?
 
-	``
+	`1`
+
 
 * In a Xmas scan, how many flags are set to 1?
 
-	``
+	`3`
 
 * Start the VM and load the AttackBox. Once both are ready, open the terminal on the AttackBox and use nmap to launch a FIN scan against the target VM. How many ports appear as open|filtered?
 
-	``
+	`7`
+
+	![task2-sf-scan](./images/task2-sf-scan.png)
 
 * Repeat your scan launching a null scan against the target VM. How many ports appear as open|filtered?
 
-	``
+	`7`
+
+	![task2-sn-scan](./images/task2-sn-scan.png)
 
 ## Task 3 - TCP Maimon Scan
 
@@ -141,7 +147,7 @@ This type of scan is not the first scan one would pick to discover a system; how
 
 * In the Maimon scan, how many flags are set?
 
-	``
+	`2`
 
 ## Task 4 - TCP ACK, Window, and Custom Scan
 
@@ -191,11 +197,11 @@ Finally, it is essential to note that the ACK scan and the window scan were very
 
 * In TCP Window scan, how many flags are set?
 
-	``
+	`1`
 
 * You decided to experiment with a custom TCP scan that has the reset flag set. What would you add after `--scanflags`? 
 
-	``
+	`RST`
 
 * The VM received an update to its firewall ruleset. A new port is now allowed by the firewall. After you make sure that you have terminated the VM from Task 2, start the VM for this task. Launch the AttackBox if you haven't done that already. Once both are ready, open the terminal on the AttackBox and use Nmap to launch an ACK scan against the target VM. How many ports appear unfiltered?
 
