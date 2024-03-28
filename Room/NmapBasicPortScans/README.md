@@ -53,19 +53,19 @@ However, in practical situations, we need to consider the impact of firewalls. F
 
 * Which service uses UDP port 53 by default?
 
-	``
+	`DNS`
 
 * Which service uses TCP port 22 by default?
 
-	``
+	`SSH`
 
 * How many port states does Nmap consider?
 
-	``
+	`6`
 
 * Which port state is the most interesting to discover as a pentester?
 
-	``
+	`open`
 
 ## Task 3 - TCP Flags
 
@@ -86,11 +86,11 @@ In particular, we need to focus on the flags that Nmap can set or unset. We have
 
 * What 3 letters represent the Reset flag?
 
-	``
+	`RST`
 
 * Which flag needs to be set when you initiate a TCP connection (first packet of TCP 3-way handshake)?
 
-	``
+	`SYN`
 
 ## Task 4 - TCP Connect Scan
 
@@ -127,9 +127,11 @@ It is worth mentioning that the `-r` option can also be added to scan the ports 
 
 	``
 
+	![task4-scan](./images/task4-scan.png)
+
 * What is Nmap’s guess about the newly installed service?
 
-	``
+	`pop3`
 
 ## Task 5 - TCP SYN Scan
 
@@ -153,11 +155,13 @@ TCP SYN scan is the default scan mode when running Nmap as a privileged user, ru
 
 * Launch the VM. Some new server software has been installed since the last time we scanned it. On the AttackBox, use the terminal to execute `nmap -sS MACHINE_IP`. What is the new open port?
 
-	``
+	`6667`
+
+	![task5-scan](./images/task5-scan.png)
 
 * What is Nmap’s guess of the service name?
 
-	``
+	`irc`
 
 ## Task 6 - UDP Scan
 
@@ -183,11 +187,13 @@ Launching a UDP scan against this Linux server proved valuable, and indeed, we l
 
 * Launch the VM. On the AttackBox, use the terminal to execute `nmap -sU -F -v MACHINE_IP`. A new service has been installed since the last scan. What is the UDP port that is now open?
 
-	``
+	`53`
+
+	![task6-scan](./images/task6-scan.png)
 
 * What is the service name according to Nmap?
 
-	``
+	`domain`
 
 ## Task 7 - Fine-Tuning Scope and Performance
 
@@ -217,15 +223,15 @@ Moreover, you can control probing parallelization using `--min-parallelism <nump
 
 * What is the option to scan all the TCP ports between 5000 and 5500?
 
-	``
+	`-p5000-5500`
 
 * How can you ensure that Nmap will run at least 64 probes in parallel?
 
-	``
+	`--min-parallelism=64`
 
 * What option would you add to make Nmap very slow and paranoid?
 
-	``
+	`-T0`
 
 ## Task 8 - Summary
 
