@@ -348,7 +348,7 @@ If `-vv` does not satisfy your curiosity, you can use `-d` for debugging details
 
 	`syn-ack`
 
-	![task7-scan](./images/task7-scan.png)
+	![task8-scan](./images/task8-scan.png)
 
 ## Task 9 - Summary
 
