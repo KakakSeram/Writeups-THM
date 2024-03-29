@@ -205,15 +205,17 @@ Finally, it is essential to note that the ACK scan and the window scan were very
 
 * The VM received an update to its firewall ruleset. A new port is now allowed by the firewall. After you make sure that you have terminated the VM from Task 2, start the VM for this task. Launch the AttackBox if you haven't done that already. Once both are ready, open the terminal on the AttackBox and use Nmap to launch an ACK scan against the target VM. How many ports appear unfiltered?
 
-	``
+	`4`
+
+	![task4-sa-scan](./images/task4-sa-scan.png)
 
 * What is the new port number that appeared?
 
-	``
+	`443`
 
 * Is there any service behind the newly discovered port number? (Y/N)
 
-	``
+	`N`
 
 ## Task 5 - Spoofing and Decoys
 
@@ -243,11 +245,11 @@ You can launch a decoy scan by specifying a specific or random IP address after 
 
 * What do you need to add to the command `sudo nmap MACHINE_IP` to make the scan appear as if coming from the source IP address `10.10.10.11` instead of your IP address?
 
-	``
+	`-S 10.10.10.11`
 
 * What do you need to add to the command `sudo nmap MACHINE_IP` to make the scan appear as if coming from the source IP addresses `10.10.20.21` and `10.10.20.28` in addition to your IP address?
 
-	``
+	`-D 10.10.20.21,10.10.20.28,ME`
 
 ## Task 6 - Fragmented Packets
 
@@ -285,7 +287,7 @@ On the other hand, if you prefer to increase the size of your packets to make th
 
 * If the TCP segment has a size of 64, and `-ff` option is being used, how many IP fragments will you get?
 
-	``
+	`4`
 
 ## Task 7 - Idle/Zombie Scan
 
@@ -321,7 +323,7 @@ It is worth repeating that this scan is called an idle scan because choosing an 
 
 * You discovered a rarely-used network printer with the IP address `10.10.5.5`, and you decide to use it as a zombie in your idle scan. What argument should you add to your Nmap command?
 
-	``
+	`-sI 10.10.5.5`
 
 ## Task 8 - Getting More Details
 
@@ -343,6 +345,10 @@ If `-vv` does not satisfy your curiosity, you can use `-d` for debugging details
 ### Answer the questions below
 
 * Launch the AttackBox if you haven't done so already. After you make sure that you have terminated the VM from Task 4, start the VM for this task. Wait for it to load completely, then open the terminal on the AttackBox and use Nmap with `nmap -sS -F --reason MACHINE_IP` to scan the VM. What is the reason provided for the stated port(s) being open?
+
+	`syn-ack`
+
+	![task7-scan](./images/task7-scan.png)
 
 ## Task 9 - Summary
 
