@@ -18,7 +18,7 @@ This the list of all the writeups I made.
 |12.|[Governance & Regulation](./GovernanceRegulation/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/cybergovernanceregulation)|Easy|
 |13.|[Python for Pentesters](./PythonforPentesters/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/pythonforcybersecurity)|Easy|
 |14.|[Nmap Basic Port Scans](./NmapBasicPortScans/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/nmap02)|Easy|
-|15.|[Nmap Post Port Scans](./NmapPostPortScans/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/nmap04)|Easy|
+|15.|[Nmap Post Port Scans](./NmapPostPortScans/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/nmap04)|Medium|
 |16.|[Phishing](./Phishing/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/phishingyl)|Medium|
 
 Writeups made with :heart: by @KakakSeram
