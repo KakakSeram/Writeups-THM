@@ -1,0 +1,129 @@
+# Nmap 7.20 scan initiated Feb 11 04:29:20 2021 as: nmap -sS -n -oA scan_172_17_network 172.17.35.1/20
+Host: 172.17.0.1 ()	Status: Up
+Host: 172.17.0.1 ()	Status: Up
+Host: 172.17.0.215 ()	Status: Up
+Host: 172.17.0.215 ()	Ports: 22/closed/tcp//ssh///, 80/open/tcp//http///, 443/open/tcp//https///	Ignored State: filtered (997)
+Host: 172.17.0.240 ()	Status: Up
+Host: 172.17.0.240 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (998)
+Host: 172.17.1.78 ()	Status: Up
+Host: 172.17.1.78 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (998)
+Host: 172.17.1.106 ()	Status: Up
+Host: 172.17.1.106 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 9999/open/tcp//abyss///	Ignored State: closed (997)
+Host: 172.17.1.131 ()	Status: Up
+Host: 172.17.1.131 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (998)
+Host: 172.17.1.184 ()	Status: Up
+Host: 172.17.1.184 ()	Ports: 8081/open/tcp//blackice-icecap///	Ignored State: closed (999)
+Host: 172.17.1.228 ()	Status: Up
+Host: 172.17.1.228 ()	Ports: 22/open/tcp//ssh///, 53/open/tcp//domain///, 8009/open/tcp//ajp13///, 8080/open/tcp//http-proxy///	Ignored State: closed (996)
+Host: 172.17.1.234 ()	Status: Up
+Host: 172.17.1.234 ()	Ports: 21/closed/tcp//ftp///, 22/open/tcp//ssh///, 23/closed/tcp//telnet///, 25/closed/tcp//smtp///, 53/closed/tcp//domain///, 80/closed/tcp//http///, 110/closed/tcp//pop3///, 111/closed/tcp//rpcbind///, 113/closed/tcp//ident///, 135/closed/tcp//msrpc///, 139/closed/tcp//netbios-ssn///, 199/closed/tcp//smux///, 445/closed/tcp//microsoft-ds///, 554/closed/tcp//rtsp///, 587/closed/tcp//submission///, 993/closed/tcp//imaps///, 995/closed/tcp//pop3s///, 1025/closed/tcp//NFS-or-IIS///, 1720/closed/tcp//h323q931///, 1723/closed/tcp//pptp///, 3306/closed/tcp//mysql///, 5900/closed/tcp//vnc///, 8888/closed/tcp//sun-answerbook///	Ignored State: filtered (977)
+Host: 172.17.2.137 ()	Status: Up
+Host: 172.17.2.137 ()	Ports: 3306/open/tcp//mysql///
+Host: 172.17.2.215 ()	Status: Up
+Host: 172.17.2.215 ()	Ports: 21/open/tcp//ftp///, 53/open/tcp//domain///, 80/open/tcp//http///, 135/open/tcp//msrpc///, 3389/open/tcp//ms-wbt-server///	Ignored State: filtered (995)
+Host: 172.17.2.251 ()	Status: Up
+Host: 172.17.2.251 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 111/open/tcp//rpcbind///, 3389/open/tcp//ms-wbt-server///, 5901/open/tcp//vnc-1///, 6001/open/tcp//X11:1///, 8000/open/tcp//http-alt///	Ignored State: closed (993)
+Host: 172.17.3.102 ()	Status: Up
+Host: 172.17.3.102 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (998)
+Host: 172.17.3.145 ()	Status: Up
+Host: 172.17.3.145 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 139/open/tcp//netbios-ssn///, 445/open/tcp//microsoft-ds///, 8009/open/tcp//ajp13///, 8080/open/tcp//http-proxy///	Ignored State: closed (994)
+Host: 172.17.3.222 ()	Status: Up
+Host: 172.17.3.222 ()	Ports: 22/open/tcp//ssh///, 3000/open/tcp//ppp///, 3306/open/tcp//mysql///, 8000/open/tcp//http-alt///	Ignored State: closed (996)
+Host: 172.17.4.16 ()	Status: Up
+Host: 172.17.4.16 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (998)
+Host: 172.17.4.245 ()	Status: Up
+Host: 172.17.4.245 ()	Ports: 80/open/tcp//http///	Ignored State: closed (999)
+Host: 172.17.5.56 ()	Status: Up
+Host: 172.17.5.56 ()	Ports: 53/open/tcp//domain///, 88/open/tcp//kerberos-sec///, 135/open/tcp//msrpc///, 139/open/tcp//netbios-ssn///, 389/open/tcp//ldap///, 445/open/tcp//microsoft-ds///, 464/open/tcp//kpasswd5///, 593/open/tcp//http-rpc-epmap///, 3268/open/tcp//globalcatLDAP///, 3269/open/tcp//globalcatLDAPssl///, 3389/open/tcp//ms-wbt-server///	Ignored State: filtered (989)
+Host: 172.17.5.70 ()	Status: Up
+Host: 172.17.5.70 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 111/open/tcp//rpcbind///, 3389/open/tcp//ms-wbt-server///, 5901/open/tcp//vnc-1///, 6001/open/tcp//X11:1///, 8000/open/tcp//http-alt///	Ignored State: closed (993)
+Host: 172.17.6.21 ()	Status: Up
+Host: 172.17.6.21 ()	Ports: 21/open/tcp//ftp///, 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (997)
+Host: 172.17.6.42 ()	Status: Up
+Host: 172.17.6.42 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 111/open/tcp//rpcbind///, 3389/open/tcp//ms-wbt-server///, 5901/open/tcp//vnc-1///, 6001/open/tcp//X11:1///, 8000/open/tcp//http-alt///	Ignored State: closed (993)
+Host: 172.17.6.97 ()	Status: Up
+Host: 172.17.6.97 ()	Ports: 3389/open/tcp//ms-wbt-server///	Ignored State: filtered (999)
+Host: 172.17.6.109 ()	Status: Up
+Host: 172.17.6.109 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 110/open/tcp//pop3///, 139/open/tcp//netbios-ssn///, 143/open/tcp//imap///, 445/open/tcp//microsoft-ds///	Ignored State: closed (994)
+Host: 172.17.7.135 ()	Status: Up
+Host: 172.17.7.135 ()	Ports: 3389/open/tcp//ms-wbt-server///	Ignored State: filtered (999)
+Host: 172.17.8.131 ()	Status: Up
+Host: 172.17.8.131 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (998)
+Host: 172.17.8.147 ()	Status: Up
+Host: 172.17.8.147 ()	Ports: 53/open/tcp//domain///, 80/open/tcp//http///, 88/open/tcp//kerberos-sec///, 135/open/tcp//msrpc///, 139/open/tcp//netbios-ssn///, 389/open/tcp//ldap///, 445/open/tcp//microsoft-ds///, 464/open/tcp//kpasswd5///, 593/open/tcp//http-rpc-epmap///, 636/open/tcp//ldapssl///, 3268/open/tcp//globalcatLDAP///, 3269/open/tcp//globalcatLDAPssl///, 3389/open/tcp//ms-wbt-server///	Ignored State: closed (987)
+Host: 172.17.9.82 ()	Status: Up
+Host: 172.17.9.82 ()	Ports: 22/open/tcp//ssh///	Ignored State: closed (999)
+Host: 172.17.9.244 ()	Status: Up
+Host: 172.17.9.244 ()	Ports: 80/open/tcp//http///, 135/open/tcp//msrpc///, 139/open/tcp//netbios-ssn///, 445/open/tcp//microsoft-ds///, 3389/open/tcp//ms-wbt-server///, 8080/open/tcp//http-proxy///, 49152/open/tcp//unknown///, 49153/open/tcp//unknown///, 49154/open/tcp//unknown///, 49155/open/tcp//unknown///, 49156/open/tcp//unknown///, 49165/open/tcp//unknown///	Ignored State: closed (988)
+Host: 172.17.10.10 ()	Status: Up
+Host: 172.17.10.10 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (998)
+Host: 172.17.10.13 ()	Status: Up
+Host: 172.17.10.13 ()	Ports: 80/open/tcp//http///
+Host: 172.17.10.100 ()	Status: Up
+Host: 172.17.10.100 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (998)
+Host: 172.17.10.127 ()	Status: Up
+Host: 172.17.10.127 ()	Ports: 21/open/tcp//ftp///, 22/open/tcp//ssh///, 80/open/tcp//http///, 111/open/tcp//rpcbind///, 139/open/tcp//netbios-ssn///, 445/open/tcp//microsoft-ds///
+Host: 172.17.11.32 ()	Status: Up
+Host: 172.17.11.32 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 111/open/tcp//rpcbind///, 3389/open/tcp//ms-wbt-server///, 5901/open/tcp//vnc-1///, 6001/open/tcp//X11:1///, 8000/open/tcp//http-alt///	Ignored State: closed (993)
+Host: 172.17.11.45 ()	Status: Up
+Host: 172.17.11.45 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 111/open/tcp//rpcbind///, 3389/open/tcp//ms-wbt-server///, 5901/open/tcp//vnc-1///, 6001/open/tcp//X11:1///, 8000/open/tcp//http-alt///	Ignored State: closed (993)
+Host: 172.17.12.12 ()	Status: Up
+Host: 172.17.12.12 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 111/open/tcp//rpcbind///, 3389/open/tcp//ms-wbt-server///
+Host: 172.17.12.151 ()	Status: Up
+Host: 172.17.12.151 ()	Ports: 22/open/tcp//ssh///, 53/open/tcp//domain///, 88/open/tcp//kerberos-sec///, 135/open/tcp//msrpc///, 139/open/tcp//netbios-ssn///, 389/open/tcp//ldap///, 445/open/tcp//microsoft-ds///, 464/open/tcp//kpasswd5///, 593/open/tcp//http-rpc-epmap///, 636/open/tcp//ldapssl///, 3268/open/tcp//globalcatLDAP///, 3269/open/tcp//globalcatLDAPssl///, 3389/open/tcp//ms-wbt-server///	Ignored State: closed (987)
+Host: 172.17.12.227 ()	Status: Up
+Host: 172.17.12.227 ()	Ports: 21/closed/tcp//ftp///, 80/open/tcp//http///, 111/open/tcp//rpcbind///, 135/closed/tcp//msrpc///, 139/closed/tcp//netbios-ssn///, 199/closed/tcp//smux///, 554/closed/tcp//rtsp///, 587/closed/tcp//submission///, 993/closed/tcp//imaps///, 1025/closed/tcp//NFS-or-IIS///, 1720/closed/tcp//h323q931///, 1723/closed/tcp//pptp///	Ignored State: filtered (988)
+Host: 172.17.12.252 ()	Status: Up
+Host: 172.17.12.252 ()	Ports: 21/open/tcp//ftp///, 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (997)
+Host: 172.17.13.152 ()	Status: Up
+Host: 172.17.13.152 ()	Ports: 135/open/tcp//msrpc///, 139/open/tcp//netbios-ssn///, 445/open/tcp//microsoft-ds///, 3389/open/tcp//ms-wbt-server///, 49152/open/tcp//unknown///, 49153/open/tcp//unknown///, 49154/open/tcp//unknown///, 49158/open/tcp//unknown///, 49159/open/tcp//unknown///	Ignored State: closed (991)
+Host: 172.17.13.202 ()	Status: Up
+Host: 172.17.13.202 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (998)
+Host: 172.17.13.249 ()	Status: Up
+Host: 172.17.13.249 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 9999/open/tcp//abyss///	Ignored State: closed (997)
+Host: 172.17.14.79 ()	Status: Up
+Host: 172.17.14.79 ()	Ports: 22/open/tcp//ssh///, 8000/open/tcp//http-alt///	Ignored State: closed (998)
+Host: 172.17.14.92 ()	Status: Up
+Host: 172.17.14.92 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 9999/open/tcp//abyss///	Ignored State: closed (997)
+Host: 172.17.14.156 ()	Status: Up
+Host: 172.17.14.156 ()	Status: Up
+Host: 172.17.15.191 ()	Status: Up
+Host: 172.17.15.191 ()	Ports: 21/open/tcp//ftp///, 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (997)
+Host: 172.17.16.110 ()	Status: Up
+Host: 172.17.16.110 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 111/open/tcp//rpcbind///, 3389/open/tcp//ms-wbt-server///, 5901/open/tcp//vnc-1///, 6001/open/tcp//X11:1///, 8000/open/tcp//http-alt///	Ignored State: closed (993)
+Host: 172.17.16.188 ()	Status: Up
+Host: 172.17.16.188 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 3389/open/tcp//ms-wbt-server///	Ignored State: closed (997)
+Host: 172.17.16.206 ()	Status: Up
+Host: 172.17.16.206 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 111/open/tcp//rpcbind///, 3389/open/tcp//ms-wbt-server///, 5901/open/tcp//vnc-1///, 6001/open/tcp//X11:1///, 8000/open/tcp//http-alt///	Ignored State: closed (993)
+Host: 172.17.17.184 ()	Status: Up
+Host: 172.17.17.184 ()	Ports: 22/open/tcp//ssh///, 139/open/tcp//netbios-ssn///, 445/open/tcp//microsoft-ds///	Ignored State: closed (997)
+Host: 172.17.18.144 ()	Status: Up
+Host: 172.17.18.144 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (998)
+Host: 172.17.19.63 ()	Status: Up
+Host: 172.17.19.63 ()	Ports: 22/open/tcp//ssh///, 5000/open/tcp//upnp///	Ignored State: closed (998)
+Host: 172.17.19.181 ()	Status: Up
+Host: 172.17.19.181 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 111/open/tcp//rpcbind///, 3389/open/tcp//ms-wbt-server///, 5901/open/tcp//vnc-1///, 6001/open/tcp//X11:1///, 8000/open/tcp//http-alt///	Ignored State: closed (993)
+Host: 172.17.19.249 ()	Status: Up
+Host: 172.17.19.249 ()	Ports: 22/open/tcp//ssh///, 53/open/tcp//domain///, 80/open/tcp//http///, 443/open/tcp//https///	Ignored State: closed (996)
+Host: 172.17.20.147 ()	Status: Up
+Host: 172.17.20.147 ()	Ports: 22/open/tcp//ssh///, 8000/open/tcp//http-alt///, 8089/open/tcp//unknown///	Ignored State: closed (997)
+Host: 172.17.21.5 ()	Status: Up
+Host: 172.17.21.5 ()	Ports: 80/open/tcp//http///, 135/open/tcp//msrpc///, 139/open/tcp//netbios-ssn///, 445/open/tcp//microsoft-ds///, 3389/open/tcp//ms-wbt-server///, 8080/open/tcp//http-proxy///, 49152/open/tcp//unknown///, 49153/open/tcp//unknown///, 49154/open/tcp//unknown///, 49155/open/tcp//unknown///, 49156/open/tcp//unknown///, 49163/open/tcp//unknown///	Ignored State: closed (988)
+Host: 172.17.21.165 ()	Status: Up
+Host: 172.17.21.165 ()	Ports: 21/open/tcp//ftp///, 22/open/tcp//ssh///, 111/open/tcp//rpcbind///, 139/open/tcp//netbios-ssn///, 445/open/tcp//microsoft-ds///, 2049/open/tcp//nfs///	Ignored State: closed (994)
+Host: 172.17.22.221 ()	Status: Up
+Host: 172.17.22.221 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (998)
+Host: 172.17.22.241 ()	Status: Up
+Host: 172.17.22.241 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 9999/open/tcp//abyss///	Ignored State: closed (997)
+Host: 172.17.22.251 ()	Status: Up
+Host: 172.17.22.251 ()	Ports: 80/open/tcp//http///
+Host: 172.17.23.113 ()	Status: Up
+Host: 172.17.23.113 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 111/open/tcp//rpcbind///, 3389/open/tcp//ms-wbt-server///, 5901/open/tcp//vnc-1///, 6001/open/tcp//X11:1///
+Host: 172.17.23.206 ()	Status: Up
+Host: 172.17.23.206 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 9999/open/tcp//abyss///	Ignored State: closed (997)
+Host: 172.17.23.217 ()	Status: Up
+Host: 172.17.23.217 ()	Ports: 3389/open/tcp//ms-wbt-server///	Ignored State: filtered (999)
+Host: 172.17.23.240 ()	Status: Up
+Host: 172.17.23.240 ()	Ports: 22/closed/tcp//ssh///, 80/open/tcp//http///, 443/open/tcp//https///	Ignored State: filtered (997)
+Host: 172.17.24.185 ()	Status: Up
+Host: 172.17.24.185 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 111/open/tcp//rpcbind///, 3389/open/tcp//ms-wbt-server///, 5901/open/tcp//vnc-1///, 6001/open/tcp//X11:1///, 8000/open/tcp//http-alt///	Ignored State: closed (993)

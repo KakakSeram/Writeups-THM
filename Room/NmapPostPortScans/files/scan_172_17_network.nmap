@@ -1,0 +1,676 @@
+# Nmap 7.20 scan initiated Feb 11 04:29:20 2021 as: nmap -sS -n -oA scan_172_17_network 172.17.35.1/20
+Nmap scan report for 172.17.0.1
+Host is up (0.00014s latency).
+All 1000 scanned ports on 172.17.0.1 are filtered
+MAC Address: 02:C8:85:B5:5A:AA (Unknown)
+
+Nmap scan report for 172.17.0.215
+Host is up (0.039s latency).
+Not shown: 997 filtered ports
+PORT    STATE  SERVICE
+22/tcp  closed ssh
+80/tcp  open   http
+443/tcp open   https
+MAC Address: 02:DC:9F:F6:79:DD (Unknown)
+
+Nmap scan report for 172.17.0.240
+Host is up (0.00040s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+MAC Address: 02:7D:48:92:78:BF (Unknown)
+
+Nmap scan report for 172.17.1.78
+Host is up (0.00037s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+MAC Address: 02:F7:6A:EE:EA:93 (Unknown)
+
+Nmap scan report for 172.17.1.106
+Host is up (0.00037s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+9999/tcp open  abyss
+MAC Address: 02:E8:C9:13:8F:1B (Unknown)
+
+Nmap scan report for 172.17.1.131
+Host is up (0.00043s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+MAC Address: 02:49:6C:30:C0:71 (Unknown)
+
+Nmap scan report for 172.17.1.184
+Host is up (0.00033s latency).
+Not shown: 999 closed ports
+PORT     STATE SERVICE
+8081/tcp open  blackice-icecap
+MAC Address: 02:24:FA:C9:D7:07 (Unknown)
+
+Nmap scan report for 172.17.1.228
+Host is up (0.00035s latency).
+Not shown: 996 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+53/tcp   open  domain
+8009/tcp open  ajp13
+8080/tcp open  http-proxy
+MAC Address: 02:37:E5:FE:5E:AB (Unknown)
+
+Nmap scan report for 172.17.1.234
+Host is up (0.00036s latency).
+Not shown: 977 filtered ports
+PORT     STATE  SERVICE
+21/tcp   closed ftp
+22/tcp   open   ssh
+23/tcp   closed telnet
+25/tcp   closed smtp
+53/tcp   closed domain
+80/tcp   closed http
+110/tcp  closed pop3
+111/tcp  closed rpcbind
+113/tcp  closed ident
+135/tcp  closed msrpc
+139/tcp  closed netbios-ssn
+199/tcp  closed smux
+445/tcp  closed microsoft-ds
+554/tcp  closed rtsp
+587/tcp  closed submission
+993/tcp  closed imaps
+995/tcp  closed pop3s
+1025/tcp closed NFS-or-IIS
+1720/tcp closed h323q931
+1723/tcp closed pptp
+3306/tcp closed mysql
+5900/tcp closed vnc
+8888/tcp closed sun-answerbook
+MAC Address: 02:D2:0A:65:89:5F (Unknown)
+
+Nmap scan report for 172.17.2.137
+Host is up (0.00043s latency).
+Not shown: 781 filtered ports, 218 closed ports
+PORT     STATE SERVICE
+3306/tcp open  mysql
+MAC Address: 02:20:B2:B5:2B:E5 (Unknown)
+
+Nmap scan report for 172.17.2.215
+Host is up (0.00065s latency).
+Not shown: 995 filtered ports
+PORT     STATE SERVICE
+21/tcp   open  ftp
+53/tcp   open  domain
+80/tcp   open  http
+135/tcp  open  msrpc
+3389/tcp open  ms-wbt-server
+MAC Address: 02:52:E8:45:41:81 (Unknown)
+
+Nmap scan report for 172.17.2.251
+Host is up (0.00034s latency).
+Not shown: 993 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+111/tcp  open  rpcbind
+3389/tcp open  ms-wbt-server
+5901/tcp open  vnc-1
+6001/tcp open  X11:1
+8000/tcp open  http-alt
+MAC Address: 02:48:91:65:BD:25 (Unknown)
+
+Nmap scan report for 172.17.3.102
+Host is up (0.00039s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+MAC Address: 02:5E:D7:55:98:69 (Unknown)
+
+Nmap scan report for 172.17.3.145
+Host is up (0.00040s latency).
+Not shown: 994 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+8009/tcp open  ajp13
+8080/tcp open  http-proxy
+MAC Address: 02:0B:D6:DE:08:17 (Unknown)
+
+Nmap scan report for 172.17.3.222
+Host is up (0.00063s latency).
+Not shown: 996 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+3000/tcp open  ppp
+3306/tcp open  mysql
+8000/tcp open  http-alt
+MAC Address: 02:EA:E4:8D:35:D5 (Unknown)
+
+Nmap scan report for 172.17.4.16
+Host is up (0.00042s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+MAC Address: 02:BC:CF:5A:60:45 (Unknown)
+
+Nmap scan report for 172.17.4.245
+Host is up (0.00043s latency).
+Not shown: 999 closed ports
+PORT   STATE SERVICE
+80/tcp open  http
+MAC Address: 02:1B:90:56:B1:11 (Unknown)
+
+Nmap scan report for 172.17.5.56
+Host is up (0.00040s latency).
+Not shown: 989 filtered ports
+PORT     STATE SERVICE
+53/tcp   open  domain
+88/tcp   open  kerberos-sec
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+389/tcp  open  ldap
+445/tcp  open  microsoft-ds
+464/tcp  open  kpasswd5
+593/tcp  open  http-rpc-epmap
+3268/tcp open  globalcatLDAP
+3269/tcp open  globalcatLDAPssl
+3389/tcp open  ms-wbt-server
+MAC Address: 02:65:18:A8:61:85 (Unknown)
+
+Nmap scan report for 172.17.5.70
+Host is up (0.00041s latency).
+Not shown: 993 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+111/tcp  open  rpcbind
+3389/tcp open  ms-wbt-server
+5901/tcp open  vnc-1
+6001/tcp open  X11:1
+8000/tcp open  http-alt
+MAC Address: 02:CA:70:C1:9E:79 (Unknown)
+
+Nmap scan report for 172.17.6.21
+Host is up (0.00078s latency).
+Not shown: 997 closed ports
+PORT   STATE SERVICE
+21/tcp open  ftp
+22/tcp open  ssh
+80/tcp open  http
+MAC Address: 02:B8:CC:43:B2:A3 (Unknown)
+
+Nmap scan report for 172.17.6.42
+Host is up (0.00039s latency).
+Not shown: 993 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+111/tcp  open  rpcbind
+3389/tcp open  ms-wbt-server
+5901/tcp open  vnc-1
+6001/tcp open  X11:1
+8000/tcp open  http-alt
+MAC Address: 02:BB:E2:33:84:81 (Unknown)
+
+Nmap scan report for 172.17.6.97
+Host is up (0.00041s latency).
+Not shown: 999 filtered ports
+PORT     STATE SERVICE
+3389/tcp open  ms-wbt-server
+MAC Address: 02:0E:25:B5:C8:C9 (Unknown)
+
+Nmap scan report for 172.17.6.109
+Host is up (0.00035s latency).
+Not shown: 994 closed ports
+PORT    STATE SERVICE
+22/tcp  open  ssh
+80/tcp  open  http
+110/tcp open  pop3
+139/tcp open  netbios-ssn
+143/tcp open  imap
+445/tcp open  microsoft-ds
+MAC Address: 02:24:FE:18:84:57 (Unknown)
+
+Nmap scan report for 172.17.7.135
+Host is up (0.00047s latency).
+Not shown: 999 filtered ports
+PORT     STATE SERVICE
+3389/tcp open  ms-wbt-server
+MAC Address: 02:D8:26:76:FB:AD (Unknown)
+
+Nmap scan report for 172.17.8.131
+Host is up (0.00042s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+MAC Address: 02:17:83:5A:DB:ED (Unknown)
+
+Nmap scan report for 172.17.8.147
+Host is up (0.00039s latency).
+Not shown: 987 closed ports
+PORT     STATE SERVICE
+53/tcp   open  domain
+80/tcp   open  http
+88/tcp   open  kerberos-sec
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+389/tcp  open  ldap
+445/tcp  open  microsoft-ds
+464/tcp  open  kpasswd5
+593/tcp  open  http-rpc-epmap
+636/tcp  open  ldapssl
+3268/tcp open  globalcatLDAP
+3269/tcp open  globalcatLDAPssl
+3389/tcp open  ms-wbt-server
+MAC Address: 02:19:2D:59:0A:25 (Unknown)
+
+Nmap scan report for 172.17.9.82
+Host is up (0.00040s latency).
+Not shown: 999 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+MAC Address: 02:D4:35:10:25:9D (Unknown)
+
+Nmap scan report for 172.17.9.244
+Host is up (0.00040s latency).
+Not shown: 988 closed ports
+PORT      STATE SERVICE
+80/tcp    open  http
+135/tcp   open  msrpc
+139/tcp   open  netbios-ssn
+445/tcp   open  microsoft-ds
+3389/tcp  open  ms-wbt-server
+8080/tcp  open  http-proxy
+49152/tcp open  unknown
+49153/tcp open  unknown
+49154/tcp open  unknown
+49155/tcp open  unknown
+49156/tcp open  unknown
+49165/tcp open  unknown
+MAC Address: 02:F5:15:50:B2:01 (Unknown)
+
+Nmap scan report for 172.17.10.10
+Host is up (0.00036s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+MAC Address: 02:2D:3D:86:B5:2F (Unknown)
+
+Nmap scan report for 172.17.10.13
+Host is up (0.00042s latency).
+Not shown: 940 closed ports, 59 filtered ports
+PORT   STATE SERVICE
+80/tcp open  http
+MAC Address: 02:22:4F:91:46:D1 (Unknown)
+
+Nmap scan report for 172.17.10.100
+Host is up (0.00027s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+MAC Address: 02:A4:20:62:88:05 (Unknown)
+
+Nmap scan report for 172.17.10.127
+Host is up (0.00040s latency).
+Not shown: 502 closed ports, 492 filtered ports
+PORT    STATE SERVICE
+21/tcp  open  ftp
+22/tcp  open  ssh
+80/tcp  open  http
+111/tcp open  rpcbind
+139/tcp open  netbios-ssn
+445/tcp open  microsoft-ds
+MAC Address: 02:23:7E:B9:7F:BB (Unknown)
+
+Nmap scan report for 172.17.11.32
+Host is up (0.00044s latency).
+Not shown: 993 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+111/tcp  open  rpcbind
+3389/tcp open  ms-wbt-server
+5901/tcp open  vnc-1
+6001/tcp open  X11:1
+8000/tcp open  http-alt
+MAC Address: 02:9D:92:1B:90:4F (Unknown)
+
+Nmap scan report for 172.17.11.45
+Host is up (0.00039s latency).
+Not shown: 993 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+111/tcp  open  rpcbind
+3389/tcp open  ms-wbt-server
+5901/tcp open  vnc-1
+6001/tcp open  X11:1
+8000/tcp open  http-alt
+MAC Address: 02:BD:63:28:BA:31 (Unknown)
+
+Nmap scan report for 172.17.12.12
+Host is up (0.0011s latency).
+Not shown: 588 filtered ports, 408 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+111/tcp  open  rpcbind
+3389/tcp open  ms-wbt-server
+MAC Address: 02:70:B8:06:AF:85 (Unknown)
+
+Nmap scan report for 172.17.12.151
+Host is up (0.00041s latency).
+Not shown: 987 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+53/tcp   open  domain
+88/tcp   open  kerberos-sec
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+389/tcp  open  ldap
+445/tcp  open  microsoft-ds
+464/tcp  open  kpasswd5
+593/tcp  open  http-rpc-epmap
+636/tcp  open  ldapssl
+3268/tcp open  globalcatLDAP
+3269/tcp open  globalcatLDAPssl
+3389/tcp open  ms-wbt-server
+MAC Address: 02:61:15:62:FC:37 (Unknown)
+
+Nmap scan report for 172.17.12.227
+Host is up (0.00038s latency).
+Not shown: 988 filtered ports
+PORT     STATE  SERVICE
+21/tcp   closed ftp
+80/tcp   open   http
+111/tcp  open   rpcbind
+135/tcp  closed msrpc
+139/tcp  closed netbios-ssn
+199/tcp  closed smux
+554/tcp  closed rtsp
+587/tcp  closed submission
+993/tcp  closed imaps
+1025/tcp closed NFS-or-IIS
+1720/tcp closed h323q931
+1723/tcp closed pptp
+MAC Address: 02:EB:7A:90:E1:19 (Unknown)
+
+Nmap scan report for 172.17.12.252
+Host is up (0.00039s latency).
+Not shown: 997 closed ports
+PORT   STATE SERVICE
+21/tcp open  ftp
+22/tcp open  ssh
+80/tcp open  http
+MAC Address: 02:51:A6:B9:B5:8B (Unknown)
+
+Nmap scan report for 172.17.13.152
+Host is up (0.00043s latency).
+Not shown: 991 closed ports
+PORT      STATE SERVICE
+135/tcp   open  msrpc
+139/tcp   open  netbios-ssn
+445/tcp   open  microsoft-ds
+3389/tcp  open  ms-wbt-server
+49152/tcp open  unknown
+49153/tcp open  unknown
+49154/tcp open  unknown
+49158/tcp open  unknown
+49159/tcp open  unknown
+MAC Address: 02:A4:A2:53:8A:61 (Unknown)
+
+Nmap scan report for 172.17.13.202
+Host is up (0.00042s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+MAC Address: 02:7E:B0:19:F3:47 (Unknown)
+
+Nmap scan report for 172.17.13.249
+Host is up (0.00036s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+9999/tcp open  abyss
+MAC Address: 02:50:57:33:91:63 (Unknown)
+
+Nmap scan report for 172.17.14.79
+Host is up (0.022s latency).
+Not shown: 998 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+8000/tcp open  http-alt
+MAC Address: 02:E5:D9:7A:1D:79 (Unknown)
+
+Nmap scan report for 172.17.14.92
+Host is up (0.00042s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+9999/tcp open  abyss
+MAC Address: 02:AF:43:DE:41:B5 (Unknown)
+
+Nmap scan report for 172.17.14.156
+Host is up (0.00011s latency).
+All 1000 scanned ports on 172.17.14.156 are filtered
+MAC Address: 02:3A:4B:DD:20:CF (Unknown)
+
+Nmap scan report for 172.17.15.191
+Host is up (0.00038s latency).
+Not shown: 997 closed ports
+PORT   STATE SERVICE
+21/tcp open  ftp
+22/tcp open  ssh
+80/tcp open  http
+MAC Address: 02:10:F4:8B:EB:2D (Unknown)
+
+Nmap scan report for 172.17.16.110
+Host is up (0.00042s latency).
+Not shown: 993 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+111/tcp  open  rpcbind
+3389/tcp open  ms-wbt-server
+5901/tcp open  vnc-1
+6001/tcp open  X11:1
+8000/tcp open  http-alt
+MAC Address: 02:36:B9:57:2F:F1 (Unknown)
+
+Nmap scan report for 172.17.16.188
+Host is up (0.00064s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+3389/tcp open  ms-wbt-server
+MAC Address: 02:C8:D5:F9:A1:55 (Unknown)
+
+Nmap scan report for 172.17.16.206
+Host is up (0.00039s latency).
+Not shown: 993 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+111/tcp  open  rpcbind
+3389/tcp open  ms-wbt-server
+5901/tcp open  vnc-1
+6001/tcp open  X11:1
+8000/tcp open  http-alt
+MAC Address: 02:16:3D:09:E0:8D (Unknown)
+
+Nmap scan report for 172.17.17.184
+Host is up (0.00041s latency).
+Not shown: 997 closed ports
+PORT    STATE SERVICE
+22/tcp  open  ssh
+139/tcp open  netbios-ssn
+445/tcp open  microsoft-ds
+MAC Address: 02:A3:65:4D:AA:17 (Unknown)
+
+Nmap scan report for 172.17.18.144
+Host is up (0.00034s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+MAC Address: 02:AD:73:66:0A:99 (Unknown)
+
+Nmap scan report for 172.17.19.63
+Host is up (0.00036s latency).
+Not shown: 998 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+5000/tcp open  upnp
+MAC Address: 02:BC:92:E4:62:A1 (Unknown)
+
+Nmap scan report for 172.17.19.181
+Host is up (0.00039s latency).
+Not shown: 993 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+111/tcp  open  rpcbind
+3389/tcp open  ms-wbt-server
+5901/tcp open  vnc-1
+6001/tcp open  X11:1
+8000/tcp open  http-alt
+MAC Address: 02:2A:62:4B:8E:89 (Unknown)
+
+Nmap scan report for 172.17.19.249
+Host is up (0.00038s latency).
+Not shown: 996 closed ports
+PORT    STATE SERVICE
+22/tcp  open  ssh
+53/tcp  open  domain
+80/tcp  open  http
+443/tcp open  https
+MAC Address: 02:1B:87:F5:9F:19 (Unknown)
+
+Nmap scan report for 172.17.20.147
+Host is up (0.00033s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+8000/tcp open  http-alt
+8089/tcp open  unknown
+MAC Address: 02:B0:FB:F6:84:21 (Unknown)
+
+Nmap scan report for 172.17.21.5
+Host is up (0.00041s latency).
+Not shown: 988 closed ports
+PORT      STATE SERVICE
+80/tcp    open  http
+135/tcp   open  msrpc
+139/tcp   open  netbios-ssn
+445/tcp   open  microsoft-ds
+3389/tcp  open  ms-wbt-server
+8080/tcp  open  http-proxy
+49152/tcp open  unknown
+49153/tcp open  unknown
+49154/tcp open  unknown
+49155/tcp open  unknown
+49156/tcp open  unknown
+49163/tcp open  unknown
+MAC Address: 02:21:1E:03:0A:F3 (Unknown)
+
+Nmap scan report for 172.17.21.165
+Host is up (0.00042s latency).
+Not shown: 994 closed ports
+PORT     STATE SERVICE
+21/tcp   open  ftp
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+2049/tcp open  nfs
+MAC Address: 02:B1:5A:CC:84:85 (Unknown)
+
+Nmap scan report for 172.17.22.221
+Host is up (0.00061s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+MAC Address: 02:1B:60:C8:E4:33 (Unknown)
+
+Nmap scan report for 172.17.22.241
+Host is up (0.00043s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+9999/tcp open  abyss
+MAC Address: 02:9B:AF:2A:E4:3F (Unknown)
+
+Nmap scan report for 172.17.22.251
+Host is up (0.00054s latency).
+Not shown: 831 filtered ports, 168 closed ports
+PORT   STATE SERVICE
+80/tcp open  http
+MAC Address: 02:2D:A3:30:B2:75 (Unknown)
+
+Nmap scan report for 172.17.23.113
+Host is up (0.00068s latency).
+Not shown: 543 closed ports, 451 filtered ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+111/tcp  open  rpcbind
+3389/tcp open  ms-wbt-server
+5901/tcp open  vnc-1
+6001/tcp open  X11:1
+MAC Address: 02:24:8E:FC:61:3B (Unknown)
+
+Nmap scan report for 172.17.23.206
+Host is up (0.00035s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+9999/tcp open  abyss
+MAC Address: 02:E0:98:FC:13:FD (Unknown)
+
+Nmap scan report for 172.17.23.217
+Host is up (0.00059s latency).
+Not shown: 999 filtered ports
+PORT     STATE SERVICE
+3389/tcp open  ms-wbt-server
+MAC Address: 02:5B:51:D6:3D:89 (Unknown)
+
+Nmap scan report for 172.17.23.240
+Host is up (0.00045s latency).
+Not shown: 997 filtered ports
+PORT    STATE  SERVICE
+22/tcp  closed ssh
+80/tcp  open   http
+443/tcp open   https
+MAC Address: 02:4B:7C:C8:7C:F7 (Unknown)
+
+Nmap scan report for 172.17.24.185
+Host is up (0.00038s latency).
+Not shown: 993 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+111/tcp  open  rpcbind
+3389/tcp open  ms-wbt-server
+5901/tcp open  vnc-1
+6001/tcp open  X11:1
+8000/tcp open  http-alt
+MAC Address: 02:4E:D0:93:3D:B9 (Unknown)
+
