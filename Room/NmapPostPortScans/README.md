@@ -235,11 +235,27 @@ Finally, you might expand the functionality of Nmap beyond the official Nmap scr
 
 * Knowing that Nmap scripts are saved in `/usr/share/nmap/scripts` on the AttackBox. What does the script `http-robots.txt` check for?
 
+    `Disallowed Entries`
+
+    ![task4-robot](./images/task4-robot.png)
+
 * Can you figure out the name for the script that checks for the remote code execution vulnerability MS15-034 (CVE2015-1635)?
+
+    `http-vuln-cve2015-1635`
+
+    ![task4-cve](./images/task4-cve.png)
 
 * Launch the AttackBox if you haven't already. After you ensure you have terminated the VM from Task 2, start the target machine for this task. On the AttackBox, run Nmap with the default scripts `-sC` against `MACHINE_IP`. You will notice that there is a service listening on port 53. What is its full version value?
 
+    `9.9.5-9+deb8u19-Debian`
+
+    ![task4-sc-scan](./images/task4-sc-scan.png)
+    
 * Based on its description, the script `ssh2-enum-algos` “reports the number of algorithms (for encryption, compression, etc.) that the target SSH2 server offers.” What is the name of the key exchange algorithms (kex_algorithms) that relies upon “sha1” and is supported by `MACHINE_IP`?
+
+    `diffie-hellman-group14-sha1`
+
+    ![task4-script-scan](./images/task4-script-scan.png)
 
 ## Task 5 - Saving the Output
 
@@ -252,7 +268,6 @@ Whenever you run a Nmap scan, it is only reasonable to save the results in a fil
 There is a fourth one that we cannot recommend:
 
 * Script Kiddie
-
 
 ### Normal
 
@@ -286,9 +301,19 @@ Terminate the target machine of the previous task and start the target machine f
 
 Note that the username `pentester` has the password `THM17577`
 
+![task5-scp](./images/task5-scp.png)
+
 * Check the attached Nmap logs. How many systems are listening on the HTTPS port?
 
+    `3`
+
+    ![tak5-https](./images/tak5-https.png)
+
 * What is the IP address of the system listening on port 8089?
+
+    `172.17.20.147`
+
+    ![task5-8089](./images/task5-8089.png)
 
 ## Task 6 - Summary
 
