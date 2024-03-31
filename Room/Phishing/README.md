@@ -48,7 +48,11 @@ Next, you'll learn what goes on in setting up the infrastructure for a red team 
 
 * What type of psychological manipulation is phishing part of?
 
+    `Social Engineering`
+
 * What type of phishing campaign do red teams get involved in?
+
+    `spear-phishing`
 
 ## Task 3 - Writing Convincing Phishing Emails
 
@@ -90,7 +94,11 @@ If you've set up a spoof website to harvest data or distribute malware, the link
 
 * What tactic can be used to find brands or people a victim interacts with?
 
+    `OSINT`
+
 * What should be changed on an HTML anchor tag to disguise a link?
+
+    `anchor text`
 
 ## Task 4 - Phishing Infrastructure
 
@@ -140,9 +148,15 @@ The Social Engineering Toolkit contains a multitude of tools, but some of the im
 
 * What part of a red team infrastructure can make a website look more authentic?
 
+    `SSL/TLS Certificates`
+
 * What protocol has TXT records that can improve email deliverability?
 
+    `DNS`
+
 * What tool can automate a phishing campaign and include analytics?
+
+    `GoPhish`
 
 ## Task 5 - Using GoPhish
 
@@ -283,6 +297,10 @@ Expanding Brian's details and then viewing the details for the submitted data, y
 
 * What is the password for Brian?
 
+    `p4$$w0rd!`
+
+    ![task5-brian](./images/task5-brian.png)
+
 ## Task 6 - Droppers
 
 Droppers are software that phishing victims tend to be tricked into downloading and running on their system. The dropper may advertise itself as something useful or legitimate such as a codec to view a certain video or software to open a specific file.
@@ -292,6 +310,8 @@ The droppers are not usually malicious themselves, so they tend to pass antiviru
 ### Answer the questions below
 
 * Do droppers tend to be malicious?
+
+    `Nay`
 
 ## Task 7 - Choosing A Phishing Domain
 
@@ -328,7 +348,11 @@ Originally domain names were made up of Latin characters a-z and 0-9, but in 199
 
 * What is better, using an expired or new domain? (old/new)
 
+    `OLD`
+
 * What is the term used to describe registering a similar domain name with a spelling error?
+
+    `Typosquatting`
 
 ## Task 8 - Using MS Office In Phishing
 
@@ -346,6 +370,8 @@ Once the staff member opened the attachment and enabled the macros, their comput
 
 * What can Microsoft Office documents contain, which, when executed can run computer commands?
 
+    `Macros`
+
 ## Task 9 - Using Browser Exploits
 
 Another method of gaining control over a victim's computer could be through browser exploits; this is when there is a vulnerability against a browser itself (Internet Explorer/Edge, Firefox, Chrome, Safari, etc.), which allows the attacker to run remote commands on the victim's computer.
@@ -362,6 +388,8 @@ An example of this is [CVE-2021-40444](https://msrc.microsoft.com/update-guide/v
 
 * Which recent CVE caused remote code execution?
 
+    ` CVE-2021-40444`
+
 ## Task 10 - Phishing Practical
 
 Now that you've learnt what goes into a phishing email campaign, let's see if you're able to spot them! Click the green "View Site" button to launch the Phishing Test website. Examine each email, including where it's from, its links and attachments and decide whether you think the email is safe or not.
@@ -369,3 +397,5 @@ Now that you've learnt what goes into a phishing email campaign, let's see if yo
 ### Answer the questions below
 
 * What is the flag from the challenge?
+
+    `THM{I_CAUGHT_ALL_THE_PHISH}`
