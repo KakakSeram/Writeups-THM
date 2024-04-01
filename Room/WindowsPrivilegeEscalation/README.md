@@ -52,8 +52,12 @@ These accounts are created and managed by Windows, and you won't be able to use 
 
 * Users that can change system configurations are part of which group?
 
+	`Administrators `
+
 * The SYSTEM account has more privileges than the Administrator user (aye/nay)
 
+	`Aye`
+	
 ## Task 3 - Harvesting Passwords from Usual Spots
 
 The easiest way to gain access to another user is to gather credentials from a compromised machine. Such credentials could exist for many reasons, including a careless user leaving them around in plaintext files; or even stored by some software like browsers or email clients.
