@@ -602,34 +602,84 @@ $s.Send($length)
 $s.Send($command)
 ```
 
-You can pop a Powershell console and paste the exploit directly to execute it (The exploit is also available in the target machine at C:\tools\Druva_inSync_exploit.txt). Note that the exploit's default payload, specified in the $cmd variable, will create a user named pwnd in the system, but won't assign him administrative privileges, so we will probably want to change the payload for something more useful. For this room, we will change the payload to run the following command:
+You can pop a Powershell console and paste the exploit directly to execute it (The exploit is also available in the target machine at `C:\tools\Druva_inSync_exploit.txt`). Note that the exploit's default payload, specified in the `$cmd` variable, will create a user named `pwnd` in the system, but won't assign him administrative privileges, so we will probably want to change the payload for something more useful. For this room, we will change the payload to run the following command:
 
+```
 net user pwnd SimplePass123 /add & net localgroup administrators pwnd /add
+```
 
-This will create user pwnd with a password of SimplePass123 and add it to the administrators' group. If the exploit was successful, you should be able to run the following command to verify that the user pwnd exists and is part of the administrators' group:
-Command Prompt
+This will create user `pwnd` with a password of `SimplePass123` and add it to the administrators' group. If the exploit was successful, you should be able to run the following command to verify that the user `pwnd` exists and is part of the administrators' group:
 
-PS C:\> net user pwnd
-User name                    pwnd
-Full Name
-Account active               Yes
-[...]
-
-Local Group Memberships      *Administrators       *Users
-Global Group memberships     *None
-
-        
+![task7-pwnd](./images/task7-pwnd.png)
 
 As a last step, you can run a command prompt as administrator:
 
-Run Command Prompt as Pwnd
+![task6-runas](./images/task6-runas.png)
 
-When prompted for credentials, use the pwnd account. From the new command prompt, you can retrieve your flag from the Administrator's desktop with the following command type C:\Users\Administrator\Desktop\flag.txt.
-Answer the questions below
-Get the flag on the Administrator's desktop.
+When prompted for credentials, use the `pwnd` account. From the new command prompt, you can retrieve your flag from the Administrator's desktop with the following command `type C:\Users\Administrator\Desktop\flag.txt`.
 
+### Answer the questions below
+
+* Get the flag on the Administrator's desktop.
 
 ## Task 8 - Tools of the Trade
 
+Several scripts exist to conduct system enumeration in ways similar to the ones seen in the previous task. These tools can shorten the enumeration process time and uncover different potential privilege escalation vectors. However, please remember that automated tools can sometimes miss privilege escalation.
+
+Below are a few tools commonly used to identify privilege escalation vectors. Feel free to run them against any of the machines in this room and see if the results match the discussed attack vectors.
+
+### WinPEAS
+
+WinPEAS is a script developed to enumerate the target system to uncover privilege escalation paths. You can find more information about winPEAS and download either the precompiled executable or a .bat script. WinPEAS will run commands similar to the ones listed in the previous task and print their output. The output from winPEAS can be lengthy and sometimes difficult to read. This is why it would be good practice to always redirect the output to a file, as shown below:
+
+![task8-winpeas](./images/task8-winpeas.png)
+
+WinPEAS can be downloaded [here](https://github.com/carlospolop/PEASS-ng/tree/master/winPEAS).
+
+### PrivescCheck
+
+PrivescCheck is a PowerShell script that searches common privilege escalation on the target system. It provides an alternative to WinPEAS without requiring the execution of a binary file.
+
+PrivescCheck can be downloaded [here](https://github.com/itm4n/PrivescCheck).
+
+**Reminder**: To run PrivescCheck on the target system, you may need to bypass the execution policy restrictions. To achieve this, you can use the `Set-ExecutionPolicy` cmdlet as shown below.
+
+![task8-setpolicy](./images/task8-setpolicy.png)
+
+### WES-NG: Windows Exploit Suggester - Next Generation
+
+Some exploit suggesting scripts (e.g. winPEAS) will require you to upload them to the target system and run them there. This may cause antivirus software to detect and delete them. To avoid making unnecessary noise that can attract attention, you may prefer to use WES-NG, which will run on your attacking machine (e.g. Kali or TryHackMe AttackBox).
+
+WES-NG is a Python script that can be found and downloaded [here](https://github.com/bitsadmin/wesng).
+
+Once installed, and before using it, type the `wes.py --update` command to update the database. The script will refer to the database it creates to check for missing patches that can result in a vulnerability you can use to elevate your privileges on the target system.
+
+To use the script, you will need to run the `systeminfo` command on the target system. Do not forget to direct the output to a .txt file you will need to move to your attacking machine.
+
+Once this is done, wes.py can be run as follows;
+
+![task8-systeminfo](./images/task8-systeminfo.png)
+
+### Metasploit
+
+If you already have a Meterpreter shell on the target system, you can use the `multi/recon/local_exploit_suggester` module to list vulnerabilities that may affect the target system and allow you to elevate your privileges on the target system.
+
+### Answer the questions below
+
+* Click and continue learning!
 
 ## Task 9 - Conclusion
+
+In this room, we have introduced several privilege escalation techniques available in Windows systems. These techniques should provide you with a solid background on the most common paths attackers can take to elevate privileges on a system. Should you be interested in learning about additional techniques, the following resources are available:
+
+* [PayloadsAllTheThings - Windows Privilege Escalation](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md)
+* [Priv2Admin - Abusing Windows Privileges](https://github.com/gtworek/Priv2Admin)
+* [RogueWinRM Exploit](https://github.com/antonioCoco/RogueWinRM)
+* [Potatoes](https://jlajara.gitlab.io/others/2020/11/22/Potatoes_Windows_Privesc.html)
+* [Decoder's Blog](https://decoder.cloud/)
+* [Token Kidnapping](https://dl.packetstormsecurity.net/papers/presentations/TokenKidnapping.pdf)
+* [Hacktricks - Windows Local Privilege Escalation](https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation)
+
+### Answer the questions below
+
+* Click and continue learning!
