@@ -31,8 +31,9 @@ Before jumping into the actual techniques, let's look at the different account t
 
 Windows systems mainly have two kinds of users. Depending on their access levels, we can categorise a user in one of the following groups:
 
-|----------------|--------|
+
 |**Administrators**|These users have the most privileges. They can change any system configuration parameter and access any file in the system.|
+|--------------|----------------------------------------------------------------------------------------------------------------|
 |**Standard Users**|These users can access the computer but only perform limited tasks. Typically these users can not make permanent or essential changes to the system and are limited to their files.|
 
 Any user with administrative privileges will be part of the **Administrators** group. On the other hand, standard users are part of the **Users** group.
