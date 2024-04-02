@@ -145,13 +145,48 @@ Just as putty stores credentials, any software that stores passwords, including 
 
 ### Answer the questions below
 
+Run RDP from kali linux
+
+```
+xfreerdp /dynamic-resolution +clipboard /cert:ignore /v:$IP /u:thm-unpriv /p:'Password321'
+```
+
+![task2-RDP](./images/task2-RDP.png)
+
 * A password for the julia.jones user has been left on the Powershell history. What is the password?
+
+	`ZuperCkretPa5z`
+
+	![task3-julia.jones](./images/task3-julia.jones.png)
 
 * A web server is running on the remote host. Find any interesting password on web.config files associated with IIS. What is the password of the db_admin user?
 
+	`098n0x35skjD3`
+
+	![task3-db_admin](./images/task3-db_admin.png)
+
 * There is a saved password on your Windows credentials. Using cmdkey and runas, spawn a shell for mike.katz and retrieve the flag from his desktop.
 
+	`THM{WHAT_IS_MY_PASSWORD}`
+
+	* Windows credential
+		
+		```
+		cmdkey /list
+		runas /savecred /user:mike.katz cmd.exe
+		```
+
+		![task3-cmdkey](./images/task3-cmdkey)
+
+	* Cmd.exe run as mike.katz
+		
+		![task3-flag](./images/task3-flag.png)
+
 * Retrieve the saved password stored in the saved PuTTY session under your profile. What is the password for the thom.smith user?
+
+	`CoolPass2021`
+
+	![task3-thom.smith](./images/task3-thom.smith.png)
 
 ## Task 4 - Other Quick Wins
 
@@ -214,6 +249,16 @@ As this is a reverse shell, you should also run the Metasploit Handler module co
 ### Answer the questions below
 
 * What is the taskusr1 flag?
+
+	`THM{TASK_COMPLETED}`
+
+	On target cmd.exe windows
+
+	![task5-schtask](./images/task5-schtask.png)
+
+	On our machine
+	
+	![task4-flag](./images/task4-flag.png)
 
 ## Task 5 - Abusing Service Misconfigurations
 
