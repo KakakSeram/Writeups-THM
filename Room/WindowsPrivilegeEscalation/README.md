@@ -151,7 +151,7 @@ Run RDP from kali linux
 xfreerdp /dynamic-resolution +clipboard /cert:ignore /v:$IP /u:thm-unpriv /p:'Password321'
 ```
 
-![task3-RDP](./images/task2-RDP.png)
+![task3-RDP](./images/task3-RDP.png)
 
 * A password for the julia.jones user has been left on the Powershell history. What is the password?
 
@@ -254,7 +254,7 @@ As this is a reverse shell, you should also run the Metasploit Handler module co
 
 	On target cmd.exe windows
 
-	![task4-schtask](./images/task5-schtask.png)
+	![task4-schtask](./images/task4-schtask.png)
 
 	On our machine
 	
