@@ -151,7 +151,7 @@ Run RDP from kali linux
 xfreerdp /dynamic-resolution +clipboard /cert:ignore /v:$IP /u:thm-unpriv /p:'Password321'
 ```
 
-![task2-RDP](./images/task2-RDP.png)
+![task3-RDP](./images/task2-RDP.png)
 
 * A password for the julia.jones user has been left on the Powershell history. What is the password?
 
@@ -176,7 +176,7 @@ xfreerdp /dynamic-resolution +clipboard /cert:ignore /v:$IP /u:thm-unpriv /p:'Pa
 		runas /savecred /user:mike.katz cmd.exe
 		```
 
-		![task3-cmdkey](./images/task3-cmdkey)
+		![task3-cmdkey](./images/task3-cmdkey.png)
 
 	* Cmd.exe run as mike.katz
 		
@@ -254,7 +254,7 @@ As this is a reverse shell, you should also run the Metasploit Handler module co
 
 	On target cmd.exe windows
 
-	![task5-schtask](./images/task5-schtask.png)
+	![task4-schtask](./images/task5-schtask.png)
 
 	On our machine
 	
@@ -406,7 +406,7 @@ We will then transfer the reverse shell executable to the target machine and sto
 
 To change the service's associated executable and account, we can use the following command (mind the spaces after the equal signs when using sc.exe):
 
-![task5-sc-svc](./images.task5-sc-svc.png)
+![task5-sc-svc](./images/task5-sc-svc.png)
 
 Notice we can use any account to run the service. We chose LocalSystem as it is the highest privileged account available. To trigger our payload, all that rests is restarting the service:
 
@@ -617,7 +617,7 @@ Notice that being the owner of a file doesn't necessarily mean that you have pri
 
 After this, we will replace utilman.exe with a copy of cmd.exe:
 
-![task6-copy-utilman](./images/task6-copy-utilman.png.png)
+![task6-copy-utilman](./images/task6-copy-utilman.png)
 
 To trigger utilman, we will lock our screen from the start button:
 
@@ -716,7 +716,7 @@ Using any of the three methods discussed in this task, gain access to the Admini
 		python3 /usr/share/doc/python3-impacket/examples/smbserver.py -smb2support -username THMBackup -password CopyMaster555 public share
 		```
 
-		![task6-smb](./images/task6-smb)
+		![task6-smb](./images/task6-smb.png)
 
 	* Copy file SAM and SYSTEM hashes from target machine to our attacker machine
 	
