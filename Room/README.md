@@ -22,5 +22,6 @@ This the list of all the writeups I made.
 |16.|[Nmap Post Port Scans](./NmapPostPortScans/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/nmap04)|Medium|
 |17.|[Phishing](./Phishing/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/phishingyl)|Medium|
 |18.|[Windows Privilege Escalation](./WindowsPrivilegeEscalation/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/windowsprivesc20)|Medium|
+|19.|[Windows Local Persistence](./WindowsLocalPersistence/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/windowslocalpersistence)|Medium|
 
 Writeups made with :heart: by @KakakSeram
