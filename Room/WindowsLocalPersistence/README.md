@@ -448,7 +448,7 @@ Finally, create a listener for your reverse shell and try to open any .txt file 
 
     * Double-click the shortcut and get the flag
 
-        ![task3-shell]
+        ![task3-shell](./images/task3-shell.png)
 
 * Insert flag6 here
 
