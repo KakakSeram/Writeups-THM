@@ -159,7 +159,7 @@ If you check your user's group memberships, it will look like a regular user. No
 
 Once again, we'll assume we have already dumped the credentials on the server and have thmuser2's password. Let's connect with its credentials using WinRM:
 
-![task2-account3](./images/task2-account3.png.png)
+![task2-account3](./images/task2-account3.png)
 
 We can log in with those credentials to obtain the flag.
 
@@ -416,7 +416,7 @@ Finally, create a listener for your reverse shell and try to open any .txt file 
 
     * Transfer file to target machine and modify the taget shortcut
 
-        ![task3-puttyX](./images/task3-puttyX)
+        ![task3-puttyX](./images/task3-puttyX.png)
 
     * Set listener
 
@@ -578,7 +578,7 @@ You can then query the service's configuration again to check if all went as exp
 
     * Setup listener on our machine
 
-        ![task3-listener2](./images/task3-listener2)
+        ![task3-listener2](./images/task3-listener2.png)
 
     * Setup the service
 
@@ -612,7 +612,7 @@ You can then query the service's configuration again to check if all went as exp
 
     * Setup listener on our machine
 
-        ![task3-listener4](./images/task3-listener4)
+        ![task3-listener4](./images/task3-listener4.png)
 
     * Reconfigure "THMservice3" parameters
 
