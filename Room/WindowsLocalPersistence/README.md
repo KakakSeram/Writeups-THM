@@ -1202,7 +1202,61 @@ With all that ready, let's navigate to http://MACHINE_IP/ and insert an employee
 
 * Insert flag16 here
 
+    `THM{EZ_WEB_PERSISTENCE}`
+
+    * Transfer our webshell to target machine
+
+        ![task8-download](./images/task8-download.png)
+
+    * Move our payload to `C:\inetpub\wwwroot`
+
+        ![task8-move](./images/task8-move.png)
+
+    * Set permission access for everyone 
+
+        `icacls shell.aspx /grant Everyone:F`
+
+        ![task8-permission](./images/task8-permission.png)
+
+    * Access webshell via browser `http://10.10.148.255/shell.aspx`
+
+        ![task8-flag16](./images/task8-flag16.png)
+
 * Insert flag17 here
+
+    `THM{I_LIVE_IN_YOUR_DATABASE}`
+
+    * Enable `xp_cmdshell`
+
+        ![task8-cmdshell](./images/task8-cmdshell.png)
+
+    * Grant privileges to all users to impersonate the sa user
+
+        ![task8-impersonate](./images/task8-impersonate.png)
+
+    *  Start by changing to the HRDB database
+
+        ![task8-HRDB](./images/task8-HRDB.png)
+
+    * Create SQL-Backdoor
+
+        ![task8-sql-backdoor](./images/task8-sql-backdoor.png)
+
+    * Create `evilscript.ps1` 
+
+        ![task8-script](./images/task8-script.png)
+
+    * Create listener and http.server on our machine
+
+        ![task8-listener](./images/task8-listener.png)
+
+    * Let's navigate to `http://10.10.148.255/` and insert an employee into the web application
+
+        ![task8-update](./images/task8-update.png)
+
+    * Get the shell dan flag
+
+        ![task8-flag17](./images/task8-flag17.png)
 
 ## Task 9 - Conclusion
 
