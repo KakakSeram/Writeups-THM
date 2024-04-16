@@ -280,20 +280,73 @@ Now that you've understood how Powershell works let's try some commands to apply
 ### Answer the questions below
 
 * What is the location of the file "interesting-file.txt"
+
+    `C:\Program Files`
+
+    ```
+    Get-ChildItem “*interesting-file*” -Path C:\ -Recurse -ErrorAction SilentlyContinue
+    ```
+
+    ![task3-file](./images/task3-file.png)
  
 * Specify the contents of this file
 
+    `notsointerestingcontent`
+
+    ```
+    Get-ChildItem “*interesting-file*” -Path C:\ -Recurse -ErrorAction SilentlyContinue | Get-Content
+    ```
+
+    ![task3-content](./images/task3-content.png)
+
 * How many cmdlets are installed on the system(only cmdlets, not functions and aliases)?
+
+    `6638`
+
+    ```
+    (Get-Command | Where-Object {$_.CommandType -eq “Cmdlet”}).Count
+    
+    or
+    
+    Get-Command | Where-Object -Property CommandType -eq Cmdlet | measure
+    ```
+
+    ![task3-count](./images/task3-count.png)
 
 * Get the MD5 hash of interesting-file.txt
 
+    `49A586A2A9456226F8A1B4CEC6FAB329`
+
+    ```
+    Get-ChildItem “*interesting-file*” -Path C:\ -Recurse -ErrorAction SilentlyContinue | Get-FileHash -Algorithm MD5
+    ```
+
+    ![task3-md5](./images/task3-md5.png)
+
 * What is the command to get the current working directory?
+    
+    `Get-Location`
 
 * Does the path "C:\Users\Administrator\Documents\Passwords" Exist (Y/N)?
 
+    `N`
+
+    ![task3-path](./images/task3-path.png)
+
 * What command would you use to make a request to a web server?
+    
+    `Invoke-WebRequest`
 
 * Base64 decode the file b64.txt on Windows. 
+
+    `ihopeyoudidthisonwindows`
+
+    ```
+    certutil -decode "C:\Users\Administrator\Desktop\b64.txt" decode.txt
+    Get-Content .\decode.txt
+    ```
+
+    ![task3-decode](./images/task3-decode.png)
 
 ## Task 4 - Enumeration
 
@@ -311,14 +364,60 @@ Your task will be to answer the following questions to enumerate the machine usi
 ### Answer the questions below
 
 * How many users are there on the machine?
+    
+    `5`
+
+    ```
+    Get-LocalUser
+
+    or
+
+    (Get-LocalUser).Name.Count
+    ```
+
+    ![task4-user](./images/task4-user.png)
 
 * Which local user does this SID(S-1-5-21-1394777289-3961777894-1791813945-501) belong to?
 
+    `Guest`
+
+    ```
+    Get-LocalUser -SID "S-1-5-21-1394777289-3961777894-1791813945-501"
+    ```
+
+    ![task4-SID](./images/task4-SID.png)
+
 * How many users have their password required values set to False?
+
+    `4`
+
+    ```
+    Get-LocalUser | Where-Object -Property PasswordRequired -Match false
+
+    or 
+
+    (Get-LocalUser | Where-Object -Property PasswordRequired -Match false).count
+    ```
+
+    ![task4-password](./images/task4-password.png)
 
 * How many local groups exist?
 
+    `24`
+
+    ```
+    Get-LocalGroup
+
+    or 
+
+    Get-LocalGroup | measure
+    ```
+
+    ![task4-group](./images/task4-group.png)
+
 * What command did you use to get the IP address info?
+    
+    `Get-NetIPAddress`
 
 * How many ports are listed as listening?
 
