@@ -19,6 +19,12 @@ You can control the machine in your browser or RDP into the instance with the fo
 
 * Read the above and deploy the machine!
 
+    ```
+    xfreerdp /dynamic-resolution +clipboard /cert:ignore /v:$IP /u:Administrator /p:'BHN2UVw0Q'
+    ```
+
+    ![task1-xfreerdp](./images/task1-xfreerdp.png)
+
 ## Task 2 - What is Powershell?
 
 Powershell is the Windows Scripting Language and shell environment built using the .NET framework.
@@ -421,21 +427,103 @@ Your task will be to answer the following questions to enumerate the machine usi
 
 * How many ports are listed as listening?
 
+    `20`
+
+    ```
+    GEt-NetTCPConnection | Where-Object -Property State -Match Listen | measure
+    ```
+
+    ![task4-listenport](./images/task4-listenport.png)
+
 * What is the remote address of the local port listening on port 445?
+
+    `::`
+
+    ```
+    GEt-NetTCPConnection | Where-Object -Property LocalPort -eq 445
+
+    or 
+
+    Get-NetTCPConnection | Where-Object {($_.State -eq “Listen”) -and ($_.LocalPort -eq “445”)}
+    ```
+
+    ![task4-port445](./images/task4-port445.png)
 
 * How many patches have been applied?
 
+    `20`
+
+    ```
+    Get-Hotfix | measure
+    ```
+
+    ![task4-hotfix](./images/task4-hotfix.png)
+
 * When was the patch with ID KB4023834 installed?
+
+    `6/15/2017 12:00:00 AM`
+
+    ```
+    Get-Hotfix -Id KB4023834
+
+    or
+
+    Get-HotFix | Where-Object {$_.HotFixID -eq “KB4023834”} | Select-Object * | Select-Object InstalledOn
+    ```
+
+    ![task4-InstalledOn](./images/task4-InstalledOn.png)
 
 * Find the contents of a backup file.
 
+    `backpassflag`
+
+    ```
+    Get-ChildItem “*.bak*” -Path C:\ -Recurse -ErrorAction SilentlyContinue | Get-Content
+    ```
+
+    ![task4-backup](./images/task4-backup.png)
+
 * Search for all files containing API_KEY
 
+    `fakekey123`
+
+    ```
+    Get-ChildItem -Path C:\Users -Recurse -ErrorAction SilentlyContinue | Select-String “API_KEY”
+    ```
+
+    ![task4-apikey](./images/task4-apikey.png)
+
 * What command do you do to list all the running processes?
+    
+    `Get-Process`
 
 * What is the path of the scheduled task called new-sched-task?
 
+    `/`
+
+    ```
+    Get-ScheduledTask -TaskName new-sched-task
+
+    or 
+
+    (Get-ScheduledTask | Where-Object {$_.TaskName -eq “new-sched-task”}).TaskPath
+    ```
+
+    ![task4-task](./images/task4-task.png)
+
 * Who is the owner of the C:\
+
+    `NT SERVICE\TrustedInstaller`
+
+    ```
+    Get-Acl c:/
+
+    or 
+
+    (Get-Acl -Path “C:\”).Owner
+    ```
+
+    ![task4-owner](./images/task4-owner.png)
 
 ## Task 5 - Basic Scripting Challenge
 
@@ -479,11 +567,36 @@ Scripting may be a bit difficult, but [here](https://learnxinyminutes.com/docs/p
 
 ### Answer the questions below
 
+* Create script file as "Run.ps1" and execute the file
+
+    ```
+    $path = 'C:\Users\Administrator\Desktop\emails\*'
+    $word = 'password'
+    $exec = Get-ChildItem $path -recurse | Select-String -pattern $word
+    echo $exec
+    ```
+
+
+
 * What file contains the password?
+
+    `Doc3M`
 
 * What is the password?
 
+    `johnisalegend99`
+
 * What files contains an HTTPS link?
+
+    `Doc2Mary`
+
+    Edit script on "Run.ps1" and execute the file
+
+    ```
+    $word = 'https'
+    ```
+
+    ![task5-https](./images/task5-https.png)
 
 ## Task 6 - Intermediate Scripting
 
@@ -498,3 +611,25 @@ Why don't you try writing a simple port scanner using Powershell? Here's the gen
 ### Answer the questions below
 
 * How many open ports did you find between 130 and 140(inclusive of those two)?
+
+    `11`
+
+    Create script file as "Run.ps1" and execute the script
+
+    ```
+    # Determine IP ranges to scan(in this case it will be localhost) and you can provide the input in any way you want
+    $Target = "localhost"
+
+    # Determine the port ranges to scan
+    $LowEnd = 130
+    $HighEnd = 140
+
+    # Determine the type of scan to run(in this case it will be a simple TCP Connect Scan)
+    for($X=$LowEnd; $X -le $HighEnd; $X++){
+    (Test-NetConnection -ErrorAction SilentlyContinue $Target -Port $X).RemotePort | Out-File .\Ports.txt -Append
+    }
+
+    Get-Content .\Ports.txt | Measure
+    ```
+
+    ![task6-run](./images/task6-run.png)
