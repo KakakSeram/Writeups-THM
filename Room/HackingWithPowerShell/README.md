@@ -576,7 +576,7 @@ Scripting may be a bit difficult, but [here](https://learnxinyminutes.com/docs/p
     echo $exec
     ```
 
-
+![task5-password](./images/task5-password.png)
 
 * What file contains the password?
 
