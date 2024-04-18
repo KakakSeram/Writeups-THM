@@ -127,6 +127,8 @@ A detailed room on phishing can be found [here](https://tryhackme.com/module/phi
 
 * What popular website can be used to verify if your email address or password has ever been exposed in a publicly disclosed data breach?
 
+    `HaveIBeenPwned `
+
 ## Task 3 - NTLM Authenticated Services
 
 ### NTLM and NetNTLM
@@ -207,12 +209,23 @@ Using a combination of OSINT and NetNTLM password spraying, we now have our firs
 
 * What is the name of the challenge-response authentication mechanism that uses NTLM?
 
+    `NetNTLM`
+
 * What is the username of the third valid credential pair found by the password spraying script?
 
+    `gordon.stevens`
+
+    ![task3-execute](./images/task3-execute.png)
+
 * How many valid credentials pairs were found by the password spraying script?
+    
+    `4`
 
 * What is the message displayed by the web application when authenticating with a valid credential pair?
 
+    `Hello World`
+
+    ![task3-web](./images/task3-web.png)
 
 ## Task 4 - LDAP Bind Credentials
 
@@ -377,10 +390,18 @@ Now we have another set of valid AD credentials! By using an LDAP pass-back atta
 ### Answer the questions below
 
 * What type of attack can be performed against LDAP Authentication systems not commonly found against Windows Authentication systems?
+    
+    `LDAP Pass-back Attacks`
 
 * What two authentication mechanisms do we allow on our rogue LDAP server to downgrade the authentication and make it clear text?
 
+    `LOGIN,PLAIN`
+
 * What is the password associated with the svcLDAP account?
+
+    `tryhackmeldappass1@`
+
+    ![task4-password](./images/task4-password.png)
 
 ## Task 5 - Authentication Relays
 
