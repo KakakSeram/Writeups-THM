@@ -1,0 +1,3 @@
+dn: cn=config
+replace: olcSaslSecProps
+olcSaslSecProps: noanonymous,minssf=0,passcred
