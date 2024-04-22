@@ -161,13 +161,21 @@ We will be using that in the next task for our first AD enumeration technique.
 ### Answer the questions below
 
 * What native Windows binary allows us to inject credentials legitimately into memory?
+	
+	`runas.exe`
 
 * What parameter option of the runas binary will ensure that the injected credentials are used for all network connections?
+	
+	`/netonly`
 
 * What network folder on a domain controller is accessible by any authenticated AD account and stores GPO information?
 
+	`SYSVOL`
+
 * When performing dir \\za.tryhackme.com\SYSVOL, what type of authentication is performed by default?
 
+	`Kerberos Authentication`
+	
 ## Task 3 - Enumeration through Microsoft Management Console
 
 You should have completed the [AD Basics room](https://tryhackme.com/jr/activedirectorybasics) by now, where different AD objects were initially introduced. In this task, it will be assumed that you understand what these objects are. Connect to THMJMP1 using RDP and your provisioned credentials from Task 1 to perform this task.
