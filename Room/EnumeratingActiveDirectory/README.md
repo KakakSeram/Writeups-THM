@@ -253,13 +253,23 @@ If we had the relevant permissions, we could also use MMC to directly make chang
 
 * How many Computer objects are part of the Servers OU?
 
+	`2`
+
 * How many Computer objects are part of the Workstations OU?
+
+	`1`
 
 * How many departments (Organisational Units) does this organisation consist of?
 
+	`7`
+
 * How many Admin tiers does this organisation have?
+	
+	`3`
 
 * What is the value of the flag stored in the description attribute of the t0_tinus.green account?
+	
+	`THM{Enumerating.Via.MMC}`
 
 ## Task 4 - Enumeration through Command Prompt
 
@@ -325,11 +335,43 @@ You can find the full range of options associated with the net command [here](ht
 
 * Apart from the Domain Users group, what other group is the aaron.harris account a member of?
 
+	`Internet Access`
+
+	```
+	net user aaron.harris /domain
+	```
+
+	![task4-member](./images/task4-member.png)
+
 * Is the Guest account active? (Yay,Nay)
+
+	`Nay`
+
+	```
+	net user Guest /domain
+	```
+
+	![task4-guest](./images/task4-guest.png)
 
 * How many accounts are a member of the Tier 1 Admins group?
 
+	`7`
+
+	```
+	net group "Tier 1 Admins" /domain
+	```
+
+	![task4-t1](./images/task4-t1.png)
+
 * What is the account lockout duration of the current password policy in minutes?
+
+	`30`
+
+	```
+	net accounts /domain
+	```
+
+	![task4-lockout](./images/task4-lockout.png)
 
 ## Task 5 - Enumeration through PowerShell
 
@@ -411,13 +453,47 @@ Remember to change the identity value and password for the account you were prov
 
 * What is the value of the Title attribute of Beth Nolan (beth.nolan)?
 
+	`Senior`
+
+	```
+	Get-ADUser -Identity beth.nolan -Server za.tryhackme.com -Properties Title
+	```
+
+	![task5-title](./images/task5-title.png)
+
 * What is the value of the DistinguishedName attribute of Annette Manning (annette.manning)?
+
+	`CN=annette.manning,OU=Marketing,OU=People,DC=za,DC=tryhackme,DC=com`
+
+	```
+	Get-ADUser -Identity annette.manning -Server za.tryhackme.com -Properties DistinguishedName
+	```
+
+	![task5-distinguishedname](./images/task5-distinguishedname.png)
 
 * When was the Tier 2 Admins group created?
 
+	`2/24/2022 10:04:41 PM`
+
+	```
+	Get-ADGroup “Tier 2 Admins” -Properties Created
+	```
+
+	![task5-created](./images/task5-created.png)
+
 * What is the value of the SID attribute of the Enterprise Admins group?
+	
+	`S-1-5-21-3330634377-1326264276-632209373-519`
+
+	```
+	Get-ADGroup "Enterprise Admins" -Properties SID
+	```
+
+	![task5-SID](./images/task5-SID.png)
 
 * Which container is used to store deleted AD objects?
+
+	
 
 ## Task 6 - Enumeration through Bloodhound
 
