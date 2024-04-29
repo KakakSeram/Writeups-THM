@@ -251,25 +251,41 @@ If we had the relevant permissions, we could also use MMC to directly make chang
 
 ### Answer the questions below
 
+* Login via xfreerdp
+
+	```
+	xfreerdp /dynamic-resolution +clipboard /cert:ignore /v:THMJMP1.za.tryhackme.com /d:za.tryhackme.com /u:'eileen.hall' /p:'Higgins1980'
+	```
+
 * How many Computer objects are part of the Servers OU?
 
 	`2`
+
+	![task3-serverOU](./images/task3-serverOU.png)
 
 * How many Computer objects are part of the Workstations OU?
 
 	`1`
 
+	![task3-workstationOU](./images/task3-workstationOU.png)
+
 * How many departments (Organisational Units) does this organisation consist of?
 
 	`7`
+
+	![task3-peopleOU](./images/task3-peopleOU.png)
 
 * How many Admin tiers does this organisation have?
 	
 	`3`
 
+	![task3-admins](./images/task3-admins.png)
+
 * What is the value of the flag stored in the description attribute of the t0_tinus.green account?
 	
 	`THM{Enumerating.Via.MMC}`
+
+	![task3-t0](./images/task3-t0.png)
 
 ## Task 4 - Enumeration through Command Prompt
 
@@ -332,6 +348,16 @@ You can find the full range of options associated with the net command [here](ht
 * The `net` commands may not show all information. For example, if a user is a member of more than ten groups, not all of these groups will be shown in the output.
 
 ### Answer the questions below
+
+![task4-cred](./images/task4-cred.png)
+
+* Login via SSH
+
+	```
+	ssh za.tryhackme.com\\eileen.hall@thmjmp1.za.tryhackme.com
+	```
+
+	![task4-ssh](./images/task4-ssh.png)
 
 * Apart from the Domain Users group, what other group is the aaron.harris account a member of?
 
@@ -451,12 +477,22 @@ Remember to change the identity value and password for the account you were prov
 
 ### Answer the questions below
 
+![task4-cred](./images/task4-cred.png)
+
+* Login via SSH and run `powershell`
+
+	```
+	ssh za.tryhackme.com\\eileen.hall@thmjmp1.za.tryhackme.com
+	```
+
+	![task5-powershell](./images/task5-powershell.png)
+
 * What is the value of the Title attribute of Beth Nolan (beth.nolan)?
 
 	`Senior`
 
 	```
-	Get-ADUser -Identity beth.nolan -Server za.tryhackme.com -Properties Title
+	Get-ADUser beth.nolan -Server za.tryhackme.com -Properties Title
 	```
 
 	![task5-title](./images/task5-title.png)
@@ -466,7 +502,7 @@ Remember to change the identity value and password for the account you were prov
 	`CN=annette.manning,OU=Marketing,OU=People,DC=za,DC=tryhackme,DC=com`
 
 	```
-	Get-ADUser -Identity annette.manning -Server za.tryhackme.com -Properties DistinguishedName
+	Get-ADUser annette.manning -Server za.tryhackme.com -Properties DistinguishedName
 	```
 
 	![task5-distinguishedname](./images/task5-distinguishedname.png)
@@ -493,7 +529,13 @@ Remember to change the identity value and password for the account you were prov
 
 * Which container is used to store deleted AD objects?
 
+	`CN=Deleted Objects,DC=za,DC=tryhackme,DC=com`
+
+	```
+	Get-ADDomain
+	```
 	
+	![task5-delete](./images/task5-delete.png)
 
 ## Task 6 - Enumeration through Bloodhound
 
@@ -654,6 +696,8 @@ You can clear stagnant session data in Bloodhound on the Database Info tab by cl
 ### Answer the questions below
 
 * What command can be used to execute Sharphound.exe and request that it recovers Session information only from the za.tryhackme.com domain without touching domain controllers?
+
+	`Sharphound.exe --CollectionMethods All --Domain za.tryhackme.com --ExcludeDCs`
 
 * Apart from the krbtgt account, how many other accounts are potentially kerberoastable?
 
