@@ -701,10 +701,16 @@ You can clear stagnant session data in Bloodhound on the Database Info tab by cl
 
 * Apart from the krbtgt account, how many other accounts are potentially kerberoastable?
 
+	`4`
+
 * How many machines do members of the Tier 1 Admins group have administrative access to?
+
+	`2`
 
 * How many users are members of the Tier 2 Admins group?
 
+	`15`
+	
 ## Task 7 - Conclusion
 
 Enumerating AD is a massive task. Proper AD enumeration is required to better understand the structure of the domain and determine attack paths that can be leveraged to perform privilege escalation or lateral movement.
