@@ -26,5 +26,6 @@ This the list of all the writeups I made.
 |20.|[Hacking with PowerShell](./HackingWithPowerShell/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/powershell)|Easy|
 |21.|[Breaching Active Directory](./BreachingActiveDirectory/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/breachingad)|Medium|
 |22.|[Enumerating Active Directory](./EnumeratingActiveDirectory/README.md)|Free|[TryHackMe](https://tryhackme.com/r/room/adenumeration)|Medium|
+|23.|[Lateral Movement and Pivoting](./LateralMovementAndPivoting/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/lateralmovementandpivoting)|Easy|
 
 Writeups made with :heart: by @KakakSeram
