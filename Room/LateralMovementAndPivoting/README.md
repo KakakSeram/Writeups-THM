@@ -308,9 +308,13 @@ Once you have started the service, you should receive a connection in your Attac
 
     `THM{MOVING_WITH_SERVICES}`
 
+    * Get the Crendential
+    
+        ![task3-credential](./images/task3-credential.png)
+
     * Connect to THMJMP2 via SSH
     
-        `ssh t1_leonard.summers@za.tryhackme.com@thmjmp2.za.tryhackme.com`
+        `ssh za\\rachael.atkinson@thmjmp2.za.tryhackme.com`
 
         ![task3-ssh](./images/task3-ssh.png)
 
