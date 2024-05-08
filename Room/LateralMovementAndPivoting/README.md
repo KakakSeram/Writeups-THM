@@ -369,6 +369,10 @@ Once you have started the service, you should receive a connection in your Attac
 
     * Get the flag
     
+        ```
+        cd C:\Users\t1_leonard.summers\Desktop
+        ```
+    
         ![task3-flag](./images/task3-flag.png)
 
 ## Task 4 - Moving Laterally Using WMI
@@ -551,7 +555,7 @@ As a result, you should receive a connection in your AttackBox from where you ca
 
 * After running the "flag.exe" file on t1_corine.waters desktop on THMIIS, what is the flag?
 
-    ``
+    `THM{MOVING_WITH_WMI_4_FUN}`
 
     * Get the Crendential
     
@@ -614,7 +618,11 @@ As a result, you should receive a connection in your AttackBox from where you ca
 
     * Get the flag
     
+        ```
+        cd C:\Users\t1_corine.waters\Desktop
+        ```
         
+        ![task4-flag](./images/task4-flag.png)
 
 ## Task 5 - Use of Alternate Authentication Material
 
