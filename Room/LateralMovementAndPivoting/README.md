@@ -823,6 +823,16 @@ You'll find a flag on t1_toby.beck's desktop on THMIIS. Both `mimikatz` and `pse
 
 * What is the flag obtained from executing "flag.exe" on t1_toby.beck's desktop on THMIIS?
 
+    ``
+
+    * Login SSH to THMJMP2
+    
+        ```
+        ssh za\\t2_felicia.dean@thmjmp2.za.tryhackme.com
+        ```
+
+        
+
 ## Task 6 - Abusing User Behaviour
 
 Under certain circumstances, an attacker can take advantage of actions performed by users to gain further access to machines in the network. While there are many ways this can happen, we will look at some of the most common ones.
