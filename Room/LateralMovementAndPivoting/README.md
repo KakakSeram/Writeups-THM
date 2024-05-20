@@ -1199,6 +1199,20 @@ After launching the exploit, you will receive a shell back at the attacker's mac
 
 * What is the flag obtained from executing "flag.exe" on t1_thomas.moore's desktop on THMIIS?
 
+    ``
+
+    * Get Credential
+    
+        ![task7-cred](./images/task7-cred.png)
+
+    * Login SSH 
+    
+        ```
+        ssh za\\barbara.taylor@thmjmp2.za.tryhackme.com
+        ```
+
+        
+
 * What is the flag obtained using the Rejetto HFS exploit on THMDC?
 
 ## Task 8 - Conclusion
