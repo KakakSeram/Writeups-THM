@@ -703,6 +703,8 @@ You can clear stagnant session data in Bloodhound on the Database Info tab by cl
 
 	`4`
 
+	![task6-kerberosable](./images/task6-kerberosable)
+
 * How many machines do members of the Tier 1 Admins group have administrative access to?
 
 	`2`
