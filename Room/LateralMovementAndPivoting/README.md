@@ -4,7 +4,7 @@
 
 ## Task 1 - Introduction
 
-![task1.logo](./images/task1.logo)
+![task1.logo](./images/task1.logo.png)
 
 In this room, we will look at lateral movement, a group of techniques used by attackers to move around the network while creating as few alerts as possible. We'll learn about several common techniques used in the wild for this end and the tools involved.
 
@@ -212,7 +212,7 @@ We can create a service on a remote host with sc.exe, a standard tool available 
     
 2. If the latter connection fails, sc will try to reach SVCCTL through SMB named pipes, either on port 445 (SMB) or 139 (SMB over NetBIOS).
 
-![task3-workflow2.png](./images/task3-workflow2.png.png)
+![task3-workflow2.png](./images/task3-workflow2.png)
 
 We can create and start a service named "THMservice" using the following commands:
 
