@@ -27,5 +27,6 @@ This the list of all the writeups I made.
 |21.|[Breaching Active Directory](./BreachingActiveDirectory/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/breachingad)|Medium|
 |22.|[Enumerating Active Directory](./EnumeratingActiveDirectory/README.md)|Free|[TryHackMe](https://tryhackme.com/r/room/adenumeration)|Medium|
 |23.|[Lateral Movement and Pivoting](./LateralMovementAndPivoting/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/lateralmovementandpivoting)|Easy|
+|24.|[PersistingActiveDirectory](./PersistingActiveDirectory/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/persistingad)|Medium|
 
 Writeups made with :heart: by @KakakSeram
