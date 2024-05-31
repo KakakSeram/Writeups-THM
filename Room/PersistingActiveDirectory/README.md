@@ -215,7 +215,7 @@ This will take a bit of time to complete. Once done, exit Mimikatz to finalise t
 		```
 		less lorraine.gill_dcdump.txt
 
-		# search with hitting key "/" and type "krbtgt"
+		# Search for a term by hitting the '/' key and type "krbtgt"
 		```
 
 		![task2-krbtgt](./images/task2-krbtgt.png)
