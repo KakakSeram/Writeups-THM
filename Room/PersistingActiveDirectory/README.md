@@ -96,7 +96,7 @@ Together with your low-privileged credentials, you will be provided with Domain 
 
 Username: `Administrator`
 
-Password: `tryhackmewouldnotguess1`@
+Password: `tryhackmewouldnotguess1@`
 
 Domain: `ZA`
 
@@ -322,7 +322,7 @@ Now we have golden and silver tickets to the AD environment, providing better pe
 
 	* Get the credential
 	
-		![task3-cred](./images/task3-cred)
+		![task3-cred](./images/task3-cred.png)
 
 	* Login SSH to THMWRK1 
 	
@@ -364,7 +364,7 @@ Now we have golden and silver tickets to the AD environment, providing better pe
 
 	* Get the credential
 	
-		![task3-cred](./images/task3-cred)
+		![task3-cred](./images/task3-cred.png)
 
 	* Login SSH to THMWRK1 
 	
@@ -827,7 +827,7 @@ Imagine that you are the blue team dealing with an incident where you have just 
 		Start-Service -Name ntds
 		```
 
-		![task5-restart](./images/task5-restart)
+		![task5-restart](./images/task5-restart.png)
 
 	* Check SID history on user account
 	
