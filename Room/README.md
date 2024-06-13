@@ -29,5 +29,6 @@ This the list of all the writeups I made.
 |23.|[Lateral Movement and Pivoting](./LateralMovementAndPivoting/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/lateralmovementandpivoting)|Easy|
 |24.|[Exploiting Active Directory](./ExploitingActiveDirectory/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/exploitingad)|Medium|
 |25.|[PersistingActiveDirectory](./PersistingActiveDirectory/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/persistingad)|Medium|
+|26.|[Credentials Harvesting](./CredentialsHarvesting/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/credharvesting)|Medium|
 
 Writeups made with :heart: by @KakakSeram
