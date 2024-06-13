@@ -2,6 +2,8 @@
 
 ![EnumeratingActiveDirectory.png](./images/EnumeratingActiveDirectory.png)
 
+![Diagram](./images/Diagram.png)
+
 ## Task 1 - Why AD Enumeration
 
 This network is the continuation of the [Breaching AD](https://tryhackme.com/jr/breachingad) network. Please make sure to complete this network before continuing with this one. Also, note that we will discuss AD objects extensively. If you need a refresher, have a quick reskim of [this room](https://tryhackme.com/jr/activedirectorybasics). Now that we have our very first set of valid Active Directory (AD) credentials, we will explore the different methods that can be used to enumerate AD.

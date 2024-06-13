@@ -2,6 +2,8 @@
 
 ![PersistingActiveDirectory](./images/PersistingActiveDirectory.png)
 
+![Diagram](./images/Diagram.png)
+
 ## Task 1 - Introduction
 
 This network is the continuation of the [Breaching AD](https://tryhackme.com/jr/breachingad), [Enumerating AD](http://tryhackme.com/jr/adenumeration), and Exploiting AD networks. Please make sure to complete these networks before continuing with this one. Also, note that we will discuss AD objects extensively. If you need a refresher, have a quick reskim of [this room](https://tryhackme.com/jr/activedirectorybasics). Now that we have exploited AD and achieved some positions from which we can execute our goals, we need to make sure that we deploy persistence to make sure the blue team can't just kick us out. In this network, we will explore several different methods that could be used to persist in AD. 

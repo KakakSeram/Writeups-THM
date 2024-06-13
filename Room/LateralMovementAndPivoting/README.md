@@ -2,6 +2,8 @@
 
 ![LateralMovementAndPivoting](./images/LateralMovementAndPivoting.png)
 
+![Diagram](./images/Diagram.png)
+
 ## Task 1 - Introduction
 
 ![task1.logo](./images/task1.logo.png)
