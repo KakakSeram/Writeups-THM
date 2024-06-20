@@ -45,6 +45,8 @@ Telnet is no longer considered a secure option, especially that anyone capturing
 
 * To which port will the `telnet` command with the default parameters try to connect?
 
+	`23`
+
 ## Task 3 - Hypertext Transfer Protocol (HTTP)
 
 Hypertext Transfer Protocol (HTTP) is the protocol used to transfer web pages. Your web browser connects to the webserver and uses HTTP to request HTML pages and images among other files and submit forms and upload various files. Anytime you browse the World Wide Web (WWW), you are certainly using the HTTP protocol.
@@ -89,6 +91,15 @@ Web browsers are generally free to install and use; furthermore, tech giants bat
 ### Answer the questions below
 
 * Launch the attached VM. From the AttackBox terminal, connect using Telnet to `MACHINE_IP 80` and retrieve the file `flag.thm`. What does it contain?
+  
+	`THM{e3eb0a1df437f3f97a64aca5952c8ea0}`
+
+	```
+	GET /flag.thm HTTP/1.1
+	host: telnet
+	```
+
+	![task3-flag](./images/task3-flag.png)
 
 ## Task 4 - File Transfer Protocol (FTP)
 
@@ -130,10 +141,30 @@ Because FTP sends the login credentials along with the commands and files in cle
 
 ### Answer the questions below
 
-Using an FTP client, connect to the VM and try to recover the flag file. What is the flag?
+* Using an FTP client, connect to the VM and try to recover the flag file. What is the flag?
+	
+	```
+	* Username: frank
+	* Password: D2xc9CgD
+	```
 
-* Username: frank
-* Password: D2xc9CgD
+	* Login Ftp and download flag file
+
+		```
+		# Login FTP
+		ftp 10.10.192.212
+		
+		# Show list file
+		ls
+
+		# Download file
+		get ftp_flag.thm
+
+		# Show file flag
+		cat ftp_flag.thm
+		```
+		
+		![task4-flag](./images/task4-flag.png)
 
 ## Task 5 - Simple Mail Transfer Protocol (SMTP)
 
