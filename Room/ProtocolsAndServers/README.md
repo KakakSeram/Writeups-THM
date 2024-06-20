@@ -148,23 +148,21 @@ Because FTP sends the login credentials along with the commands and files in cle
 	* Password: D2xc9CgD
 	```
 
-	* Login Ftp and download flag file
-
-		```
-		# Login FTP
-		ftp 10.10.192.212
+	```
+	# Login FTP
+	ftp 10.10.192.212
 		
-		# Show list file
-		ls
+	# Show list file
+	ls
 
-		# Download file
-		get ftp_flag.thm
+	# Download file
+	get ftp_flag.thm
 
-		# Show file flag
-		cat ftp_flag.thm
-		```
+	# Show file flag
+	cat ftp_flag.thm
+	```
 		
-		![task4-flag](./images/task4-flag.png)
+	![task4-flag](./images/task4-flag.png)
 
 ## Task 5 - Simple Mail Transfer Protocol (SMTP)
 
@@ -218,6 +216,14 @@ Generally speaking, we don’t need to memorize SMTP commands. The console outpu
 
 * Using the AttackBox terminal, connect to the SMTP port of the target VM. What is the flag that you can get?
 
+	`THM{5b31ddfc0c11d81eba776e983c35e9b5}`
+
+	```
+	telnet 10.10.192.212 25
+	```
+
+	![task5-flag](./images/task5-flag.png)
+
 ## Task 6 - Post Office Protocol 3 (POP3)
 
 Post Office Protocol version 3 (POP3) is a protocol used to download the email messages from a Mail Delivery Agent (MDA) server, as shown in the figure below. The mail client connects to the POP3 server, authenticates, downloads the new email messages before (optionally) deleting them.
@@ -238,7 +244,13 @@ Based on the default settings, the mail client deletes the mail message after it
 
 * Connect to the VM (`MACHINE_IP`) at the POP3 port. Authenticate using the username `frank` and password `D2xc9CgD`. What is the response you get to `STAT`?
 
+	`+OK 0 0`
+
+	![task6-pop3](./images/task6-pop3.png)
+
 * How many email messages are available to download via POP3 on `MACHINE_IP`?
+
+	`0`
 
 ## Task 7 - Internet Message Access Protocol (IMAP)
 
@@ -253,6 +265,8 @@ It is clear that IMAP sends the login credentials in cleartext, as we can see in
 ### Answer the questions below
 
 * What is the default port used by IMAP?
+
+	`143`
 
 ## Task 8 - Summary
 
