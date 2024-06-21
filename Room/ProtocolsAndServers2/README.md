@@ -69,8 +69,12 @@ If you would like to learn more about Wireshark, we recommend the [Wireshark 101
 ### Answer the questions below
 
 * What do you need to add to the command `sudo tcpdump` to capture only Telnet traffic?
+	
+	`port 23`
 
 * What is the simplest display filter you can use with Wireshark to show only IMAP traffic?
+
+	`imap`
 
 ## Task 3 - Man-in-the-Middle (MITM) Attack
 
@@ -88,7 +92,11 @@ MITM can also affect other cleartext protocols such as FTP, SMTP, and POP3. Miti
 
 * How many different interfaces does Ettercap offer?
 
+	`3`
+
 * In how many ways can you invoke Bettercap?
+
+	`3`
 
 ## Task 4 - Transport Layer Security (TLS)
 
@@ -153,6 +161,8 @@ Luckily, we don’t have to check the certificate manually for every site we vis
 ### Answer the questions below
 
 * DNS can also be secured using TLS. What is the three-letter acronym of the DNS protocol that uses TLS?
+
+	`DoT`
 
 ## Task 5 - Secure Shell (SSH)
 
