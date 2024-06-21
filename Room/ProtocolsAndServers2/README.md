@@ -201,7 +201,15 @@ As a closing note, FTP could be secured using SSL/TLS by using the FTPS protocol
 
 * Use SSH to connect to MACHINE_IP as `mark` with the password `XBtc49AB`. Using `uname -r`, find the Kernel release?
 
+	`5.4.0-84-generic`
+
+	![task5-uname](./images/task5-uname.png)
+
 * Use SSH to download the file `book.txt` from the remote system. How many KBs did `scp` display as download size?
+
+	`415`
+
+	![task5-scp](./images/task5-scp.png)
 
 ## Task 6 - Password Attack
 
@@ -277,6 +285,14 @@ Using a combination of the above approaches is an excellent approach to protect 
 ### Answer the questions below
 
 * We learned that one of the email accounts is lazie. What is the password used to access the IMAP service on MACHINE_IP?
+
+	`butterfly`
+
+	```
+	hydra -l lazie -P /usr/share/wordlists/rockyou.txt 10.10.32.221 imap
+	```
+
+	![task6-hydra](./images/task6-hydra.png)
 
 ## Task 7 - Summary
 
