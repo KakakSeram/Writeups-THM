@@ -1,0 +1,32 @@
+# Nmap 7.94SVN scan initiated Thu Jun 27 09:25:37 2024 as: nmap -sV -sC -T4 -oN nmap-default 10.10.140.15
+Nmap scan report for 10.10.140.15
+Host is up (0.30s latency).
+Not shown: 997 filtered tcp ports (no-response)
+PORT     STATE SERVICE            VERSION
+80/tcp   open  http               Microsoft IIS httpd 7.5
+|_http-server-header: Microsoft-IIS/7.5
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-title: Site doesn't have a title (text/html).
+3389/tcp open  ssl/ms-wbt-server?
+|_ssl-date: 2024-06-27T02:28:09+00:00; 0s from scanner time.
+| rdp-ntlm-info: 
+|   Target_Name: ALFRED
+|   NetBIOS_Domain_Name: ALFRED
+|   NetBIOS_Computer_Name: ALFRED
+|   DNS_Domain_Name: alfred
+|   DNS_Computer_Name: alfred
+|   Product_Version: 6.1.7601
+|_  System_Time: 2024-06-27T02:28:03+00:00
+| ssl-cert: Subject: commonName=alfred
+| Not valid before: 2024-06-26T02:07:02
+|_Not valid after:  2024-12-26T02:07:02
+8080/tcp open  http               Jetty 9.4.z-SNAPSHOT
+| http-robots.txt: 1 disallowed entry 
+|_/
+|_http-server-header: Jetty(9.4.z-SNAPSHOT)
+|_http-title: Site doesn't have a title (text/html;charset=utf-8).
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Thu Jun 27 09:28:09 2024 -- 1 IP address (1 host up) scanned in 152.29 seconds
