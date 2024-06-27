@@ -32,5 +32,6 @@ This the list of all the writeups I made.
 |26.|[Credentials Harvesting](./CredentialsHarvesting/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/credharvesting)|Medium|
 |27.|[Protocols and Servers](./ProtocolsAndServers/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/protocolsandservers)|Easy|
 |28.|[Protocols and Servers 2](./ProtocolsAndServers2/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/protocolsandservers2)|Medium|
+|29.|[HackPark](./HackPark/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/hackpark)|Medium|
 
 Writeups made with :heart: by @KakakSeram
