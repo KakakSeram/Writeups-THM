@@ -18,6 +18,8 @@ This room will cover brute-forcing an accounts credentials, handling public expl
 
 	`Pennywise`
 
+	![task1-pennywise](./images/task1-pennywise.png)
+
 ## Task 2 - Using Hydra to brute-force a login
 
 ![task2-logo](./images/task2-logo.png)
@@ -91,13 +93,59 @@ Exploit-Database is a CVE (common vulnerability and exposures) archive of public
 
 * Now you have logged into the website, are you able to identify the version of the BlogEngine?
 
+	`3.3.6.0`
+
+	![task3-version](./images/task3-version.png)
+
 Use the [exploit database archive](http://www.exploit-db.com/) to find an exploit to gain a reverse shell on this system.
 
 * What is the CVE?
+	
+	`CVE-2019-6714`
+
+	![task3-CVE](./images/task3-CVE.png)
 
 Using the public exploit, gain initial access to the server.
 
 * Who is the webserver running as?
+
+	``
+
+	* Download script
+	
+		```
+		searchsploit -m 46353.cs
+		```
+
+		![task3-download](./images/task3-download.png)
+
+	* Edit script file to connect attacker machine IP & Port. Save the file as PostList.ascx
+	
+		![task3-edit](./images/task3-edit.png)
+
+	* Setup listener on attacker machine
+	
+		```
+		nc -nvlp 8888
+		```
+
+		![task3-listener](./images/task3-listener.png)
+
+	* Edit content `Welcome to HackPark`
+	
+		![task3-content](./images/task3-content.png)
+
+	* Clinck on file manajer
+	
+		![task3-manajer](./images/task3-manajer.png)
+
+	* Upload file PostList.ascx
+	
+		![task3-upload](./images/task3-upload.png)
+
+	* Then, as the exploit said, navigate to 10.10.253.78/?theme=../../App_Data/files to trigger the file
+	
+		
 
 
 ## Task 4 - Windows Privilege Escalation
