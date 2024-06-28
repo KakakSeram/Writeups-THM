@@ -74,14 +74,10 @@ Below is a mini cheatsheet:
 
 |Command|Description|
 |-------|-----------|
-|hydra -P <wordlist> -v <ip> <protocol>
-	Brute force against a protocol of your choice
-hydra -v -V -u -L <username list> -P <password list> -t 1 -u <ip> <protocol>
-	You can use Hydra to bruteforce usernames as well as passwords. It will loop through every combination in your lists. (-vV = verbose mode, showing login attempts)|
-|hydra -t 1 -V -f -l <username> -P <wordlist> rdp://<ip>
-	Attack a Windows Remote Desktop with a password list.
-hydra -l <username> -P .<password list> $ip -V http-form-post '/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log In&testcookie=1:S=Location'
-	Craft a more specific request for Hydra to brute force.|
+|hydra -P <wordlist> -v <ip> <protocol>|Brute force against a protocol of your choice|
+|hydra -v -V -u -L <username list> -P <password list> -t 1 -u <ip> <protocol>|You can use Hydra to bruteforce usernames as well as passwords. It will loop through every combination in your lists. (-vV = verbose mode, showing login attempts)|
+|hydra -t 1 -V -f -l <username> -P <wordlist> rdp://<ip>|Attack a Windows Remote Desktop with a password list.|
+|hydra -l <username> -P .<password list> $ip -V http-form-post '/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log In&testcookie=1:S=Location'|Craft a more specific request for Hydra to brute force.|
 
 ## Task 3 - Compromise the machine
 
