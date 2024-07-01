@@ -289,3 +289,7 @@ WinPeas is a great tool which will enumerate the system and attempt to recommend
 _Tip: You can execute these files by using .\filename.exe_
 
 * Using winPeas, what was the Original Install time? (This is date and time)
+
+	`8/3/2019, 10:43:23 AM`
+
+	![task5-sysinfo](./images/task5-sysinfo.png)
