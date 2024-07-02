@@ -12,7 +12,13 @@ This room will cover SQLi (exploiting this vulnerability manually and via SQLMap
 
 * Deploy the machine and access its web server.
 
+	![task1-web](./images/task1-web.png)
+
 * What is the name of the large cartoon avatar holding a sniper on the forum?
+	
+	`Agent 47`
+
+	![task1-agent47](./images/task1-agent47.png)
 
 ## Task 2 - Obtain access via SQLi
 
@@ -50,6 +56,10 @@ Use **' or 1=1 -- -** as your username and leave the password blank.
 
 * When you've logged in, what page do you get redirected to?
 
+	`portal.php`
+
+	![task2-portal](./images/task2-portal.png)
+
 ## Task 3 - Using SQLMap
 
 ![task3-logo](./images/task3-logo.png)
@@ -79,10 +89,33 @@ SQLMap will now try different methods and identify the one thats vulnerable. Eve
 
 * In the users table, what is the hashed password?
 
+	`ab5db915fc9cea6c78df88106c6500c57f2b52901ca6c0c6218f04122c3efd14`
+
+	* Intercept request on burpsuite
+	
+		![task3-intercept](./images/task3-intercept.png)
+
+	* Create request file from burpsuite
+	
+		![task3-request](./images/task3-request.png)
+
+	* Run sqlmap
+	
+		```
+		sqlmap -r request.txt --dbms=mysql --dump
+		```
+
+		![task3-hash](./images/task3-hash.png)
+
 * What was the username associated with the hashed password?
+
+	`agent47`
 
 * What was the other table name?
 
+	`post`
+
+	![task3-table](./images/task3-table.png)
 
 ## Task 4 - Cracking a password with JohnTheRipper
 
