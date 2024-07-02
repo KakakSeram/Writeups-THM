@@ -198,7 +198,7 @@ First we will pivot from netcat to a meterpreter session and use this to enumera
 		C:\Windows\Temp\shell.exe
 		```
 
-		![task4-meterpreter](./image/task4-meterpreter.png)
+		![task4-meterpreter](./images/task4-meterpreter.png)
 
 
 You can run metasploit commands such as **sysinfo** to get detailed information about the Windows system. Then feed this information into the [windows-exploit-suggester](https://github.com/GDSSecurity/Windows-Exploit-Suggester) script and quickly identify any obvious vulnerabilities.
