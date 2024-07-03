@@ -4,7 +4,7 @@
 
 ## Task 1 - Deploy the vulnerable machine
 
-<img src="./images/task1-logo.png" height=300  width=auto>
+<img src="./images/task1-logo.png" height=200  width=auto>
 
 This room will cover SQLi (exploiting this vulnerability manually and via SQLMap), cracking a users hashed password, using SSH tunnels to reveal a hidden service and using a metasploit payload to gain root privileges. 
 
@@ -22,7 +22,7 @@ This room will cover SQLi (exploiting this vulnerability manually and via SQLMap
 
 ## Task 2 - Obtain access via SQLi
 
-<img src="./images/task2-logo.png" height=300  width=auto>
+<img src="./images/task2-logo.png" height=200  width=auto>
 
 In this task you will understand more about SQL (structured query language) and how you can potentially manipulate queries to communicate with the database.
 
