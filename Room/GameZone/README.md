@@ -62,7 +62,7 @@ Use **' or 1=1 -- -** as your username and leave the password blank.
 
 ## Task 3 - Using SQLMap
 
-<img src="./images/task3-logo.png" height=300  width=auto>
+<img src="./images/task3-logo.png" height=200  width=auto>
 
 SQLMap is a popular open-source, automatic SQL injection and database takeover tool. This comes pre-installed on all version of [Kali Linux](https://tryhackme.com/rooms/kali) or can be manually downloaded and installed [here](https://github.com/sqlmapproject/sqlmap).
 
@@ -119,7 +119,7 @@ SQLMap will now try different methods and identify the one thats vulnerable. Eve
 
 ## Task 4 - Cracking a password with JohnTheRipper
 
-<img src="./images/task4-logo.png" height=300  width=auto>
+<img src="./images/task4-logo.png" height=200  width=auto>
 
 John the Ripper (JTR) is a fast, free and open-source password cracker. This is also pre-installed on all Kali Linux machines.
 
