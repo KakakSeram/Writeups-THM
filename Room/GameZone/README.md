@@ -4,7 +4,7 @@
 
 ## Task 1 - Deploy the vulnerable machine
 
-![task1-logo](./images/task1-logo.png)
+<img src="./images/task1-logo.png" height=150  width=auto>
 
 This room will cover SQLi (exploiting this vulnerability manually and via SQLMap), cracking a users hashed password, using SSH tunnels to reveal a hidden service and using a metasploit payload to gain root privileges. 
 
@@ -22,7 +22,7 @@ This room will cover SQLi (exploiting this vulnerability manually and via SQLMap
 
 ## Task 2 - Obtain access via SQLi
 
-![task2-logo](./images/task2-logo.png)
+<img src="./images/task2-logo.png" height=150  width=auto>
 
 In this task you will understand more about SQL (structured query language) and how you can potentially manipulate queries to communicate with the database.
 
@@ -62,7 +62,7 @@ Use **' or 1=1 -- -** as your username and leave the password blank.
 
 ## Task 3 - Using SQLMap
 
-![task3-logo](./images/task3-logo.png)
+<img src="./images/task3-logo.png" height=150  width=auto>
 
 SQLMap is a popular open-source, automatic SQL injection and database takeover tool. This comes pre-installed on all version of [Kali Linux](https://tryhackme.com/rooms/kali) or can be manually downloaded and installed [here](https://github.com/sqlmapproject/sqlmap).
 
@@ -119,7 +119,7 @@ SQLMap will now try different methods and identify the one thats vulnerable. Eve
 
 ## Task 4 - Cracking a password with JohnTheRipper
 
-![task4-logo](./images/task4-logo.png)
+<img src="./images/task4-logo.png" height=150  width=auto>
 
 John the Ripper (JTR) is a fast, free and open-source password cracker. This is also pre-installed on all Kali Linux machines.
 
@@ -167,7 +167,7 @@ Now you have a password and username. Try SSH'ing onto the machine.
 
 ## Task 5 - Exposing services with reverse SSH tunnels
 
-![task5-logo](./images/task5-logo.png)
+<img src="./images/task5-logo.png" height=150  width=auto>
 
 Reverse SSH port forwarding specifies that the given port on the remote server host is to be forwarded to the given host and port on the local side.
 
