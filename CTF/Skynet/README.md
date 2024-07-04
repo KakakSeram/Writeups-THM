@@ -9,6 +9,7 @@
 * enum4linux
 * Hydra
 * Searchsploit
+* Reverse Shell
 
 ![IP](./images/IP.png)
 
@@ -210,8 +211,12 @@ You can follow our official walkthrough for this challenge on [our blog](https:/
 
 	`7ce5c2109a40f958099283600a9ae807`
 
+	![user-txt](./images/user-txt.png)
+
 * What is the root flag?
 
 	`3f0372db24753accc7179a282cd6a949`
+
+	![root-txt](./images/root-txt.png)
 
 
