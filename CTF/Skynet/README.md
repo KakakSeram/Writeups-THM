@@ -23,7 +23,7 @@ Are you able to compromise this Terminator themed machine?
 
 You can follow our official walkthrough for this challenge on [our blog](https://blog.tryhackme.com/skynet-writeup/).
 
-## Enumeration
+### Enumeration & Exploit
 
 * Port scan with **Nmap**
 
