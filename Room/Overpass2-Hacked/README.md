@@ -54,6 +54,16 @@ Now that you've found the code for the backdoor, it's time to analyse it.
 
 * What's the default hash for the backdoor?
 
+	`bdd04d9bb7621687f5df9001f5098eb22bf19eac4c2c30b6f23efed4d24807277d0f8bfccb9e77659103d78c56e66d2d7d8391dfc885d0e9b68acd01fc2170e3`
+
+	* Clone backdoor file our machine
+	
+		`git clone https://github.com/NinjaJc01/ssh-backdoor`
+
+	* Open file `main.go` 
+	
+		![task2-hash](./images/task2-hash.png)
+
 * What's the hardcoded salt for the backdoor?
 
 * What was the hash that the attacker used? - go back to the PCAP for this!
