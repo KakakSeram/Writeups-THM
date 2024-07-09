@@ -111,8 +111,14 @@ There's flags on the box that Overpass can't afford to lose by formatting the se
 
 * Using the information you've found previously, hack your way back in!
 
-	
+	![task3-port](./image/task3-port.png)
 
 * What's the user flag?
+
+	``
+
+	```
+	ssh james@$IP -p 2222 -oHostKeyAlgorithms=+ssh-rsa
+	```
 
 * What's the root flag?
