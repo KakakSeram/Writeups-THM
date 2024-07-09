@@ -66,9 +66,34 @@ Now that you've found the code for the backdoor, it's time to analyse it.
 
 * What's the hardcoded salt for the backdoor?
 
+	`1c362db832f3f864c8c2fe05f2002a05`
+
+	![task2-salt](./images/task2-salt.png)
+
 * What was the hash that the attacker used? - go back to the PCAP for this!
 
+	`6d05358f090eea56a238af02e47d44ee5489d234810ef6240280857ec69712a3e5e370b8a41899d0196ade16c0d54327c5654019292cbfe0b5e98ad1fec71bed`
+
+	![task2-backdoor-hash(./images/task2-backdoor-hash.png)]
+
 * Crack the hash using rockyou and a cracking tool of your choice. What's the password?
+
+	`november16`
+
+	* View hash format (Password + salt) 
+	 
+		![task2-hashpassword](./images/task2-hashpassword.png)
+
+	* Crete file `attacke-hash.txt`
+	
+			![task2-cat](./images/task2-cat.png)
+
+	* Crack hash file
+	
+		![task2-sha512](./images/task2-sha512.png)
+
+		![task2-password](./images/task2-password.png)
+
 
 ## Task 3 - Attack - Get back in!
 
@@ -80,7 +105,13 @@ There's flags on the box that Overpass can't afford to lose by formatting the se
 
 * The attacker defaced the website. What message did they leave as a heading?
 
+	`H4ck3d by CooctusClan`
+
+	![task3-meesege](./images/task3-meesege.png)
+
 * Using the information you've found previously, hack your way back in!
+
+	
 
 * What's the user flag?
 
