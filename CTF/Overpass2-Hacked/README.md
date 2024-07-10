@@ -111,7 +111,7 @@ There's flags on the box that Overpass can't afford to lose by formatting the se
 
 * Using the information you've found previously, hack your way back in!
 
-	![task3-port](./image/task3-port.png)
+	![task3-port](./images/task3-port.png)
 
 * What's the user flag?
 
