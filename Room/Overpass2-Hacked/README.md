@@ -115,10 +115,22 @@ There's flags on the box that Overpass can't afford to lose by formatting the se
 
 * What's the user flag?
 
-	``
+	`thm{d119b4fa8c497ddb0525f7ad200e6567}`
 
 	```
 	ssh james@$IP -p 2222 -oHostKeyAlgorithms=+ssh-rsa
 	```
 
+	![task3-ssh](./images/task3-ssh.png)
+
 * What's the root flag?
+
+	`thm{d53b2684f169360bb9606c333873144d}`
+
+	* Run `.suid_bash`
+
+		`./.suid_bash -p`
+
+	* Get the root flag
+	
+		![task3-root](./images/task3-root.png)
