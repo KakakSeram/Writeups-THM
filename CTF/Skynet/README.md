@@ -13,7 +13,7 @@
 
 ![IP](./images/IP.png)
 
-## Task 1 - Deploy and compromise the vulnerable machine!
+## Deploy and compromise the vulnerable machine!
 
 ![logo](./images/logo.png)
 
