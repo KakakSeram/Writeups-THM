@@ -6,7 +6,8 @@
 
 * Nmap
 * Smbclient
-* 
+* PrintSpoofer
+* Msfvenom & Msfconsole
 
 ![IP](./images/IP.png)
 
