@@ -34,5 +34,6 @@ This the list of all the writeups I made.
 |28.|[Protocols and Servers 2](./ProtocolsAndServers2/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/protocolsandservers2)|Medium|
 |29.|[HackPark](./HackPark/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/hackpark)|Medium|
 |30.|[Game Zone](./GameZone/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/gamezone)|Easy|
+|31.|[Buffer Overflow Prep](./BufferOverflowPrep/README.md)|Free|[TryHackMe](https://tryhackme.com/r/room/bufferoverflowprep)|Easy|
 
 Writeups made with :heart: by @KakakSeram
