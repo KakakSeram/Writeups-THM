@@ -70,7 +70,11 @@ Having accepted the project, you are provided with the client assessment environ
 
 	![web-internal](./images/web-internal.png)
 
-	We can see on the title Internal link to `http://internal.thm/blog`, try to open web page again.
+	We can see on the title Internal link to `http://internal.thm/blog`, edit /etc/hosts 
+
+	![hosts](./images/hosts.png)
+
+	Open web page again.
 
 	![internal-web](./images/internal-web.png)
 
