@@ -1,0 +1,17 @@
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-07-15 09:35 WIB
+Nmap scan report for 10.10.100.234
+Host is up (0.20s latency).
+Not shown: 65533 closed tcp ports (conn-refused)
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+| http-enum: 
+|   /blog/: Blog
+|   /phpmyadmin/: phpMyAdmin
+|   /wordpress/wp-login.php: Wordpress login page.
+|_  /blog/wp-login.php: Wordpress login page.
+
+Nmap done: 1 IP address (1 host up) scanned in 1329.27 seconds
