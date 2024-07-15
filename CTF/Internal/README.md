@@ -202,7 +202,7 @@ Having accepted the project, you are provided with the client assessment environ
 
 * Get the shell and root credential
 
-	![root-cred]
+	![root-cred](./images/root-cred.png)
 
 * Login ssh with root credential and get the `root.txt`
 
