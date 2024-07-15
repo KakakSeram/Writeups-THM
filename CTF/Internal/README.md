@@ -70,17 +70,15 @@ Having accepted the project, you are provided with the client assessment environ
 
 	![web-internal](./images/web-internal.png)
 
-	We can see on the title Internal link to `http://internal.thm/blog`, edit /etc/hosts 
+	We can see on the title Internal link to `http://internal.thm/blog`
+
+* Edit `/etc/hosts`, add target IP as `internal.thm`
 
 	![hosts](./images/hosts.png)
 
 	Open web page again.
 
 	![internal-web](./images/internal-web.png)
-
-* Edit `/etc/hosts`, add target IP as `internal.thm`
-
-	![hosts](./images/hosts.png)
 
 * Scan wordpress with wpscan
 
