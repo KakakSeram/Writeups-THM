@@ -357,15 +357,21 @@ Restart oscp.exe in Immunity and run the modified exploit.py script again. Your 
     !mona bytearray -b "\x00\x07\x2e\xa0"
     ```
 
+  * Edit `exploit.py` remove `\x07\x2e\xa0` from payload variable and run `exploit.py`
+  
+    ![task2-buffer](./images/task2-buffer.png)
+
+    ![task2-ESP4](./images/task2-ESP4.png)
+
   * Check ESP value and run compare mona again
   
     ```
-    !mona compare -f C:\mona\oscp\bytearray.bin -a 019EFA30
+    !mona compare -f C:\mona\oscp\bytearray.bin -a 0187FA30
     ```
 
     ![task2-badchars4](./images/task2-badchars4.png)
 
-    After this! WE FIRE IT and run the comparison in MONA, we find the address unmodified now. BOOM so finally we got our BADCHARS **00 07 2e a0**
+    After this! WE FIRE IT and run the comparison in MONA, we find the address unmodified now. So finally we got our BADCHARS **00 07 2e a0**
 
   * Let’s find the jump point using the mona command again
   
