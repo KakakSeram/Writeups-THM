@@ -265,13 +265,13 @@ Restart oscp.exe in Immunity and run the modified exploit.py script again. Your 
   
     ![task2-retn1](./images/task2-retn1.png)
 
-  * Restart oscp.exe in Immunity and run the modified exploit.py script again. The EIP register should now be overwritten with the 4 B's (e.g. 42424242)
+  * Restart oscp.exe in Immunity and run the modified exploit.py script again. The EIP register should now be overwritten with the 4 B's (e.g. **42424242**)
   
     ![task2-buffer](./images/task2-buffer.png)
 
     ![task2-EIP](./images/task2-EIP.png)
 
-  * Generate a bytearray using mona, and exclude the null byte (\x00) by default.
+  * Generate a bytearray using mona, and exclude the null byte (`\x00`) by default.
   
     `!mona bytearray -b "\x00"`
 
@@ -281,7 +281,7 @@ Restart oscp.exe in Immunity and run the modified exploit.py script again. Your 
 
     ![task2-output](./images/task2-output.png)
 
-  * Now we need to generate a string of bad chars from \x01 to \xff that is identical to the bytearray. Use the python script
+  * Now we need to generate a string of bad chars from `\x01` to `\xff` that is identical to the bytearray. Use the python script
   
     ```
     for x in range(1, 256):
@@ -309,7 +309,7 @@ Restart oscp.exe in Immunity and run the modified exploit.py script again. Your 
 
     ![task2-badchars1](./images/task2-badchars1.png)
 
-    So we found a list of possible bad chars 07 08 2e 2f a0 a1
+    So we found a list of possible bad chars **07 08 2e 2f a0 a1**
 
   * Restart oscp.exe in immunity, created a new bytearray and removed `\x07`
   
@@ -365,7 +365,7 @@ Restart oscp.exe in Immunity and run the modified exploit.py script again. Your 
 
     ![task2-badchars4](./images/task2-badchars4.png)
 
-    After this! WE FIRE IT and run the comparison in MONA, we find the address unmodified now. BOOM so finally we got our BADCHARS (00 07 2e a0)
+    After this! WE FIRE IT and run the comparison in MONA, we find the address unmodified now. BOOM so finally we got our BADCHARS **00 07 2e a0**
 
   * Let’s find the jump point using the mona command again
   
@@ -375,9 +375,9 @@ Restart oscp.exe in Immunity and run the modified exploit.py script again. Your 
 
     ![task2-jmp](./images/task2-jmp.png)
 
-    Note the address 625011AF => 62 50 11 AF => **\xaf\x11\x50\x62** written backwards since the system is little endian
+    Note the address **625011AF** => **62 50 11 AF** => **\xaf\x11\x50\x62** written backwards since the system is little endian
 
-  * Update your `exploit.py` script, setting the retn variable to the address **\xaf\x11\x50\x62**
+  * Update your `exploit.py` script, setting the retn variable to the address `\xaf\x11\x50\x62`
   
     ![task2-retn2](./images/task2-retn2.png)
 
