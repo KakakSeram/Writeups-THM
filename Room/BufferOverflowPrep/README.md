@@ -401,16 +401,15 @@ Restart oscp.exe in Immunity and run the modified exploit.py script again. Your 
 
     ![task2-shell](./images/task2-shell.png)
 
-
-  ### Note
+### Note
   
-  Stack-based BOF exploitation process in a nutshell:
+Stack-based BOF exploitation process in a nutshell:
 
- * Find the bytes that crashed the program/binary.
- * Find the EIP offset.
- * Look for (and remove if exists) the bad chars.
- * Find the jump point.
- * Exploit!
+* Find the bytes that crashed the program/binary.
+* Find the EIP offset.
+* Look for (and remove if exists) the bad chars.
+* Find the jump point.
+* Exploit!
 
 ## Task 3 - oscp.exe - OVERFLOW2
 
