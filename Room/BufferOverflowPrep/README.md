@@ -418,7 +418,7 @@ Restart oscp.exe in Immunity and run the modified exploit.py script again. Your 
 
     ![task2-shell](./images/task2-shell.png)
 
-### Note
+### Conclution
   
 Stack-based BOF exploitation process in a nutshell:
 
@@ -661,6 +661,38 @@ Repeat the steps outlined in Task 2 but for the OVERFLOW5 command.
 ### Answer the questions below
 
 * What is the EIP offset for OVERFLOW5?
+
+`314`
+
+  * Run the fuzzer.py script
+  
+    ![task6-fuzzer1](./images/task6-fuzzer1.png)
+
+    ![task6-fuzzer2](./images/task6-fuzzer2.png)
+
+    Our program is crashed in 400 bytes see Access violation when executing **[41414141]**
+
+  * Now generate a pattern, based on the length of bytes to crash the server
+  
+    ```
+    /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 700
+    ```
+
+    ![task6-pattern](./images/task6-pattern.png)
+
+  * Modify payload variable of the `exploit.py` script, restart `oscp.exe` and run `exploit.py`
+    
+    ![task6-payload1](./images/task6-payload1.png)
+
+    ![task2-restart](./images/task2-restart.png)
+
+    ![task2-buffer](./images/task2-buffer.png)
+
+  * In Immunity Debugger, in the command input box at the bottom of the screen, run the following mona command
+  
+    `!mona findmsp -distance 700`
+
+    ![task6-offset](./images/task6-offset.png) 
 
 * In byte order (e.g. \x00\x01\x02) and including the null byte \x00, what were the badchars for OVERFLOW5?
 
