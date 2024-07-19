@@ -608,6 +608,38 @@ Repeat the steps outlined in Task 2 but for the OVERFLOW3 command.
 
 * What is the EIP offset for OVERFLOW3?
 
+  `1274`
+
+  * Run the fuzzer.py script
+  
+    ![task4-fuzzer1](./images/task4-fuzzer1.png)
+
+    ![task4-fuzzer2](./images/task4-fuzzer2.png)
+
+    Our program is crashed in 1300 bytes see Access violation when executing **[41414141]**
+
+  * Now generate a pattern, based on the length of bytes to crash the server
+  
+    ```
+    /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 1700
+    ```
+
+    ![task4-pattern](./images/task4-pattern.png)
+
+  * Modify payload variable of the `exploit.py` script, restart `oscp.exe` and run `exploit.py`
+    
+    ![task4-payload1](./images/task4-payload1.png)
+
+    ![task2-restart](./images/task2-restart.png)
+
+    ![task2-buffer](./images/task2-buffer.png)
+
+  * In Immunity Debugger, in the command input box at the bottom of the screen, run the following mona command
+  
+    `!mona findmsp -distance 1700`
+
+    ![task4-offset](./images/task4-offset.png) 
+
 * In byte order (e.g. \x00\x01\x02) and including the null byte \x00, what were the badchars for OVERFLOW3?
 
 ## Task 5 - oscp.exe - OVERFLOW4
@@ -617,6 +649,38 @@ Repeat the steps outlined in Task 2 but for the OVERFLOW4 command.
 ### Answer the questions below
 
 * What is the EIP offset for OVERFLOW4?
+
+  `2026`
+
+  * Run the fuzzer.py script
+  
+    ![task5-fuzzer1](./images/task5-fuzzer1.png)
+
+    ![task5-fuzzer2](./images/task5-fuzzer2.png)
+
+    Our program is crashed in 2100 bytes see Access violation when executing **[41414141]**
+
+  * Now generate a pattern, based on the length of bytes to crash the server
+  
+    ```
+    /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 2500
+    ```
+
+    ![task5-pattern](./images/task5-pattern.png)
+
+  * Modify payload variable of the `exploit.py` script, restart `oscp.exe` and run `exploit.py`
+    
+    ![task5-payload1](./images/task5-payload1.png)
+
+    ![task2-restart](./images/task2-restart.png)
+
+    ![task2-buffer](./images/task2-buffer.png)
+
+  * In Immunity Debugger, in the command input box at the bottom of the screen, run the following mona command
+  
+    `!mona findmsp -distance 2500`
+
+    ![task5-offset](./images/task5-offset.png) 
 
 * In byte order (e.g. \x00\x01\x02) and including the null byte \x00, what were the badchars for OVERFLOW4?
 
@@ -628,7 +692,7 @@ Repeat the steps outlined in Task 2 but for the OVERFLOW5 command.
 
 * What is the EIP offset for OVERFLOW5?
 
-`314`
+  `314`
 
   * Run the fuzzer.py script
   
@@ -780,6 +844,10 @@ Repeat the steps outlined in Task 2 but for the OVERFLOW6 command.
 
 * What is the EIP offset for OVERFLOW6?
 
+  `1034`
+
+  ![task7-offset](./images/task7-offset.png)
+
 * In byte order (e.g. \x00\x01\x02) and including the null byte \x00, what were the badchars for OVERFLOW6?
 
 ## Task 8 - oscp.exe - OVERFLOW7
@@ -800,6 +868,10 @@ Repeat the steps outlined in Task 2 but for the OVERFLOW8 command.
 
 * What is the EIP offset for OVERFLOW8?
 
+  `1786`
+
+  ![task9-offset](./images/task9-offset.png)
+
 * In byte order (e.g. \x00\x01\x02) and including the null byte \x00, what were the badchars for OVERFLOW8?
 
 ## Task 10 - oscp.exe - OVERFLOW9
@@ -809,6 +881,10 @@ Repeat the steps outlined in Task 2 but for the OVERFLOW9 command.
 ### Answer the questions below
 
 * What is the EIP offset for OVERFLOW9?
+
+  `1514`
+
+  ![task10-offset](./images/task10-offset.png)
 
 * In byte order (e.g. \x00\x01\x02) and including the null byte \x00, what were the badchars for OVERFLOW9?
 
@@ -820,4 +896,14 @@ Repeat the steps outlined in Task 2 but for the OVERFLOW10 command.
 
 * What is the EIP offset for OVERFLOW10?
 
+  `537`
+
+  ![task11-offset](./images/task11-offset.png)
+
 * In byte order (e.g. \x00\x01\x02) and including the null byte \x00, what were the badchars for OVERFLOW10?
+
+  `\x00\xa0\xad\xbe\xde\xef`
+
+  ![task11-badchars](./images/task11-badchars.png)
+
+  So finally we got our BADCHARS **00 a0 ad be de ef**
