@@ -4,7 +4,7 @@
 
 ## Task 1 - Introduction
 
-![task1-logo](./images/task1-logo.png)
+<img src="./images/task1-logo.png" height=200  width=auto>
 
 In this room, we aim to explore simple stack buffer overflows(without any mitigations) on x86-64 linux programs. We will use [radare2](https://github.com/radare/radare2) (r2) to examine the memory layout. You are expected to be familiar with x86 and r2 for this room. 
 
