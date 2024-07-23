@@ -32,7 +32,11 @@ When a program runs on a machine, the computer runs the program as a process. Cu
 
 * Where is dynamically allocated memory stored?
 
+   `Heap`
+
 * Where is information about functions(e.g. local arguments) stored?
+
+   `Stack`
 
 ## Task 3 - x86-64 Procedures
 
@@ -96,7 +100,11 @@ calc(4, 5)
 
 * what direction does the stack grown(l for lower/h for higher)
 
+   `L`
+
 * what instruction is used to add data onto the stack?
+
+   `Push`
 
 ## Task 4 - Procedures Continued
 
