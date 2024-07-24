@@ -158,6 +158,8 @@ So far, this is a more thorough example of the run time stack:
 
 * What register stores the return address?
 
+   `rax`
+
 ## Task 5 - Endianess
 
 In the above programs, you can see that the binary information is represented in hexadecimal format. Different architectures actually represent the same hexadecimal number in different ways, and this is what is referred to as Endianess. Let’s take the value of 0x12345678 as an example. Here the least significant value is the right most value(78) while the most significant value is the left most value(12).
@@ -199,6 +201,8 @@ Try run the C program in this folder to overwrite the above variable!
 ### Answer the questions below
 
 * What is the minimum number of characters needed to overwrite the variable?
+
+   `15`
 
 ## Task 7 - Overwriting Function Pointers
 
@@ -267,6 +271,8 @@ In some cases you may need to pass xargs before ./program_name.
 
 * Use the above method to open a shell and read the contents of the secret.txt file.
 
+   `omgyoudidthissocool!!`
+
 ## Task 9 - Buffer Overflows 2
 
 Look at the overflow-4 folder. Try to use your newly learnt buffer overflow techniques for this binary file.
@@ -274,3 +280,5 @@ Look at the overflow-4 folder. Try to use your newly learnt buffer overflow tech
 ### Answer the questions below
 
 * Use the same method to read the contents of the secret file!
+
+   `wowanothertime!!`
