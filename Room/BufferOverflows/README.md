@@ -204,6 +204,10 @@ Try run the C program in this folder to overwrite the above variable!
 
    `15`
 
+   ![task6-max]
+
+   Maximum char is 14. So, to overwrite the variable we add 1 char from maximum number of char
+
 ## Task 7 - Overwriting Function Pointers
 
 For this example, look at the overflow- 2 folder. Inside this folder, you’ll notice the following C code.
@@ -217,6 +221,70 @@ Keep in mind that the architecture of this machine is little endian!
 ### Answer the questions below
 
 * Invoke the special function()
+
+   * Login SSH and goto `overflow-2` folder
+   
+      ![task7-SSH](./images/task7-SSH.png)
+
+   * Finding Return Address
+   
+      * Run `gdb`
+      
+         ```
+         gdb -q func-pointer
+         ```
+
+         ![task7-gdb](./images/task7-gdb.png)
+
+      * Run the program and try to input 5 of 'A's
+      
+         ![task7-normal](./images/task7-normal.png)
+
+         The program run normaly. From the source code we can see that the buffer is has a size of 14. That means if we input more than 14, we should receive our desired SegFault.
+
+      * Run the program and input 15 'A's
+      
+         ![task7-fault1](./images/task7-fault1.png)
+
+         We can see that, as expected, the buffer overflows, and the program crashes. Inputting 15 "A"s causes the rightmost character in the return address to be a "41" (the hexcode for 'A').  This means we have successfully started overwriting the return address!  We must then check how much space we have in the return address to overwrite
+
+      * Run the program and input 20 'A's
+      
+         ![task7-fault2](./images/task7-fault2.png)
+
+         As we can see, sending an input of 20 "A"s overwrites the return address with all "41"s (the hex conversion of 'A')
+
+      * Run the program and input 21 'A's
+      
+         ![task7-fault3](./images/task7-fault3.png)
+
+         When overwriting it with 21 "A"s causes the return address to no longer be overwritten and redirect somewhere else, meaning we went too far!  That means we then have 6 bytes with which to overwrite the return address (20-14=6)
+
+   * Overwriting the return address with the Special Function
+   
+      * Disassemble special fuction
+      
+         ```
+         disassemble special
+         ```
+
+         We see that the function begins at '0x0000000000400567'.  So what we need to do next is overwrite the return address with what we've found! As was mentioned earlier in the room, the architecture is little endian, and so the memory location we actually need to write from right to left:
+
+         ```
+         \x67\x05\x40\x00\x00\x00
+         ```
+
+      * Convert our hex Return Address to ASCII
+      
+         ![task7-hex](./images/task7-hex.png)
+
+      * Run the file and input 14 'A' with ASCII code
+      
+         ```
+         AAAAAAAAAAAAAAg^E@
+         ```
+
+         ![task7-done](./images/task7-done.png)
 
 ## Task 8 - Buffer Overflows
 
