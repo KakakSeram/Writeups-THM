@@ -22,11 +22,17 @@ Please note that this machine does not respond to ping (ICMP) and may take a few
 
 * How many ports are open?
 	
-	`3`
-
 	![task1-nmap](./images/task1-nmap.png)
 
-	We got FTP open on port 21 and allowed to login anonymous. Also we got open port on 9999.
+	We got open port on port 21, 3389 and 9999. FTP allowed to login anonymous. Also we got suspicious open port on 9999. Trying to connect on port 9999.
+
+	```
+	nc $IP 9999
+	```
+
+	![task1-hello](./images/task1-hello.png)
+
+	**Answer : 3**
 
 ## Task 2 - Accessing Files
 
