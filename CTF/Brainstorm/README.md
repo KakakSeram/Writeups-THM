@@ -205,7 +205,7 @@ If you've not done buffer overflows before, check [this](https://tryhackme.com/r
 	
 		![task3-exploit2](./images/task3-exploit2.png)
 
-	* On **Immunity Debugger** press `ctrl+F2` to restart application and click `OK`. Press F2 to run application again.
+	* On **Immunity Debugger** press `ctrl+F2` to restart application and click `OK`. Press F2 to run application again
 	
 		![task3-debug3](./images/task3-debug3.png)
 
@@ -229,7 +229,7 @@ If you've not done buffer overflows before, check [this](https://tryhackme.com/r
 
 * Now you know that you can overflow a buffer and potentially control execution, you need to find a function where ASLR/DEP is not enabled. Why not check the DLL file.
 
-	* Now we need to generate a string of bad chars from `\x01` to `\xff` that is identical to the bytearray. Use the python script (`bytegen.py`)
+	* Now we need to generate a string of bad chars from `\x01` to `\xff` that is identical to the bytearray. Use the python script (`bytegen.py`) and run the script
 	
 		```
 		for x in range(1, 256):
