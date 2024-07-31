@@ -157,7 +157,7 @@ Deploy the machine when you are ready to release the Gatekeeper.
 	/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 200
 	```
 
-	![task1-pattern](./image/task1-pattern.png)
+	![task1-pattern](./images/task1-pattern.png)
 
 * Copy our pattern to payload variable on `exploit.py`
 	
