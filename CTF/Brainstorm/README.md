@@ -289,7 +289,7 @@ If you've not done buffer overflows before, check [this](https://tryhackme.com/r
 
 		![task3-msfvenom](./images/task3-msfvenom.png)
 
-	* Update `exploit.py` script and set the payload variable to the string of generated C code, set retn variable to jump address also add variable padding to  `"\x90" * 16` and change IP to target machine THM
+	* Update `exploit.py` script and set the payload variable to the string of generated C code, set retn variable to jump address also add variable padding to  **"\x90" * 16**`** and change IP to target machine THM
 	
 		![task3-exploit4](./images/task3-exploit4.png)
 
