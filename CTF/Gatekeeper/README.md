@@ -297,13 +297,13 @@ Defeat the Gatekeeper to break the chains.  But beware, fire awaits on the other
 	* Download and run Firefox decrypt tool
 	
 		```
-		git clone https://github.com/unode/firefox_decrypt.git
+		wget https://raw.githubusercontent.com/unode/firefox_decrypt/main/firefox_decrypt.py
 		```
 
 		![task2-git](./images/task2-git.png)
 
 		```
-		python firefox_decrypt.py ~/THM/Gatekeeper/
+		python firefox_decrypt.py .
 		```
 
 		![task2-decrypt](./images/task2-decrypt.png)
