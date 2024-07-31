@@ -93,13 +93,13 @@ If you've not done buffer overflows before, check [this](https://tryhackme.com/r
 
 		![task2-ftp6](./images/task2-ftp6.png)
 
-	* Copy file to Windows VM with installed **Immunity Debugger** and **mona.py.** Run **Immunity Debbuger**
+	* Copy file to Windows VM with installed **Immunity Debugger** and **mona.py.**
 	
 		![task3-debugger](./images/task3-debugger.png)
 
 * After testing for overflow, by entering a large number of characters, determine the EIP offset.
 
-	* Open file `chatserver.exe` on **Immunity Debugger**
+	* Run **Immunity Debbuger** and open file `chatserver.exe`
 	
 		![task3-debug1](./images/task3-debug1.png)
 
