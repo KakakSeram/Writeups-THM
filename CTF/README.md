@@ -17,5 +17,6 @@ This is list of CTF that I have learned.
 |11.|[Internal](./Internal/README.md)|Free|[TryHackMe](https://tryhackme.com/r/room/internal)|Hard|
 |12.|[Brainstorm](./Brainstorm/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/brainstorm)|Medium|
 |13.|[Gatekeeper](./Gatekeeper/README.md)|Free|[TryHackMe](https://tryhackme.com/r/room/gatekeeper)|Medium|
+|14.|[Brainpan 1](./Brainpan1/README.md)|Free|[TryHackMe](https://tryhackme.com/r/room/brainpan)|Hard|
 
 Writeups made with :heart: by @KakakSeram
