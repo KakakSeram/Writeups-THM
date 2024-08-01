@@ -86,7 +86,7 @@ Login as this user. What is his flag?
 
 ## Task 4 - Privilege Escalation
 
-<img src="./images/task4-logo.png" height=200  width=auto>
+<img src="./images/task4-logo.png" height=100  width=auto>
 
 We will use a PowerShell enumeration script to examine the Windows machine. We can then determine the best way to get Administrator access.
 
