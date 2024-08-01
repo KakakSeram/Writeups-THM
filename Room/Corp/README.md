@@ -19,7 +19,7 @@ Please note that this machine does not respond to ping (ICMP) and may take a few
 
 Deploy the windows machine, you will be able to control this in your browser. However if you prefer to use your own RDP client, the credentials are below.
 
-Username: `corp\dark`
+Username: `corp\dark`  
 Password: `_QuejVudId6`
 
 ## Task 2 - Bypassing Applocker
@@ -44,11 +44,11 @@ Just like Linux bash, Windows Powershell saves all previous commands into a file
 
 ## Task 3 - Kerberoasting
 
-![task3-logo](./images/task3-logo.png)
+<img src="./images/task3-logo.png" height=300  width=auto>
 
 It is important you understand how Kerberous actually works in order to know how to exploit it. Watch the video below.
 
-<iframe frameborder="0" src="//www.youtube.com/embed/LmbP-XD1SC8?start=30" width="640" height="360" class="note-video-clip"></iframe>
+[![Kerberos](./images/task3-thumbnail.png)](https://www.youtube.com/embed/LmbP-XD1SC8)
 
 Kerberos is the authentication system for Windows and Active Directory networks. There are many attacks against Kerberos, in this room we will use a Powershell script to request a service ticket for an account and acquire a ticket hash. We can then crack this hash to get access to another user account!
 Answer the questions below
@@ -72,7 +72,7 @@ Now lets load this into memory: `Invoke-Kerberoast -OutputFormat hashcat |fl`
 
 You should get a SPN ticket.
 
-![task3-hascat](./images/task3-hascat.png)
+<img src="./images/task3-hascat.png" height=400  width=auto>
 
 Lets use hashcat to bruteforce this password. The type of hash we're cracking is **Kerberos 5 TGS-REP etype 23** and the hashcat code for this is **13100**.
 
@@ -86,7 +86,7 @@ Login as this user. What is his flag?
 
 ## Task 4 - Privilege Escalation
 
-![task4-logo](./images/task4-logo.png)
+<img src="./images/task4-logo" height=300  width=auto>
 
 We will use a PowerShell enumeration script to examine the Windows machine. We can then determine the best way to get Administrator access.
 
