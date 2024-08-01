@@ -6,6 +6,10 @@
 
 * Nmap
 * Gobuster
+* pattern_create
+* pattern_offset
+* Python
+* msvenom
 
 ## Task 1 - Deploy and compromise the machine
 
@@ -144,10 +148,10 @@ All credit to [superkojiman](https://www.vulnhub.com/entry/brainpan-1,51/) - Thi
 
 		![exploit1](./images/exploit1.png)
 
-	* Create pattern with adding 300 bytes from crached program (600 + 300 = 800)
+	* Create pattern with adding 300 bytes from crached program (600 + 300 = 900)
 	
 		```
-		/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 300
+		/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 900
 		```
 
 		![pattern](./images/pattern.png)
