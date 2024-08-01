@@ -50,6 +50,9 @@ It is important you understand how Kerberous actually works in order to know how
 
 [![Kerberos](./images/task3-thumbnail.png)](https://www.youtube.com/embed/LmbP-XD1SC8)
 
+<video src="https://www.youtube.com/embed/LmbP-XD1SC8" width="320" height="240" controls></video>
+
+
 Kerberos is the authentication system for Windows and Active Directory networks. There are many attacks against Kerberos, in this room we will use a Powershell script to request a service ticket for an account and acquire a ticket hash. We can then crack this hash to get access to another user account!
 Answer the questions below
 
@@ -86,7 +89,7 @@ Login as this user. What is his flag?
 
 ## Task 4 - Privilege Escalation
 
-<img src="./images/task4-logo" height=300  width=auto>
+<img src="./images/task4-logo" height=200  width=auto>
 
 We will use a PowerShell enumeration script to examine the Windows machine. We can then determine the best way to get Administrator access.
 
