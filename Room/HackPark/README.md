@@ -2,6 +2,8 @@
 
 ![HackPark](./images/HackPark.png)
 
+Bruteforce a websites login with Hydra, identify and use a public exploit then escalate your privileges on this Windows machine!
+
 ## Task 1 - Deploy the vulnerable Windows machine
 
 ![task1-logo](./images/task1-logo.png)

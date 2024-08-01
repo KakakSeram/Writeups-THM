@@ -2,6 +2,8 @@
 
 ![GovernanceRegulation](./images/GovernanceRegulation.png)
 
+Explore policies and frameworks vital for regulating cyber security in an organisation.
+
 ## Task 1 - Introduction
 
 Cyber security is a rapidly evolving landscape wherein malicious actors relentlessly endeavour to exploit vulnerabilities in highly-sensitive systems, often with the intent of causing severe damage, disruption, and stealing of sensitive corporate data. To combat this evolving threat, a comprehensive approach to information security governance & regulation is necessary. Such an approach requires establishing robust policies and guidelines and implementing rigorous monitoring and enforcement mechanisms to ensure compliance. By adopting a proactive and strategic stance towards cyber security, organisations can mitigate the risks posed by malicious actors and safeguard their sensitive systems against potentially catastrophic breaches.

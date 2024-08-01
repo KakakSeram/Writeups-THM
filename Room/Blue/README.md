@@ -2,6 +2,8 @@
 
 ![Blue](./images/Blue.png)
 
+Deploy & hack into a Windows machine, leveraging common misconfigurations issues.
+
 ## Task 1 - Recon
 
 Scan and learn what exploit this machine is vulnerable to. Please note that this machine does not respond to ping (ICMP) and may take a few minutes to boot up. This room is not meant to be a boot2root CTF, rather, this is an educational series for complete beginners. Professionals will likely get very little out of this room beyond basic practice as the process here is meant to be beginner-focused. 

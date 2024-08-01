@@ -2,6 +2,8 @@
 
 ![PersistingActiveDirectory](./images/PersistingActiveDirectory.png)
 
+Learn about common Active Directory persistence techniques that can be used post-compromise to ensure the blue team will not be able to kick you out during a red team exercise.
+
 ![Diagram](./images/Diagram.png)
 
 ## Task 1 - Introduction

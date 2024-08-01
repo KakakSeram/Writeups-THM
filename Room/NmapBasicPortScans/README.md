@@ -2,6 +2,8 @@
 
 ![NmapBasicPortScans](./images/NmapBasicPortScans.png)
 
+Learn in-depth how nmap TCP connect scan, TCP SYN port scan, and UDP port scan work.
+
 ## Task 1 - Introduction
 
 This room is the second in the Nmap series (part of the Introduction to Network Security module).

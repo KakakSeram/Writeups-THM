@@ -2,6 +2,8 @@
 
 ![WhatTheShell](./images/WhatTheShell.png)
 
+An introduction to sending and receiving (reverse/bind) shells when exploiting target machines.
+
 ## Task 1 - What is a shell?
 
 Before we can get into the intricacies of sending and receiving shells, it's important to understand what a shell actually is. In the simplest possible terms, shells are what we use when interfacing with a Command Line environment (CLI). In other words, the common bash or sh programs in Linux are examples of shells, as are cmd.exe and Powershell on Windows. When targeting remote systems it is sometimes possible to force an application running on the server (such as a webserver, for example) to execute arbitrary code. When this happens, we want to use this initial access to obtain a shell running on the target.

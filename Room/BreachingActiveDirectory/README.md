@@ -2,6 +2,8 @@
 
 ![BreachingActiveDirectory](./images/BreachingActiveDirectory.png)
 
+This network covers techniques and tools that can be used to acquire that first set of AD credentials that can then be used to enumerate AD.
+
 ![Diagram](./images/Diagram.png)
 
 ## Task 1 - Introduction to AD Breaches

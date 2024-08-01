@@ -2,6 +2,8 @@
 
 ![CredentialsHarvesting](./images/CredentialsHarvesting.png)
 
+Apply current authentication models employed in modern environments to a red team approach.
+
 ## Task 1 - Introduction
 
 ### Welcome to Credentials Harvesting

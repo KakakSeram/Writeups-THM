@@ -2,6 +2,8 @@
 
 ![WindowsLocalPersistence](./images/WindowsLocalPersistence.png)
 
+Learn the most common persistence techniques used on Windows machines.
+
 ## Task 1 - Introduction
 
 ![task1-logo](./images/task1-logo.png)

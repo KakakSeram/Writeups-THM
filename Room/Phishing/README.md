@@ -2,6 +2,8 @@
 
 ![Phishing](./images/Phishing.png)
 
+Learn what phishing is and why it's important to a red team engagement. You will set up phishing infrastructure, write a convincing phishing email and try to trick your target into opening your email in a real-world simulation. 
+
 ## Task 1 - Brief
 
 This room will take you through what phishing is, how it's performed, some valuable tools and why it's an essential part of a Red Team engagement. 

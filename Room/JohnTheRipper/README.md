@@ -2,6 +2,8 @@
 
 ![JohnTheRipper](./images/JohnTheRipper.png)
 
+Learn how to use John the Ripper - An extremely powerful and adaptable hash cracking tool.
+
 ## Task 1 - John who?
 
 ### Welcome

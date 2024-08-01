@@ -2,6 +2,8 @@
 
 ![NmapAdvancedPortScans](./images/NmapAdvancedPortScans.png)
 
+Learn advanced techniques such as null, FIN, Xmas, and idle (zombie) scans, spoofing, in addition to FW and IDS evasion.
+
 ## Task 1 - Introduction
 
 This room is the third in the Nmap series (part of the Introduction to Network Security module). In the first two rooms, we learned about live host discovery and basic port scans.

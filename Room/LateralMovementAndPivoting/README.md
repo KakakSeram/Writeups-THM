@@ -2,6 +2,8 @@
 
 ![LateralMovementAndPivoting](./images/LateralMovementAndPivoting.png)
 
+Learn about common techniques used to move laterally across a Windows network.
+
 ![Diagram](./images/Diagram.png)
 
 ## Task 1 - Introduction

@@ -2,6 +2,8 @@
 
 ![CommonLinuxPrivesc](./images/CommonLinuxPrivesc.png)
 
+A room explaining common Linux privilege escalation
+
 ## Task 1 - Get Connected
 
 This room will explore common Linux Privilege Escalation vulnerabilities and techniques, but in order to do that, we'll need to do a few things first!
@@ -460,7 +462,7 @@ As with any SUID file, it will run this command with the same privileges as the 
 
     ![task9-run](./images/task9-run.png)
 
-## Task 10 - Expanding Your Knowledge 
+## Task 10 - Expanding Your Knowledge
 
 **Further Learning**
 

@@ -2,6 +2,8 @@
 
 ![ProtocolsAndServers](./images/ProtocolsAndServers.png)
 
+Learn about common protocols such as HTTP, FTP, POP3, SMTP and IMAP, along with related insecurities.
+
 ## Task 1 - Introduction
 
 This room introduces the user to a few protocols commonly used, such as:

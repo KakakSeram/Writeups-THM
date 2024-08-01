@@ -2,6 +2,8 @@
 
 ![HackingWithPowerShell](./images/HackingWithPowerShell.png)
 
+Learn the basics of PowerShell and PowerShell Scripting.
+
 ## Task 1 - Objectives
 
 Before completing this room, you should be aware of some fundamentals. For example, the differences between CMD, PS and some syntax. This room will cover the following:

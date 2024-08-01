@@ -2,6 +2,8 @@
 
 ![SteelMountain](./images/SteelMountain.png)
 
+Hack into a Mr. Robot themed Windows machine. Use metasploit for initial access, utilise powershell for Windows privilege escalation enumeration and learn a new technique to get Administrator access.
+
 ## Task 1 -  Introduction
 
 <img src="./images/task1-HVTz2Ca.png" height=150  width=auto>

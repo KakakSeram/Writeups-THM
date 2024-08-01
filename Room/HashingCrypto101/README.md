@@ -1,5 +1,7 @@
 # [Hashing - Crypto 101](https://tryhackme.com/room/hashingcrypto101)
 
+An introduction to Hashing, as part of a series on crypto.
+
 ## Task 1 - Key Terms
 
 Before we start, we need to get some jargon out of the way.

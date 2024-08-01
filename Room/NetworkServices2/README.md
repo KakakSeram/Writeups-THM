@@ -2,6 +2,8 @@
 
 ![NetworkServices2](./images/NetworkServices2.png)
 
+Enumerating and Exploiting More Common Network Services & Misconfigurations.
+
 ## Task 1 - Get Connected
 
 Hello and welcome!

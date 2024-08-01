@@ -2,6 +2,8 @@
 
 ![NetworkServices](./images/NetworkServices.png)
 
+Learn about, then enumerate and exploit a variety of network services and misconfigurations.
+
 ## Task 1 - Get Connected
 
 Hello and welcome!

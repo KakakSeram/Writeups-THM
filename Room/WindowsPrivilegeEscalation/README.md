@@ -2,6 +2,8 @@
 
 ![WindowsPrivilegeEscalation](./images/WindowsPrivilegeEscalation.png)
 
+Learn the fundamentals of Windows privilege escalation techniques.
+
 ## Task 1 - Introduction
 
 During a penetration test, you will often have access to some Windows hosts with an unprivileged user. Unprivileged users will hold limited access, including their files and folders only, and have no means to perform administrative tasks on the host, preventing you from having complete control over your target.

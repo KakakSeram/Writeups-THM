@@ -2,6 +2,8 @@
 
 ![EnumeratingActiveDirectory.png](./images/EnumeratingActiveDirectory.png)
 
+This room covers various Active Directory enumeration techniques, their use cases as well as drawbacks.
+
 ![Diagram](./images/Diagram.png)
 
 ## Task 1 - Why AD Enumeration

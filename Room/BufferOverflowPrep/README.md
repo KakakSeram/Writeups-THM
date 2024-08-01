@@ -2,6 +2,8 @@
 
 ![BufferOverflowPrep](./images/BufferOverflowPrep.png)
 
+Practice stack based buffer overflows!
+
 ## Task 1 - Deploy VM
 
 This room uses a 32-bit Windows 7 VM with Immunity Debugger and Putty preinstalled. Windows Firewall and Defender have both been disabled to make exploit writing easier.

@@ -2,6 +2,8 @@
 
 ![GameZone](./images/GameZone.png)
 
+Learn to hack into this machine. Understand how to use SQLMap, crack some passwords, reveal services using a reverse SSH tunnel and escalate your privileges to root!
+
 ## Task 1 - Deploy the vulnerable machine
 
 <img src="./images/task1-logo.png" height=200  width=auto>

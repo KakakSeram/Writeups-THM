@@ -2,6 +2,8 @@
 
 ![ProtocolsAndServers2](./images/ProtocolsAndServers2.png)
 
+Learn about attacks against passwords and cleartext traffic; explore options for mitigation via SSH and SSL/TLS.
+
 ## Task 1 - Introduction
 
 The [Protocols and Servers](https://tryhackme.com/room/protocolsandservers) room covered many protocols:

@@ -2,6 +2,8 @@
 
 ![BufferOverflows](./images/BufferOverflows.png)
 
+Learn how to get started with basic Buffer Overflows!
+
 ## Task 1 - Introduction
 
 <img src="./images/task1-logo.png" height=200  width=auto>
