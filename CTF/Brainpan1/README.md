@@ -37,7 +37,7 @@ All credit to [superkojiman](https://www.vulnhub.com/entry/brainpan-1,51/) - Thi
 		nc $IP 9999
 		```
 
-		![abyss](./images/abyss/png)
+		![abyss](./images/abyss.png)
 
 		The application need password to enter
 
@@ -198,7 +198,7 @@ All credit to [superkojiman](https://www.vulnhub.com/entry/brainpan-1,51/) - Thi
 
 	* Run `exploit.py`
 
-		![runexp](./images/runexp.png)
+		![runex](./images/runex.png)
 	
 		![debug3](./images/debug3.png)
 	
@@ -242,7 +242,7 @@ All credit to [superkojiman](https://www.vulnhub.com/entry/brainpan-1,51/) - Thi
 
 	* Run `exploit.py` and get the shell
 	
-		![shell](./images/)
+		![shell](./images/shell.png)
 
 	**WE GOT INITIAL ACCESS**
 
