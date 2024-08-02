@@ -80,7 +80,7 @@ Just like Linux bash, Windows Powershell saves all previous commands into a file
 * Access the file and obtain the flag.
 	
 	`flag{a12a41b5f8111327690f836e9b302f0b}`
-	
+
 	![task2-flag](./images/task2-flag.png)
 
 ## Task 3 - Kerberoasting
@@ -92,13 +92,18 @@ It is important you understand how Kerberous actually works in order to know how
 [![Watch the video](./images/task3-thumbnail.jpg)](https://www.youtube.com/watch?v=LmbP-XD1SC8)
 
 Kerberos is the authentication system for Windows and Active Directory networks. There are many attacks against Kerberos, in this room we will use a Powershell script to request a service ticket for an account and acquire a ticket hash. We can then crack this hash to get access to another user account!
-Answer the questions below
+
+### Answer the questions below
 
 Lets first enumerate Windows. If we run `setspn -T medin -Q */*` we can extract all accounts in the SPN.
 
 SPN is the Service Principal Name, and is the mapping between service and account.
 
-Running that command, we find an existing SPN. What user is that for?
+* Running that command, we find an existing SPN. What user is that for?
+
+	`fela`
+
+	![task3-SPN](./images/task3-SPN.png)
 
 Now we have seen there is an SPN for a user, we can use Invoke-Kerberoast and get a ticket.
 
