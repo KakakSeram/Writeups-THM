@@ -4,6 +4,9 @@
 
 [Mr Robot CTF](https://tryhackme.com/r/room/mrrobot) is listed as an medium room. Based on the Mr. Robot show, can you root this box? An overview of what we’ll be using is listed here:
 
+* Nmap
+* Gobuster
+
 ## Task 1 - Connect to our network
 
 To deploy the Mr. Robot virtual machine, you will first need to connect to our network.
@@ -22,11 +25,11 @@ To deploy the Mr. Robot virtual machine, you will first need to connect to our n
 	
 	When you run this you see lots of text, at the end it will say Initialization Sequence Completed
 
-You can verify you are connected by looking on your access page. Refresh the page
-
-You should see a green tick next to Connected. It will also show you your internal IP address.
-
-![task1-network](./images/task1-network.png)
+	You can verify you are connected by looking on your access page. Refresh the page
+	
+	You should see a green tick next to Connected. It will also show you your internal IP address.
+	
+	![task1-network](./images/task1-network.png)
 
 * You are now ready to use our machines on our network!
 
@@ -40,9 +43,39 @@ Can you root this Mr. Robot styled machine? This is a virtual machine meant for 
 
 Credit to [Leon Johnson](https://twitter.com/@sho_luv) for creating this machine. **This machine is used here with the explicit permission of the creator <3** 
 
+### Enumeration & Exploitation
+
+* Scan open port with `nmap`
+
+	```
+	nmap $IP -A -p- -oN nmap-scan -Pn
+	```
+
+	![task2-nmap](./images/task2-nmap.png)
+
+	We got open port on 80 (http) and 443 (htpps). All scan result [here.](./files/nmap-scan)
+
+* Scan directory list with `Gobuster`
+
+	![task2-gobuster](./images/task2-gobuster.png)
+
+	![task2-200](./images/task2-200.png)
+
+	All scan result [here.](./files/gobuster-scan)
+
 ### Answer the questions below
 
 * What is key 1?
+
+	Open **/robot** directory
+	
+	![task2-robots](./images/task2-robots.png)
+
+	We found **key1**
+
+	![task2-key1](./images/task2-key1.png)
+	
+	**Answer : 073403c8a58a1f80d943455fb30724b9**
 
 * What is key 2?
 
