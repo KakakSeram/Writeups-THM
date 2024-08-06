@@ -8,6 +8,8 @@
 * Gobuster
 * base64 decoding
 * Python
+* Hydra
+* WPScan
 
 ## Task 1 - Connect to our network
 
@@ -95,7 +97,7 @@ Credit to [Leon Johnson](https://twitter.com/@sho_luv) for creating this machine
 
 	![task2-cred](./images/task2-cred.png)
 
-	It seem like a credential. Now we try to login with this credential on **/wp-login**
+	We got **elliot:ER28-0652** it seem like a credential. Now we try to login with this credential on **/wp-login**
 
 	![task2-login](./images/task2-login.png)
 
@@ -124,7 +126,7 @@ Credit to [Leon Johnson](https://twitter.com/@sho_luv) for creating this machine
 	Now we got username **Elliot.** User **WPScan** to get password
 
 	```
-	wpscan --usernames Elliot --passwords fsocity.dic --url $IP -t 30
+	wpscan --url $IP --usernames Elliot --passwords fsocity.dic -t 30
 	```
 
 	![task2-wpscan1](./images/task2-wpscan1.png)
@@ -176,3 +178,41 @@ Credit to [Leon Johnson](https://twitter.com/@sho_luv) for creating this machine
 	**Answer : 822c73956184f694993bede3eb39f959**
 
 * What is key 3?
+
+	#### Privilege Escalation
+	
+	Try to find sudo privilege
+
+	![task2-sudo](./images/task2-sudo.png)
+
+	We found nothing on sudo. Try to find SUID binaries
+
+	```
+	find / -type f -perm -4000 -ls 2>/dev/null
+	```
+
+	![task2-SUID](./images/task2-SUID.png)
+
+	We found **nmap** set as SUID. From [GTFOBins](https://gtfobins.github.io/gtfobins/nmap/#suid) information, when nmap has the SUID bit set we can do to eleveted our privileges and read the file system
+
+	```
+	nmap --interactive
+	!sh
+	```
+
+	![task2-root](./images/task2-root.png)
+
+	We got root access. Open file **key-3-of-3.txt**
+
+	![task2-key3](./images/task2-key3.png)
+
+	**Answer : 04787ddef27c3dee1ee161b21670b4e4**
+
+
+
+
+
+
+
+
+
