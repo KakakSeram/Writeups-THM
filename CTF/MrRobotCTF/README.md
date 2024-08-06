@@ -10,6 +10,7 @@
 * Python
 * Hydra
 * WPScan
+* Privilege Escalation
 
 ## Task 1 - Connect to our network
 
