@@ -6,6 +6,8 @@
 
 * Nmap
 * Gobuster
+* base64 decoding
+* Python
 
 ## Task 1 - Connect to our network
 
@@ -67,7 +69,7 @@ Credit to [Leon Johnson](https://twitter.com/@sho_luv) for creating this machine
 
 * What is key 1?
 
-	Open **/robot** directory
+	On gobuster scanning We found **/robot** directory. Open **/robot** directory on browser
 	
 	![task2-robots](./images/task2-robots.png)
 
@@ -78,5 +80,99 @@ Credit to [Leon Johnson](https://twitter.com/@sho_luv) for creating this machine
 	**Answer : 073403c8a58a1f80d943455fb30724b9**
 
 * What is key 2?
+
+	#### Method 1
+
+	On gobuster scanning We found **/license** directory. Open **/license** directory on browser
+
+	![task2-license](./images/task2-license.png)
+
+	We found suspicious string **ZWxsaW90OkVSMjgtMDY1Mgo=** and try to decode the string using bas64
+
+	```
+	echo ZWxsaW90OkVSMjgtMDY1Mgo= | base64 -d
+	```
+
+	![task2-cred](./images/task2-cred.png)
+
+	It seem like a credential. Now we try to login with this credential on **/wp-login**
+
+	![task2-login](./images/task2-login.png)
+
+	Great, now we can access WordPress dashboard
+
+	![task2-dashboard](./images/task2-dashboard.png)
+
+	#### Method 2
+	
+	On **/robot** directory we found fsocity.dic, access it and we got the file
+
+	![task2-fsocity](./images/task2-fsocity.png)
+	
+	It seem like a possible list for username. Activated Web Developer Tools and go to Network tab. Open **/wp-login**and try to login using any credential to get response
+
+	![task2-invalid](./images/task2-invalid.png)
+
+	Brute force with Hydra to get username
+
+	```
+	hydra -L fsocity.dic -p TEST $IP http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^:Invalid username"
+	```
+
+	![task2-hydra](./images/task2-hydra.png)
+
+	Now we got username **Elliot.** User **WPScan** to get password
+
+	```
+	wpscan --usernames elliot --passwords fsocity.dic --url $IP -t 30
+	```
+
+	![task2-wpscan1](./images/task2-wpscan1.png)
+
+	![task2-wpscan2](./images/task2-wpscan2.png)
+
+	Great, we got a valid credential and login to **/wp-login**
+
+	#### Get Reverse Shell & Key
+
+	On Appearance editor, edit **404.php** to our php reverse shell from [Pentestmonkey](https://github.com/pentestmonkey/php-reverse-shell)
+
+	![task2-php](./images/task2-php.png)
+
+	Setup listener our attacking machine
+
+	![task2-listener](./images/task2-listener.png)
+
+	Access **404.php** on browser to get our reverse shell
+
+	![task2-404](./images/task2-404.png)
+
+	![task2-shell](./images/task2-shell.png)
+
+	Use python command to stabilize our shell
+
+	```
+	python -c "import pty; pty.spawn('/bin/bash')"
+	```
+
+	![task2-pty](./images/task2-pty.png)
+
+	We found file **key-2-of-3.txt** and **password.raw-md5**
+
+	![task2-file](./images/task2-file.png)
+
+	Use CrackStation to crack **password.raw-md5**
+
+	![task2-crack](./images/task2-crack.png)
+
+	Now we got a credential **robot:abcdefghijklmnopqrstuvwxyz**. Switch user to **robot**
+
+	![task2-su](./images/task2-su.png)
+
+	Open file **key-2-of-3.txt**
+
+	![task2-key2](./images/task2-key2.png)
+
+	**Answer : 822c73956184f694993bede3eb39f959**
 
 * What is key 3?
