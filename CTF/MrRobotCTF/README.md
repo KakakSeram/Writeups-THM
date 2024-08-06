@@ -124,7 +124,7 @@ Credit to [Leon Johnson](https://twitter.com/@sho_luv) for creating this machine
 	Now we got username **Elliot.** User **WPScan** to get password
 
 	```
-	wpscan --usernames elliot --passwords fsocity.dic --url $IP -t 30
+	wpscan --usernames Elliot --passwords fsocity.dic --url $IP -t 30
 	```
 
 	![task2-wpscan1](./images/task2-wpscan1.png)
