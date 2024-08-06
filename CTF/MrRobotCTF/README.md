@@ -123,10 +123,14 @@ Credit to [Leon Johnson](https://twitter.com/@sho_luv) for creating this machine
 
 	![task2-hydra](./images/task2-hydra.png)
 
-	Now we got username **Elliot.** User **WPScan** to get password
+	Now we got username **Elliot.** Sort file **fsocity.dic** for password list
+
+	![task2-sort](./images/task2-sort.png)
+
+	Use **WPScan** to get password
 
 	```
-	wpscan --url $IP --usernames Elliot --passwords fsocity.dic -t 30
+	wpscan --url $IP/wp-login --usernames Elliot --passwords fsocity_sorted.dic -t 30
 	```
 
 	![task2-wpscan1](./images/task2-wpscan1.png)
