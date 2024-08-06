@@ -139,6 +139,8 @@ Credit to [Leon Johnson](https://twitter.com/@sho_luv) for creating this machine
 
 	Great, we got a valid credential and login to **/wp-login**
 
+	![task2-dashboard](./images/task2-dashboard.png)
+
 	#### Get Reverse Shell & Key
 
 	On Appearance editor, edit **404.php** to our php reverse shell from [Pentestmonkey](https://github.com/pentestmonkey/php-reverse-shell)
