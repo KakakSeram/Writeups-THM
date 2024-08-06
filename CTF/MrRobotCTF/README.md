@@ -62,6 +62,10 @@ Credit to [Leon Johnson](https://twitter.com/@sho_luv) for creating this machine
 
 * Scan directory list with `Gobuster`
 
+	```
+	gobuster dir -u  $IP -w /usr/share/wordlists/dirbuster/dirb/common.txt -o gobuster-scan
+	```
+
 	![task2-gobuster](./images/task2-gobuster.png)
 
 	![task2-200](./images/task2-200.png)
