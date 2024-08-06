@@ -97,7 +97,7 @@ Credit to [Leon Johnson](https://twitter.com/@sho_luv) for creating this machine
 
 	![task2-cred](./images/task2-cred.png)
 
-	We got **elliot:ER28-0652** it seem like a credential. Now we try to login with this credential on **/wp-login**
+	We got **elliot:ER28-0652,** it seem like a credential. Now we try to login with this credential on **/wp-login**
 
 	![task2-login](./images/task2-login.png)
 
