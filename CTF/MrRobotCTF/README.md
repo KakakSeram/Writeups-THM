@@ -6,7 +6,7 @@
 
 * Nmap
 * Gobuster
-* base64 decoding
+* Base64 decoding
 * Python
 * Hydra
 * WPScan
