@@ -5,6 +5,8 @@
 [Retro](https://tryhackme.com/r/room/retro) is listed as an medium room. New high score! An overview of what we’ll be using is listed here:
 
 * Nmap
+* Gobuster
+* RDP
 
 ## Task 1 - Pwn
 
@@ -28,7 +30,7 @@ _There are two distinct paths that can be taken on Retro. One requires significa
 
 	![nmap](./images/nmap.png)
 
-	We found open port on 80 and 3389
+	We found open port on 80 (HTTP) and 3389 (RDP)
 
 * Scan directory list with `Gobuster`
 
@@ -38,6 +40,22 @@ _There are two distinct paths that can be taken on Retro. One requires significa
 
 	![gobuster](./images/gobuster.png)
 
+	We got directory **/retro**
+
+* Browsing into **/retro** directory
+
+	![web1](./images/web1.png)
+
+	We found the author is **Wade**, open the link of author
+
+	![web2](./images/web2.png)
+
+	Exploring posts by **Wade**
+
+	![web3](./images/web3.png)
+
+	We found suspicious comment on post **Ready Player One**. Take a note for it.
+
 * Scan sub directory on **/retro**
 
 	```
@@ -45,6 +63,16 @@ _There are two distinct paths that can be taken on Retro. One requires significa
 	```
 
 	![gobuster-retro](./images/gobuster-retro.png)
+
+* We know from nmap that host machine has set RDP port open. Connect to it using username Author and password from the comment.
+
+	```
+	xfreerdp /v:$IP /u:Wade /p:'parzival'
+	```
+
+	![rdp](./images/rdp.png)
+
+	We got initial access
 
 ### Answer the questions below
 
@@ -56,6 +84,9 @@ _There are two distinct paths that can be taken on Retro. One requires significa
 
 * user.txt
 
+	![user](./images/user.png)
+
+	**Answer : 3b99fbdc6d430bfb51c72c651a261927**
 
 * root.txt
 
