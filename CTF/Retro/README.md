@@ -38,10 +38,21 @@ _There are two distinct paths that can be taken on Retro. One requires significa
 
 	![gobuster](./images/gobuster.png)
 
+* Scan sub directory on **/retro**
+
+	```
+	gobuster dir -u  $IP/retro -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 50 -o gobuster-retro-scan
+	```
+
+	![gobuster-retro](./images/gobuster-retro.png)
+
 ### Answer the questions below
 
 * A web server is running on the target. What is the hidden directory which the website lives on?
 
+	![directory](./images/directory.png)
+
+	**Answer : /Retro**
 
 * user.txt
 
