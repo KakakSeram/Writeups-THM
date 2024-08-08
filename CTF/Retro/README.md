@@ -7,6 +7,8 @@
 * Nmap
 * Gobuster
 * RDP
+* Privilege escalation
+* CVE-2017-0213
 
 ## Task 1 - Pwn
 
@@ -46,23 +48,13 @@ _There are two distinct paths that can be taken on Retro. One requires significa
 
 	![web1](./images/web1.png)
 
-	We found the author is **Wade**, open the link of author
+	We found the author is **Wade** & exploring posts by **Wade**
 
 	![web2](./images/web2.png)
-
-	Exploring posts by **Wade**
 
 	![web3](./images/web3.png)
 
 	We found suspicious comment on post **Ready Player One**. Take a note for it.
-
-* Scan sub directory on **/retro**
-
-	```
-	gobuster dir -u  $IP/retro -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 50 -o gobuster-retro-scan
-	```
-
-	![gobuster-retro](./images/gobuster-retro.png)
 
 * We know from nmap that host machine has set RDP port open. Connect to it using username Author and password from the comment.
 
@@ -73,6 +65,36 @@ _There are two distinct paths that can be taken on Retro. One requires significa
 	![rdp](./images/rdp.png)
 
 	We got initial access
+
+### Privilege Escalation
+
+* View system information on Host machine
+
+	![system](./images/system.png)
+
+	We got information that Host machine run **Windows Server 2016 Build 14393**
+
+* There is a vulnerabolity for this machine
+
+	![vulnerability](./images/vulnerability.png)
+
+* Download file exploit from [Github](https://github.com/WindowsExploits/Exploits/tree/master/CVE-2017-0213)
+
+	```
+	wget https://github.com/WindowsExploits/Exploits/raw/master/CVE-2017-0213/Binaries/CVE-2017-0213_x64.zip
+	```
+
+	![download](./images/download.png)
+
+* Transfer exploit file to Host machine
+
+	![transfer](./images/transfer.png)
+
+* Extract and run the program
+
+	![run](./images/run.png)
+
+	**WE ARE ROOT NOW**
 
 ### Answer the questions below
 
@@ -89,4 +111,8 @@ _There are two distinct paths that can be taken on Retro. One requires significa
 	**Answer : 3b99fbdc6d430bfb51c72c651a261927**
 
 * root.txt
+
+	![root](./images/root.png)
+
+	**Answer : 7958b569565d7bd88d10c6f22d1c4063**
 
