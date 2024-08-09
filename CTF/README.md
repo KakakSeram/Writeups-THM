@@ -20,6 +20,6 @@ This is list of CTF that I have learned.
 |14.|[Brainpan 1](./Brainpan1/README.md)|Free|[TryHackMe](https://tryhackme.com/r/room/brainpan)|Hard|
 |15.|[Mr Robot CTF](./MrRobotCTF/README.md)|Free|[TryHackMe](https://tryhackme.com/r/room/mrrobot)|Medium|
 |16.|[Retro](./Retro/README.md)|Free|[TryHackMe](https://tryhackme.com/r/room/retro)|Hard|
-|17.|[c4ptur3-th3-fl4g](./c4ptur3th3fl4g/README.md)|[TryHackMe](https://tryhackme.com/r/room/c4ptur3th3fl4g)|Easy|
+|17.|[c4ptur3-th3-fl4g](./c4ptur3th3fl4g/README.md)|Free|[TryHackMe](https://tryhackme.com/r/room/c4ptur3th3fl4g)|Easy|
 
 Writeups made with :heart: by @KakakSeram
