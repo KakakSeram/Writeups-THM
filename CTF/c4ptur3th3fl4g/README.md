@@ -5,6 +5,9 @@
 [c4ptur3-th3-fl4g](https://tryhackme.com/r/room/c4ptur3th3fl4g) is listed as an medium room. A beginner level CTF challenge. An overview of what we’ll be using is listed here:
 
 * [cryptii](https://cryptii.com/)
+* [Sonic Visualiser](https://www.sonicvisualiser.org/download.html)
+* steghide
+* strings
 
 ## Task 1 - Translation & Shifting
 
@@ -129,6 +132,16 @@ A spectrogram is a visual representation of the spectrum of frequencies of a sig
 
 * Download the file
 
+	* Download, install and run [Sonic Visualiser](https://www.sonicvisualiser.org/download.html)
+	
+		![task2-sonicvisualiser](./images/task2-sonicvisualiser.png)
+
+	* Open .wav file from task and click on Layer -> Add Spectrogram
+	
+		![task2-message](./images/task2-message.png)
+
+	**Answer : Super Secret Message** 
+
 ## Task 3 - Steganography
 
 Steganography is the practice of concealing a file, message, image, or video within another file, message, image, or video.
@@ -136,6 +149,14 @@ Steganography is the practice of concealing a file, message, image, or video wit
 ### Answer the questions below
 
 * Decode the image to reveal the answer
+
+	```
+	steghide extract -sf stegosteg.jpg
+	```
+
+	![task3-stegano](./images/task3-stegano.png)
+
+	**Answer : SpaghettiSteg**
 
 ## Task 4 - Security through obscurity
 
@@ -145,4 +166,20 @@ Security through obscurity is the reliance in security engineering on the secrec
 
 * Download and get 'inside' the file. What is the first filename & extension?
 
+	```
+	strings meme.jpg | tail
+	```
+
+	![task4-strings1](./images/task4-strings1.png)
+
+	**Answer : hackerchat.png**
+
 * Get inside the archive and inspect the file carefully. Find the hidden text.
+
+	```
+	strings meme.jpg | tail
+	```
+
+	![task4-strings2](./images/task4-strings2.png)
+
+	**Answer : "AHH_YOU_FOUND_ME!"**
