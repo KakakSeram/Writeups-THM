@@ -22,17 +22,57 @@ Please give the box up to 5 minutes to boot and configure.
 
 * Let's run nmap and check what ports are open.
 
+	```
+	nmap $IP -A -p- -oN nmap-scan -Pn
+	```
+
+	![task1-nmap](./images/task1-nmap.png)
+
 * What port is for the web server?
+
+	**Answer : 80**
 
 * What port is for remote desktop service?
 
+	**Answer : 3389**
+
 * What is a possible password in one of the pages web crawlers check for?
 
+	```
+	gobuster dir -u $IP -w /usr/share/wordlists/dirb/common.txt -o gobuster-scan
+	```
+
+	![task1-gobuster](./images/task1-gobuster.png)
+
+	![task1-directory](./images/task1-directory.png)
+
+	Open **robots.txt**
+
+	![task1-robots](./images/task1-robots.png)
+
+	**Answer : UmbracoIsTheBest!**
+
 * What CMS is the website using?
+	
+	**Answer : Umbraco**
 
 * What is the domain of the website?
 
+	![task1-web](./images/task1-web.png)
+
+	**Answer :  Anthem.com**
+
 * What's the name of the Administrator
+
+	![task1-post](./images/task1-post.png)
+
+	On article **A cheers to our IT department** we found a poem. Search it on google.
+
+	![task1-solomon](./images/task1-solomon.png)
+
+	And we got the username
+
+	**Answer : Solomon Grundy**
 
 * Can we find find the email address of the administrator?
 
