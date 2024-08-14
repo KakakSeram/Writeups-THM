@@ -53,6 +53,8 @@ Please give the box up to 5 minutes to boot and configure.
 	**Answer : UmbracoIsTheBest!**
 
 * What CMS is the website using?
+
+	![task1-umbraco](./images/task1-umbraco.png)
 	
 	**Answer : Umbraco**
 
@@ -75,6 +77,14 @@ Please give the box up to 5 minutes to boot and configure.
 	**Answer : Solomon Grundy**
 
 * Can we find find the email address of the administrator?
+	
+	![task1-email](./images/task1-email.png)
+
+	The author is Jane Doe and the email address is JD@anthem.com. Based on this pattern, we can guess Solomon Grundy’s email address. To check that we can try to log in on the CMS with that email address and password we found on the /robots.txt file.
+
+	![task1-login](./images/task1-login.png)
+
+	**Answer : SG@anthem.com**
 
 ## Task 2 - Spot the flags
 
