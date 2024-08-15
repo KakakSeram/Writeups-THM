@@ -5,6 +5,8 @@
 [Anthem](https://tryhackme.com/r/room/anthem) is listed as an medium room. Exploit a Windows machine in this beginner level challenge. An overview of what we’ll be using is listed here:
 
 * Nmap
+* Gobuster
+* xfreerdp
 
 ## Task 1 - Website Analysis
 
@@ -94,11 +96,35 @@ Our beloved admin left some flags behind that we require to gather before we pro
 
 * What is flag 1?
 
+	![task2-hiring](./images/task2-hiring.png)
+
+	Inspect source page `We are hiring`
+
+	**Answer : THM{L0L_WH0_US3S_M3T4}**
+
 * What is flag 2?
+	
+	![task2-source](./images/task2-source.png)
+
+	Inspect source page `Index`
+
+	**Answer : THM{G!T_G00D}**
 
 * What is flag 3?
 
+	![task2-author](./images/task2-author.png)
+
+	Author page
+
+	**Answer : THM{L0L_WH0_D15}**
+
 * What is flag 4?
+
+	![task2-it](./images/task2-it.png)
+
+	Inspect source page `A cheers to our IT department`
+
+	**Answer : THM{AN0TH3R_M3TA}**
 
 ## Task 3 - Final stage
 
@@ -108,8 +134,60 @@ Let's get into the box using the intel we gathered.
 
 * Let's figure out the username and password to log in to the box.(The box is not on a domain)
 
+	|Username|Password|
+	|--------|--------|
+	|SG|UmbracoIsTheBest!|
+
+	![task3-ip](./images/task3-ip.png)
+
 * Gain initial access to the machine, what is the contents of user.txt?
+
+	Login to server via RDP
+
+	```
+	xfreerdp /v:$IP /u:sg /p:'UmbracoIsTheBest!'
+	```
+
+	![task3-rdp](./images/task3-rdp.png)
+
+	![task3-user](./images/task3-user.png)
+
+	**Answer : THM{N00T_NO0T}**
 
 * Can we spot the admin password?
 
+	Enable show hidden file and folder
+
+	![task3-hidden](./images/task3-hidden.png)
+
+	Open folder backup
+
+	![task3-backup](./images/task3-backup.png)
+
+	Edit security of file
+
+	![task3-properties1](./images/task3-properties1.png)
+
+	![task3-properties2](./images/task3-properties2.png)
+
+	![task3-properties3](./images/task3-properties3.png)
+
+	Open file `restore.txt`
+
+	![task3-pass](./images/task3-pass.png)
+
+	**Answer : ChangeMeBaby1MoreTime**
+
 * Escalate your privileges to root, what is the contents of root.txt?
+
+	Run RDP using user Administrator
+
+	```
+	xfreerdp /v:10.10.64.93 /u:Administrator /p:'ChangeMeBaby1MoreTime'
+	```
+
+	![task3-root](./images/task3-root.png)
+
+	**Answer : THM{Y0U_4R3_1337}**
+
+	
