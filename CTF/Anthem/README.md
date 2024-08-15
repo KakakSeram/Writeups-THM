@@ -46,8 +46,6 @@ Please give the box up to 5 minutes to boot and configure.
 
 	![task1-gobuster](./images/task1-gobuster.png)
 
-	![task1-directory](./images/task1-directory.png)
-
 	Open **robots.txt**
 
 	![task1-robots](./images/task1-robots.png)
