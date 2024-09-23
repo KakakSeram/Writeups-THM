@@ -37,5 +37,6 @@ This the list of all the writeups I made.
 |31.|[Buffer Overflows](./BufferOverflows/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/bof1)|Easy|
 |32.|[Buffer Overflow Prep](./BufferOverflowPrep/README.md)|Free|[TryHackMe](https://tryhackme.com/r/room/bufferoverflowprep)|Easy|
 |33.|[Corp](./Corp/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/corp)|Easy|
+|34.|[The Lay of the Land](./TheLayOfTheLand/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/thelayoftheland)|Easy|
 
 Writeups made with :heart: by @KakakSeram
