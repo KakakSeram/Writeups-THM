@@ -146,7 +146,13 @@ Note that if we get WORKGROUP in the domain section, then it means that this mac
 
 * Before going any further, ensure the attached machine is deployed and try what we discussed. **Is the attached machine part of the AD environment? (Y|N)**
 
+	**Answer : Y**
+
 * If it is part of an AD environment, **what is the domain name of the AD?**
+	
+	![task4-AD](./images/task4-AD.png)
+	
+	**Answer : thmredteam.com**
 
 ## Task 5 - Users and Groups Management
 
