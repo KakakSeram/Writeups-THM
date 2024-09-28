@@ -199,8 +199,20 @@ Note that the result may contain more than one user depending on the configurati
 ### Answer the questions below
 
 * Use the `Get-ADUser -Filter * -SearchBase` command to list the available user accounts within `THM` OU in the `thmredteam.com` domain. How many users are available?
+	
+	```
+	Get-ADUser -Filter * -SearchBase "OU=THM,DC=thmredteam,DC=com"
+	```
+
+	![task5-user](./images/task5-user.png)
+
+	**Answer : 6**
 
 * Once you run the previous command, what is the UserPrincipalName (email) of the admin account?
+
+	![task5-admin](./images/task5-admin.png)
+
+	**Answer : thmadmin@thmredteam.com**
 
 ## Task 6 - Host Security Solution #1
 
