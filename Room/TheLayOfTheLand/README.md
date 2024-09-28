@@ -265,6 +265,8 @@ Next, we can start using the `Get-MpComputerStatus` cmdlet to get the current Wi
 
 As a result, `MpComputerStatus` highlights whether Windows Defender is enabled or not.
 
+### Host-based Firewall
+
 **Host-based Firewall**: It is a security tool installed and run on a host machine that can prevent and block attacker or red teamers' attack attempts. Thus, it is essential to enumerate and gather details about the firewall and its rules within the machine we have initial access to.  
 
 ![task6-logo2](./images/task6-logo2.png)
@@ -292,10 +294,34 @@ As a result, we can confirm the inbound connection on port 80 is open and allowe
 ### Answer the questions below
 
 * Enumerate the attached Windows machine and check whether the host-based firewall is enabled or not! (Y|N)
+	
+	```
+	Get-NetFirewallProfile | Format-Table Name, Enabled
+	```
+
+	![task6-firewall](./images/task6-firewall.png)
+
+	**Answer : N**
 
 * Using PowerShell cmdlets such `Get-MpThreat` can provide us with threats details that have been detected using MS Defender. Run it and answer the following: What is the file name that causes this alert to record?
+	
+	```
+	Get-MpThreat
+	```
+
+	![task6-powerview](./images/task6-powerview.png)
+
+	**Answer : PowerView.ps1**
 
 * Enumerate the firewall rules of the attached Windows machine. What is the port that is allowed under the **THM-Connection** rule?
+	
+	```
+	Get-NetFirewallRule | findstr "THM-Connection"
+	```
+
+	![task6-rule](./images/task6-rule.png)
+
+	**Answer : 17337**
 
 * In the next task, we will keep discussing the host security solution. I'm ready!
 
