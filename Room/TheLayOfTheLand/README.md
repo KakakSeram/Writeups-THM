@@ -548,8 +548,21 @@ Once we find its process ID, let's check if providing a network service by listi
 
 * Finally, we can see it is listening on port 8080. Now try to apply what we discussed and find the port number for `THM Service`. What is the port number?
 
+	```
+	wmic service where "name like 'THM Service'" get Name,PathName
+	Get-Process -Name thm-service
+	netstat -noa |findstr "LISTENING" |findstr "2868"
+	```
+
+	![task9-service](./images/task9-service.png)
+
+	**Answer : 13337**
+
 * Visit the localhost on the port you found in Question #1. What is the flag?
 
+	![task9-localhost](./images/task9-localhost.png)
+
+	**Answer : THM{S3rv1cs_1s_3numerat37ed}**
 
 We mentioned that DNS service is a commonly used protocol in any active directory environment and network. The attached machine provides DNS services for AD. Let's enumerate the DNS by performing a zone transfer DNS and see if we can list all records.
 
@@ -568,6 +581,10 @@ Now let's try the DNS zone transfer on the domain we find in the AD environment.
 The previous output is an example of successfully performing the DNS zone transfer.
 
 * Now enumerate the domain name of the domain controller, `thmredteam.com`, using the nslookup.exe, and perform a DNS zone transfer. **What is the flag for one of the records?**
+
+	![task9-nslookup](./images/task9-nslookup.png)
+
+	**Answer : THM{DNS-15-Enumerated!}**
 
 ## Task 10 - Conclusion
 
