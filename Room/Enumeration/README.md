@@ -29,6 +29,8 @@ Although it is not strictly necessary, we advise completing [The Lay of the Land
 
 * What command would you use to start the PowerShell interactive command line?
 
+	**Answer : powershell.exe**
+
 ## Task 2 - Purpose
 
 ![task2-logo](./images/task2-logo.png)
