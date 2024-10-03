@@ -58,6 +58,8 @@ Furthermore, we might stumble upon sensitive data saved among the user’s docum
 
 * In SSH key-based authentication, which key does the client need?
 
+	**Answer : private key**
+
 ## Task 3 - Linux Enumeration
 
 ![task3-logo](./images/task3-logo.png)
