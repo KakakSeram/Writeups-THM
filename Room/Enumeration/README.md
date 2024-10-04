@@ -206,16 +206,56 @@ Start the attached Linux machine if you have not done so already, as you need it
 ### Answer the questions below
 
 * What is the name of the Linux distribution used in the VM?
+	
+	```
+	cat /etc/*release
+	```
+
+	![task3-OS](./images/task3-OS.png)
+
+	**Answer : Ubuntu**
 
 * What is its version number?
 
+	![task3-version](./images/task3-version.png)
+
+	**Answer : 20.04.4**
+
 * What is the name of the user who last logged in to the system?
+
+	```
+	last
+	```
+
+	![task3-last](./images/task3-last.png)
+
+	**Answer : randa**
 
 * What is the highest listening TCP port number?
 
+	```
+	sudo netstat -pltn
+	```
+
+	![task3-netstat](./images/task3-netstat.png)
+
+	**Answer : 6667**
+
 * What is the program name of the service listening on it?
 
+	![task3-inspircd](./images/task3-inspircd.png)
+
+	**Answer : inspircd**
+
 * There is a script running in the background. Its name starts with `THM`. What is the name of the script?
+
+	```
+	ps axjf | grep THM
+	```
+
+	![task3-ps](./images/task3-ps.png)
+
+	**Answer : THM-24765.sh**
 
 ## Task 4 - Windows Enumeration
 
