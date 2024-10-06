@@ -336,13 +336,41 @@ Start the attached MS Windows Server if you have not done so already, as you nee
 
 * What is the full OS Name?
 
+	```
+	systeminfo
+	```
+
+	![task4-name](./images/task4-name.png)
+
+	**Answer : Microsoft Windows Server 2019 Datacenter**
+
 * What is the OS Version?
+
+	![task4-version](./images/task4-version.png)
+
+	**Answer : 10.0.17763**
 
 * How many hotfixes are installed on this MS Windows Server?
 
+	![task4-hotfix](./images/task4-hotfix.png)
+
+	**Answer : 30**
+
 * What is the lowest TCP port number listening on the system?
 
+	```
+	netstat -bno
+	```
+
+	![task4-tcp](./images/task4-tcp.png)
+
+	**Answer : 22**
+
 * What is the name of the program listening on that port?
+
+	![task4-program](./images/task4-program.png)
+
+	**Answer : sshd.exe**
 
 ## Task 5 - DNS, SMB, and SNMP
 
