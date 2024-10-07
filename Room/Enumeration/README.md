@@ -402,9 +402,33 @@ Ensure that you are running the MS Windows Server machine from Task 4 and answer
 
 * Knowing that the domain name on the MS Windows Server of `IP MACHINE_IP` is `redteam.thm`, use `dig` to carry out a domain transfer. What is the flag that you get in the records?
 
+	```
+	dig -t AXFR redteam.thm @10.10.49.60
+	```
+
+	![task5-dig](./images/task5-digtask5-dig.png)
+
+	**Answer : THM{DNS_ZONE}**
+
 * What is the name of the share available over SMB protocol and starts with `THM`?
 
+	```
+	net share
+	```
+
+	![task5-SMB](./images/task5-SMB.png)
+
+	**Answer : THM{829738}**
+
 * Knowing that the community string used by the SNMP service is `public`, use `snmpcheck` to collect information about the MS Windows Server of IP `MACHINE_IP`. What is the location specified?
+
+	```
+	/opt/snmpcheck/snmpcheck.rb 10.10.49.60 -c public | more
+	```
+	
+	![task5-SNMP](./images/task5-SNMP.png)
+
+	**Answer : THM{SNMP_SERVICE}**
 
 ## Task 6 - More Tools for Windows
 
