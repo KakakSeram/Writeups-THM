@@ -465,6 +465,8 @@ Another efficient and reliable MS Windows GUI tool that lets you gather informat
 
 * What utility from Sysinternals Suite shows the logged-in users?
 
+	**Answer : PsLoggedOn**
+
 ## Task 7 - Conclusion
 
 The focus of this room was on built-in command-line tools in both Linux and MS Windows systems. Many commands exist in both systems, although the command arguments and resulting output are different. The following tables show the primary Linux and MS Windows commands that we relied on to get more information about the system.
