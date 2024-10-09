@@ -55,7 +55,7 @@ For more information about the runtime, check out [Runtime Detection Evasion](ht
 * Does launching an application as an administrator open the process in kernel mode? (Y/N)
 
 	**Answer : N**
-	
+
 ## Task 3 - Components of the Windows API
 
 The Win32 API, more commonly known as the Windows API, has several dependent components that are used to define the structure and organization of the API.
@@ -78,7 +78,11 @@ Let’s expand these definitions; in the next task, we will discuss importing li
 
 * What header file imports and defines the User32 DLL and structure?
 
+	**Answer : winuser.h**
+
 * What parent header file contains all other required child and core header files?
+
+	**Answer : windows.h**
 
 ## Task 4 - OS Libraries
 
