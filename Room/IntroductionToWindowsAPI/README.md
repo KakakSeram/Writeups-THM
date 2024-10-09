@@ -50,8 +50,12 @@ For more information about the runtime, check out [Runtime Detection Evasion](ht
 
 * Does a process in the user mode have direct hardware access? (Y/N)
 
+	**Answer : N**
+
 * Does launching an application as an administrator open the process in kernel mode? (Y/N)
 
+	**Answer : N**
+	
 ## Task 3 - Components of the Windows API
 
 The Win32 API, more commonly known as the Windows API, has several dependent components that are used to define the structure and organization of the API.
