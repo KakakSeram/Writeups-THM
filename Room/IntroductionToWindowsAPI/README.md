@@ -140,7 +140,11 @@ We will cover this concept at a more practical level in task 7.
 
 * What overarching namespace provides P/Invoke to .NET?
 
+    **Answer : system**
+
 * What memory protection solution obscures the process of importing API calls?
+
+    **Answer : ASLR**
 
 ## Task 5 - API Call Structure
 
@@ -180,9 +184,17 @@ Even with an explanation determining these values can sometimes be challenging f
 
 * Which character appended to an API call represents an ANSI encoding?
 
+    **Answer : A**
+
 * Which character appended to an API call represents extended functionality?
 
+    **Answer : Ex**
+
 * What is the memory allocation type of 0x00080000 in the VirtualAlloc API call?
+
+    ![task5-reset](./images/task-reset.png)
+
+    **Answer : MEM_RESET**
 
 ## Task 6 - C API Implementations
 
