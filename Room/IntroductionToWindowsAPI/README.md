@@ -279,6 +279,8 @@ As demonstrated throughout this task, low-level languages make it very easy to d
 
 * Do you need to define a structure to use API calls in C? (Y/N)
 
+    **Answer : N**
+
 ## Task 7 - .NET and PowerShell API Implementations
 
 As discussed in task 4, **P/Invoke** allows us to import DLLs and assign pointers to API calls.
@@ -346,7 +348,11 @@ We can now use the required API calls with the syntax below.
 
 * What method is used to import a required DLL?
 
+    **Answer : DllImport**
+
 * What type of method is used to reference the API call to obtain a struct?
+
+    **Answer : External**
 
 ## Task 8 - Commonly Abused API Calls
 
