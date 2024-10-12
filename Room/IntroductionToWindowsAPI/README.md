@@ -380,7 +380,11 @@ In the next task, we will take a deep dive into how these calls are abused in a 
 
 * Which API call returns the address of an exported DLL function?
 
+    **Answer : GetProcAddress**
+
 * Which API call imports a specified DLL into the address space of the calling process?
+    
+    **Answer : LoadLibraryA**
 
 ## Task 9 - Malware Case Study
 
@@ -477,6 +481,8 @@ Using the [Windows API documentation](https://docs.microsoft.com/en-us/windows/w
 ### Answer the questions below
 
 * What Win32 API call is used to obtain a pseudo handle of our current process in the keylogger sample?
+
+    **Answer : GetCurrentProcess**
 
 * What Win32 API call is used to set a hook on our current process in the keylogger sample?
 
