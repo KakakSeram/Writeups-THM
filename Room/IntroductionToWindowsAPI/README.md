@@ -380,7 +380,11 @@ In the next task, we will take a deep dive into how these calls are abused in a 
 
 * Which API call returns the address of an exported DLL function?
 
+    **Answer : GetProcAddress**
+
 * Which API call imports a specified DLL into the address space of the calling process?
+    
+    **Answer : LoadLibraryA**
 
 ## Task 9 - Malware Case Study
 
@@ -478,19 +482,35 @@ Using the [Windows API documentation](https://docs.microsoft.com/en-us/windows/w
 
 * What Win32 API call is used to obtain a pseudo handle of our current process in the keylogger sample?
 
+    **Answer : GetCurrentProcess**
+
 * What Win32 API call is used to set a hook on our current process in the keylogger sample?
+
+    **Answer : SetWindowsHookEx**
 
 * What Win32 API call is used to obtain a handle from the pseudo handle in the keylogger sample?
 
+    **Answer : GetModuleHandle**
+
 * What Win32 API call is used unset the hook on our current process in the keylogger sample?
 
+    **Answer : UnhookWindowsHookEx**
+
 * What Win32 API call is used to allocate memory for the size of the shellcode in the shellcode launcher sample?
+    
+    **Answer : VirtualAlloc**
 
 * What native method is used to write shellcode to an allocated section of memory in the shellcode launcher sample?
 
+    **Answer : Marshal.Copy**
+
 * What Win32 API call is used to create a new execution thread in the shellcode launcher sample?
 
+    **Answer : CreateThread**
+
 * What Win32 API call is used to wait for the thread to exit in the shellcode launcher sample?
+
+    **Answer : WaitForSingleObject**
 
 ## Task 10 - Conclusion
 
