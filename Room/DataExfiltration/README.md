@@ -133,7 +133,11 @@ In the coming tasks, we will discuss the following techniques and use cases:
 
 * In which case scenario will sending and receiving traffic continue during the connection?
 
+	**Answer : Tunneling**
+
 * In which case scenario will sending and receiving traffic be in one direction?
+
+	**Answer : traditional data exfiltration**
 
 * In the next task, we will be discussing how data exfiltration over the TCP socket works!
 
