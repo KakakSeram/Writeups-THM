@@ -225,6 +225,8 @@ Success! We exfiltrated data from a victim machine to an attacker machine using 
 
 * Exfiltration using TCP sockets relies on ____________ protocols! 
 
+	**Answer : non-standard**
+
 * Now apply what we discussed to exfiltrate data over the TCP socket! Once you exfiltrate data successfully, hit **Completed** to move on to the next task!
 
 ## Task 5 - Exfiltration using SSH
@@ -258,6 +260,8 @@ If we check the attacker machine, we can see that we have successfully transmitt
 ### Answer the questions below
 
 * All packets sent using the Data Exfiltration technique over SSH are encrypted! (T=True/F=False)
+
+	**Answer : T**
 
 * Replicate the steps to transfer data over the SSH client. Once you transfer the file successfully, hit **Completed** and move on to the next task!
 
@@ -402,7 +406,15 @@ Now replicate the HTTP Tunneling steps to establish tunneling over the HTTP prot
 
 * Check the Apache log file on `web.thm.com` and get the flag!
 
+	![task6-flag](./images/task6-flag.png)
+
+	**Answer : THM{H77P-G37-15-f0un6}**
+
 * When you visit the `http://flag.thm.com/flag` website through the uploader machine via the HTTP tunneling technique, what is the flag?
+
+	![task6-flag2](./images/task6-flag2.png)
+
+	**Answer : THM{H77p_7unn3l1n9_l1k3_l337}**
 
 ## Task 7 - Exfiltration using ICMP
 
@@ -512,7 +524,13 @@ To confirm that all communications go through the ICMP protocol, we capture the 
 
 * In which ICMP packet section can we include our data?
 
+	**Answer : Data**
+
 * Follow the technique discussed in this task to establish a C2 ICMP connection between JumpBox and ICMP-Host. Then execute the "getFlag" command. What is the flag?
+
+	![task7-flag](./images/task7-flag.png)
+
+	**Answer : THM{g0t-1cmp-p4k3t!}**
 
 ## Task 8 - DNS Configurations
 
