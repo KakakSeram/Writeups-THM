@@ -762,9 +762,17 @@ Now replicate the C2 Communication steps to execute the content of the flag.tunn
 
 * What is the maximum length for the subdomain name (label)?
 
+	**Answer : 63**
+
 * The Fully Qualified FQDN domain name must not exceed ______ characters.
 
+	**Answer : 255**
+
 * Execute the C2 communication over the DNS protocol of the `flag.tunnel.com`. What is the flag?
+
+	![task9-flag](./images/task9-flag.png)
+
+	**Answer : THM{C-tw0-C0mmun1c4t10ns-0v3r-DN5}**
 
 ## Task 10 - DNS Tunneling
 
