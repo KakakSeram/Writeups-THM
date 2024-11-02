@@ -618,6 +618,10 @@ The DNS server must resolve the `test.thm.com` and `test.tunnel.com` domain name
 
 * Once the DNS configuration works fine, resolve the `flag.thm.com` domain name. What is the IP address?
 
+	![task8-ip](./images/task8-ip.png)
+
+	**Answer : 172.20.0.120**
+
 ## Task 9 - Exfiltration over DNS
 
 The DNS protocol is a common protocol and Its primary purpose is to resolve domain names to IP addresses and vice versa. Even though the DNS protocol is not designed to transfer data, threat actors found a way to abuse and move data over it. This task shows a technique to exfiltrate data over the DNS protocol.
