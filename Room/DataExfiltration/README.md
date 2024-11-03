@@ -831,9 +831,17 @@ Apply the DNS tunneling technique in the provided network environment and access
 
 * When the iodine connection establishes to Attacker, run the **ifconfig** command. How many interfaces are? (including the loopback interface)
 
+	**Answer : 4**
+
 * What is the network interface name created by iodined? 
 
+	**Answer : dns0**
+
 * Use the DNS tunneling to prove your access to the webserver, `http://192.168.0.100/test.php` . What is the flag?
+
+	![task10-flag](./images/task10-flag.png)
+
+	**Answer : THM{DN5-Tunn311n9-1s-c00l}**
 
 ## Task 11 - Conclusion
 
