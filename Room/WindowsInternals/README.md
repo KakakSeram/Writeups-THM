@@ -92,9 +92,21 @@ Processes are at the core of most internal Windows components. The following tas
 
 * What is the process ID of "notepad.exe"?
 
+	![task2-id](./images/task2-id.png)
+
+	**Answer : 5984**
+
 * What is the parent process ID of the previous process?
 
+	![task2-parent](./images/task2-parent.png)
+
+	**Answer : 3412**
+
 * What is the integrity level of the process?
+
+	![task2-integrity](./images/task2-integrity.png)
+
+	**Answer : High**
 
 ## Task 3 - Threads
 
@@ -125,7 +137,15 @@ Threads may seem like bare-bones and simple components, but their function is cr
 
 * What is the thread ID of the first thread created by notepad.exe?
 
+	![task3-thread](./images/task3-thread.png)
+
+	**Answer : 5908**
+
 * What is the stack argument of the previous thread? 
+
+	![task3-argument](./images/task3-argument.png)
+
+	**Answer : 6584**
 
 ## Task 4 - Virtual Memory
 
