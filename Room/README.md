@@ -41,5 +41,6 @@ This the list of all the writeups I made.
 |35.|[Enumeration](./Enumeration/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/enumerationpe)|Easy|
 |36.|[Introduction to Windows API](./IntroductionToWindowsAPI/README.md)|Free|[TryHackMe](https://tryhackme.com/r/room/windowsapi)|Easy|
 |37.|[Data Exfiltration](./DataExfiltration/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/dataxexfilt)|Hard|
+|38.|[Windows Internals](./WindowsInternals/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/windowsinternals)|Medium|
 
 Writeups made with :heart: by @KakakSeram
