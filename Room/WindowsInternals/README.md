@@ -399,13 +399,27 @@ Now that the headers have defined the format and function of the file, the secti
 
 * What PE component prints the message "This program cannot be run in DOS mode"?
 
+	**Answer : DOS Stub**
+
 * Open "notepad.exe" in Detect It Easy and answer the questions below.
 
 * What is the entry point reported by DiE?
 
+	![task6-entry](./images/task6-entry.png)
+
+	**Answer : 000000014001acd0**
+
 * What is the value of "NumberOfSections"?
 
+	![task6-section](./images/task6-section.png)
+
+	**Answer : 0006**
+
 * What is the virtual address of ".data"?
+
+	![task6-data](./images/task6-data.png)
+
+	**Answer : 00024000**
 
 * What string is located at the offset "0001f99c"?
 
