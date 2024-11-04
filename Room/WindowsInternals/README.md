@@ -179,11 +179,19 @@ Although this concept does not directly translate to Windows internals or concep
 
 * What is the total theoretical maximum virtual address space of a 32-bit x86 system?
 
+	**Answer : 8 GB**
+
 * What default setting flag can be used to reallocate user process address space?
+
+	**Answer : increaseUserVA**
 
 * Open the provided file: "Logfile.PML" in Procmon and answer the questions below.
 
 * What is the base address of "notepad.exe"?
+
+	![task4-address](./images/task4-address.png)
+
+	**Answer : 0x7ff652ec0000**
 
 ## Task 5 - Dynamic Link Libraries
 
@@ -276,9 +284,21 @@ In malicious code, threat actors will often use run-time dynamic linking more th
 
 * What is the base address of "ntdll.dll" loaded from "notepad.exe"?
 
+	![task5-address](./images/task5-address.png)
+
+	**Answer : 0x7ffd0be20000**
+
 * What is the size of "ntdll.dll" loaded from "notepad.exe"?
 
+	![task5-size](./images/task5-size.png)
+
+	**Answer : 0x1ec000**
+
 * How many DLLs were loaded by "notepad.exe"?
+
+	![task5-dll](./images/task5-dll.png)
+
+	**Answer : 51**
 
 ## Task 6 - Portable Executable Format
 
