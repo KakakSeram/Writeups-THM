@@ -423,6 +423,10 @@ Now that the headers have defined the format and function of the file, the secti
 
 * What string is located at the offset "0001f99c"?
 
+	![task6-offset](./images/task6-offset.png)
+
+	**Answer : Microsoft.Notepad**
+
 ## Task 7 - Interacting with Windows Internals
 
 Interacting with Windows internals may seem daunting, but it has been dramatically simplified. The most accessible and researched option to interact with Windows Internals is to interface through Windows API calls. The Windows API provides native functionality to interact with the Windows operating system. The API contains the Win32 API and, less commonly, the Win64 API.
@@ -514,6 +518,10 @@ remoteThread = CreateRemoteThread(
 * Open a command prompt and execute the provided file: "inject-poc.exe" and answer the questions below.
 
 * Enter the flag obtained from the executable below.
+	
+	![task7-flag](./images/task7-flag.png)
+	
+	**Answer : THM{1Nj3c7_4lL_7H3_7h1NG2}**
 
 ## Task 8 - Conclusion
 
