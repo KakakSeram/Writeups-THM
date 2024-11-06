@@ -132,7 +132,17 @@ Shellcode injection is the most basic form of process injection; in the next tas
 
 * Identify a PID of a process running as THM-Attacker to target. Once identified supply the PID as an argument to execute shellcode-injector.exe located in the Injectors directory on the desktop. 
 
+	```
+	tasklist /v /FI "USERNAME eq THM-Attacker"
+	```
+
+	![task2-tasklist](./images/task2-tasklist.png)
+
 * What flag is obtained after injecting the shellcode?
+
+	![task2-flag](./images/task2-flag.png)
+
+	**Answer : THM{1nj3c710n_15_fun!}**
 
 ## Task 3 - Expanding Process Abuse
 
