@@ -343,7 +343,17 @@ We can compile these steps together to create a process hollowing injector. Use 
 
 * Identify a PID of a process running as THM-Attacker to target. Supply the PID and executable name as arguments to execute hollowing-injector.exe located in the injectors directory on the desktop. 
 
+	```
+	tasklist /v /fi "USERNAME eq THM-Attacker"
+	```
+
+	![task3-tasklist](./images/task3-tasklist.png)
+
 * What flag is obtained after hollowing and injecting the shellcode?
+
+	![task3-flag](./images/task3-flag.png)
+
+	**Answer : THM{7h3r35_n07h1n6_h3r3}**
 
 ## Task 4 - Abusing Process Components
 
@@ -465,7 +475,17 @@ We can compile these steps together to create a process injector via thread hija
 
 * Identify a PID of a process running as THM-Attacker to target. Supply the PID as an argument to execute thread-injector.exe located in the Injectors directory on the desktop. 
 
+	```
+	tasklist /v /fi "USERNAME eq THM-Attacker"
+	```
+
+	![task4-tasklist](./images/task4-tasklist.png)
+
 * What flag is obtained after hijacking the thread?
+
+	![task4-flag](./images/task4-flag.png)
+
+	**Answer : THM{w34p0n1z3d_53w1n6}**
 
 ## Task 5 - Abusing DLLs
 
