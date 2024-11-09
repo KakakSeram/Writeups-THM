@@ -589,7 +589,17 @@ We can compile these steps together to create a DLL injector. Use the C++ inject
 
 * Identify a PID and name of a process running as THM-Attacker to target. Supply the name and malicious DLL found in the Injectors directory as arguments to execute dll-injector.exe located in the Injectors directory on the desktop. 
 
+	```
+	tasklist /v /fi "USERNAME eq THM-Attacker"
+	```
+
+	![task5-tasklist](./images/task5-tasklist.png)
+
 * What flag is obtained after injecting the DLL?
+
+	![task5-flag](./images/task5-flag.png)
+
+	**Answer : THM{n07_4_m4l1c10u5_dll}**
 
 ## Task 6 - Memory Execution Alternatives
 
@@ -665,9 +675,15 @@ With all injection techniques, the ability to mix and match commonly researched 
 
 * What protocol is used to execute asynchronously in the context of a thread?
 
+	**Answer : Asynchronous Procedure Calls**
+
 * What is the Windows API call used to queue an APC function?
 
+	**Answer : QueueUserAPC**
+
 * Can the void function pointer be used on a remote process? (y/n)
+
+	**Answer : n**
 
 ## Task 7 - Case Study in Browser Injection and Hooking
 
