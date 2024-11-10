@@ -799,9 +799,15 @@ This may still seem like a lot of code and technical knowledge being thrown and 
 
 * What alternative Windows API call was used by TrickBot to create a new user thread?
 
+	**Answer : RtlCreateUserThread**
+
 * Was the injection techniques employed by TrickBot reflective? (y/n)
 
+	**Answer : Y**
+
 * What function name was used to manually write hooks?
+
+	**Answer : write_hook_iter**
 
 ## Task 8 - Conclusion
 
