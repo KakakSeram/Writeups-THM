@@ -130,15 +130,39 @@ Now it is time to try it out! Load the **thm-intro2PE.exe** file to answer the q
 
 * What is the last 6 digits of the MD5 hash value of the **thm-intro2PE.exe** file? 
 
+    ![task3-md5](./images/task3-md5.png)
+
+    **Answer : 530949**
+
 * What is the Magic number value of the **thm-intro2PE.exe** file (in Hex)?
+
+    ![task3-magic-number](./images/task3-magic-number.png)
+
+    **Answer : 5A4D**
 
 * What is the Entry Point value of the **thm-intro2PE.exe** file?
 
+    ![task3-entry-point](./images/task3-entry-point.png)
+
+    **Answer : 12E4**
+
 * How many Sections does the **thm-intro2PE.exe** file have?
+
+    ![task3-section](./images/task3-section.png)
+
+    **Answer : 7**
 
 * A custom section could be used to store extra data. Malware developers use this technique to create a new section that contains their malicious code and hijack the flow of the program to jump and execute the content of the new section. What is the name of the extra section?
 
+    ![task3-flag1](./images/task3-flag1.png)
+
+    **Answer : .flag**
+
 * Check the content of the extra section. What is the flag?
+
+    ![task3-flag2](./images/task3-flag2.png)
+
+    **Answer :  THM{PE-N3w-s3ction!}**
 
 ## Task 4 - Introduction to Shellcode
 
