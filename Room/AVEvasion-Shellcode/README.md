@@ -302,6 +302,10 @@ Understanding shellcodes and how they are created is essential for the following
 	};
 	```
 
+    ![task4-flag](./images/task4-flag.png)
+
+    **Answer : THM{y0ur-1s7-5h311c0d3}**
+    
 ## Task 5 - Generate Shellcode
 
 In this task, we continue working with shellcode and demonstrate how to generate and execute shellcode using public tools such as the Metasploit framework.
