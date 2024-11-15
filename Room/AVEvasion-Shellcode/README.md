@@ -593,9 +593,15 @@ With all of this ready, we can now execute our stager payload. The stager should
 
 * Do staged payloads deliver the full content of our payload in a single package? (yea/nay)
 
+    **Answer : Nay**
+
 * Is the Metasploit payload `windows/x64/meterpreter_reverse_https` a staged payload? (yea/nay)
 
+    **Answer : Nay**
+
 * Is the stage0 of a staged payload in charge of downloading the final payload to be executed? (yea/nay)
+
+    **Answer : Yea**
 
 * Follow the instructions to create a staged payload and upload it into the THM Antivirus Check at `http://MACHINE_IP/`
 
