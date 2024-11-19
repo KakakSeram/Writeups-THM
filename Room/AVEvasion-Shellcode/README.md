@@ -945,9 +945,15 @@ While every single AV will behave differently, most of the time, there will be a
 
 * Will packers help you obfuscate your malicious code to bypass AV solutions? (yea/nay)
 
+    **Answer : Yea**
+
 * Will packers often unpack the original code in-memory before running it? (yea/nay)
 
+    **Answer : Yea**
+
 * Are some packers detected as malicious by some AV solutions? (yea/nay)
+
+    **Answer : Yea**
 
 * Follow the instructions to create a packed payload and upload it into the THM Antivirus Check at `http://MACHINE_IP/`
 
