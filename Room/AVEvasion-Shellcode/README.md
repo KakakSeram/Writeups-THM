@@ -643,9 +643,15 @@ Encoding and encryption can be used in AV evasion techniques where we encode and
 
 * Is encoding shellcode only enough to evade Antivirus software? (yea/nay)
 
+    **Answer : Nay**
+
 * Do encoding techniques use a key to encode strings or files? (yea/nay)
 
+    **Answer : Nay**
+
 * Do encryption algorithms use a key to encrypt strings or files? (yea/nay)
+
+    **Answer : Yea**
 
 ## Task 8 - Shellcode Encoding and Encryption
 
