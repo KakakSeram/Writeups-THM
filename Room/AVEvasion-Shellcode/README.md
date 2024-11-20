@@ -46,9 +46,19 @@ You will also need the AttackBox for some tasks, so this is also a good moment t
 
 * Which Antivirus software is running on the VM?
 
+    **Answer : Windows Defender**
+
 * What is the name of the user account to which you have access?
 
+    ![task-user](./images/task-user.png)
+
+    **Answer : av-victim**
+
 * Establish a working shell on the victim machine and read the file on the user's desktop. What is the flag?
+
+    ![task2-flag](./images/task2-flag.png)
+
+    **Answer : THM{H3ll0-W1nD0ws-Def3nd3r!}**
 
 ## Task 3 - PE Structure
 
@@ -997,7 +1007,11 @@ Feel free to try and upload your bound executable to the THM Antivirus Check web
 
 * Will a binder help with bypassing AV solutions? (yea/nay)
 
+    **Answer : Nay**
+
 * Can a binder be used to make a payload appear as a legitimate executable? (yea/nay)
+
+    **Answer : Yea**
 
 ## Task 11 - Conclusion
 
