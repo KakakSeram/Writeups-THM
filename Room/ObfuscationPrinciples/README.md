@@ -31,7 +31,6 @@ This is going to be a lot of information. Please put on your evil helmets and lo
 
 * Read the above and continue to the next task.
 
-
 ## Task 2 - Origins of Obfuscation
 
 Obfuscation is widely used in many software-related fields to protect IP (Intellectual Property) and other proprietary information an application may contain.
@@ -58,7 +57,11 @@ But how could this be used maliciously? Adversaries and malware developers can l
 
 * How many core layers make up the Layered Obfuscation Taxonomy?
 
+    **Answer : 4**
+
 * What sub-layer of the Layered Obfuscation Taxonomy encompasses meaningless identifiers?
+
+    **Answer : Obfuscating Layout**
 
 ## Task 3 - Obfuscation's Function for Static Evasion
 
