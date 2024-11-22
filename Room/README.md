@@ -45,5 +45,6 @@ This the list of all the writeups I made.
 |39.|[Abusing Windows Internals](./AbusingWindowsInternals/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/abusingwindowsinternals)|Hard|
 |40.|[AV Evasion: Shellcode](./AVEvasion-Shellcode/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/avevasionshellcode)|Medium|
 |41.|[Obfuscation Principles](./ObfuscationPrinciples/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/obfuscationprinciples)|Medium|
+|42.|[Signature Evasion](./SignatureEvasion/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/signatureevasion)|Medium|
 
 Writeups made with :heart: by @KakakSeram
