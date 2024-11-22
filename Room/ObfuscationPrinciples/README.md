@@ -88,7 +88,11 @@ Check out the Encoding/Packing/Binder/Crypters room for more information about *
 
 * What obfuscation method will break or split an object?
 
+    **Answer : Data Splitting**
+
 * What obfuscation method is used to rewrite static data with a procedure call?
+
+    **Answer : Data Procedurization**
 
 ## Task 4 - Object Concatenation
 
@@ -292,7 +296,11 @@ Check out the [Sandbox Evasion room](https://tryhackme.com/room/sandboxevasion) 
 
 * What are junk instructions referred to as in junk code?
 
+    **Answer : Code Stubs**
+
 * What obfuscation layer aims to confuse an analyst by manipulating the code flow and abstract syntax trees?
+
+    **Answer : Obfuscating controls**
 
 ## Task 6 - Code Flow and Logic
 
