@@ -47,5 +47,6 @@ This the list of all the writeups I made.
 |41.|[Obfuscation Principles](./ObfuscationPrinciples/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/obfuscationprinciples)|Medium|
 |42.|[Signature Evasion](./SignatureEvasion/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/signatureevasion)|Medium|
 |43.|[Runtime Detection Evasion](./RuntimeDetectionEvasion/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/runtimedetectionevasion)|Hard|
+|44.|[Evading Logging and Monitoring](./EvadingLoggingAndMonitoring/README.md)|VIP|[TryHackMe](https://tryhackme.com/r/room/monitoringevasion)|Medium|
 
 Writeups made with :heart: by @KakakSeram
