@@ -265,6 +265,12 @@ Success! There are no more alerts so we now have a clean snippet that we can use
 
 * What flag is found after uploading a properly obfuscated snippet?
 
+    ![task4-concat](./images/task4-concat.png)
+    
+    ![task4-flag](./images/task4-flag.png)
+
+    **Answer : THM{koNC473n473_4Ll_7H3_7H1n95}**
+
 ## Task 5 - Obfuscation's Function for Analysis Deception
 
 After obfuscating basic functions of malicious code, it may be able to pass software detections but is still susceptible to human analysis. While not a security boundary without further policies, analysts and reverse engineers can gain deep insight into the functionality of our malicious application and halt operations.
@@ -334,6 +340,8 @@ In the upcoming task, we will discuss different control flow patterns an attacke
 ### Answer the questions below
 
 * Can logic change and impact the control flow of a program? (T/F)
+
+    **Answer : T**
 
 ## Task 7 - Arbitrary Control Flow Patterns
 
@@ -427,6 +435,10 @@ while (x > 1):
 ### Answer the questions below
 
 * What flag is found after properly reversing the provided snippet?
+
+    ![task-flag](./images/task-flag.png)
+
+    **Answer : THM{D3cod3d!!!}**
 
 ## Task 8 - Protecting and Stripping Identifiable Information
 
@@ -660,6 +672,14 @@ int main(int argc, char* argv[])
 ### Answer the questions below
 
 * What flag is found after uploading a properly obfuscated snippet?
+
+    ![task8-code](./images/task8-code.png)
+
+    ![task8-compile](./images/task8-compile.png)
+
+    ![task8-flag](./images/task8-flag.png)
+
+    **Answer : THM{Y0Ur_1NF0_15_M1N3}**
 
 ## Task 9 - Conclusion
 
