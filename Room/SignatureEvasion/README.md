@@ -64,6 +64,8 @@ Now… no one wants to spend hours going back and forth trying to track down bad
 
 * To the nearest kibibyte, what is the first detected byte?
 
+    **Answer : 51000**
+
 ## Task 3 - Automating Signature Identification
 
 The process shown in the previous task can be quite arduous. To speed it up, we can automate it using scripts to split bytes over an interval for us. [Find-AVSignature](https://github.com/PowerShellMafia/PowerSploit/blob/master/AntivirusBypass/Find-AVSignature.ps1) will split a provided range of bytes through a given interval.
@@ -118,6 +120,16 @@ In the next task we will discuss how you can use the information gathered from t
 * Using the knowledge gained throughout this task, identify bad bytes found in `C:\Users\Student\Desktop\Binaries\shell.exe` using ThreatCheck and the Defender engine. ThreatCheck may take up to 15 minutes to find the offset, in this case you can leave it running in the background, continue with the next task, and come back when it finishes.
 
 * At what offset was the end of bad bytes for the file? 
+
+    ```
+    cd Desktop
+    cd Tools
+    ThreatCheck.exe -e Defender -f ..\Binaries\shell.exe
+    ```
+
+    ![task3-offset](./images/task3-offset.png)
+
+    **Answer : 0xC544**
 
 ## Task 4 - Static Code-Based Signatures
 
