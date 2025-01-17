@@ -86,7 +86,11 @@ In the upcoming tasks, we will cover ETW instrumentation, ETW evasion, and other
 
 * What ETW component will build and configure sessions?
 
+	**Answer : Controllers**
+
 * What event ID logs when a user account was deleted?
+
+	**Answer : 4726**
 
 ## Task 3 - Approaches to Log Evasion
 
@@ -117,6 +121,8 @@ This room will break down some of the most common published techniques and a mor
 ### Answer the questions below
 
 * How many total events can be used to track event tampering? 
+
+	**Answer : 3**
 
 * What event ID logs when the log file was cleared?
 
