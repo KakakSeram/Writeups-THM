@@ -126,6 +126,8 @@ This room will break down some of the most common published techniques and a mor
 
 * What event ID logs when the log file was cleared?
 
+	**Answer : 104**
+
 ## Task 4 - Tracing Instrumentation
 
 ETW is broken up into three separate components, working together to manage and correlate data. Event logs in Windows are no different from generic XML data, making it easy to process and interpret.
@@ -209,7 +211,11 @@ In the first terminal, we see four events generated when the `whoami` command is
 
 *  What reflection assembly is used?
 
+	**Answer : PSEtwLogProvider**
+
 * What field is overwritten to disable ETW?
+
+	**Answer : m_enabled**
 
 ## Task 6 - Patching Tracing Functions
 
@@ -333,7 +339,11 @@ Although this is a beautifully crafted technique, it might not be the best appro
 
 * What is the base address for the ETW security check before it is patched?
 
+	**Answer : 779f245b**
+
 * What is the non-delimited opcode used to patch ETW for x64 architecture?
+
+	**Answer : c21400**
 
 ## Task 7 - Providers via Policy
 
