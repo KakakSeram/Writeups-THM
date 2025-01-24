@@ -403,7 +403,11 @@ The general goal of disabling these providers is to limit the visibility of comp
 
 * How many total events are enabled through script block and module providers?
 
+	**Answer : 2**
+
 * What event ID will log script block execution?
+
+	**Answer : 4104**
 
 ## Task 8 - Group Policy Takeover
 
@@ -450,7 +454,11 @@ In the first terminal, we see there are three events generated when the PowerShe
 
 * What event IDs can be disabled using this technique? (lowest to highest separated by a comma)
 
+	**Answer : 4103,4104**
+
 * What provider setting controls 4104 events?
+
+	**Answer : EnableScriptBlockLogging**
 
 ## Task 9 - Abusing Log Pipeline
 
@@ -476,7 +484,11 @@ The script block above can be appended to any PowerShell script or run in a sess
 
 * What type of logging will this method prevent?
 
+	**Answer : Module logging**
+
 * What target module will disable logging for all Microsoft utility modules?
+
+	**Answer : Microsoft.PowerShell.Utility**
 
 ## Task 10 - Real World Scenario
 
@@ -503,6 +515,8 @@ Now we can test our methodology by running the binary "agent.exe". If properly i
 ### Answer the questions below
 
 * Enter the flag obtained from the desktop after executing the binary.
+
+	**Answer : THM{51l3n7_l1k3_4_5n4k3}**
 
 ## Task 11 - Conclusion
 
