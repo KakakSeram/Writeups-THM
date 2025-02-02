@@ -478,7 +478,19 @@ Once we run the MSBuild command, wait a couple of seconds till we receive a reve
 
 		![task7-download](./images/task7-download.png)
 
+	* Run MSbuild command
+	
+		```
+		c:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe C:\Users\thm\Downloads\liv0ff.csproj
+		```
 
+		![task7-build](./images/task7-build.png)
+
+	* Get the shell and flag
+	
+		![task7-flag](./images/task7-flag.png)
+
+	**Answer : THM{23005dc4369a0eef728aa39ff8cc3be2}**
 
 ## Task 8 - Real-life Scenario
 
