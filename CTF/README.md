@@ -22,6 +22,6 @@ This is list of CTF that I have learned.
 |16.|[Retro](./Retro/README.md)|Free|[TryHackMe](https://tryhackme.com/r/room/retro)|Hard|
 |17.|[c4ptur3-th3-fl4g](./c4ptur3th3fl4g/README.md)|Free|[TryHackMe](https://tryhackme.com/r/room/c4ptur3th3fl4g)|Easy|
 |18.|[Anthem](./Anthem/README.md)|Free|[TryHackMe](https://tryhackme.com/r/room/anthem)|Easy|
-|19.|[Whats Your Name?](./Whats Your Name?/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/whatsyourname)|Medium|
+|19.|[Whats Your Name?](./Whats%20Your%20Name?/README.md)|VIP|[TryHackMe](https://tryhackme.com/room/whatsyourname)|Medium|
 
 Writeups made with :heart: by @KakakSeram
